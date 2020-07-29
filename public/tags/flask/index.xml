@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>flask on Saisyam Personal Website</title>
+    <link>https://saisyam.com/tags/flask/</link>
+    <description>Recent content in flask on Saisyam Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://saisyam.com/tags/flask/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Github Files as Gists in webpage</title>
+      <link>https://saisyam.com/github-files-as-gists-in-webpage/</link>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/github-files-as-gists-in-webpage/</guid>
+      <description>Including Github Gists into a webpage is a common practice. But sometimes I would like to add a source file from one of my repos (public repos) into the webpage instead of splitting the file into multiple gists.
+I write technical blogs which involve lots of code to be shown and explained as you are reading now. I want to embed any source file from my public Github repo into my webpage or my blog.</description>
+    </item>
+    
+  </channel>
+</rss>

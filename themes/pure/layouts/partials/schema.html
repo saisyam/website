@@ -1,0 +1,40 @@
+<script type="application/ld+json">
+  {{ if eq .Section "posts" }}
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": {{ .Title }},
+    "image": {{ .Params.featuredImage | absURL }},
+    "datePublished": {{ .PublishDate }},
+    "dateModified": {{ .Lastmod }},
+    "author": {
+      "@type": "Person",
+      "name": {{ .Site.Params.author }}
+    },
+    "mainEntityOfPage": { "@type": "WebPage" },
+     "publisher": {
+      "@type": "Organization",
+      "name": {{ .Site.Params.header }},
+      "logo": {
+        "@type": "ImageObject",
+        "url": {{ .Site.Params.logo }}
+      }
+    },
+    "description": {{ .Description | plainify | safeHTML }},
+    "keywords": [{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}]
+  }
+  {{ end }}
+  {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "name": {{ .Site.Params.header }},
+    "url": {{ .Site.BaseURL }},
+    "sameAs": [
+      "https://www.facebook.com/{{ .Site.Params.facebook }}",
+      "https://www.instagram.com/{{ .Site.Params.instagram }}",
+      "https://twitter.com/{{ .Site.Params.twitter }}",
+      "https://github.com/{{ .Site.Params.github }}",
+      "https://linkedin.com/in/{{ .Site.Params.linkedin }}"
+    ]
+  }
+  </script>

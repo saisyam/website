@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>beautifulsoup on Saisyam Personal Website</title>
+    <link>https://saisyam.com/tags/beautifulsoup/</link>
+    <description>Recent content in beautifulsoup on Saisyam Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://saisyam.com/tags/beautifulsoup/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Scrape web content with 2 Popular Python packages</title>
+      <link>https://saisyam.com/scrape-web-content-with-2-popular-python-packages/</link>
+      <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/scrape-web-content-with-2-popular-python-packages/</guid>
+      <description>Information is wealth. Today there is tremendous amount of data online. There are thousands of crawlers scrape web daily to collect information and process them. In this article we see 2 popular tools to easily extract content from the webpages.
+Why scrape web We have lot of data online in the form of websites. Websites include HTML content and JavaScript. We need specific parsers to parse the HTML content and extract information into meaningful buckets.</description>
+    </item>
+    
+  </channel>
+</rss>

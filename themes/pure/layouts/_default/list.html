@@ -1,0 +1,47 @@
+{{ define "content" }}
+<div class="posts">
+    <h1 class="content-subhead">Latest</h1>
+    {{ $pages := (where .Pages "Section" "==" "posts") }}
+    {{ $paginator := .Paginate $pages }}
+    {{ range $index, $element := $paginator.Pages }}
+        <section class="post">
+            <header class="post-header">
+                <!--<img width="48" height="48" alt="Saisyam" class="post-avatar" src="./images/profile.jpg">-->
+
+                <a href="{{ .Permalink }}"><h3 class="post-title">{{ .Title }}</h3></a>
+
+                <p class="post-meta">
+                    On <b>{{ dateFormat "Jan 2, 2006" .Date }}</b> under   
+                    {{ range .Params.categories}}
+                        <a class="post-category post-category-design" href="/categories/{{ . | urlize  }}">{{ . | humanize  }}</a>
+                    {{ end }}
+                </p>
+            </header>
+
+            <div class="post-description">
+                <p>
+                    {{ .Description | safeHTML }}
+                </p>
+            </div>
+        </section>
+    {{ end }}
+    <div class="footer pagination">
+        <ul>
+            {{ if .Paginator.HasPrev }}
+              <li class="post-category post-category-js"><a href="{{ .Paginator.Prev.URL }}">&lt;</a></li>
+            {{ end }}
+            {{ range .Paginator.Pagers }}
+              {{ if eq .PageNumber $paginator.PageNumber }}
+                <li class="active post-category post-category-js"><span>{{ .PageNumber }}</span></li>
+              {{ else }}
+                <li class="post-category post-category-js"><a href="{{ .URL }}">{{ .PageNumber }}</a></li>
+              {{ end }}
+            {{ end }}
+            {{ if .Paginator.HasNext }}
+                <li class="post-category post-category-js"><a href="{{ .Paginator.Next.URL }}">&gt;</a></li>
+            {{ end }}
+        </ul>
+    </div>
+
+</div>
+{{ end }}

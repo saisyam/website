@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>databases on Saisyam Personal Website</title>
+    <link>https://saisyam.com/categories/databases/</link>
+    <description>Recent content in databases on Saisyam Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 30 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://saisyam.com/categories/databases/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>It&#39;s easy to run PostgreSQL inside Docker</title>
+      <link>https://saisyam.com/its-easy-to-run-postgresql-inside-docker/</link>
+      <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/its-easy-to-run-postgresql-inside-docker/</guid>
+      <description>Docker makes life easy to run most complex software without going through native installation process. I use docker to deliver development builds for the team to work in their local system. In this article we will see how to run PostgreSQL inside Docker container, connect to the database docker and run SQL scripts.
+Introduction to Docker  Docker is a set of platform as a service products that uses OS-level virtualization to deliver software in packages called containers.</description>
+    </item>
+    
+  </channel>
+</rss>

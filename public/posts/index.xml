@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Saisyam Personal Website</title>
+    <link>https://saisyam.com/posts/</link>
+    <description>Recent content in Posts on Saisyam Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://saisyam.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>It&#39;s Easy to Build RPC Server in Python</title>
+      <link>https://saisyam.com/its-easy-to-build-rpc-server-in-python/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/its-easy-to-build-rpc-server-in-python/</guid>
+      <description>RPC stands for Remote Procedure Call. RPC server is similar to any HTTP server running on a specific port. RPC also communicates over HTTP but uses XML for data transfer. So, Let&#39;s get started to build it using Python Twisted framework. If you want to know more about RPC, check its Wikipedia page.
+Install Python Twsited I always keep my Python projects inside virtual environments. So, I create a virtual environment using virtualenv Python package and install Python Twisted framework into the virtual environment.</description>
+    </item>
+    
+    <item>
+      <title>Scrape web content with 2 Popular Python packages</title>
+      <link>https://saisyam.com/scrape-web-content-with-2-popular-python-packages/</link>
+      <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/scrape-web-content-with-2-popular-python-packages/</guid>
+      <description>Information is wealth. Today there is tremendous amount of data online. There are thousands of crawlers scrape web daily to collect information and process them. In this article we see 2 popular tools to easily extract content from the webpages.
+Why scrape web We have lot of data online in the form of websites. Websites include HTML content and JavaScript. We need specific parsers to parse the HTML content and extract information into meaningful buckets.</description>
+    </item>
+    
+    <item>
+      <title>Python Splinter to Kickstart your Web Automation Testing</title>
+      <link>https://saisyam.com/python-splinter-to-kickstart-your-web-automation-testing/</link>
+      <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/python-splinter-to-kickstart-your-web-automation-testing/</guid>
+      <description>Today automation is the key for any project. Python Splinter is the new tool in Web Automation Testing space. Splinter has an easy to use API when compared to Selenium. Splinter uses Selenium web driver and built on same principles as Selenium.
+Automation Testing Today web applications are becoming more complex with lot of features. Mobile first approach of web applications requires more testing. Automation will help in testing complex business logic and provide a quality product to the customers.</description>
+    </item>
+    
+    <item>
+      <title>Proven way to Fake Webcam in Test Automation with Python</title>
+      <link>https://saisyam.com/proven-way-to-fake-webcam-in-test-automation-with-python/</link>
+      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/proven-way-to-fake-webcam-in-test-automation-with-python/</guid>
+      <description>We automate web application testing using Python Selenium or Splinter. How will you automate testing applications with webcam? You can fake a webcam device with Chrome Web driver. In this article we will see how to do that.
+Challenge The challenge here is to fake the webcam with proper video format. In this post I am using Chrome browser along with Splinter. If you are new to Splinter, check out my article and I promise you love it.</description>
+    </item>
+    
+    <item>
+      <title>Github Files as Gists in webpage</title>
+      <link>https://saisyam.com/github-files-as-gists-in-webpage/</link>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/github-files-as-gists-in-webpage/</guid>
+      <description>Including Github Gists into a webpage is a common practice. But sometimes I would like to add a source file from one of my repos (public repos) into the webpage instead of splitting the file into multiple gists.
+I write technical blogs which involve lots of code to be shown and explained as you are reading now. I want to embed any source file from my public Github repo into my webpage or my blog.</description>
+    </item>
+    
+    <item>
+      <title>Reading CSV File in Python</title>
+      <link>https://saisyam.com/reading-csv-file-in-python/</link>
+      <pubDate>Sat, 04 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/reading-csv-file-in-python/</guid>
+      <description>Today data is available in various formats, like, CSV, JSON, TXT etc. Python provides all the necessary tools to parse these files. In this article we will learn how to parse a large CSV file using Python.
+We will use Python csv package and pandas to parse the CSV file. I have taken a CSV file of baby names from here. This file contains 250K records of baby names. I am using this data to generate user database to test the login API I have built.</description>
+    </item>
+    
+    <item>
+      <title>It&#39;s easy to run PostgreSQL inside Docker</title>
+      <link>https://saisyam.com/its-easy-to-run-postgresql-inside-docker/</link>
+      <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/its-easy-to-run-postgresql-inside-docker/</guid>
+      <description>Docker makes life easy to run most complex software without going through native installation process. I use docker to deliver development builds for the team to work in their local system. In this article we will see how to run PostgreSQL inside Docker container, connect to the database docker and run SQL scripts.
+Introduction to Docker  Docker is a set of platform as a service products that uses OS-level virtualization to deliver software in packages called containers.</description>
+    </item>
+    
+  </channel>
+</rss>

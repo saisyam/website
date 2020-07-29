@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python twisted on Saisyam Personal Website</title>
+    <link>https://saisyam.com/tags/python-twisted/</link>
+    <description>Recent content in python twisted on Saisyam Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://saisyam.com/tags/python-twisted/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>It&#39;s Easy to Build RPC Server in Python</title>
+      <link>https://saisyam.com/its-easy-to-build-rpc-server-in-python/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/its-easy-to-build-rpc-server-in-python/</guid>
+      <description>RPC stands for Remote Procedure Call. RPC server is similar to any HTTP server running on a specific port. RPC also communicates over HTTP but uses XML for data transfer. So, Let&#39;s get started to build it using Python Twisted framework. If you want to know more about RPC, check its Wikipedia page.
+Install Python Twsited I always keep my Python projects inside virtual environments. So, I create a virtual environment using virtualenv Python package and install Python Twisted framework into the virtual environment.</description>
+    </item>
+    
+  </channel>
+</rss>
