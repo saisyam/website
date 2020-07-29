@@ -8,8 +8,7 @@ disqusShortname = "saisyam-1"
 googleAnalytics = "UA-504232"
 enableRobotsTXT = true
 enableEmoji = true
-#pygmentsCodefences = true
-#pygmentsStyle = "pygments"
+publishDir = "docs"
 
 [params]
 author = "Saisyam"
