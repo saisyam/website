@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{ if .Description }}
+    <meta name="description" content="{{ .Description }}">
+  {{ else }}
+    <meta name="description" content="Saisyam's personal blog on programming, operating systems and tools ">
+  {{ end }}
+  <meta name="robots" content="index,follow" /> 
+  <meta name="googlebot" content="index,follow" />
+  <meta name="coverage" content="Worldwide" /> 
+  <meta name="distribution" content="Global" /> 
+  <meta name="HandheldFriendly" content="True" />
+  <link rel="icon" href="images/favicon.ico" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="images/site.webmanifest">
+
+  {{ template "_internal/twitter_cards.html" . }}
+  {{ template "_internal/opengraph.html" . }}
+  
+  <title>{{ .Title }}</title>
+  <base href="{{ .Site.BaseURL }}" />
+  {{ partial "schema.html" . }}
+
+  <link rel="stylesheet" id="wc-block-style-css" href="css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" id="minit-minified-styles-css" href="css/minified-styles.css" type="text/css" media="all">
+  <style id="fit-vids-style">
+		.fluid-width-video-wrapper {
+			width: 100%;
+			position: relative;
+			padding: 0;
+		}
+
+		.fluid-width-video-wrapper iframe,
+		.fluid-width-video-wrapper object,
+		.fluid-width-video-wrapper embed {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	<style id="typology-full-fix" type="text/css">
+		.alignfull {
+			max-width: 1170px;
+			width: 100vw;
+			left: -295px;
+		}
+  </style>
+  
+  {{ template "_internal/google_analytics.html" . }}
+</head>
+<body class="home page-template-default page page-id-35 wp-embed-responsive theme-typology woocommerce-js typology-v_1_6_3">
+
+  {{ partial "header.html" . }}
+
+  <div id="typology-cover" class="typology-cover typology-cover-empty">
+	</div>
+
+	<div class="typology-fake-bg">
+		<div class="typology-section">
+      {{ block "content" . }}{{ end }}
+    </div>
+    {{ partial "footer.html" . }}
+  </div>
+  {{ partial "sidebar.html" . }}
+  <script src="js/jquery.min.js"></script>
+  <script>
+    (function($) {
+      $("div.gistify").each(function(){
+	      var url = $(this).attr("data-url");
+	      $(this).load(url);
+      });
+      $('#action-button').on('click', function(){
+        $('body').addClass('typology-sidebar-open typology-lock');
+      });
+      $('.typology-sidebar-close').on('click', function(){
+        $('body').removeClass('typology-sidebar-open typology-lock');
+      });
+    })(jQuery);
+  </script>  
+</body>
+</html>

@@ -1,8 +1,8 @@
 baseURL = "https://saisyam.com/"
 languageCode = "en-us"
-title = "Saisyam Personal Website"
-theme = "pure"
-paginate = 10
+title = "Saisyam - My Blog"
+theme = "typology"
+paginate = 5
 canonifyurls = true
 disqusShortname = "saisyam-1"
 googleAnalytics = "UA-504232"
