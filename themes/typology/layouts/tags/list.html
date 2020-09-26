@@ -15,7 +15,7 @@
 </div>
 <div class="section-content section-content-b">
     <div class="typology-posts">
-        {{ $pages := (where .Site.RegularPages "Section" "==" "posts") }}
+        {{ $pages := (where .Data.Pages "Section" "==" "posts") }}
         {{ $paginator := .Paginate $pages }}
         {{ range $index, $element := $paginator.Pages }}
         <article class="typology-post typology-layout-b  post-47 post type-post status-publish format-standard has-post-thumbnail hentry category-humans tag-noimages tag-typography tag-writing">

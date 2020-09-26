@@ -100,7 +100,11 @@
 			left: -295px;
 		}
   </style>
-  
+  <style>
+    .show{
+          display:block !important;
+      }
+  </style>
   
 <script type="application/javascript">
 var doNotTrack = false;
@@ -132,7 +136,7 @@ if (!doNotTrack) {
             <ul id="menu-main-menu" class="typology-nav typology-main-navigation"
                 style="opacity: 1; position: relative;">
                 <li id="menu-item-321"
-                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-321">
+                    class="menu-item menu-item-type-custom current-menu-parent menu-item-object-custom menu-item-321">
                     <a href="https://saisyam.com/">Home</a>
                 </li>
             </ul>
@@ -397,6 +401,18 @@ if (!doNotTrack) {
   <script src="js/jquery.min.js"></script>
   <script>
     (function($) {
+      var stickyHeaderTop = 0;
+      $(window).scroll(function () {
+          if ($(window).scrollTop() > stickyHeaderTop) {
+              $("#typology-header").addClass('typology-header-sticky');
+          } else {
+              $("#typology-header").removeClass('typology-header-sticky');
+          }       
+      });
+      $("#menu-main-menu-1 li .typology-nav-widget-acordion").click(function(){
+        $(this).parent().toggleClass('active');
+        $(this).siblings( ".sub-menu" ).toggleClass('show');
+      })
       $("div.gistify").each(function(){
 	      var url = $(this).attr("data-url");
 	      $(this).load(url);
@@ -404,6 +420,7 @@ if (!doNotTrack) {
       $('#action-button').on('click', function(){
         $('body').addClass('typology-sidebar-open typology-lock');
       });
+      
       $('.typology-sidebar-close').on('click', function(){
         $('body').removeClass('typology-sidebar-open typology-lock');
       });

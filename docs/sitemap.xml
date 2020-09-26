@@ -3,7 +3,52 @@
   
   <url>
     <loc>https://saisyam.com/categories/</loc>
-    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/categories/data-analytics/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/posts/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/python/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/sentiment-analysis/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/sentiment-analysis-using-python-vader/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/text-analytics/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/vader/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -13,11 +58,6 @@
   
   <url>
     <loc>https://saisyam.com/categories/networking/</loc>
-    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://saisyam.com/posts/</loc>
     <lastmod>2020-05-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -32,22 +72,7 @@
   </url>
   
   <url>
-    <loc>https://saisyam.com/</loc>
-    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://saisyam.com/tags/</loc>
-    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://saisyam.com/tags/beautifulsoup/</loc>
-    <lastmod>2020-05-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://saisyam.com/tags/python/</loc>
     <lastmod>2020-05-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -128,11 +153,6 @@
   
   <url>
     <loc>https://saisyam.com/tags/csv/</loc>
-    <lastmod>2020-04-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://saisyam.com/categories/data-analytics/</loc>
     <lastmod>2020-04-04T00:00:00+00:00</lastmod>
   </url>
   

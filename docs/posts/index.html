@@ -27,7 +27,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://saisyam.com/posts/" />
-<meta property="og:updated_time" content="2020-05-18T00:00:00+00:00" />
+<meta property="og:updated_time" content="2020-09-26T00:00:00+00:00" />
 
   
   <title>Posts</title>
@@ -40,7 +40,7 @@
     "headline": "Posts",
     "image": "https://saisyam.com/",
     "datePublished": "0001-01-01T00:00:00Z",
-    "dateModified": "2020-05-18T00:00:00Z",
+    "dateModified": "2020-09-26T00:00:00Z",
     "author": {
       "@type": "Person",
       "name": "Saisyam"
@@ -99,7 +99,11 @@
 			left: -295px;
 		}
   </style>
-  
+  <style>
+    .show{
+          display:block !important;
+      }
+  </style>
   
 <script type="application/javascript">
 var doNotTrack = false;
@@ -131,7 +135,7 @@ if (!doNotTrack) {
             <ul id="menu-main-menu" class="typology-nav typology-main-navigation"
                 style="opacity: 1; position: relative;">
                 <li id="menu-item-321"
-                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-321">
+                    class="menu-item menu-item-type-custom current-menu-parent menu-item-object-custom menu-item-321">
                     <a href="https://saisyam.com/">Home</a>
                 </li>
             </ul>
@@ -153,7 +157,7 @@ if (!doNotTrack) {
 		<div class="typology-section">
       
 <div class="section-head">
-    <h3 class="section-title h6">Latest stories</h3>
+    <h3 class="section-title h6">Posts</h3>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     
     <ins class="adsbygoogle"
@@ -170,6 +174,22 @@ if (!doNotTrack) {
     <div class="typology-posts">
         
         
+        
+        <article class="typology-post typology-layout-b  post-47 post type-post status-publish format-standard has-post-thumbnail hentry category-humans tag-noimages tag-typography tag-writing">
+			<header class="entry-header">
+				<div class="post-date-hidden">September 26, 2020</div>
+					<h2 class="entry-title">
+                        <a href="https://saisyam.com/sentiment-analysis-using-python-vader/">Sentiment Analysis using Python Vader</a>
+                    </h2>
+					
+					<div class="post-date">
+						<span class="post-date-day">26</span><span class="post-date-month">September</span>
+					</div>
+			</header>
+			<div class="entry-content">
+				Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews. VADER(Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. VADER is built on Python.
+			</div>
+        </article>
         
         <article class="typology-post typology-layout-b  post-47 post type-post status-publish format-standard has-post-thumbnail hentry category-humans tag-noimages tag-typography tag-writing">
 			<header class="entry-header">
@@ -232,22 +252,6 @@ if (!doNotTrack) {
 			</header>
 			<div class="entry-content">
 				To test web application with webcam we need to fake webcam with a video. We can use Chrome webdriver settings with Python Selenium or Splinter to do that.
-			</div>
-        </article>
-        
-        <article class="typology-post typology-layout-b  post-47 post type-post status-publish format-standard has-post-thumbnail hentry category-humans tag-noimages tag-typography tag-writing">
-			<header class="entry-header">
-				<div class="post-date-hidden">April 8, 2020</div>
-					<h2 class="entry-title">
-                        <a href="https://saisyam.com/github-files-as-gists-in-webpage/">Github Files as Gists in webpage</a>
-                    </h2>
-					
-					<div class="post-date">
-						<span class="post-date-day">08</span><span class="post-date-month">April</span>
-					</div>
-			</header>
-			<div class="entry-content">
-				It's common to embed code snippets in blogs or personal websites. Adding code snippets from project source code as gists is a painful and double effort. Why not embed the Github project source file itself into a webpage? Yes, you can do that using Gistify.
 			</div>
         </article>
         
@@ -349,6 +353,18 @@ if (!doNotTrack) {
   <script src="js/jquery.min.js"></script>
   <script>
     (function($) {
+      var stickyHeaderTop = 0;
+      $(window).scroll(function () {
+          if ($(window).scrollTop() > stickyHeaderTop) {
+              $("#typology-header").addClass('typology-header-sticky');
+          } else {
+              $("#typology-header").removeClass('typology-header-sticky');
+          }       
+      });
+      $("#menu-main-menu-1 li .typology-nav-widget-acordion").click(function(){
+        $(this).parent().toggleClass('active');
+        $(this).siblings( ".sub-menu" ).toggleClass('show');
+      })
       $("div.gistify").each(function(){
 	      var url = $(this).attr("data-url");
 	      $(this).load(url);
@@ -356,6 +372,7 @@ if (!doNotTrack) {
       $('#action-button').on('click', function(){
         $('body').addClass('typology-sidebar-open typology-lock');
       });
+      
       $('.typology-sidebar-close').on('click', function(){
         $('body').removeClass('typology-sidebar-open typology-lock');
       });

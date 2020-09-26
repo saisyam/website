@@ -54,7 +54,11 @@
 			left: -295px;
 		}
   </style>
-  
+  <style>
+    .show{
+          display:block !important;
+      }
+  </style>
   {{ template "_internal/google_analytics.html" . }}
 </head>
 <body class="home page-template-default page page-id-35 wp-embed-responsive theme-typology woocommerce-js typology-v_1_6_3">
@@ -74,6 +78,18 @@
   <script src="js/jquery.min.js"></script>
   <script>
     (function($) {
+      var stickyHeaderTop = 0;
+      $(window).scroll(function () {
+          if ($(window).scrollTop() > stickyHeaderTop) {
+              $("#typology-header").addClass('typology-header-sticky');
+          } else {
+              $("#typology-header").removeClass('typology-header-sticky');
+          }       
+      });
+      $("#menu-main-menu-1 li .typology-nav-widget-acordion").click(function(){
+        $(this).parent().toggleClass('active');
+        $(this).siblings( ".sub-menu" ).toggleClass('show');
+      })
       $("div.gistify").each(function(){
 	      var url = $(this).attr("data-url");
 	      $(this).load(url);
@@ -81,6 +97,7 @@
       $('#action-button').on('click', function(){
         $('body').addClass('typology-sidebar-open typology-lock');
       });
+      
       $('.typology-sidebar-close').on('click', function(){
         $('body').removeClass('typology-sidebar-open typology-lock');
       });

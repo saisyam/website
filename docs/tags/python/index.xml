@@ -6,10 +6,16 @@
     <description>Recent content in python on Saisyam - My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://saisyam.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 26 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://saisyam.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sentiment Analysis using Python Vader</title>
+      <link>https://saisyam.com/sentiment-analysis-using-python-vader/</link>
+      <pubDate>Sat, 26 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/sentiment-analysis-using-python-vader/</guid>
+      <description>Analyzing the emotions of the customers will help product and service companies to improve their quality. Sentiment Analysis helps in identifying these emotions computationally without any manual intervention. In this article we are not discussing the underlying process of identifying the sentiment, but we use a pre-built engine to process our text.
+VADER is a rule-based sentiment analysis tool written in Python to analyze a given text. VADER not only tells about the positivity and negativity score but also tells us about how positive or negative it is.</description>
+    </item>
     
     <item>
       <title>Scrape web content with 2 Popular Python packages</title>

@@ -75,7 +75,11 @@
 			left: -295px;
 		}
   </style>
-  
+  <style>
+    .show{
+          display:block !important;
+      }
+  </style>
   
 <script type="application/javascript">
 var doNotTrack = false;
@@ -107,7 +111,7 @@ if (!doNotTrack) {
             <ul id="menu-main-menu" class="typology-nav typology-main-navigation"
                 style="opacity: 1; position: relative;">
                 <li id="menu-item-321"
-                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-321">
+                    class="menu-item menu-item-type-custom current-menu-parent menu-item-object-custom menu-item-321">
                     <a href="https://saisyam.com/">Home</a>
                 </li>
             </ul>
@@ -149,54 +153,6 @@ if (!doNotTrack) {
         
         <article class="typology-post typology-layout-b  post-47 post type-post status-publish format-standard has-post-thumbnail hentry category-humans tag-noimages tag-typography tag-writing">
 			<header class="entry-header">
-				<div class="post-date-hidden">May 18, 2020</div>
-					<h2 class="entry-title">
-                        <a href="https://saisyam.com/its-easy-to-build-rpc-server-in-python/">It&#39;s Easy to Build RPC Server in Python</a>
-                    </h2>
-					
-					<div class="post-date">
-						<span class="post-date-day">18</span><span class="post-date-month">May</span>
-					</div>
-			</header>
-			<div class="entry-content">
-				RPC stands for Remote Procedure Call. With RPC we can build lot of test automation tools. In this post we will learn how to build a RPC server using Python.
-			</div>
-        </article>
-        
-        <article class="typology-post typology-layout-b  post-47 post type-post status-publish format-standard has-post-thumbnail hentry category-humans tag-noimages tag-typography tag-writing">
-			<header class="entry-header">
-				<div class="post-date-hidden">May 11, 2020</div>
-					<h2 class="entry-title">
-                        <a href="https://saisyam.com/scrape-web-content-with-2-popular-python-packages/">Scrape web content with 2 Popular Python packages</a>
-                    </h2>
-					
-					<div class="post-date">
-						<span class="post-date-day">11</span><span class="post-date-month">May</span>
-					</div>
-			</header>
-			<div class="entry-content">
-				Scrape web content with Python's extensive library of tools. Extract data from web to power your analytics algorithms. In this post we will discuss about Beautifulsoup and Splinter
-			</div>
-        </article>
-        
-        <article class="typology-post typology-layout-b  post-47 post type-post status-publish format-standard has-post-thumbnail hentry category-humans tag-noimages tag-typography tag-writing">
-			<header class="entry-header">
-				<div class="post-date-hidden">May 9, 2020</div>
-					<h2 class="entry-title">
-                        <a href="https://saisyam.com/python-splinter-to-kickstart-your-web-automation-testing/">Python Splinter to Kickstart your Web Automation Testing</a>
-                    </h2>
-					
-					<div class="post-date">
-						<span class="post-date-day">09</span><span class="post-date-month">May</span>
-					</div>
-			</header>
-			<div class="entry-content">
-				Python Splinter is new and have an easy to use API compared to Selenium. Python Splinter can also be used to scrape web content.
-			</div>
-        </article>
-        
-        <article class="typology-post typology-layout-b  post-47 post type-post status-publish format-standard has-post-thumbnail hentry category-humans tag-noimages tag-typography tag-writing">
-			<header class="entry-header">
 				<div class="post-date-hidden">May 8, 2020</div>
 					<h2 class="entry-title">
                         <a href="https://saisyam.com/proven-way-to-fake-webcam-in-test-automation-with-python/">Proven way to Fake Webcam in Test Automation with Python</a>
@@ -211,32 +167,12 @@ if (!doNotTrack) {
 			</div>
         </article>
         
-        <article class="typology-post typology-layout-b  post-47 post type-post status-publish format-standard has-post-thumbnail hentry category-humans tag-noimages tag-typography tag-writing">
-			<header class="entry-header">
-				<div class="post-date-hidden">April 8, 2020</div>
-					<h2 class="entry-title">
-                        <a href="https://saisyam.com/github-files-as-gists-in-webpage/">Github Files as Gists in webpage</a>
-                    </h2>
-					
-					<div class="post-date">
-						<span class="post-date-day">08</span><span class="post-date-month">April</span>
-					</div>
-			</header>
-			<div class="entry-content">
-				It's common to embed code snippets in blogs or personal websites. Adding code snippets from project source code as gists is a painful and double effort. Why not embed the Github project source file itself into a webpage? Yes, you can do that using Gistify.
-			</div>
-        </article>
-        
     </div>
     <div class="typology-pagination" >
         <nav class="navigation">
             
             
                 <a style="min-width: 50px; background-color: black; color: white; font-size: medium;" href="#">1</a>
-            
-            
-            
-                <a style="min-width: 50px; border: 2px solid black; font-size: medium;" href="https://saisyam.com/tags/fake-webcam/page/2/">2</a>
             
             
         </nav>
@@ -325,6 +261,18 @@ if (!doNotTrack) {
   <script src="js/jquery.min.js"></script>
   <script>
     (function($) {
+      var stickyHeaderTop = 0;
+      $(window).scroll(function () {
+          if ($(window).scrollTop() > stickyHeaderTop) {
+              $("#typology-header").addClass('typology-header-sticky');
+          } else {
+              $("#typology-header").removeClass('typology-header-sticky');
+          }       
+      });
+      $("#menu-main-menu-1 li .typology-nav-widget-acordion").click(function(){
+        $(this).parent().toggleClass('active');
+        $(this).siblings( ".sub-menu" ).toggleClass('show');
+      })
       $("div.gistify").each(function(){
 	      var url = $(this).attr("data-url");
 	      $(this).load(url);
@@ -332,6 +280,7 @@ if (!doNotTrack) {
       $('#action-button').on('click', function(){
         $('body').addClass('typology-sidebar-open typology-lock');
       });
+      
       $('.typology-sidebar-close').on('click', function(){
         $('body').removeClass('typology-sidebar-open typology-lock');
       });

@@ -6,11 +6,7 @@
     <description>Recent content in web scraping on Saisyam - My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://saisyam.com/categories/web-scraping/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://saisyam.com/categories/web-scraping/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Scrape web content with 2 Popular Python packages</title>
       <link>https://saisyam.com/scrape-web-content-with-2-popular-python-packages/</link>
