@@ -20,19 +20,15 @@ The water falls are safe as the depth of water under the falls is approximately 
 
 Below are some of the photographs from the waterfalls. You can observe that there is lot of space below the falls where you can play safely. The water from the falls is flowing out as a stream, so there is no stagnent water. The waterfalls are surrounded by lush green crops.
 
+{{< pimage src="waterfalls_1.jpg" alt="Waterfalls 1">}}
+
 {{< gallery >}}
-  {{< image src="road_to_falls.jpg" alt="Road to Falls">}}
-  {{< image src="waterfall_surroundings.jpg" alt="Waterfall Surroundings">}}
-  {{< image src="waterfalls_1.jpg" alt="Waterfalls 1">}}
+  {{< image src="waterfalls_2.jpg" alt="Waterfalls 2">}}
+  {{< image src="waterfalls_3.jpg" alt="Waterfalls 3">}}
+  {{< image src="waterfalls_4.jpg" alt="Waterfalls 4">}}
 {{< /gallery >}}
 
 {{< adsense type="article" >}}
-
-{{< gallery >}}
-    {{< image src="waterfalls_2.jpg" alt="Waterfalls 2">}}
-    {{< image src="waterfalls_3.jpg" alt="Waterfalls 3">}}
-    {{< image src="waterfalls_4.jpg" alt="Waterfalls 4">}}
-{{< /gallery >}}
 
 Don't expect any hotels or restaurants nearby. You have to come to Kurnool (approximately 2 hrs drive). It is recommended to carry your own food to be safe in this Cornona situation.
 
