@@ -1,7 +1,7 @@
 baseURL = "https://saisyam.com/"
 languageCode = "en-us"
 title = "Saisyam - My Blog"
-theme = "typology"
+theme = "blog"
 paginate = 5
 canonifyurls = true
 disqusShortname = "saisyam-1"

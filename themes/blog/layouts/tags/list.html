@@ -1,0 +1,56 @@
+{{ define "content" }}
+
+<div class="sub-title">
+    <h2>{{ .Title }}</h2>
+    <a href="/" class="smoth-scroll"><i class="icon-home"></i></a>
+</div>
+<div class="col-md-12 content-page">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- horizontal_ad -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-0206245742790279"
+        data-ad-slot="4247058858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+{{ $pages := (where .Data.Pages "Section" "==" "posts") }}
+{{ $paginator := .Paginate $pages }}
+{{ range $index, $element := $paginator.Pages }}
+<div class="col-md-12 blog-post">
+    {{ if .Params.image }}
+    <div class="post-image">
+        <img src="./blogimages/{{ .Params.image }}" alt="">                                       
+    </div>
+    {{ end }}
+    <div class="post-title">
+      <a href="{{ .Permalink }}"><h1>{{ .Title }}</h1></a>
+    </div>  
+    <div class="post-info">
+        <span>{{ dateFormat "January 2, 2006" .Date }} | 
+            {{ range .Params.categories}}
+                <a href="/categories/{{ . | urlize  }}"
+                    rel="category">{{ . | humanize  }} </a>
+            {{ end }}
+        </span>
+    </div>
+    <p>
+        {{ .Description | safeHTML }}
+    </p>
+    <a href="{{ .Permalink }}" class="button button-style button-anim fa fa-long-arrow-right"><span>Read More</span></a>
+</div>
+
+{{ end }}
+    <div class="nav">
+        {{ range .Paginator.Pagers }}
+            {{ if eq .PageNumber $paginator.PageNumber }}
+            <a class="current" href="#">{{ .PageNumber }}</a>
+            {{ else }}
+            <a href="{{ .URL }}">{{ .PageNumber }}</a>
+            {{ end }}
+        {{ end }}
+    </div>
+</div>
+{{ end }}

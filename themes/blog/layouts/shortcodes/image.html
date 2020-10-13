@@ -1,0 +1,8 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+
+<div class="col-md-4 col-sm-6 col-xs-12">
+    <a href="./blogimages/{{$src}}" class="image-popup" title="{{$alt}}">
+    <img src="./blogimages/{{$src}}" class="img-responsive" alt="{{$alt}}">
+   </a>
+</div>
