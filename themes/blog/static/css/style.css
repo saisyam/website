@@ -321,8 +321,7 @@ button {
 /* About Me (Left Sidebar) */	
 
 .about-fixed {
-    position: fixed;
-    width: 20.8%;
+    position: fixed; 
 }
 
 .my-pic {
@@ -1221,7 +1220,7 @@ blockquote {
 
 
 @media only screen and (max-width: 991px) {
-	
+    
     .about-fixed {
        position: inherit;
        width: auto;

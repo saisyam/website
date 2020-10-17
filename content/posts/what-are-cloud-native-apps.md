@@ -12,6 +12,6 @@ tags = [
     "devops",
     "ci/cd"
 ]
-draft = "false"
+draft = "true"
 +++
 [Cloud native](https://tanzu.vmware.com/cloud-native) is an approach to building and running applications that exploits the advantages of the cloud computing delivery model. In simple terms, Cloud native applications are built using cloud-based technologies, fully hosted and managed in the cloud.

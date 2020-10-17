@@ -18,6 +18,8 @@ VADER is a rule-based sentiment analysis tool written in Python to analyze a giv
 
 For example, words like, *'happy', 'awesome', 'good'* all convey positive emotion. VADER is intelligent enough to understand the context of these words. For example, *"Food is not good"* is considered negative. If also understands the emphasis of capitalization and punctuation. For example, *"AWESOME"* (capital letters) will represent the high intensity of positivity.
 
+{{< adsense type="article" >}}
+
 ## Installing VADER Sentiment Analysis Tool
 VADER is available as part of NLTK Python package. I use `pip3` to install Python packages. Below command will install `nltk`.
 ```shell
@@ -80,6 +82,8 @@ else:
     print("Neutral")
 ```
 Which says the above review is *negative*.
+
+{{< adsense type="article" >}}
 
 ## What is missing with VADER Sentiment Analysis?
 VADER only tries to get the emotion (postivie/negative/neutral) out of text. It won't care about the aspect. For example, the review,

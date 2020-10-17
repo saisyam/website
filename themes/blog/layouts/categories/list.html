@@ -5,17 +5,6 @@
     <a href="/" class="smoth-scroll"><i class="icon-home"></i></a>
 </div>
 <div class="col-md-12 content-page">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- horizontal_ad -->
-    <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-0206245742790279"
-        data-ad-slot="4247058858"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
 {{ $pages := (where .Data.Pages "Section" "==" "posts") }}
 {{ $paginator := .Paginate $pages }}
 {{ range $index, $element := $paginator.Pages }}
