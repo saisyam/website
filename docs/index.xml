@@ -6,10 +6,34 @@
     <description>Recent content on Saisyam - My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://saisyam.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>What are Cloud native apps?</title>
+      <link>https://saisyam.com/what-are-cloud-native-apps/</link>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/what-are-cloud-native-apps/</guid>
+      
+        <description>Cloud native is an approach to building and running applications that exploits the advantages of the cloud computing delivery model. In simple terms, Cloud native applications are built using cloud-based technologies, fully hosted and managed in the cloud.
+ Cloud Native approach Here we will discuss about the four major components of Cloud native development:
+ Microservices Containers DevOps CI/CD     (adsbygoogle = window.adsbygoogle || []).push({});  Microservices Microservices are small modular and loosely coupled services.</description>
+      
+    </item>
+    
+    <item>
+      <title>Understanding Dockers and Containers</title>
+      <link>https://saisyam.com/understanding-dockers-and-containers/</link>
+      <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/understanding-dockers-and-containers/</guid>
+      
+        <description>Docker bought a revolutionary change in Cloud Computing. Docker is inspired by a technology in Linux kernel called LXC (Linux Containers). LXC refers to the capabilites of Linux kernel, specifically namespaces and control groups, which allow sandboxing of processes from one another, and controlling their resource allocations. Docker utilizes the capabilities of LXC and hence it does not require any OS, instead it relies on the OS own functionality. LXC is a OS level virutalization method for running multiple isolated Linux systems (we call them containers) on a control host using a single Linux kernel.</description>
+      
+    </item>
     
     <item>
       <title>Mangampeta waterfalls near Kurnool</title>

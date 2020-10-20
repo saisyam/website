@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>devops on Saisyam - My Blog</title>
+    <link>https://saisyam.com/tags/devops/</link>
+    <description>Recent content in devops on Saisyam - My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://saisyam.com/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What are Cloud native apps?</title>
+      <link>https://saisyam.com/what-are-cloud-native-apps/</link>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/what-are-cloud-native-apps/</guid>
+      <description>Cloud native is an approach to building and running applications that exploits the advantages of the cloud computing delivery model. In simple terms, Cloud native applications are built using cloud-based technologies, fully hosted and managed in the cloud.
+ Cloud Native approach Here we will discuss about the four major components of Cloud native development:
+ Microservices Containers DevOps CI/CD     (adsbygoogle = window.adsbygoogle || []).push({});  Microservices Microservices are small modular and loosely coupled services.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,7 +6,61 @@
     <description>Recent content in Tags on Saisyam - My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://saisyam.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://saisyam.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cloud native</title>
+      <link>https://saisyam.com/tags/cloud-native/</link>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/tags/cloud-native/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>container</title>
+      <link>https://saisyam.com/tags/container/</link>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/tags/container/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>devops</title>
+      <link>https://saisyam.com/tags/devops/</link>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>microservices</title>
+      <link>https://saisyam.com/tags/microservices/</link>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/tags/microservices/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://saisyam.com/tags/docker/</link>
+      <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>virtualization</title>
+      <link>https://saisyam.com/tags/virtualization/</link>
+      <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/tags/virtualization/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>nature</title>
       <link>https://saisyam.com/tags/nature/</link>
@@ -188,20 +242,20 @@
     </item>
     
     <item>
-      <title>docker</title>
-      <link>https://saisyam.com/tags/docker/</link>
-      <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://saisyam.com/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>postgres</title>
       <link>https://saisyam.com/tags/postgres/</link>
       <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://saisyam.com/tags/postgres/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ci/cd</title>
+      <link>https://saisyam.com/tags/ci/cd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/tags/ci/cd/</guid>
       <description></description>
     </item>
     

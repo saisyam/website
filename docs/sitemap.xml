@@ -3,7 +3,67 @@
   
   <url>
     <loc>https://saisyam.com/categories/</loc>
-    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/categories/cloud/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/cloud-native/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/container/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/devops/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/microservices/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/posts/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/what-are-cloud-native-apps/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/docker/</loc>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/understanding-dockers-and-containers/</loc>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/virtualization/</loc>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -13,21 +73,6 @@
   
   <url>
     <loc>https://saisyam.com/tags/nature/</loc>
-    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://saisyam.com/posts/</loc>
-    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://saisyam.com/</loc>
-    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://saisyam.com/tags/</loc>
     <lastmod>2020-10-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -197,11 +242,6 @@
   </url>
   
   <url>
-    <loc>https://saisyam.com/tags/docker/</loc>
-    <lastmod>2020-03-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://saisyam.com/its-easy-to-run-postgresql-inside-docker/</loc>
     <lastmod>2020-03-30T00:00:00+00:00</lastmod>
   </url>
@@ -209,6 +249,10 @@
   <url>
     <loc>https://saisyam.com/tags/postgres/</loc>
     <lastmod>2020-03-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/ci/cd/</loc>
   </url>
   
 </urlset>

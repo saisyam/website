@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docker on Saisyam - My Blog</title>
-    <link>https://saisyam.com/tags/docker/</link>
-    <description>Recent content in docker on Saisyam - My Blog</description>
+    <title>virtualization on Saisyam - My Blog</title>
+    <link>https://saisyam.com/tags/virtualization/</link>
+    <description>Recent content in virtualization on Saisyam - My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 13 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://saisyam.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://saisyam.com/tags/virtualization/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding Dockers and Containers</title>
       <link>https://saisyam.com/understanding-dockers-and-containers/</link>
@@ -14,16 +14,6 @@
       
       <guid>https://saisyam.com/understanding-dockers-and-containers/</guid>
       <description>Docker bought a revolutionary change in Cloud Computing. Docker is inspired by a technology in Linux kernel called LXC (Linux Containers). LXC refers to the capabilites of Linux kernel, specifically namespaces and control groups, which allow sandboxing of processes from one another, and controlling their resource allocations. Docker utilizes the capabilities of LXC and hence it does not require any OS, instead it relies on the OS own functionality. LXC is a OS level virutalization method for running multiple isolated Linux systems (we call them containers) on a control host using a single Linux kernel.</description>
-    </item>
-    
-    <item>
-      <title>It&#39;s easy to run PostgreSQL inside Docker</title>
-      <link>https://saisyam.com/its-easy-to-run-postgresql-inside-docker/</link>
-      <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://saisyam.com/its-easy-to-run-postgresql-inside-docker/</guid>
-      <description>Docker makes life easy to run most complex software without going through native installation process. I use docker to deliver development builds for the team to work in their local system. In this article we will see how to run PostgreSQL inside Docker container, connect to the database docker and run SQL scripts.
-Introduction to Docker  Docker is a set of platform as a service products that uses OS-level virtualization to deliver software in packages called containers.</description>
     </item>
     
   </channel>
