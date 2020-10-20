@@ -22,7 +22,7 @@
     },
     "description": {{ .Description | plainify | safeHTML }},
     "keywords": [{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}]
-  }
+  },
   {{ end }}
   {
     "@context": "https://schema.org",
