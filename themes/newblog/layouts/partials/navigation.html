@@ -1,0 +1,40 @@
+<nav id="main-navigation" class="site-navigation" aria-label="Main Navigation">
+    <div class="site-nav-wrap">
+      <div class="site-nav-inside">
+        <ul class="menu">
+            <li id="home" class="menu-item">
+              <a href="/">Home</a>
+            </li>
+            <li id="about" class="menu-item">
+                <a href="/about">About Me</a>
+            </li>
+            <li id="work" class="menu-item">
+                <a href="/work">My Work</a>
+            </li>
+        </ul>
+        <div class="social-links">
+          <a class="button-circle" href="https://twitter.com/{{ $.Site.Params.twitter }}" target="_blank" rel="noopener">
+            <span class="fab fa-twitter" aria-hidden="true"></span>
+            <span class="screen-reader-text">Twitter</span>
+          </a>
+          <a class="button-circle" href="https://facebook.com/{{ $.Site.Params.facebook }}" target="_blank" rel="noopener">
+            <span class="fab fa-facebook" aria-hidden="true"></span>
+            <span class="screen-reader-text">Facebook</span>
+          </a>
+          <a class="button-circle" href="https://github.com/{{ $.Site.Params.github }}" target="_blank" rel="noopener">
+            <span class="fab fa-github" aria-hidden="true"></span>
+            <span class="screen-reader-text">Github</span>
+          </a>
+          <a class="button-circle" href="https://linkedin.com/in/{{ $.Site.Params.linkedin }}" target="_blank" rel="noopener">
+            <span class="fab fa-linkedin" aria-hidden="true"></span>
+            <span class="screen-reader-text">LinkedIn</span>
+          </a>
+          <a class="button-circle" href="https://instagram.com/{{ $.Site.Params.instagram }}" target="_blank" rel="noopener">
+            <span class="fab fa-instagram" aria-hidden="true"></span>
+            <span class="screen-reader-text">Instagram</span>
+          </a>
+        </div><!-- .social-links -->
+      </div><!-- .site-nav-inside -->
+    </div><!-- .site-nav-wrap -->
+  </nav><!-- .site-navigation -->
+  <button id="menu-toggle" class="menu-toggle"><span class="screen-reader-text">Menu</span><span class="icon-menu" aria-hidden="true"></span></button>

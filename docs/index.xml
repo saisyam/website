@@ -12,6 +12,30 @@
     
     
     <item>
+      <title>About Me</title>
+      <link>https://saisyam.com/about/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/about/</guid>
+      
+        <description>I have 14+ years of experience in developing software. Currently I am working as a Senior Software Architect @ Mobigesture in Hyderabad, India.
+I worked on projects across multiple domains including BFSI, Digital Marketing, Semiconductor, Contact center, Hospitality and Networks. I have experience in delivering complex enterprise projects within timelines working with project stakeholders.
+I am passionate about learning new technologies and tools, ability to grasp new technologies quickly. Consistently offered high quality deliveries from development facility resulting in client satisfaction.</description>
+      
+    </item>
+    
+    <item>
+      <title>My Work</title>
+      <link>https://saisyam.com/work/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saisyam.com/work/</guid>
+      
+        <description>Project Reputation Management and Online presence ranking     Description A platform for checking the online presence of a business and managing the online reputation of the business   Solution The platform uses web scrapers to collect data for a specific business from various sources on the Internet and generates a score based on postivie/negative feedback from the consumers. Based on score, suggestions are provided to improve the reputation of the business online.</description>
+      
+    </item>
+    
+    <item>
       <title>What are Cloud native apps?</title>
       <link>https://saisyam.com/what-are-cloud-native-apps/</link>
       <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
@@ -32,18 +56,6 @@
       <guid>https://saisyam.com/understanding-dockers-and-containers/</guid>
       
         <description>Docker bought a revolutionary change in Cloud Computing. Docker is inspired by a technology in Linux kernel called LXC (Linux Containers). LXC refers to the capabilites of Linux kernel, specifically namespaces and control groups, which allow sandboxing of processes from one another, and controlling their resource allocations. Docker utilizes the capabilities of LXC and hence it does not require any OS, instead it relies on the OS own functionality. LXC is a OS level virutalization method for running multiple isolated Linux systems (we call them containers) on a control host using a single Linux kernel.</description>
-      
-    </item>
-    
-    <item>
-      <title>Mangampeta waterfalls near Kurnool</title>
-      <link>https://saisyam.com/mangampeta-waterfalls-near-kurnool/</link>
-      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://saisyam.com/mangampeta-waterfalls-near-kurnool/</guid>
-      
-        <description>Mangampeta waterfalls is situated in Kurnool district, Andhra Pradesh. It will be around 305 KM from Hyderabad and it will take 5 hrs to reach there. The road is pathetic from Banaganapally to Mangampeta. The 15 KM stretch will take 1 hr. You need to walk few meters to reach the falls.
- The water falls are safe as the depth of water under the falls is approximately 3 feet. Kids will enjoy playing in the falls.</description>
       
     </item>
     
