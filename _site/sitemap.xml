@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>/fake-webcam-in-test-automation-with-python/</loc>
+<lastmod>2020-06-07T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>/sentiment-analysis-using-python-vader/</loc>
+<lastmod>2020-09-26T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>/understanding-dockers-and-containers/</loc>
+<lastmod>2020-10-13T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>/what-are-cloud-native-apps/</loc>
+<lastmod>2020-10-15T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>/about/</loc>
+</url>
+<url>
+<loc>/categories/</loc>
+</url>
+<url>
+<loc>/</loc>
+</url>
+<url>
+<loc>/tags/</loc>
+</url>
+</urlset>
