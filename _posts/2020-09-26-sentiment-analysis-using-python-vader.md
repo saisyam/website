@@ -11,6 +11,9 @@ last_modified_at: 2020-09-26
 
 Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews. 
 
+* Table of contents
+{:toc}
+
 VADER(Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. VADER not only tells about the positivity and negativity score but also tells us about how positive or negative it is. VADER sentimental analysis relies on a dictionary that maps lexical features to emotion intensities known as sentiment scores. The sentiment score of a text can be obtained by summing up the intensity of each word in the text.
 
 For example, words like, *'happy', 'awesome', 'good'* all convey positive emotion. VADER is intelligent enough to understand the context of these words. For example, *"Food is not good"* is considered negative. If also understands the emphasis of capitalization and punctuation. For example, *"AWESOME"* (capital letters) will represent the high intensity of positivity.

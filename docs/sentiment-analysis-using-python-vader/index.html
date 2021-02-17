@@ -48,6 +48,23 @@
 
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/assets/css/skins/default.css">
+  <style>
+    #markdown-toc::before {
+        content: "Table of Contents";
+        font-weight: bold;
+    }
+
+    #markdown-toc ul {
+        list-style: decimal;
+    }
+
+    #markdown-toc {
+        border: 1px solid #aaa;
+        padding: 1.5em;
+        list-style: decimal;
+        display: inline-block;
+    }
+  </style>
   
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i|Lora:400,400i,700,700i">
   <link rel="alternate" type="application/atom+xml" title="Saisyam" href="/atom.xml">
@@ -151,6 +168,13 @@
         <div class="e-content">
           <p>Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews.</p>
 
+<ul id="markdown-toc">
+  <li><a href="#installing-vader-sentiment-analysis-tool" id="markdown-toc-installing-vader-sentiment-analysis-tool">Installing VADER Sentiment Analysis Tool</a></li>
+  <li><a href="#performing-sentiment-analysis" id="markdown-toc-performing-sentiment-analysis">Performing Sentiment Analysis</a></li>
+  <li><a href="#what-is-missing-with-vader-sentiment-analysis" id="markdown-toc-what-is-missing-with-vader-sentiment-analysis">What is missing with VADER Sentiment Analysis?</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ul>
+
 <p>VADER(Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. VADER not only tells about the positivity and negativity score but also tells us about how positive or negative it is. VADER sentimental analysis relies on a dictionary that maps lexical features to emotion intensities known as sentiment scores. The sentiment score of a text can be obtained by summing up the intensity of each word in the text.</p>
 
 <p>For example, words like, <em>‘happy’, ‘awesome’, ‘good’</em> all convey positive emotion. VADER is intelligent enough to understand the context of these words. For example, <em>“Food is not good”</em> is considered negative. If also understands the emphasis of capitalization and punctuation. For example, <em>“AWESOME”</em> (capital letters) will represent the high intensity of positivity.</p>
@@ -235,24 +259,6 @@ When we run the above code for the given text, the output is:</p>
 
         
           
-  <div class="page-comments">
-    <div id="disqus_thread"></div>
-    <script>
-      var disqus_config = function () {
-        this.page.url = 'https://saisyam.com/sentiment-analysis-using-python-vader/';
-        this.page.identifier = 'https://saisyam.com/sentiment-analysis-using-python-vader/';
-      };
-
-      (function() {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://saisyam-1.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-      })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-  </div>
-
 
         
 
@@ -297,16 +303,7 @@ When we run the above code for the given text, the output is:</p>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="/assets/js/main.min.js"></script>
-  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script><script>
-  if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-50423294-1', 'auto');
-    ga('send', 'pageview');
-  }
-  </script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
 
 
   </body>
