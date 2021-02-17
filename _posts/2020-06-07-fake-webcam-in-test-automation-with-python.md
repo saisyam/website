@@ -12,6 +12,9 @@ last_modified_at: 2020-06-07
 
 We automate web application testing using Python Selenium or Splinter. How will you automate testing applications with webcam? You can fake a webcam device with Chrome Web driver. In this article we will see how to do that.
 
+* Table of contents
+{:toc}
+
 ## Challenge
 The challenge here is to fake the webcam with proper video format. In this post I am using Chrome browser along with [Splinter](https://splinter.readthedocs.io/en/latest/).
 If you are new to Splinter, check out my article and I promise you love it. We use Splinter not only for testing but also for web scraping. Chrome need Y4M format to replace the camera feed. To generate that format you need [ffmpeg](https://www.ffmpeg.org/) tool. Using that tool you can convert any MP4 video into Y4M format.

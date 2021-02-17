@@ -13,6 +13,8 @@ last_modified_at: 2020-10-15
 
 Cloud native is an approach to building and running applications that exploits the advantages of the cloud computing delivery model. In simple terms, Cloud native applications are built using cloud-based technologies, fully hosted and managed in the cloud.
 
+* Table of contents
+{:toc}
 
 ## Cloud Native approach
 Here we will discuss about the four major components of Cloud native development:
