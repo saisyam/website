@@ -48,6 +48,23 @@
 
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/assets/css/skins/default.css">
+  <style>
+    #markdown-toc::before {
+        content: "Table of Contents";
+        font-weight: bold;
+    }
+
+    #markdown-toc ul {
+        list-style: decimal;
+    }
+
+    #markdown-toc {
+        border: 1px solid #aaa;
+        padding: 1.5em;
+        list-style: decimal;
+        display: inline-block;
+    }
+  </style>
   
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i|Lora:400,400i,700,700i">
   <link rel="alternate" type="application/atom+xml" title="Saisyam" href="/atom.xml">
@@ -156,6 +173,13 @@
       <div class="page-content">
         <div class="e-content">
           <p>Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#installing-vader-sentiment-analysis-tool" id="markdown-toc-installing-vader-sentiment-analysis-tool">Installing VADER Sentiment Analysis Tool</a></li>
+  <li><a href="#performing-sentiment-analysis" id="markdown-toc-performing-sentiment-analysis">Performing Sentiment Analysis</a></li>
+  <li><a href="#what-is-missing-with-vader-sentiment-analysis" id="markdown-toc-what-is-missing-with-vader-sentiment-analysis">What is missing with VADER Sentiment Analysis?</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ul>
 
 <p>VADER(Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. VADER not only tells about the positivity and negativity score but also tells us about how positive or negative it is. VADER sentimental analysis relies on a dictionary that maps lexical features to emotion intensities known as sentiment scores. The sentiment score of a text can be obtained by summing up the intensity of each word in the text.</p>
 

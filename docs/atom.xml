@@ -1,4 +1,15 @@
+
 <?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://saisyam.com/atom.xml" rel="self" type="application/atom+xml" /><link href="https://saisyam.com/" rel="alternate" type="text/html" /><updated>2021-02-19T15:02:54+05:30</updated><id>https://saisyam.com/atom.xml</id><title type="html">Saisyam</title><subtitle>Personal Blog</subtitle><author><name>Saisyam</name><email>saisyam@saisyam.com</email></author><entry><title type="html">What are Cloud native apps?</title><link href="https://saisyam.com/what-are-cloud-native-apps/" rel="alternate" type="text/html" title="What are Cloud native apps?" /><published>2020-10-15T00:00:00+05:30</published><updated>2020-10-15T00:00:00+05:30</updated><id>https://saisyam.com/what-are-cloud-native-apps</id><content type="html" xml:base="https://saisyam.com/what-are-cloud-native-apps/">&lt;p&gt;Cloud native is an approach to building and running applications that exploits the advantages of the cloud computing delivery model. In simple terms, Cloud native applications are built using cloud-based technologies, fully hosted and managed in the cloud.&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#cloud-native-approach&quot; id=&quot;markdown-toc-cloud-native-approach&quot;&gt;Cloud Native approach&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#microservices&quot; id=&quot;markdown-toc-microservices&quot;&gt;Microservices&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#containers&quot; id=&quot;markdown-toc-containers&quot;&gt;Containers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#devops&quot; id=&quot;markdown-toc-devops&quot;&gt;DevOps&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cicd&quot; id=&quot;markdown-toc-cicd&quot;&gt;CI/CD&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#advantages-of-cloud-native-development-approach&quot; id=&quot;markdown-toc-advantages-of-cloud-native-development-approach&quot;&gt;Advantages of Cloud native development approach&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cloud-native-approach---things-to-consider&quot; id=&quot;markdown-toc-cloud-native-approach---things-to-consider&quot;&gt;Cloud native approach - Things to consider&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conclusion&quot; id=&quot;markdown-toc-conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;cloud-native-approach&quot;&gt;Cloud Native approach&lt;/h2&gt;
 &lt;p&gt;Here we will discuss about the four major components of Cloud native development:&lt;/p&gt;
@@ -83,6 +94,15 @@
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Most of the organizations are moving their applications from private datacenters to public cloud platforms using cloud native architectural precepts. Learning and investing time on Cloud native applications will definitely uplift your resume/CV. In the next article we will discuss how to build a cloud native application from scratch and deploy it. Thanks for reading.&lt;/p&gt;</content><author><name>Saisyam</name><email>saisyam@saisyam.com</email></author><category term="Cloud" /><category term="Microservices" /><category term="CI/CD" /><category term="Containers" /><category term="Dockers" /><category term="DevOps" /><summary type="html">Cloud native is an approach to building and running applications that exploits the advantages of the cloud computing delivery model. In simple terms, Cloud native applications are built using cloud-based technologies, fully hosted and managed in the cloud.</summary></entry><entry><title type="html">Understanding Dockers and Containers</title><link href="https://saisyam.com/understanding-dockers-and-containers/" rel="alternate" type="text/html" title="Understanding Dockers and Containers" /><published>2020-10-13T00:00:00+05:30</published><updated>2020-10-13T00:00:00+05:30</updated><id>https://saisyam.com/understanding-dockers-and-containers</id><content type="html" xml:base="https://saisyam.com/understanding-dockers-and-containers/">&lt;p&gt;Dockers and containers are the building blocks for Cloud native development. Docker enables developers to build, run and ship applications that can be virtually run on any Operating System (OS). A running instance of a docker is called Container. In this article we will discuss about hardware and OS Virtualization, how docker works, docker workflow and commands to create and run docker.&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#hardware-virutalization-vs-os-level-virtualization&quot; id=&quot;markdown-toc-hardware-virutalization-vs-os-level-virtualization&quot;&gt;Hardware Virutalization vs OS Level Virtualization&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#what-are-containers&quot; id=&quot;markdown-toc-what-are-containers&quot;&gt;What are Containers?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#what-is-a-docker&quot; id=&quot;markdown-toc-what-is-a-docker&quot;&gt;What is a Docker?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#lets-run-a-nginx-docker&quot; id=&quot;markdown-toc-lets-run-a-nginx-docker&quot;&gt;Let’s run a Nginx docker&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#docker-workflow&quot; id=&quot;markdown-toc-docker-workflow&quot;&gt;Docker workflow&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conclusion&quot; id=&quot;markdown-toc-conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;Docker bought a revolutionary change in Cloud Computing. Docker is inspired by a technology in Linux kernel called &lt;a href=&quot;https://linuxcontainers.org/&quot;&gt;LXC (Linux Containers)&lt;/a&gt;. LXC refers to the capabilites of Linux kernel, specifically namespaces and control groups, which allow sandboxing of processes from one another, and controlling their resource allocations. Docker utilizes the capabilities of LXC and hence it does not require any OS, instead it relies on the OS own functionality. LXC is a OS level virutalization method for running multiple isolated Linux systems (we call them containers) on a control host using a single Linux kernel.&lt;/p&gt;
 
@@ -192,6 +212,13 @@ Status: Downloaded newer image &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;In this article we learn what is docker and container? We have learnt how to download and run a docker and some basic commands on managing docker images and containers. We have looked into docker workflow. In the coming articles we will see how to create our own docker and publish to docker hub. Thanks for reading.&lt;/p&gt;</content><author><name>Saisyam</name><email>saisyam@saisyam.com</email></author><category term="Cloud" /><category term="Dockers" /><category term="Containers" /><summary type="html">Dockers and containers are the building blocks for Cloud native development. Docker enables developers to build, run and ship applications that can be virtually run on any Operating System (OS). A running instance of a docker is called Container. In this article we will discuss about hardware and OS Virtualization, how docker works, docker workflow and commands to create and run docker.</summary></entry><entry><title type="html">Sentiment Analysis using Python Vader</title><link href="https://saisyam.com/sentiment-analysis-using-python-vader/" rel="alternate" type="text/html" title="Sentiment Analysis using Python Vader" /><published>2020-09-26T00:00:00+05:30</published><updated>2020-09-26T00:00:00+05:30</updated><id>https://saisyam.com/sentiment-analysis-using-python-vader</id><content type="html" xml:base="https://saisyam.com/sentiment-analysis-using-python-vader/">&lt;p&gt;Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews.&lt;/p&gt;
 
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#installing-vader-sentiment-analysis-tool&quot; id=&quot;markdown-toc-installing-vader-sentiment-analysis-tool&quot;&gt;Installing VADER Sentiment Analysis Tool&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#performing-sentiment-analysis&quot; id=&quot;markdown-toc-performing-sentiment-analysis&quot;&gt;Performing Sentiment Analysis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#what-is-missing-with-vader-sentiment-analysis&quot; id=&quot;markdown-toc-what-is-missing-with-vader-sentiment-analysis&quot;&gt;What is missing with VADER Sentiment Analysis?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conclusion&quot; id=&quot;markdown-toc-conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;p&gt;VADER(Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. VADER not only tells about the positivity and negativity score but also tells us about how positive or negative it is. VADER sentimental analysis relies on a dictionary that maps lexical features to emotion intensities known as sentiment scores. The sentiment score of a text can be obtained by summing up the intensity of each word in the text.&lt;/p&gt;
 
 &lt;p&gt;For example, words like, &lt;em&gt;‘happy’, ‘awesome’, ‘good’&lt;/em&gt; all convey positive emotion. VADER is intelligent enough to understand the context of these words. For example, &lt;em&gt;“Food is not good”&lt;/em&gt; is considered negative. If also understands the emphasis of capitalization and punctuation. For example, &lt;em&gt;“AWESOME”&lt;/em&gt; (capital letters) will represent the high intensity of positivity.&lt;/p&gt;
@@ -262,6 +289,12 @@ When we run the above code for the given text, the output is:&lt;/p&gt;
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;In this post we have learnt how to find whether the text is positive, negative or neutral using Python based VADER Sentiment Analysis. We also discussed the next level of sentiment analysis based on aspects. In the next article we will see how we can identify aspects for a given industry or domain and implement the sentiment analysis based on aspects.&lt;/p&gt;</content><author><name>Saisyam</name><email>saisyam@saisyam.com</email></author><category term="Python" /><category term="Sentiment analysis" /><category term="Text Analytics" /><category term="Vader" /><summary type="html">Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews.</summary></entry><entry><title type="html">Proven way to Fake Webcam in Test Automation with Python</title><link href="https://saisyam.com/fake-webcam-in-test-automation-with-python/" rel="alternate" type="text/html" title="Proven way to Fake Webcam in Test Automation with Python" /><published>2020-06-07T00:00:00+05:30</published><updated>2020-06-07T00:00:00+05:30</updated><id>https://saisyam.com/fake-webcam-in-test-automation-with-python</id><content type="html" xml:base="https://saisyam.com/fake-webcam-in-test-automation-with-python/">&lt;p&gt;We automate web application testing using Python Selenium or Splinter. How will you automate testing applications with webcam? You can fake a webcam device with Chrome Web driver. In this article we will see how to do that.&lt;/p&gt;
 
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#challenge&quot; id=&quot;markdown-toc-challenge&quot;&gt;Challenge&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#chrome-settings-to-fake-webcam&quot; id=&quot;markdown-toc-chrome-settings-to-fake-webcam&quot;&gt;Chrome Settings to fake webcam&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conclusion&quot; id=&quot;markdown-toc-conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&quot;challenge&quot;&gt;Challenge&lt;/h2&gt;
 &lt;p&gt;The challenge here is to fake the webcam with proper video format. In this post I am using Chrome browser along with &lt;a href=&quot;https://splinter.readthedocs.io/en/latest/&quot;&gt;Splinter&lt;/a&gt;.
 If you are new to Splinter, check out my article and I promise you love it. We use Splinter not only for testing but also for web scraping. Chrome need Y4M format to replace the camera feed. To generate that format you need &lt;a href=&quot;https://www.ffmpeg.org/&quot;&gt;ffmpeg&lt;/a&gt; tool. Using that tool you can convert any MP4 video into Y4M format.&lt;/p&gt;
@@ -276,7 +309,9 @@ If you are new to Splinter, check out my article and I promise you love it. We u
 
 &lt;p&gt;We will set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;webdriver.ChromeOptions&lt;/code&gt; to enable media stream using a fake device.&lt;/p&gt;
 
-&lt;noscript&gt;&lt;pre&gt;400: Invalid request&lt;/pre&gt;&lt;/noscript&gt;
+&lt;noscript&gt;
+  &lt;pre&gt;400: Invalid request&lt;/pre&gt;
+&lt;/noscript&gt;
 &lt;script src=&quot;https://gist.github.com/98aa0345e2a470b39d754b35b7910596.js&quot;&gt; &lt;/script&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
