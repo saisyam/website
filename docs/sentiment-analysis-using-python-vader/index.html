@@ -1,317 +1,348 @@
-<!DOCTYPE html>
-<!--
-    So Simple Jekyll Theme 3.2.0
-    Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
-    Free for personal and commercial use under the MIT license
-    https://github.com/mmistakes/so-simple-theme/blob/master/LICENSE
--->
-<html lang="en-US" class="no-js">
-  <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  
+<!doctype html>
 
-  
-    
-    <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Sentiment Analysis using Python Vader | Saisyam</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Sentiment Analysis using Python Vader" />
-<meta name="author" content="Saisyam" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews." />
+<html lang="en">
+
+<head>
+  <title>Sentiment Analysis using Python Vader - Saisyam</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Saisyam&#39;s personal blog for technical articles" />
+<meta name="author" content="Saisyam" /><meta property="og:title" content="Sentiment Analysis using Python Vader" />
 <meta property="og:description" content="Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews." />
-<link rel="canonical" href="https://saisyam.com/sentiment-analysis-using-python-vader/" />
-<meta property="og:url" content="https://saisyam.com/sentiment-analysis-using-python-vader/" />
-<meta property="og:site_name" content="Saisyam" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-09-26T00:00:00+05:30" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Sentiment Analysis using Python Vader" />
-<meta name="twitter:site" content="@saisyam1" />
-<meta name="twitter:creator" content="@Saisyam1" />
-<script type="application/ld+json">
-{"headline":"Sentiment Analysis using Python Vader","dateModified":"2020-09-26T00:00:00+05:30","datePublished":"2020-09-26T00:00:00+05:30","url":"https://saisyam.com/sentiment-analysis-using-python-vader/","mainEntityOfPage":{"@type":"WebPage","@id":"https://saisyam.com/sentiment-analysis-using-python-vader/"},"author":{"@type":"Person","name":"Saisyam"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://saisyam.com/images/s-logo.jpg"},"name":"Saisyam"},"description":"Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews.","@type":"BlogPosting","@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
+<meta property="og:url" content="https://saisyam.com/sentiment-analysis-using-python-vader/" />
+<meta property="article:published_time" content="2020-09-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-09-26T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sentiment Analysis using Python Vader"/>
+<meta name="twitter:description" content="Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews."/>
 
 
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+<meta name="generator" content="Hugo 0.79.0" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://saisyam.com/fontawesome/css/all.min.css" />
   
-
-  <script>
-    /* Cut the mustard */
-    if ( 'querySelector' in document && 'addEventListener' in window ) {
-      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + 'js';
-    }
-  </script>
-
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/skins/default.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://saisyam.com/css/styles.css" /><link rel="canonical" href="https://saisyam.com/proven-way-to-fake-webcam-in-test-automation-with-python/">
   <style>
-    #markdown-toc::before {
+    #toc::before {
         content: "Table of Contents";
         font-weight: bold;
     }
-
-    #markdown-toc ul {
-        list-style: decimal;
+    #toc nav {
+      border-bottom: none;
+      padding-bottom: 0.5em;
+      font-family: "Ruda", sans-serif;
     }
 
-    #markdown-toc {
-        border: 1px solid #aaa;
-        padding: 1.5em;
-        list-style: decimal;
-        display: inline-block;
+    #toc nav ul {
+      border: 1px solid #aaa;
+      padding: 1.5em;
+      list-style: decimal;
+      display: inline-block;
     }
   </style>
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i|Lora:400,400i,700,700i">
-  <link rel="alternate" type="application/atom+xml" title="Saisyam" href="/atom.xml">
-<!-- start custom head snippets -->
-
-<!-- insert favicons. use http://realfavicongenerator.net/ -->
-<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-<link rel="manifest" href="images/favicon/site.webmanifest">
-<link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="manifest" href="favicon/site.webmanifest">
+<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
-<!-- end custom head snippets -->
 <script data-ad-client="ca-pub-0206245742790279" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-</head>
+<script type="application/ld+json">
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Proven way to Fake Webcam in Test Automation with Python",
+      "image": "https://saisyam.com/",
+      "datePublished": "2020-06-07T00:00:00Z",
+      "dateModified": "2020-06-07T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "mainEntityOfPage": { "@type": "WebPage" },
+       "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": {
+          "@type": "ImageObject",
+          "url":  null 
+        }
+      },
+      "description": "We automate web application testing using Python Selenium or Splinter. How will you automate testing applications with webcam? You can fake a webcam device with Chrome Web driver. In this article we will see how to do that.",
+      "keywords": ["Web Testing", "Splinter", "ffmpeg", "Fake webcam"]
+    }
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Personal blog",
+      "url": "https://saisyam.com/",
+      "sameAs": [
+        "https://www.facebook.com/saisyam.dampuri.5667",
+        "https://www.instagram.com/saisyamdampuri",
+        "https://twitter.com/saisyam1",
+        "https://github.com/saisyam"
+      ]
+    }
+    </script></head>
 
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://saisyam.com/">Saisyam</a>
+            </h1>
 
-  <body class="layout--post  sentiment-analysis-using-python-vader">
-    <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
-  <ul>
-    <li><a href="#primary-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
-    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
-    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
-  </ul>
+      <ul id="social-media">
+             <li>
+               <a href="https://www.facebook.com/saisyam.dampuri.5667" title="Facebook">
+               <i class="fab fa-facebook fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://github.com/saisyam" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/saisyam1" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://linkedin.com/in/saisyam" title="LinkedIn">
+               <i class="fab fa-linkedin fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://www.instagram.com/saisyamdampuri" title="Instagram">
+               <i class="fab fa-instagram fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Personal Blog</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
 </nav>
 
-    
-  <div class="navigation-wrapper">
-    <a href="#menu-toggle" id="menu-toggle">Menu</a>
-    <nav id="primary-nav" class="site-nav animated drop">
-      <ul><li><a href="/">Home</a></li><li><a href="/categories/">Categories</a></li><li><a href="/tags/">Tags</a></li><li><a href="/about/">About</a></li></ul>
-    </nav>
-  </div><!-- /.navigation-wrapper -->
+
+    <main>
 
 
-    <header class="masthead">
-  <div class="wrap">
-    
-      <a href="/" class="site-logo" rel="home" title="Saisyam">
-        <img src="/images/s-logo.jpg" class="site-logo-img animated fadeInDown" alt="Saisyam">
-      </a>
-    
-    
-    
-      
-        <div class="site-title animated fadeIn"><a href="/">Saisyam</a></div>
-      
-      <p class="site-description animated fadeIn" itemprop="description">Personal Blog</p>
-    
-  </div>
-</header><!-- /.masthead -->
 
 
-    <main id="main" class="main-content" aria-label="Content">
-  <article class="h-entry">
-    
+<article>
 
-    <div class="page-wrapper">
-      <header class="page-header">
+    <h1>Sentiment Analysis using Python Vader</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-09-26T00:00:00Z">Sep 26, 2020</time>
+        </li>
         
         
-          <h1 id="page-title" class="page-title p-name">Sentiment Analysis using Python Vader
-</h1>
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://saisyam.com/categories/python">Python</a>
+                
+            </em>
+        </li>
         
-      </header>
-
-      <div class="page-sidebar">
-        <div class="page-author h-card p-author"><img src="/images/saisyam.jpg" class="author-avatar u-photo" alt="Saisyam"><div class="author-info"><div class="author-name">
-        <em>by</em> <span class="p-name">Saisyam</span>
-      </div><ul class="author-links"><li class="author-link">
-            <a class="u-url" rel="me" href="https://instagram.com/saisyamdampuri"><i class="fab fa-instagram fa-lg" title="Instagram"></i></a>
-          </li><li class="author-link">
-            <a class="u-url" rel="me" href="https://github.com/saisyam"><i class="fab fa-github-square fa-lg" title="Github"></i></a>
-          </li><li class="author-link">
-            <a class="u-url" rel="me" href="https://twitter.com/saisyam1"><i class="fab fa-twitter-square fa-lg" title="Twitter"></i></a>
-          </li><li class="author-link">
-            <a class="u-url" rel="me" href="https://linkedin.com/in/saisyam"><i class="fab fa-linkedin fa-lg" title="LinkedIn"></i></a>
-          </li></ul>
-
-<span class="read-time">3 min read</span>
-
-    <time class="page-date dt-published" datetime="2020-09-26T00:00:00+05:30"><a class="u-url" href="">September 26, 2020</a>
-</time>
-
-  </div>
-</div>
 
         
-  <h3 class="page-taxonomies-title">Categories</h3>
-  
-  <ul class="page-taxonomies"><li class="page-taxonomy"><a class="p-category" href="/categories/#python" title="Pages filed under Python">Python</a></li>
+        <li>
+            <em>
+                
+                    
+                    <a href="https://saisyam.com/tags/sentiment-analysis">#Sentiment analysis</a>
+                
+                    , 
+                    <a href="https://saisyam.com/tags/text-analytics">#Text Analytics</a>
+                
+                    , 
+                    <a href="https://saisyam.com/tags/vader">#Vader</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+
+    <p>Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews.</p>
+<div id="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#installing-vader-sentiment-analysis-tool">Installing VADER Sentiment Analysis Tool</a></li>
+    <li><a href="#performing-sentiment-analysis">Performing Sentiment Analysis</a></li>
+    <li><a href="#what-is-missing-with-vader-sentiment-analysis">What is missing with VADER Sentiment Analysis?</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
   </ul>
-
-
-        
-  <h3 class="page-taxonomies-title">Tags</h3>
-  
-  <ul class="page-taxonomies"><li class="page-taxonomy"><a href="/tags/#sentiment-analysis" title="Pages tagged Sentiment analysis" rel="tag">Sentiment analysis</a></li><li class="page-taxonomy"><a href="/tags/#text-analytics" title="Pages tagged Text Analytics" rel="tag">Text Analytics</a></li><li class="page-taxonomy"><a href="/tags/#vader" title="Pages tagged Vader" rel="tag">Vader</a></li>
-  </ul>
-
-
-      </div>
-
-      <div class="page-content">
-        <div class="e-content">
-          <p>Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews.</p>
-
-<ul id="markdown-toc">
-  <li><a href="#installing-vader-sentiment-analysis-tool" id="markdown-toc-installing-vader-sentiment-analysis-tool">Installing VADER Sentiment Analysis Tool</a></li>
-  <li><a href="#performing-sentiment-analysis" id="markdown-toc-performing-sentiment-analysis">Performing Sentiment Analysis</a></li>
-  <li><a href="#what-is-missing-with-vader-sentiment-analysis" id="markdown-toc-what-is-missing-with-vader-sentiment-analysis">What is missing with VADER Sentiment Analysis?</a></li>
-  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
-</ul>
-
+</nav>
+  </div>
 <p>VADER(Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. VADER not only tells about the positivity and negativity score but also tells us about how positive or negative it is. VADER sentimental analysis relies on a dictionary that maps lexical features to emotion intensities known as sentiment scores. The sentiment score of a text can be obtained by summing up the intensity of each word in the text.</p>
-
-<p>For example, words like, <em>‘happy’, ‘awesome’, ‘good’</em> all convey positive emotion. VADER is intelligent enough to understand the context of these words. For example, <em>“Food is not good”</em> is considered negative. If also understands the emphasis of capitalization and punctuation. For example, <em>“AWESOME”</em> (capital letters) will represent the high intensity of positivity.</p>
-
+<p>For example, words like, <em>&lsquo;happy&rsquo;, &lsquo;awesome&rsquo;, &lsquo;good&rsquo;</em> all convey positive emotion. VADER is intelligent enough to understand the context of these words. For example, <em>&ldquo;Food is not good&rdquo;</em> is considered negative. If also understands the emphasis of capitalization and punctuation. For example, <em>&ldquo;AWESOME&rdquo;</em> (capital letters) will represent the high intensity of positivity.</p>
 <h2 id="installing-vader-sentiment-analysis-tool">Installing VADER Sentiment Analysis Tool</h2>
-<p>VADER is available as part of NLTK Python package. I use <code class="language-plaintext highlighter-rouge">pip3</code> to install Python packages. Below command will install <code class="language-plaintext highlighter-rouge">nltk</code>.</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pip3 <span class="nb">install </span>nltk
-</code></pre></div></div>
-<p>Once <code class="language-plaintext highlighter-rouge">nltk</code> is installed, we need to download the <code class="language-plaintext highlighter-rouge">vader lexicon</code>.</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python3
-Python 3.8.5 <span class="o">(</span>default, Sep  5 2020, 10:50:12<span class="o">)</span> 
-<span class="o">[</span>GCC 10.2.0] on linux
-Type <span class="s2">"help"</span>, <span class="s2">"copyright"</span>, <span class="s2">"credits"</span> or <span class="s2">"license"</span> <span class="k">for </span>more information.
-<span class="o">&gt;&gt;&gt;</span> import nltk
-<span class="o">&gt;&gt;&gt;</span> nltk.download<span class="o">(</span><span class="s1">'vader_lexicon'</span><span class="o">)</span>
-<span class="o">[</span>nltk_data] Downloading package vader_lexicon to
-<span class="o">[</span>nltk_data]     /home/saisyam/nltk_data...
+<p>VADER is available as part of NLTK Python package. I use <code>pip3</code> to install Python packages. Below command will install <code>nltk</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ pip3 install nltk
+</code></pre></div><p>Once <code>nltk</code> is installed, we need to download the <code>vader lexicon</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ python3
+Python 3.8.5 <span style="color:#f92672">(</span>default, Sep  <span style="color:#ae81ff">5</span> 2020, 10:50:12<span style="color:#f92672">)</span> 
+<span style="color:#f92672">[</span>GCC 10.2.0<span style="color:#f92672">]</span> on linux
+Type <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#e6db74">&#34;copyright&#34;</span>, <span style="color:#e6db74">&#34;credits&#34;</span> or <span style="color:#e6db74">&#34;license&#34;</span> <span style="color:#66d9ef">for</span> more information.
+&gt;&gt;&gt; import nltk
+&gt;&gt;&gt; nltk.download<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;vader_lexicon&#39;</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">[</span>nltk_data<span style="color:#f92672">]</span> Downloading package vader_lexicon to
+<span style="color:#f92672">[</span>nltk_data<span style="color:#f92672">]</span>     /home/saisyam/nltk_data...
 True
-<span class="o">&gt;&gt;&gt;</span> 
-</code></pre></div></div>
-<p>This will install required data for using VADER sentiment analysis.</p>
-
+&gt;&gt;&gt; 
+</code></pre></div><p>This will install required data for using VADER sentiment analysis.</p>
 <h2 id="performing-sentiment-analysis">Performing Sentiment Analysis</h2>
-<p>We have everything installed to perform the sentiment analysis. Let’s use VADER to find the sentiment of the following review:</p>
-
-<p><em>“Pretty pricey but the lamb burger ($25) is beyond amazing. Definitely worth it. So, so good.”</em></p>
-
+<p>We have everything installed to perform the sentiment analysis. Let&rsquo;s use VADER to find the sentiment of the following review:</p>
+<p><em>&ldquo;Pretty pricey but the lamb burger ($25) is beyond amazing. Definitely worth it. So, so good.&quot;</em></p>
 <p>The following code will perform the sentiment analysis.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> nltk.sentiment.vader <span style="color:#f92672">import</span> SentimentIntensityAnalyzer
+sia <span style="color:#f92672">=</span> SentimentIntensityAnalyzer()
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">nltk.sentiment.vader</span> <span class="kn">import</span> <span class="n">SentimentIntensityAnalyzer</span>
-<span class="n">sia</span> <span class="o">=</span> <span class="n">SentimentIntensityAnalyzer</span><span class="p">()</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">"Pretty pricey but the lamb burger ($25) is beyond amazing. Definitely worth it. So, so good."</span>
-<span class="n">sia</span><span class="p">.</span><span class="n">polarity_scores</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div></div>
-<p>When we run the above code we get the following output:</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="o">{</span><span class="s1">'neg'</span>: 0.0, <span class="s1">'neu'</span>: 0.369, <span class="s1">'pos'</span>: 0.631, <span class="s1">'compound'</span>: 0.963<span class="o">}</span>
-</code></pre></div></div>
-<p>VADER’s <code class="language-plaintext highlighter-rouge">SentimentIntensityAnalyzer()</code> takes in a string and returns a dictionary of scores in each of four categories:</p>
+text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Pretty pricey but the lamb burger ($25) is beyond amazing. Definitely worth it. So, so good.&#34;</span>
+sia<span style="color:#f92672">.</span>polarity_scores(text)
+</code></pre></div><p>When we run the above code we get the following output:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&gt;&gt;&gt; <span style="color:#f92672">{</span><span style="color:#e6db74">&#39;neg&#39;</span>: 0.0, <span style="color:#e6db74">&#39;neu&#39;</span>: 0.369, <span style="color:#e6db74">&#39;pos&#39;</span>: 0.631, <span style="color:#e6db74">&#39;compound&#39;</span>: 0.963<span style="color:#f92672">}</span>
+</code></pre></div><p>VADER&rsquo;s <code>SentimentIntensityAnalyzer()</code> takes in a string and returns a dictionary of scores in each of four categories:</p>
 <ul>
-  <li>negative</li>
-  <li>neutral</li>
-  <li>positive</li>
-  <li>compound (computed by normalizing the scores above)</li>
+<li>negative</li>
+<li>neutral</li>
+<li>positive</li>
+<li>compound (computed by normalizing the scores above)</li>
 </ul>
-
-<p>The above result says that the emotion in the given review is <em>positive</em>. Let’s look at the other review:
-<em>“The food is so good. The service is so bad.”</em>
+<p>The above result says that the emotion in the given review is <em>positive</em>. Let&rsquo;s look at the other review:
+<em>&ldquo;The food is so good. The service is so bad.&quot;</em>
 When we run the above code for the given text, the output is:</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="o">{</span><span class="s1">'neg'</span>: 0.277, <span class="s1">'neu'</span>: 0.493, <span class="s1">'pos'</span>: 0.23, <span class="s1">'compound'</span>: <span class="nt">-0</span>.1901<span class="o">}</span>
-</code></pre></div></div>
-<p>The review has two polarities. The customer is appreciating the food but not satisfied with the service. To judge whether the review is positive or negative we use the below logic.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">compound</span> <span class="o">&gt;=</span> <span class="mf">0.05</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Positive"</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">compound</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Negative"</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Neutral"</span><span class="p">)</span>
-</code></pre></div></div>
-<p>Which says the above review is <em>negative</em>.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&gt;&gt;&gt; <span style="color:#f92672">{</span><span style="color:#e6db74">&#39;neg&#39;</span>: 0.277, <span style="color:#e6db74">&#39;neu&#39;</span>: 0.493, <span style="color:#e6db74">&#39;pos&#39;</span>: 0.23, <span style="color:#e6db74">&#39;compound&#39;</span>: -0.1901<span style="color:#f92672">}</span>
+</code></pre></div><p>The review has two polarities. The customer is appreciating the food but not satisfied with the service. To judge whether the review is positive or negative we use the below logic.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> compound <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0.05</span>:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Positive&#34;</span>)
+<span style="color:#66d9ef">elif</span> compound <span style="color:#f92672">&lt;=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">0.05</span>:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Negative&#34;</span>)
+<span style="color:#66d9ef">else</span>:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Neutral&#34;</span>)
+</code></pre></div><p>Which says the above review is <em>negative</em>.</p>
 <h2 id="what-is-missing-with-vader-sentiment-analysis">What is missing with VADER Sentiment Analysis?</h2>
-<p>VADER only tries to get the emotion (postivie/negative/neutral) out of text. It won’t care about the aspect. For example, the review,
-<em>“The food is so good. The service is so bad.”</em> is <em>negative</em> from the <code class="language-plaintext highlighter-rouge">service</code> aspect but <em>postive</em> from the <code class="language-plaintext highlighter-rouge">food</code> aspect. If we identify sentiment based on aspects then it will be much more helpful. This is called <em>Aspect based Sentiment Analysis</em>.</p>
-
+<p>VADER only tries to get the emotion (postivie/negative/neutral) out of text. It won&rsquo;t care about the aspect. For example, the review,
+<em>&ldquo;The food is so good. The service is so bad.&quot;</em> is <em>negative</em> from the <code>service</code> aspect but <em>postive</em> from the <code>food</code> aspect. If we identify sentiment based on aspects then it will be much more helpful. This is called <em>Aspect based Sentiment Analysis</em>.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>In this post we have learnt how to find whether the text is positive, negative or neutral using Python based VADER Sentiment Analysis. We also discussed the next level of sentiment analysis based on aspects. In the next article we will see how we can identify aspects for a given industry or domain and implement the sentiment analysis based on aspects.</p>
 
-        </div>
 
+</article>
+
+
+<section class="post-nav">
+    <ul>
         
-          <div class="page-share">
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsaisyam.com%2Fsentiment-analysis-using-python-vader%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--facebook btn--small"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i> <span>Share</span></a>
-  <a href="https://twitter.com/intent/tweet?text=Sentiment+Analysis+using+Python+Vader%20https%3A%2F%2Fsaisyam.com%2Fsentiment-analysis-using-python-vader%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--twitter btn--small"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i> <span>Tweet</span></a>
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsaisyam.com%2Fsentiment-analysis-using-python-vader%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--linkedin btn--small"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> <span>LinkedIn</span></a>
-  <a href="https://reddit.com/submit?title=Sentiment+Analysis+using+Python+Vader&url=https%3A%2F%2Fsaisyam.com%2Fsentiment-analysis-using-python-vader%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--reddit btn--small"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i> <span>Reddit</span></a>
-</div>
-
+        <li>
+            <a href="https://saisyam.com/proven-way-to-fake-webcam-in-test-automation-with-python/"><i class="fa fa-chevron-circle-left"></i> Proven way to Fake Webcam in Test Automation with Python</a>
+        </li>
         
-
         
-          
-
+        <li>
+            <a href="https://saisyam.com/understanding-dockers-and-containers/">Understanding Dockers and Containers <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
         
-
-        <nav class="page-pagination" role="navigation">
+    </ul>
+</section>
   
-    <a class="page-previous" href="/fake-webcam-in-test-automation-with-python/">
-      <h4 class="page-pagination-label">Previous</h4>
-      <span class="page-pagination-title">
-        <i class="fas fa-arrow-left"></i> Proven way to Fake Webcam in Test Automation with Python
-
-      </span>
-    </a>
+    
+    
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "saisyam-1" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
   
 
-  
-    <a class="page-next" href="/understanding-dockers-and-containers/">
-      <h4 class="page-pagination-label">Next</h4>
-      <span class="page-pagination-title">
-        Understanding Dockers and Containers
- <i class="fas fa-arrow-right"></i>
-      </span>
-    </a>
-  
-</nav>
 
-      </div>
-    </div>
-  </article>
+
+
+
 </main>
+    <footer>
+        <h6>Copyright © 2020 - Saisyam |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://saisyam.com/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://saisyam.com/js/scripts.js"></script>
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
-    <footer id="footer" class="site-footer">
-  <!-- start custom footer snippets -->
 
-<!-- end custom footer snippets -->
-<div class="social-icons"><a class="social-icon" href="https://instagram.com/saisyamdampuri"><i class="fab fa-instagram fa-2x" title="Instagram"></i></a><a class="social-icon" href="https://github.com/saisyam"><i class="fab fa-github-square fa-2x" title="Github"></i></a><a class="social-icon" href="https://twitter.com/saisyam1"><i class="fab fa-twitter-square fa-2x" title="Twitter"></i></a><a class="social-icon" href="https://linkedin.com/in/saisyam"><i class="fab fa-linkedin fa-2x" title="LinkedIn"></i></a><a class="social-icon" href="/atom.xml"><i class="fas fa-rss-square fa-2x" title="Feed"></i></a></div><div class="copyright">
-    
-      <p>&copy; 2021 Saisyam. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a>.</p>
-    
-  </div>
-</footer>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="/assets/js/main.min.js"></script>
-  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
-
-
-  </body>
+</body>
 
 </html>
+

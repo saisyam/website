@@ -1,0 +1,216 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>CI/CD - Saisyam</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Saisyam&#39;s personal blog for technical articles" />
+<meta name="author" content="Saisyam" /><link rel="alternate" type="application/rss+xml+xml" href="https://saisyam.com/tags/ci/cd/index.xml" title="Saisyam" /><meta property="og:title" content="CI/CD" />
+<meta property="og:description" content="Saisyam&#39;s personal blog for technical articles" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://saisyam.com/tags/ci/cd/" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CI/CD"/>
+<meta name="twitter:description" content="Saisyam&#39;s personal blog for technical articles"/>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+<meta name="generator" content="Hugo 0.79.0" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://saisyam.com/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://saisyam.com/css/styles.css" /><link rel="canonical" href="https://saisyam.com/proven-way-to-fake-webcam-in-test-automation-with-python/">
+  <style>
+    #toc::before {
+        content: "Table of Contents";
+        font-weight: bold;
+    }
+    #toc nav {
+      border-bottom: none;
+      padding-bottom: 0.5em;
+      font-family: "Ruda", sans-serif;
+    }
+
+    #toc nav ul {
+      border: 1px solid #aaa;
+      padding: 1.5em;
+      list-style: decimal;
+      display: inline-block;
+    }
+  </style>
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="manifest" href="favicon/site.webmanifest">
+<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<script data-ad-client="ca-pub-0206245742790279" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script type="application/ld+json">
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Proven way to Fake Webcam in Test Automation with Python",
+      "image": "https://saisyam.com/",
+      "datePublished": "2020-06-07T00:00:00Z",
+      "dateModified": "2020-06-07T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "mainEntityOfPage": { "@type": "WebPage" },
+       "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": {
+          "@type": "ImageObject",
+          "url":  null 
+        }
+      },
+      "description": "We automate web application testing using Python Selenium or Splinter. How will you automate testing applications with webcam? You can fake a webcam device with Chrome Web driver. In this article we will see how to do that.",
+      "keywords": ["Web Testing", "Splinter", "ffmpeg", "Fake webcam"]
+    }
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Personal blog",
+      "url": "https://saisyam.com/",
+      "sameAs": [
+        "https://www.facebook.com/saisyam.dampuri.5667",
+        "https://www.instagram.com/saisyamdampuri",
+        "https://twitter.com/saisyam1",
+        "https://github.com/saisyam"
+      ]
+    }
+    </script></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://saisyam.com/">Saisyam</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://www.facebook.com/saisyam.dampuri.5667" title="Facebook">
+               <i class="fab fa-facebook fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://github.com/saisyam" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/saisyam1" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://linkedin.com/in/saisyam" title="LinkedIn">
+               <i class="fab fa-linkedin fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://www.instagram.com/saisyamdampuri" title="Instagram">
+               <i class="fab fa-instagram fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Personal Blog</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<section id="list">
+
+    
+        <h2>#ci/cd</h2>
+    
+
+    
+
+    
+
+    <h3>2020</h3>
+    <ul>
+        
+        <li>
+            <a href="https://saisyam.com/what-are-cloud-native-apps/">What are Cloud native apps?</a>
+            <time class="date-meta">Oct 15</time>
+        </li>
+        
+    </ul>
+
+    
+
+</section>
+
+
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Saisyam |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://saisyam.com/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://saisyam.com/js/scripts.js"></script>
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+
+</html>
+
