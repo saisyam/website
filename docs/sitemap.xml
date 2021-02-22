@@ -1,31 +1,114 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>https://saisyam.com/fake-webcam-in-test-automation-with-python/</loc>
-<lastmod>2020-06-07T00:00:00+05:30</lastmod>
-</url>
-<url>
-<loc>https://saisyam.com/sentiment-analysis-using-python-vader/</loc>
-<lastmod>2020-09-26T00:00:00+05:30</lastmod>
-</url>
-<url>
-<loc>https://saisyam.com/understanding-dockers-and-containers/</loc>
-<lastmod>2020-10-13T00:00:00+05:30</lastmod>
-</url>
-<url>
-<loc>https://saisyam.com/what-are-cloud-native-apps/</loc>
-<lastmod>2020-10-15T00:00:00+05:30</lastmod>
-</url>
-<url>
-<loc>https://saisyam.com/about/</loc>
-</url>
-<url>
-<loc>https://saisyam.com/categories/</loc>
-</url>
-<url>
-<loc>https://saisyam.com/</loc>
-</url>
-<url>
-<loc>https://saisyam.com/tags/</loc>
-</url>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://saisyam.com/categories/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/categories/cloud/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/containers/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/devops/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/dockers/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/microservices/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/posts/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/what-are-cloud-native-apps/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/understanding-dockers-and-containers/</loc>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/categories/python/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/sentiment-analysis/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/sentiment-analysis-using-python-vader/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/text-analytics/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/vader/</loc>
+    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/fake-webcam/</loc>
+    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/ffmpeg/</loc>
+    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/proven-way-to-fake-webcam-in-test-automation-with-python/</loc>
+    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/splinter/</loc>
+    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/web-testing/</loc>
+    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/ci/cd/</loc>
+  </url>
+  
 </urlset>
