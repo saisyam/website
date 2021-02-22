@@ -5,6 +5,7 @@ canonifyurls = true
 theme = "kiera"
 logo = "s-logo.jpg"
 publishdir = "docs"
+disableDarkModeCSS = false
 
 paginate = 3
 
