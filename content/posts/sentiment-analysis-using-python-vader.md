@@ -13,6 +13,8 @@ Sentiment analysis is a process of determining whether the given emotion (text) 
 
 {{< table_of_contents >}}
 
+{{< adsense >}}
+
 VADER(Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. VADER not only tells about the positivity and negativity score but also tells us about how positive or negative it is. VADER sentimental analysis relies on a dictionary that maps lexical features to emotion intensities known as sentiment scores. The sentiment score of a text can be obtained by summing up the intensity of each word in the text.
 
 For example, words like, *'happy', 'awesome', 'good'* all convey positive emotion. VADER is intelligent enough to understand the context of these words. For example, *"Food is not good"* is considered negative. If also understands the emphasis of capitalization and punctuation. For example, *"AWESOME"* (capital letters) will represent the high intensity of positivity.
@@ -38,6 +40,8 @@ True
 >>> 
 ```
 This will install required data for using VADER sentiment analysis.
+
+{{< adsense >}}
 
 ## Performing Sentiment Analysis
 We have everything installed to perform the sentiment analysis. Let's use VADER to find the sentiment of the following review:
@@ -81,6 +85,7 @@ else:
 ```
 Which says the above review is *negative*.
 
+{{< adsense >}}
 
 ## What is missing with VADER Sentiment Analysis?
 VADER only tries to get the emotion (postivie/negative/neutral) out of text. It won't care about the aspect. For example, the review,

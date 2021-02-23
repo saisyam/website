@@ -15,6 +15,8 @@ Cloud native is an approach to building and running applications that exploits t
 
 {{< table_of_contents >}}
 
+{{< adsense >}}
+
 ## Cloud Native approach
 Here we will discuss about the four major components of Cloud native development:
 
@@ -36,6 +38,7 @@ DevOps is a collaboration between developers and operations with a goal of const
 ## CI/CD
 CI/CD is all about shipping small batches of software to production frequently through automation. Automation of continuous delivery will help organizations to quicky and efficiently deliver updated software to production without bringing down the whole system.   
 
+{{< adsense >}}
 
 ## Advantages of Cloud native development approach
 Our traditional development approach is mostly monolith. We will create an application with different modules doing differen tasks. For example, in a shopping cart application, we have modules for product management, user management, billing, etc. But all these are tightly coupled with each other which makes it difficult to make any changes to an individual module without disturbing the others.
@@ -63,6 +66,7 @@ Though cloud native approach looks promising with more advantages over tradition
 
 There are tools which are production ready to solve the above issues. Discussion of these tools will take another post.
 
+{{< adsense >}}
 
 ## Conclusion
 Most of the organizations are moving their applications from private datacenters to public cloud platforms using cloud native architectural precepts. Learning and investing time on Cloud native applications will definitely uplift your resume/CV. In the next article we will discuss how to build a cloud native application from scratch and deploy it. Thanks for reading. 

@@ -14,6 +14,8 @@ We automate web application testing using Python Selenium or Splinter. How will 
 
 {{< table_of_contents >}}
 
+{{< adsense >}}
+
 ## Challenge
 The challenge here is to fake the webcam with proper video format. In this post I am using Chrome browser along with [Splinter](https://splinter.readthedocs.io/en/latest/).
 If you are new to Splinter, check out my article and I promise you love it. We use Splinter not only for testing but also for web scraping. Chrome need Y4M format to replace the camera feed. To generate that format you need [ffmpeg](https://www.ffmpeg.org/) tool. Using that tool you can convert any MP4 video into Y4M format.
@@ -29,5 +31,8 @@ We will set `webdriver.ChromeOptions` to enable media stream using a fake device
 
 {% gist 98aa0345e2a470b39d754b35b7910596 %}
 
+{{< adsense >}}
+
 ## Conclusion
 You are all set to test the web applications uing a fake video. The complete source code along with the sample web application (using Python Flask) is available as a [gitlab project](https://gitlab.com/saisyam/web-automation-testing/-/tree/master/fake_webcam).
+

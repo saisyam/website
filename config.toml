@@ -6,6 +6,7 @@ theme = "kiera"
 logo = "s-logo.jpg"
 publishdir = "docs"
 disableDarkModeCSS = false
+favicon = true
 
 paginate = 3
 

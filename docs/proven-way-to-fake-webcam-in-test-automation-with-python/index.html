@@ -40,7 +40,7 @@ if (!doNotTrack) {
     <link rel="stylesheet" href="https://saisyam.com/css/fonts.css" />
   
   
-  <link rel="stylesheet" type="text/css" href="https://saisyam.com/css/styles.css" /><link rel="canonical" href="https://saisyam.com/what-are-cloud-native-apps/">
+  <link rel="stylesheet" type="text/css" href="https://saisyam.com/css/styles.css" /><link rel="canonical" href="https://saisyam.com/proven-way-to-fake-webcam-in-test-automation-with-python/">
   <style>
     #toc::before {
         content: "Table of Contents";
@@ -71,10 +71,10 @@ if (!doNotTrack) {
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "What are Cloud native apps?",
+      "headline": "Proven way to Fake Webcam in Test Automation with Python",
       "image": "https://saisyam.com/",
-      "datePublished": "2020-10-15T00:00:00Z",
-      "dateModified": "2020-10-15T00:00:00Z",
+      "datePublished": "2020-06-07T00:00:00Z",
+      "dateModified": "2020-06-07T00:00:00Z",
       "author": {
         "@type": "Person",
         "name":  null 
@@ -88,8 +88,8 @@ if (!doNotTrack) {
           "url":  null 
         }
       },
-      "description": "Cloud native is an approach to building and running applications that exploits the advantages of the cloud computing delivery model. In simple terms, Cloud native applications are built using cloud-based technologies, fully hosted and managed in the cloud.",
-      "keywords": ["Microservices", "CI/CD", "Containers", "Dockers", "DevOps"]
+      "description": "We automate web application testing using Python Selenium or Splinter. How will you automate testing applications with webcam? You can fake a webcam device with Chrome Web driver. In this article we will see how to do that.",
+      "keywords": ["Web Testing", "Splinter", "ffmpeg", "Fake webcam"]
     }
     
     {
@@ -219,7 +219,17 @@ if (!doNotTrack) {
     <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
-  </div>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 <h2 id="challenge">Challenge</h2>
 <p>The challenge here is to fake the webcam with proper video format. In this post I am using Chrome browser along with <a href="https://splinter.readthedocs.io/en/latest/">Splinter</a>.
 If you are new to Splinter, check out my article and I promise you love it. We use Splinter not only for testing but also for web scraping. Chrome need Y4M format to replace the camera feed. To generate that format you need <a href="https://www.ffmpeg.org/">ffmpeg</a> tool. Using that tool you can convert any MP4 video into Y4M format.</p>
@@ -230,6 +240,16 @@ If you are new to Splinter, check out my article and I promise you love it. We u
 <h2 id="chrome-settings-to-fake-webcam">Chrome Settings to fake webcam</h2>
 <p>We will set <code>webdriver.ChromeOptions</code> to enable media stream using a fake device.</p>
 <p>{% gist 98aa0345e2a470b39d754b35b7910596 %}</p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 <h2 id="conclusion">Conclusion</h2>
 <p>You are all set to test the web applications uing a fake video. The complete source code along with the sample web application (using Python Flask) is available as a <a href="https://gitlab.com/saisyam/web-automation-testing/-/tree/master/fake_webcam">gitlab project</a>.</p>
 

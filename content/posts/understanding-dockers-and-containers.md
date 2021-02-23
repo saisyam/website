@@ -12,6 +12,8 @@ Dockers and containers are the building blocks for Cloud native development. Doc
 
 {{< table_of_contents >}}
 
+{{< adsense >}}
+
 Docker bought a revolutionary change in Cloud Computing. Docker is inspired by a technology in Linux kernel called [LXC (Linux Containers)](https://linuxcontainers.org/). LXC refers to the capabilites of Linux kernel, specifically namespaces and control groups, which allow sandboxing of processes from one another, and controlling their resource allocations. Docker utilizes the capabilities of LXC and hence it does not require any OS, instead it relies on the OS own functionality. LXC is a OS level virutalization method for running multiple isolated Linux systems (we call them containers) on a control host using a single Linux kernel.
 
 ## Hardware Virutalization vs OS Level Virtualization
@@ -27,6 +29,8 @@ OS virtualization had grown tremendously over the last decade. Containers sit on
 
 ## What is a Docker?
 Docker is a layered binary file with all the necessary ingredients to run an application. For example, I want to use PostgreSQL database in my project and I don't want to install it on my machine. I can download PostgreSQL docker from [docker hub](https://hub.docker.com/_/postgres) and run it with `docker` command and use it for my development. You can also create your own docker for your application and upload that to docker hub for others to use. You can install docker community edition from [here](https://docs.docker.com/get-docker/).
+
+{{< adsense >}}
 
 ## Let's run a Nginx docker
 In this section we will download and run nginx docker. [Nginx](https://www.nginx.com/) is a popular web server that is used in most of the production ready environments. In the process we will learn some basic docker commands.
@@ -84,6 +88,7 @@ At a high level the image explains:
 6. Starting/stopping/restarting docker containers
 7. Loading and saving docker images externally
 
+{{< adsense >}}
 
 ## Conclusion
 In this article we learn what is docker and container? We have learnt how to download and run a docker and some basic commands on managing docker images and containers. We have looked into docker workflow. In the coming articles we will see how to create our own docker and publish to docker hub. Thanks for reading.
