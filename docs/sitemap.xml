@@ -4,7 +4,47 @@
   
   <url>
     <loc>https://saisyam.com/categories/</loc>
-    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/pcma/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/pcmu/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/posts/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/categories/python/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/reading-and-writing-wav-files-with-compression-in-python-using-pywav/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saisyam.com/tags/wav-compression/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -33,21 +73,6 @@
   </url>
   
   <url>
-    <loc>https://saisyam.com/posts/</loc>
-    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://saisyam.com/</loc>
-    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://saisyam.com/tags/</loc>
-    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://saisyam.com/what-are-cloud-native-apps/</loc>
     <lastmod>2020-10-15T00:00:00+00:00</lastmod>
   </url>
@@ -55,11 +80,6 @@
   <url>
     <loc>https://saisyam.com/understanding-dockers-and-containers/</loc>
     <lastmod>2020-10-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://saisyam.com/categories/python/</loc>
-    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
