@@ -17,6 +17,7 @@
 
   <link rel="stylesheet" href="{{ "css/normalize.min.css" | relURL}}" />
   <link rel="stylesheet" href="{{ "fontawesome/css/all.min.css" | absURL }}" />
+  
   {{ if .Site.Params.google_fonts }}
     {{ $url_part := (delimit .Site.Params.google_fonts "|") | safeHTMLAttr }}
     <link {{ printf "href=\"//fonts.googleapis.com/css?family=%s\"" $url_part | safeHTMLAttr }} rel="stylesheet">
@@ -32,7 +33,7 @@
   {{- range .Site.Params.customCSS -}}
     <link rel='stylesheet' href='{{ . | absURL }}'>
   {{- end -}}
-  <link rel="canonical" href="{{ .Permalink }}">
+  
   <style>
     #toc::before {
         content: "Table of Contents";
@@ -58,4 +59,3 @@
 <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
-{{ partial "schema" . }}
