@@ -7,6 +7,8 @@ tags:
   - PCMA
   - PCMU
 date: 2020-12-20
+images:
+  - ../pywav.jpg
 ---
 
 Testing voice applications involve handling RTP streams. Most of the IVR applications use PCMA/PCMU codecs to stream voice over RTP. [PyWav](https://pypi.org/project/pywav/) is a Python library which helps you to convert those RAW streams with PCMU/PCMA encodings into a WAV file. The library is similar to [PyWave](https://pypi.org/project/PyWave/), but the limitation with PyWave is, it will not support compression. 
@@ -63,3 +65,5 @@ wave_write.close()
 
 ## Conclusion
 You can install this as a `pip` package using `pip3 install pywav`. The source code of this project is available on [Github](https://github.com/saisyam/pywav). 
+
+[Background photo created by kjpargeter - www.freepik.com](https://www.freepik.com/photos/background)
