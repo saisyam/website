@@ -43,6 +43,8 @@ The above code uses `Beautifulsoup` package. The response of the above function 
 	'author': 'By Saisyam'
 }
 ```
+{{< adsense >}}
+
 ## Challenges while scraping
 Not all web pages are so simple as shown in the above example. Below is the list of challenges that we encounter while scraping:
 1. **Dynamic content** - Today most of the websites use latest JavaScript frameworks to build their sites. The content or the HTML that is rendered is generated dynamically with JavaScript. You need a real browser to load the webpage inorder to get the rendered HTML
@@ -76,6 +78,8 @@ In a similar way, we can use proxies with Splinter as well. We use Chrome browse
 {{< gist saisyam 7b8b7f4954086ae581a59b31731ec38f >}}
 
 If one IP gets blocked, you can get an another one and continue scraping.
+
+{{< adsense >}}
 
 ## Conclusion
 In this article we learnt what is scraping and why it is required. We have explored few packages in Python to do scraping and identified challenges in scraping along with few solutions to overcome those challenges. For more information on scraping visit my [Scrapers](https://github.com/saisyam/scrapers) repository on Github. Happy scraping!
