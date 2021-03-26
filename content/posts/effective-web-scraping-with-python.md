@@ -57,7 +57,7 @@ In order to parse HTML, first we need to get the HTML of the page. There are two
 ## Scraping approach
 The approach that we follow for creating scrapers are:
 1. Get HTML content of the website using `requests` or `splinter` based on the requirement.
-2. Use `Beautifulsoup` to parse the HTML and extract the content. BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) is a Python package used to parse HTML content. `Beautifulsoup` supports multiple HTML parsers. `html5lib` is a parser built completely in Python and considered as the fastest among the existing parsers.
+2. Use `Beautifulsoup` to parse the HTML and extract the content. [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) is a Python package used to parse HTML content. `Beautifulsoup` supports multiple HTML parsers. `html5lib` is a parser built completely in Python and considered as the fastest among the existing parsers.
 
 
 Getting the complete HTML content is a complex activity, because of the challenges explained in the above section. We avoid using single IP address and use proxies and rotate our IPs. There are some free proxy providers like [SSLProxy](https://sslproxies.org/), [SpysOne](https://spys.one/en/https-ssl-proxy/), [ProxyList](https://www.proxy-list.download/HTTPS) to name a few. 
