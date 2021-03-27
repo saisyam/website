@@ -24,7 +24,7 @@ FreeSWITCH recommends Debian as their installation platform as most of the devel
 4. Download FreeSWITCH source, build and install
 5. Make FreeSWITCH to run as a service
 
-**Note:** *The scope of this article is to install and run FreeSWITCH successfully on Ubuntu 18.04. We don't configure FreeSWITCH to handle incoming/outgoing calls. That will be discussed in another article.*
+**Note:** *The scope of this article is to install and run FreeSWITCH successfully on Ubuntu 18.04. We don't configure FreeSWITCH to handle incoming/outgoing calls.*
 
 ## Setup Ubuntu 18.04 server
 I use Virtualbox to create an Ubuntu 18.04 server with 30GB of hard disk space and 4GB of RAM. You can build the same or use a desktop or laptop running Ubuntu 18.04. If you want more information on how to install Ubuntu on Virtualbox refer to this [article](https://hibbard.eu/install-ubuntu-virtual-box/).
@@ -36,7 +36,7 @@ $ sudo apt -y update
 {{< adsense >}}
 
 ## Install dependent packages to compile FreeSWITCH
-We need some dependent packages to compile FreeSWITCH code. FreeSWITCH is built on C/C++. Let's install the packages in Ubuntu server using its package manager:
+We need some dependent packages to compile FreeSWITCH code. FreeSWITCH is built on C/C++. Let's install the packages on Ubuntu server using its package manager:
 
 ```shell
 $ sudo apt-get install -y curl git gnupg wget subversion build-essential autoconf automake libtool libncurses5 libncurses5-dev make libjpeg-dev libtool libtool-bin libsqlite3-dev libpcre3-dev libspeexdsp-dev libldns-dev libedit-dev yasm liblua5.2-dev libopus-dev cmake
@@ -139,7 +139,7 @@ $ sudo chmod -R ug=rwX,o= /usr/local/freeswitch/
 $ sudo chmod -R u=rwx,g=rx /usr/local/freeswitch/bin/
 ```
 
-We need to add FreeSwitch as a systemd unit file. Open new file /etc/systemd/system/freeswitch.service using `vim` editor paste the below content:
+We need to add FreeSwitch as a `systemd` unit file. Open new file `/etc/systemd/system/freeswitch.service` using `vim` editor paste the below content:
 ```shell
 [Unit]
 Description=freeswitch
@@ -178,7 +178,7 @@ NoNewPrivileges=false
 WantedBy=multi-user.target
 ```
 
-Start FreeSWITCH service and enable it on 
+Start FreeSWITCH service and enable it on system startup
 ```shell
 $ sudo chmod ugo+x freeswitch.service
 $ sudo systemctl start freeswitch.service
