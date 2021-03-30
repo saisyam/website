@@ -44,7 +44,7 @@ $ sudo apt-get install -y curl git gnupg wget subversion build-essential autocon
 FreeSWITCH comes with lots of modules. For example, it has support for MySQL, MongoDB, PostgreSQL etc. Most of the deployments use only one database and want to disable the other. So, they don't install dependent packages of the modules which they don't need. But in our case we install FreeSWITCH with default modules enabled. Below is the list of additional packages we need:
 
 ```shell
-sudo apt-get install -y libcurl4-openssl-dev libexpat1-dev libgnutls28-dev libtiff5-dev libx11-dev unixodbc-dev libssl-dev python-dev zlib1g-dev libasound2-dev libogg-dev libvorbis-dev libperl-dev libgdbm-dev libdb-dev libpq-dev uuid-dev libsndfile1-dev libavformat-dev libswscale-dev
+$ sudo apt-get install -y libcurl4-openssl-dev libexpat1-dev libgnutls28-dev libtiff5-dev libx11-dev unixodbc-dev libssl-dev python-dev zlib1g-dev libasound2-dev libogg-dev libvorbis-dev libperl-dev libgdbm-dev libdb-dev libpq-dev uuid-dev libsndfile1-dev libavformat-dev libswscale-dev
 ```
 We have compile and build `libks`
 ```shell
