@@ -8,7 +8,7 @@ publishdir = "docs"
 disableDarkModeCSS = false
 favicon = true
 
-paginate = 3
+paginate = 5
 
 summaryLength = 30
 enableEmoji = true
