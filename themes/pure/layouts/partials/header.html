@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{ .Site.Params.description | default "The HTML5 Herald" }}" />
+  <meta name="author" content="{{ .Params.Author | default .Site.Author.name }}" />
+  {{ template "_internal/opengraph.html" . }} 
+  {{ template "_internal/twitter_cards.html" . }}
+  {{ template "_internal/google_analytics_async.html" . }}
+  <link rel="stylesheet" href="{{ "css/pure-min.css" | relURL}}" />
+  <link rel="stylesheet" href="{{ "css/grids-responsive-min.css" | relURL}}" />
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL}}" />
+  <style>
+    #toc::before {
+        content: "Table of Contents";
+        font-weight: bold;
+    }
+    #toc nav {
+      border-bottom: none;
+      padding-bottom: 0.2em;
+      font-family: "Ruda", sans-serif;
+    }
+
+    #toc nav ul {
+      /*border: 1px solid #aaa;*/
+      padding: 1em;
+      list-style: decimal;
+      display: inline-block;
+    }
+    ul.pagination {
+      display: flex;
+      justify-content: center;
+      margin: 1em 0 0;
+      padding: 0.5em 0;
+      list-style: none;
+    }
+  
+    ul.pagination li {
+      padding: 0 1em;
+    }
+    .gist .blob-code-inner{ font-size:20px !important; }
+    .gist .blob-num{ font-size:20px !important; }
+  </style>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>

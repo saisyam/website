@@ -22,23 +22,13 @@ For example, words like, *'happy', 'awesome', 'good'* all convey positive emotio
 
 ## Installing VADER Sentiment Analysis Tool
 VADER is available as part of NLTK Python package. I use `pip3` to install Python packages. Below command will install `nltk`.
-```shell
-$ pip3 install nltk
-```
+
+{{< gist saisyam e5a7db17bc5504a03b575181b502684b >}}
+
 Once `nltk` is installed, we need to download the `vader lexicon`.
 
-```shell
-$ python3
-Python 3.8.5 (default, Sep  5 2020, 10:50:12) 
-[GCC 10.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> import nltk
->>> nltk.download('vader_lexicon')
-[nltk_data] Downloading package vader_lexicon to
-[nltk_data]     /home/saisyam/nltk_data...
-True
->>> 
-```
+{{< gist saisyam fc7851f8f35f5af28aaa07069a905231 >}}
+
 This will install required data for using VADER sentiment analysis.
 
 {{< adsense >}}
@@ -50,17 +40,12 @@ We have everything installed to perform the sentiment analysis. Let's use VADER 
 
 The following code will perform the sentiment analysis.
 
-```python
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-sia = SentimentIntensityAnalyzer()
+{{< gist saisyam a06b57411041d92a1d66689b6304df7f >}}
 
-text = "Pretty pricey but the lamb burger ($25) is beyond amazing. Definitely worth it. So, so good."
-sia.polarity_scores(text)
-```
 When we run the above code we get the following output:
-```shell
->>> {'neg': 0.0, 'neu': 0.369, 'pos': 0.631, 'compound': 0.963}
-```
+
+{{< gist saisyam b6c5347e1f4931f9a8b618f5888927e6 >}}
+
 VADER's `SentimentIntensityAnalyzer()` takes in a string and returns a dictionary of scores in each of four categories:
 * negative
 * neutral
@@ -70,19 +55,13 @@ VADER's `SentimentIntensityAnalyzer()` takes in a string and returns a dictionar
 The above result says that the emotion in the given review is *positive*. Let's look at the other review:
 *"The food is so good. The service is so bad."*
 When we run the above code for the given text, the output is:
-```shell
->>> {'neg': 0.277, 'neu': 0.493, 'pos': 0.23, 'compound': -0.1901}
-```
+
+{{< gist saisyam 97cbb5f5e2cd1ff752e6d9c85dbc54b3 >}}
+
 The review has two polarities. The customer is appreciating the food but not satisfied with the service. To judge whether the review is positive or negative we use the below logic.
 
-```python
-if compound >= 0.05:
-    print("Positive")
-elif compound <= -0.05:
-    print("Negative")
-else:
-    print("Neutral")
-```
+{{< gist saisyam 17276051626ab5b80f7912b6ae46d783 >}}
+
 Which says the above review is *negative*.
 
 {{< adsense >}}

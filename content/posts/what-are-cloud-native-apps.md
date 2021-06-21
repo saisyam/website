@@ -45,6 +45,7 @@ Our traditional development approach is mostly monolith. We will create an appli
 
 This is a successful model till date. Then **why we need to shift to cloud native approach?** To answer this, let's see the differences between traditional and cloud native approaches from different perspectives. Below table will illustrate that:
 
+<div class="my-table">
 
 |                          | Traditional Approach                    | Cloud native Approach |
 |------------------------|-----------------------------------------|-----------------------|
@@ -54,7 +55,7 @@ This is a successful model till date. Then **why we need to shift to cloud nativ
 | Delivery | Long cycles | Short and Continuous |
 | Infrastructure | OS Dependent, Vertically scaled, Pre-provisioned for peak load | OS independent, horizontal scaling, on-demand capacity |
 | Maintenance/Recovery | In case of failure, whole system will go down, slow recovery | Fast recovery, whole system will never go down |
-
+</div>
 
 ## Cloud native approach - Things to consider
 Though cloud native approach looks promising with more advantages over traditional approach and improves the efficiency and productivity of the team, it comes with a price. Below are some of the things that need to be considered while designing cloud native apps.

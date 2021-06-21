@@ -3,22 +3,23 @@
 <html lang="en">
 
 <head>
-  <title>Understanding Dockers and Containers - Saisyam</title>
   <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Saisyam&#39;s personal blog for technical articles" />
-<meta name="author" content="Saisyam" /><meta property="og:title" content="Understanding Dockers and Containers" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Saisyam&#39;s personal blog for technical articles" />
+  <meta name="author" content="Saisyam" />
+  <meta property="og:title" content="Understanding Dockers and Containers" />
 <meta property="og:description" content="Dockers and containers are the building blocks for Cloud native development. Docker enables developers to build, run and ship applications that can be virtually run on any Operating System (OS). A running instance of a docker is called Container." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://saisyam.com/understanding-dockers-and-containers/" />
-<meta property="article:published_time" content="2020-10-13T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-10-13T00:00:00+00:00" />
+<meta property="og:url" content="https://saisyam.com/understanding-dockers-and-containers/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-10-13T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-10-13T00:00:00&#43;00:00" />
 
-<meta name="twitter:card" content="summary"/>
+ 
+  <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Understanding Dockers and Containers"/>
 <meta name="twitter:description" content="Dockers and containers are the building blocks for Cloud native development. Docker enables developers to build, run and ship applications that can be virtually run on any Operating System (OS). A running instance of a docker is called Container."/>
 
-
+  
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
@@ -30,142 +31,77 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-<meta name="generator" content="Hugo 0.79.0" />
-    
-
-  <link rel="stylesheet" href="https://saisyam.com/css/normalize.min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/fontawesome/css/all.min.css" />
-  
-  
-    
-    <link rel="stylesheet" href="https://saisyam.com/css/fonts.css" />
-  
-  
-  <link rel="stylesheet" type="text/css" href="https://saisyam.com/css/styles.css" /><style>
+  <link rel="stylesheet" href="https://saisyam.com/css/pure-min.css" />
+  <link rel="stylesheet" href="https://saisyam.com/css/grids-responsive-min.css" />
+  <link rel="stylesheet" href="https://saisyam.com/css/style.css" />
+  <style>
     #toc::before {
         content: "Table of Contents";
         font-weight: bold;
     }
     #toc nav {
       border-bottom: none;
-      padding-bottom: 0.5em;
+      padding-bottom: 0.2em;
       font-family: "Ruda", sans-serif;
     }
 
     #toc nav ul {
-      border: 1px solid #aaa;
-      padding: 1.5em;
+       
+      padding: 1em;
       list-style: decimal;
       display: inline-block;
     }
+    ul.pagination {
+      display: flex;
+      justify-content: center;
+      margin: 1em 0 0;
+      padding: 0.5em 0;
+      list-style: none;
+    }
+  
+    ul.pagination li {
+      padding: 0 1em;
+    }
+    .gist .blob-code-inner{ font-size:20px !important; }
+    .gist .blob-num{ font-size:20px !important; }
   </style>
-<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-<link rel="manifest" href="favicon/site.webmanifest">
-<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
-  <div id="container">
-    <header>
-      <h1>
-                <a href="https://saisyam.com/">Saisyam</a>
-            </h1>
-
-      <ul id="social-media">
-             <li>
-               <a href="https://www.facebook.com/saisyam.dampuri.5667" title="Facebook">
-               <i class="fab fa-facebook fa-lg"></i>
-               </a>
-             </li>
-             <li>
-               <a href="https://github.com/saisyam" title="GitHub">
-               <i class="fab fa-github fa-lg"></i>
-               </a>
-             </li>
-             <li>
-               <a href="https://twitter.com/saisyam1" title="Twitter">
-               <i class="fab fa-twitter fa-lg"></i>
-               </a>
-             </li>
-             <li>
-               <a href="https://linkedin.com/in/saisyam" title="LinkedIn">
-               <i class="fab fa-linkedin fa-lg"></i>
-               </a>
-             </li>
-             <li>
-               <a href="https://www.instagram.com/saisyamdampuri" title="Instagram">
-               <i class="fab fa-instagram fa-lg"></i>
-               </a>
-             </li>
-      </ul>
-      
-      <p><em>Personal Blog</em></p>
-      
-    </header>
-
-    
-<nav>
-    <ul>
+    <div id="layout" class="pure-g">
         
-    </ul>
-</nav>
 
-
-    <main>
-
-
-
-
-<article>
-    <h1>Understanding Dockers and Containers</h1>
-
-    
-      <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2020-10-13T00:00:00Z">Oct 13, 2020</time>
-        </li>
-        
-        
-        <li>
-            Categories:
-            <em>
+  <div class="content pure-u-1 pure-u-md-3-4">
+    <div class="header">
+      <a href="https://saisyam.com/"><h1 class="brand-title">Saisyam</h1></a>
+        <h2 class="brand-tagline">Personal Blog</h2>
+    </div>
+    <div>
+      <div class="posts">
+        <h1 class="content-subhead"></h1>
+        <section class="post">
+            <header class="post-header">
                 
-                    
-                    <a href="https://saisyam.com/categories/cloud">Cloud</a>
-                
-            </em>
-        </li>
-        
 
-        
-        <li>
-            <em>
-                
-                    
-                    <a href="https://saisyam.com/tags/dockers">#Dockers</a>
-                
-                    , 
-                    <a href="https://saisyam.com/tags/containers">#Containers</a>
-                
-            </em>
-        </li>
-        
+                <h2 class="post-title">Understanding Dockers and Containers</h2>
 
-        <li>5 minutes read</li>
-    </ul>
-</aside>
+                <p class="post-meta">
+                  Under
+                  <a class="post-category post-category-0" href="https://saisyam.com/categories/cloud/">Cloud</a>
+                  
+                </p>
+            </header>
 
-    
-
-    
-
-
-    <p>Dockers and containers are the building blocks for Cloud native development. Docker enables developers to build, run and ship applications that can be virtually run on any Operating System (OS). A running instance of a docker is called Container. In this article we will discuss about hardware and OS Virtualization, how docker works, docker workflow and commands to create and run docker.</p>
+            <div class="post-description">
+                <p>
+                  <p>Dockers and containers are the building blocks for Cloud native development. Docker enables developers to build, run and ship applications that can be virtually run on any Operating System (OS). A running instance of a docker is called Container. In this article we will discuss about hardware and OS Virtualization, how docker works, docker workflow and commands to create and run docker.</p>
 <div id="toc">
     <nav id="TableOfContents">
   <ul>
@@ -209,27 +145,10 @@ if (!doNotTrack) {
 </script>
 <h2 id="lets-run-a-nginx-docker">Let&rsquo;s run a Nginx docker</h2>
 <p>In this section we will download and run nginx docker. <a href="https://www.nginx.com/">Nginx</a> is a popular web server that is used in most of the production ready environments. In the process we will learn some basic docker commands.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker run -p 80:80 nginx
-Unable to find image <span style="color:#e6db74">&#39;nginx:latest&#39;</span> locally
-latest: Pulling from library/nginx
-bb79b6b2107f: Pull complete 
-111447d5894d: Pull complete 
-a95689b8e6cb: Pull complete 
-1a0022e444c2: Pull complete 
-32b7488a3833: Pull complete 
-Digest: sha256:ed7f815851b5299f616220a63edac69a4cc200e7f536a56e421988da82e44ed8
-Status: Downloaded newer image <span style="color:#66d9ef">for</span> nginx:latest
-/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
-/docker-entrypoint.sh: Looking <span style="color:#66d9ef">for</span> shell scripts in /docker-entrypoint.d/
-/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
-10-listen-on-ipv6-by-default.sh: Getting the checksum of /etc/nginx/conf.d/default.conf
-10-listen-on-ipv6-by-default.sh: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
-/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
-/docker-entrypoint.sh: Configuration complete; ready <span style="color:#66d9ef">for</span> start up
-172.17.0.1 - - <span style="color:#f92672">[</span>20/Oct/2020:06:45:30 +0000<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> <span style="color:#ae81ff">612</span> <span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#e6db74">&#34;Mozilla/5.0 (X11; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0&#34;</span> <span style="color:#e6db74">&#34;-&#34;</span>
-2020/10/20 06:45:30 <span style="color:#f92672">[</span>error<span style="color:#f92672">]</span> 28#28: *1 open<span style="color:#f92672">()</span> <span style="color:#e6db74">&#34;/usr/share/nginx/html/favicon.ico&#34;</span> failed <span style="color:#f92672">(</span>2: No such file or directory<span style="color:#f92672">)</span>, client: 172.17.0.1, server: localhost, request: <span style="color:#e6db74">&#34;GET /favicon.ico HTTP/1.1&#34;</span>, host: <span style="color:#e6db74">&#34;localhost&#34;</span>, referrer: <span style="color:#e6db74">&#34;http://localhost/&#34;</span>
-172.17.0.1 - - <span style="color:#f92672">[</span>20/Oct/2020:06:45:30 +0000<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET /favicon.ico HTTP/1.1&#34;</span> <span style="color:#ae81ff">404</span> <span style="color:#ae81ff">153</span> <span style="color:#e6db74">&#34;http://localhost/&#34;</span> <span style="color:#e6db74">&#34;Mozilla/5.0 (X11; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0&#34;</span> <span style="color:#e6db74">&#34;-&#34;</span>
-</code></pre></div><p>The above command <code>docker run -p 80:80 nginx</code> will pull <code>nginx</code> from <a href="https://hub.docker.com/_/nginx">docker hub</a> as I don&rsquo;t have it locally and runs it on port 80:80 (local:container). If I go to <code>http://localhost/</code> I will see nginx default html page with <code>Welcome to nginx!</code> message. To kill it, simply press CTRL+C. To run the docker in the background or as daemon we will add <code>-d</code> option to the above command. List of some basic commands below:</p>
+<script type="application/javascript" src="https://gist.github.com/saisyam/73e26c570f472ea4ff4d1576d6208a3f.js"></script>
+
+<p>The above command <code>docker run -p 80:80 nginx</code> will pull <code>nginx</code> from <a href="https://hub.docker.com/_/nginx">docker hub</a> as I don&rsquo;t have it locally and runs it on port 80:80 (local:container). If I go to <code>http://localhost/</code> I will see nginx default html page with <code>Welcome to nginx!</code> message. To kill it, simply press CTRL+C. To run the docker in the background or as daemon we will add <code>-d</code> option to the above command. List of some basic commands below:</p>
+<div class="my-table">
 <table>
 <thead>
 <tr>
@@ -243,7 +162,7 @@ Status: Downloaded newer image <span style="color:#66d9ef">for</span> nginx:late
 <td>Prints all local images</td>
 </tr>
 <tr>
-<td>docker run <!-- raw HTML omitted --></td>
+<td>docker run <image></td>
 <td>Run a docker image</td>
 </tr>
 <tr>
@@ -276,6 +195,7 @@ Status: Downloaded newer image <span style="color:#66d9ef">for</span> nginx:late
 </tr>
 </tbody>
 </table>
+</div>
 <h2 id="docker-workflow">Docker workflow</h2>
 <p>Below diagram shows the docker workflow. I have taken this image from a LinkedIn training.</p>
 <p><img src="https://saisyam.com/assets/images/blog/docker_workflow.jpg" alt="Docker Workflow"></p>
@@ -302,27 +222,12 @@ Status: Downloaded newer image <span style="color:#66d9ef">for</span> nginx:late
 <h2 id="conclusion">Conclusion</h2>
 <p>In this article we learn what is docker and container? We have learnt how to download and run a docker and some basic commands on managing docker images and containers. We have looked into docker workflow. In the coming articles we will see how to create our own docker and publish to docker hub. Thanks for reading.</p>
 
-
-</article>
-
-
-<section class="post-nav">
-    <ul>
-        
-        <li>
-            <a href="https://saisyam.com/sentiment-analysis-using-python-vader/"><i class="fa fa-chevron-circle-left"></i> Sentiment Analysis using Python Vader</a>
-        </li>
-        
-        
-        <li>
-            <a href="https://saisyam.com/what-are-cloud-native-apps/">What are Cloud native apps? <i class="fa fa-chevron-circle-right"></i> </a>
-        </li>
-        
-    </ul>
-</section>
-  
-    
-    
+                </p>
+            </div>
+            <a class="tag" href="https://saisyam.com/tags/containers/">#Containers</a>
+            <a class="tag" href="https://saisyam.com/tags/dockers/">#Dockers</a>
+            
+        </section>
         <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -343,10 +248,34 @@ Status: Downloaded newer image <span style="color:#66d9ef">for</span> nginx:late
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
+      </div>
+      <div class="footer">
+  <div class="pure-menu pure-menu-horizontal">
+      <ul>
+          <li class="pure-menu-item"><a href="https://saisyam.com/about" class="pure-menu-link">About</a></li>
+          <li class="pure-menu-item"><a href="https://in.linkedin.com/in/saisyam" class="pure-menu-link">LinkedIn</a></li>
+          <li class="pure-menu-item"><a href="https://github.com/saisyam" class="pure-menu-link">GitHub</a></li>
+      </ul>
+  </div>
+</div>
+
+
   
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
+
+    </div>
+  </div>
 <script type="application/ld+json">
     
     {
@@ -387,32 +316,7 @@ Status: Downloaded newer image <span style="color:#66d9ef">for</span> nginx:late
     }
     </script>
 
-
-</main>
-    <footer>
-        <h6>Copyright © 2020 - Saisyam |
-            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
-            <a href="https://saisyam.com/index.xml">Subscribe </a></h6>
-    </footer>
-</div>
-<script src="https://saisyam.com/js/scripts.js"></script>
-
-
-  
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-50423294-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
+    </div>
 </body>
-
 </html>
 

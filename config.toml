@@ -2,13 +2,13 @@ baseurl = "https://saisyam.com/"
 title = "Saisyam"
 copyright = "Copyright &copy; 2020 - Saisyam"
 canonifyurls = true
-theme = "kiera"
+theme = "pure"
 logo = "s-logo.jpg"
 publishdir = "docs"
 disableDarkModeCSS = false
 favicon = true
 
-paginate = 5
+paginate = 10
 
 summaryLength = 30
 enableEmoji = true
@@ -47,6 +47,11 @@ googleAnalytics = "UA-50423294-1"
     #katex = true #Enable display of mathematics using katex (Faster LaTeX rendering)
     #google_fonts = ["Staatliches"] # Adds additional google fonts
     #disableDarkModeCSS = false # disables css style for users using dark-mode
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 
 # uncomment to enable the Tags link on the main toolbar
 #  [[menu.main]]

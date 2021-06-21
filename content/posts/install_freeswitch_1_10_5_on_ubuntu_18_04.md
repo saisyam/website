@@ -29,100 +29,60 @@ FreeSWITCH recommends Debian as their installation platform as most of the devel
 ## Setup Ubuntu 18.04 server
 I use Virtualbox to create an Ubuntu 18.04 server with 30GB of hard disk space and 4GB of RAM. You can build the same or use a desktop or laptop running Ubuntu 18.04. If you want more information on how to install Ubuntu on Virtualbox refer to this [article](https://hibbard.eu/install-ubuntu-virtual-box/).
 
-Once you have server up and running, `ssh` into that machine and run the following command to update the server.
-```shell
-$ sudo apt -y update
-```
 {{< adsense >}}
 
 ## Install dependent packages to compile FreeSWITCH
-We need some dependent packages to compile FreeSWITCH code. FreeSWITCH is built on C/C++. Let's install the packages on Ubuntu server using its package manager:
+We need some dependent packages to compile FreeSWITCH code. FreeSWITCH is built on C/C++. Let's install the packages on Ubuntu server using its package manager by `ssh` into the server:
 
-```shell
-$ sudo apt-get install -y curl git gnupg wget subversion build-essential autoconf automake libtool libncurses5 libncurses5-dev make libjpeg-dev libtool libtool-bin libsqlite3-dev libpcre3-dev libspeexdsp-dev libldns-dev libedit-dev yasm liblua5.2-dev libopus-dev cmake
-```
+{{< gist saisyam 4645728303643074df1b0dc8a9a06075 >}}
+
 FreeSWITCH comes with lots of modules. For example, it has support for MySQL, MongoDB, PostgreSQL etc. Most of the deployments use only one database and want to disable the other. So, they don't install dependent packages of the modules which they don't need. But in our case we install FreeSWITCH with default modules enabled. Below is the list of additional packages we need:
 
-```shell
-$ sudo apt-get install -y libcurl4-openssl-dev libexpat1-dev libgnutls28-dev libtiff5-dev libx11-dev unixodbc-dev libssl-dev python-dev zlib1g-dev libasound2-dev libogg-dev libvorbis-dev libperl-dev libgdbm-dev libdb-dev libpq-dev uuid-dev libsndfile1-dev libavformat-dev libswscale-dev
-```
+{{< gist saisyam b6c3ccc07f962dd78adaa16617d7e791 >}}
+
 We have compile and build `libks`
-```shell
-$ git clone https://github.com/signalwire/libks.git
-$ cd libks
-$ cmake .
-$ make
-$ sudo make install
-$ sudo ldconfig
-```
+{{< gist saisyam 1d11794d04ec8758ad76bca45731f55a >}}
 
 ## Compile and build SpanDSP and sofia-sip
 According to [FreeSWITCH 1.10.x release notes](https://freeswitch.org/confluence/display/freeswitch/freeswitch+1.10.x+Release+notes) SpanDSP and sofia-sip packages are removed from build. We need to compile and build them separately. 
 
 Execute the below commands to build sofia-sip:
-```shell
-$ git clone https://github.com/freeswitch/sofia-sip.git
-$ cd sofia-sip
-$ ./bootstrap.sh -j
-$ ./configure
-$ make
-$ sudo make install
-$ sudo ldconfig
-```
+
+{{< gist saisyam 66b85e46f6bc4d74626653d5ce45e517 >}}
+
 {{< adsense >}}
 
 Execute the below commands to build SpanDSP:
 
-```shell
-$ git clone https://github.com/freeswitch/spandsp.git
-$ cd spandsp
-$ ./bootstrap.sh -j
-$ ./configure
-$ make
-$ sudo make install
-$ sudo ldconfig
-```
+{{< gist saisyam eb027f2eb2c22964e63f5997b0970715 >}}
 
 ## Download FreeSWITCH source, build and install
 We can download the FreeSWITCH release source code from [Github releases](https://github.com/signalwire/freeswitch/releases). Execute the following commands to download, build and install FreeSWITCH:
 
-```shell
-$ wget -q https://github.com/signalwire/freeswitch/archive/v1.10.5.tar.gz
-$ tar xf v1.10.5.tar.gz && cd freeswitch-1.10.5
-$ ./bootstrap.sh -j
-$ ./configure
-```
+{{< gist saisyam 1cbbad55531083df0e9298e07991b0e3 >}}
+
 Once `configure` is successfully completed, `modules.conf` file is created in `freeswitch-1.10.5` folder. You can comment out unnecessary modules in `modules.conf` file so that FreeSWITCH will not build those modules. As of now we will comment out only one module, `mod_signalwire`.
 
-```shell
-$ sed -i -e 's+^applications/mod_signalwire$+#applications/mod_signalwire+' ./modules.conf
-```
+{{< gist saisyam 9b87e7397d759e8bd7905725759cf5a4 >}}
+
 Let's start the build:
 
-```shell
-$ make
-$ sudo make install
-$ sudo ldconfig
-```
+{{< gist saisyam 6fe24666da6657f541631836d07a9fb6 >}}
+
 After successful installation we need to install default sounds and voice files.
 
-```shell
-$ sudo make -j -- cd-sounds-install cd-moh-install
-```
+{{< gist saisyam 39fbce99820e20dde5f88d59acc93ce6 >}}
+
 FreeSWITCH is installed at `/usr/local/freeswitch` and the binaries are available at `/usr/local/freeswitch/bin` folder.
 
 Now you can run FreeSWITCH using:
 
-```shell
-$ cd /usr/local/freeswitch/bin
-$ sudo ./freeswitch -nonat
-```
+{{< gist saisyam 1a9461603d4db2124b695631ee0ef744 >}}
+
 [`fs_cli`](https://freeswitch.org/confluence/pages/viewpage.action?pageId=1048948) is a FreeSWITCH command-line interface that allows a user to connect to running FreeSWITCH instance. Open the other terminal and run:
 
-```shell
-$ cd  /usr/local/freeswitch/bin
-$ sudo ./fs_cli
-```
+{{< gist saisyam 3732302e5ea5e46acf01dc506c4cb3fd >}}
+
 {{< adsense >}}
 
 ## Make FreeSWITCH to run as a service
@@ -130,65 +90,20 @@ By default FreeSWITCH will not be installed as a service in Ubuntu. Let's make i
 
 Add new group and user with less privileges to run FreeSWITCH service.
 
-```shell
-$ cd /usr/local
-$ sudo groupadd freeswitch
-$ sudo adduser --disabled-password  --quiet --system --home /usr/local/freeswitch --gecos "FreeSWITCH Voice Platform" --ingroup freeswitch freeswitch
-$ sudo chown -R freeswitch:freeswitch /usr/local/freeswitch/
-$ sudo chmod -R ug=rwX,o= /usr/local/freeswitch/
-$ sudo chmod -R u=rwx,g=rx /usr/local/freeswitch/bin/
-```
+{{< gist saisyam 1a2d59c43a2a05dff6741e702beab12f >}}
 
 We need to add FreeSwitch as a `systemd` unit file. Open new file `/etc/systemd/system/freeswitch.service` using `vim` editor paste the below content:
-```shell
-[Unit]
-Description=freeswitch
-Wants=network-online.target
-Requires=syslog.socket network.target local-fs.target
-After=syslog.socket network.target network-online.target local-fs.target
 
-[Service]
-Type=forking
-Environment="DAEMON_OPTS=-nonat"
-EnvironmentFile=-/etc/default/freeswitch
-ExecStartPre=/bin/chown -R freeswitch:freeswitch /usr/local/freeswitch
-ExecStart=/usr/local/freeswitch/bin/freeswitch -u freeswitch -g freeswitch -ncwait $DAEMON_OPTS
-TimeoutSec=45s
-Restart=always
-RestartSec=90
-StartLimitInterval=0
-StartLimitBurst=6
-
-User=root
-Group=daemon
-LimitCORE=infinity
-LimitNOFILE=100000
-LimitNPROC=60000
-LimitSTACK=250000
-LimitRTPRIO=infinity
-LimitRTTIME=infinity
-IOSchedulingClass=realtime
-IOSchedulingPriority=2
-CPUSchedulingPolicy=rr
-CPUSchedulingPriority=89
-UMask=0007
-NoNewPrivileges=false
-
-[Install]
-WantedBy=multi-user.target
-```
+{{< gist saisyam e6af8d064dd004c6e66f6d9f2451a59f >}}
 
 Start FreeSWITCH service and enable it on system startup
-```shell
-$ sudo chmod ugo+x freeswitch.service
-$ sudo systemctl start freeswitch.service
-$ sudo systemctl enable freeswitch.service
-```
+
+{{< gist saisyam 89926f2c6e6d352633175aedd79761ed >}}
 
 Now check status of FreeSWITCH service
-```shell
-$ sudo systemctl status freeswitch.service
-```
+
+{{< gist saisyam adc4bb8000ff5befcd99d5bca0783671 >}}
+
 ![Freeswitch Service](../freeswitch_service.jpg)
 
 {{< adsense >}}

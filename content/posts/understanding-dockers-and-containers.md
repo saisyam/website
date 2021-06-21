@@ -35,31 +35,11 @@ Docker is a layered binary file with all the necessary ingredients to run an app
 ## Let's run a Nginx docker
 In this section we will download and run nginx docker. [Nginx](https://www.nginx.com/) is a popular web server that is used in most of the production ready environments. In the process we will learn some basic docker commands.
 
-```shell
-$ docker run -p 80:80 nginx
-Unable to find image 'nginx:latest' locally
-latest: Pulling from library/nginx
-bb79b6b2107f: Pull complete 
-111447d5894d: Pull complete 
-a95689b8e6cb: Pull complete 
-1a0022e444c2: Pull complete 
-32b7488a3833: Pull complete 
-Digest: sha256:ed7f815851b5299f616220a63edac69a4cc200e7f536a56e421988da82e44ed8
-Status: Downloaded newer image for nginx:latest
-/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
-/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
-/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
-10-listen-on-ipv6-by-default.sh: Getting the checksum of /etc/nginx/conf.d/default.conf
-10-listen-on-ipv6-by-default.sh: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
-/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
-/docker-entrypoint.sh: Configuration complete; ready for start up
-172.17.0.1 - - [20/Oct/2020:06:45:30 +0000] "GET / HTTP/1.1" 200 612 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0" "-"
-2020/10/20 06:45:30 [error] 28#28: *1 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.17.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
-172.17.0.1 - - [20/Oct/2020:06:45:30 +0000] "GET /favicon.ico HTTP/1.1" 404 153 "http://localhost/" "Mozilla/5.0 (X11; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0" "-"
-```
+{{< gist saisyam 73e26c570f472ea4ff4d1576d6208a3f >}}
 
 The above command `docker run -p 80:80 nginx` will pull `nginx` from [docker hub](https://hub.docker.com/_/nginx) as I don't have it locally and runs it on port 80:80 (local:container). If I go to `http://localhost/` I will see nginx default html page with `Welcome to nginx!` message. To kill it, simply press CTRL+C. To run the docker in the background or as daemon we will add `-d` option to the above command. List of some basic commands below:
 
+<div class="my-table">
 
 | Command                                         | Action                                         |
 |-------------------------------------------------|----------------------|
@@ -72,7 +52,7 @@ The above command `docker run -p 80:80 nginx` will pull `nginx` from [docker hub
 | docker ps --all                                 | Displays all containers including idle ones |
 | docker kill &lt;container-id&gt;                      | Kill (force kill) the running docker image with the container id|
 | docker rm &lt;container-id&gt;                        | Remove the container |
-
+</div>
 
 ## Docker workflow
 Below diagram shows the docker workflow. I have taken this image from a LinkedIn training.

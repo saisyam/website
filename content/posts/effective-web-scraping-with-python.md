@@ -35,14 +35,9 @@ It's easy to write scrapers in Python. Python has a rich set of tools or package
 {{< gist saisyam 7d19d9c6247194e9130e578e08be6336 >}}
 
 The above code uses `Beautifulsoup` package. The response of the above function is:
-```python
-{
-	'title': 'Sample HTML page',
-	'heading': 'Scraping with Python',
-	'summary': 'This article explains how web scraping is done in Python and the packages required.',
-	'author': 'By Saisyam'
-}
-```
+
+{{< gist saisyam e62bc0ff7ce7a817034140ed667017c9 >}}
+
 {{< adsense >}}
 
 ## Challenges while scraping
