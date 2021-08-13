@@ -1,0 +1,14 @@
+{{ partial "header" . }}
+{{ if $.IsNode }}
+    <body class="home-template">
+{{ else }}
+    <body class="post-template">
+{{ end }} 
+    {{ partial "topheader" . }}
+    <main class="main">
+        {{ block "main" . }}
+        {{ end }}
+    </main>
+    {{ partial "footer" . }}
+</body>
+</html>

@@ -2,13 +2,13 @@ baseurl = "https://saisyam.com/"
 title = "Saisyam"
 copyright = "Copyright &copy; 2020 - Saisyam"
 canonifyurls = true
-theme = "pure"
+theme = "rasa"
 logo = "s-logo.jpg"
 publishdir = "docs"
 disableDarkModeCSS = false
 favicon = true
 
-paginate = 10
+paginate = 5
 
 summaryLength = 30
 enableEmoji = true

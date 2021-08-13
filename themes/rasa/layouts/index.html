@@ -1,0 +1,68 @@
+{{ define "main" }}
+<div class="container wrapper">
+  <section class="main-content">
+    <div class="grid">
+      <div class="col-xs-12 col-md-8">
+        {{ $pages := where site.RegularPages "Type" "posts" }}
+        {{ $paginator := .Paginate $pages }}
+        {{ range $index, $page := $paginator.Pages }}
+        {{ if not (modBool $index 2) }}
+        <div class="post-card">
+          <div class="post-card__image">
+            <a class="lazyload loaded" href="{{ $page.Permalink }}" title="{{ .Title }}"
+              style="background-image: url('{{ .Params.image }}');">
+            </a>
+          </div>
+          <div class="post-card__content">
+            <h2 class="post-card__title">
+              <a href="{{ $page.Permalink }}">{{ .Title }}</a>
+            </h2>
+            <p>{{ .Summary }}</p>
+          </div>
+        </div>
+        {{ else }}
+        <div class="post-card reverse">
+          <div class="post-card__image">
+            <a class="lazyload loaded" href="{{ $page.Permalink }}" title="{{ .Title }}"
+              style="background-image: url('{{ .Params.image }}');">
+            </a>
+          </div>
+          <div class="post-card__content">
+            <h2 class="post-card__title">
+              <a href="{{ $page.Permalink }}">{{ .Title }}</a>
+            </h2>
+            <p>{{ .Summary }}</p>
+          </div>
+        </div>
+        {{ end }}
+        {{ end }}
+        {{ template "_internal/pagination.html" . }}
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <div class="sidebar">
+          <div class="sidebar__section">
+            <h5 class="sidebar__title">Sponsors</h5>
+            <script async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0206245742790279"
+              crossorigin="anonymous"></script>
+            <!-- vertical_ad -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0206245742790279"
+              data-ad-slot="3209664571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+          <div class="sidebar__section tag-cloud">
+            <h5 class="sidebar__title">Tag Cloud</h5>
+            <div class="tag-cloud">
+              {{range $name, $taxonomy := .Site.Taxonomies.tags}}
+              <a class="tags" href="/tags/{{ $name }}">{{ $name }}</a>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{{ end }}

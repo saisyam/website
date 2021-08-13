@@ -6,6 +6,7 @@ tags:
   - Dockers
   - Containers
 date: 2020-10-13
+image: /dockers_containers.jpg
 ---
 
 Dockers and containers are the building blocks for Cloud native development. Docker enables developers to build, run and ship applications that can be virtually run on any Operating System (OS). A running instance of a docker is called Container. In this article we will discuss about hardware and OS Virtualization, how docker works, docker workflow and commands to create and run docker.

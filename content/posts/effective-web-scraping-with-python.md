@@ -10,8 +10,7 @@ tags:
   - Proxies
   - Webdriver
 date: 2021-01-10
-images:
-  - ../webscraping.jpg
+image: /webscraping.jpg
 ---
 
 Web scraping is a process of automatically extracting information from websites. Web scrapers are small programs written to crawl and extract specific information from a webpage. For example, getting latest news items from news websites like BBC, CNN etc.
@@ -25,18 +24,51 @@ There are millions of websites on the Internet which have information on differe
 
 Scrapers parse the HTML elements of the page using tags, ids, class names etc to get the required content from the page. Consider the following simple HTML page:
 
-{{< gist saisyam 9d13a4e0c16de8326b491bd89a77c963 >}}
+```html
+<html>
+  <head>
+    <title>Sample HTML page</title>
+  </head>
+  <div id="main">
+    <h1>Scraping with Python</h1>
+    <p class="summary">This article explains how web scraping is done in Python and the packages required.</p>
+    <p>By Saisyam</p>
+  </div>
+</html>
+```
 
 The above HTML snippet contains tags like, `title`, `div`, `h1`, and `p`. We can extract the `div` element with `id=main` and then extract text between `h1` and `p` tags under the `div` element. We can identify specific tags using `id` or `class` or any other attributes.
 
 ## Scraping with Python
 It's easy to write scrapers in Python. Python has a rich set of tools or packages to perform scraping effectively. The below code snippet parses the above HTML and extracts the information required:
 
-{{< gist saisyam 7d19d9c6247194e9130e578e08be6336 >}}
+```python
+def scrape():
+    soup = BeautifulSoup(html, 'html5lib')
+    title = soup.find('title').get_text()
+    div = soup.find('div', {'id':'main'})
+    heading = div.find('h1').get_text()
+    summary = div.find('p',{'class':'summary'}).get_text()
+    ptags = div.find_all('p')
+    author = ptags[1].get_text()
+    return {
+        'title': title,
+        'heading': heading,
+        'summary': summary,
+        'author': author
+    }
+```
 
 The above code uses `Beautifulsoup` package. The response of the above function is:
 
-{{< gist saisyam e62bc0ff7ce7a817034140ed667017c9 >}}
+```python
+{
+	"title": "Sample HTML page",
+	"heading": "Scraping with Python",
+	"summary": "This article explains how web scraping is done in Python and the packages required.",
+	"author": "By Saisyam"
+}
+```
 
 {{< adsense >}}
 
@@ -64,13 +96,26 @@ If you don't want to deal with all the mess and do just parsing the content, use
 ## Using proxies for IP rotation
 You can tell `requests` API to use proxies to fetch html.
 
-{{< gist saisyam 12410ff3c8c027cf0b58c903bff0d5a8 >}}
+```python
+proxies = {
+    "http":"191.96.16.209:3129"
+}
+resp = requests.get(url, proxies=proxies)
+```
 
 Your request will go through the proxy address provided. Use HTTP proxies to skip SSL verification step which happens in case of HTTPS proxies.
 
 In a similar way, we can use proxies with Splinter as well. We use Chrome browser here.
 
-{{< gist saisyam 7b8b7f4954086ae581a59b31731ec38f >}}
+```python
+proxy = "191.96.16.209:3129"
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--proxy-server=%s' % proxy)
+browser = Browser('chrome', options=chrome_options)
+browser.visit(url)
+html = browser.html
+```
 
 If one IP gets blocked, you can get an another one and continue scraping.
 

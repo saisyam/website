@@ -8,6 +8,7 @@ tags:
   - ffmpeg
   - Fake webcam
 date: 2020-06-07
+image: /webcam_testing.jpg
 ---
 
 We automate web application testing using Python Selenium or Splinter. How will you automate testing applications with webcam? You can fake a webcam device with Chrome Web driver. In this article we will see how to do that.
@@ -29,7 +30,13 @@ Once you have the Y4M file you can follow the below mentioned steps to fake the 
 
 We will set `webdriver.ChromeOptions` to enable media stream using a fake device.
 
-{% gist 98aa0345e2a470b39d754b35b7910596 %}
+```python
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--use-fake-device-for-media-stream")
+chrome_options.add_argument("--use-file-for-fake-video-capture=./salma_hayek.y4m")
+chrome_options.add_experimental_option("prefs", {
+    "profile.default_content_setting_values.media_stream_camera": 1
+```
 
 {{< adsense >}}
 
