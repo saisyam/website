@@ -10,14 +10,12 @@
   <meta property="og:title" content="Effective Web Scraping with Python" />
 <meta property="og:description" content="Web scraping is a process of automatically extracting information from websites. Web scrapers are small programs written to crawl and extract specific information from a webpage. For example, getting latest news items from news websites like BBC, CNN etc." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://saisyam.com/effective-web-scraping-with-python/" /><meta property="og:image" content="https://saisyam.com/webscraping.jpg" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-01-10T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-01-10T00:00:00&#43;00:00" />
+<meta property="og:url" content="https://saisyam.com/effective-web-scraping-with-python/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-10T00:00:00+00:00" />
 
  
-  <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://saisyam.com/webscraping.jpg"/>
-
+  <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Effective Web Scraping with Python"/>
 <meta name="twitter:description" content="Web scraping is a process of automatically extracting information from websites. Web scrapers are small programs written to crawl and extract specific information from a webpage. For example, getting latest news items from news websites like BBC, CNN etc."/>
 
@@ -33,9 +31,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-  <link rel="stylesheet" href="https://saisyam.com/css/pure-min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/css/grids-responsive-min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/css/style.css" />
+  <link rel="stylesheet" href="https://saisyam.com/css/app.min.css" />
   <style>
     #toc::before {
         content: "Table of Contents";
@@ -64,8 +60,13 @@ if (!doNotTrack) {
     ul.pagination li {
       padding: 0 1em;
     }
-    .gist .blob-code-inner{ font-size:20px !important; }
-    .gist .blob-num{ font-size:20px !important; }
+    .gist .blob-code-inner{ font-size:13px !important; }
+    .gist .blob-num{ font-size:13px !important; }
+
+    .highlight pre code{
+      color: #fff;
+      text-shadow: none;
+    }
   </style>
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -76,34 +77,80 @@ if (!doNotTrack) {
   <meta name="theme-color" content="#ffffff">
 </head>
 
-<body>
-    <div id="layout" class="pure-g">
-        
 
-  <div class="content pure-u-1 pure-u-md-3-4">
-    <div class="header">
-      <a href="https://saisyam.com/"><h1 class="brand-title">Saisyam</h1></a>
-        <h2 class="brand-tagline">Personal Blog</h2>
+    <body class="post-template">
+ 
+    <header class="header">
+  <div class="header-top">
+    <a href="https://saisyam.com">
+      <h1 class="header-top__title">
+        <img class="lazyload header-top__logo initial loaded" src="https://saisyam.com/saisyam.png" data-src="saisyam.png"
+          alt="Saisyam's Personal Website" data-was-processed="true">
+      </h1>
+    </a>
+  </div>
+
+  <div class="header-main">
+    <div class="container wrapper">
+      <div class="grid">
+        <label for="menu--toggle" class="header-main__menu--toggle col-xs left">
+          <i class="icon icon-menu icon--large">
+            <svg class="icon__svg">
+              <use xlink:href="#icon-menu">
+                <symbol id="icon-menu" viewBox="0 0 24 24">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </symbol>
+              </use>
+            </svg>
+          </i>
+        </label>
+        <input type="checkbox" id="menu--toggle" title="Menu" class="is-hidden">
+
+        <nav class="header-main__menu nav col-sm top">
+          <ul>
+            <li>
+              <a href="https://saisyam.com">Home</a>
+            </li>
+            <li>
+              <a href="https://github.com/saisyam" target="_blank">Github</a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
     </div>
-    <div>
-      <div class="posts">
-        <h1 class="content-subhead"></h1>
-        <section class="post">
-            <header class="post-header">
-                
-
-                <h2 class="post-title">Effective Web Scraping with Python</h2>
-
-                <p class="post-meta">
-                  Under
-                  <a class="post-category post-category-0" href="https://saisyam.com/categories/python/">Python</a>
-                  
-                </p>
-            </header>
-
-            <div class="post-description">
-                <p>
-                  <p>Web scraping is a process of automatically extracting information from websites. Web scrapers are small programs written to crawl and extract specific information from a webpage. For example, getting latest news items from news websites like BBC, CNN etc.</p>
+  </div>
+</header>
+    <main class="main">
+        
+<div class="post">
+  <div class="container wrapper">
+    <div class="post-header">
+      <h1 class="post-header__title">Effective Web Scraping with Python</h1>
+      <div class="post-header__info">
+        <div class="post-header__author">
+          <a href="#">Saisyam</a>
+        </div>
+        <time class="post-header__date" datetime=" 2021-01-10">2021-01-10</time>
+        <div class="post-header__read-time">5 min read</div>
+      </div>
+    </div>
+  </div>
+  <div id="content" class="container wrapper">
+    <div class="grid">
+      <article class="col-xs-12 col-md-8">
+        <div class="post-content">
+          <img class="post-img lazyload initial loaded is-in-view" src="https://saisyam.com/webscraping.jpg" />
+          <div class="post-content__inner">
+            <p>Web scraping is a process of automatically extracting information from websites. Web scrapers are small programs written to crawl and extract specific information from a webpage. For example, getting latest news items from news websites like BBC, CNN etc.</p>
 <div id="toc">
     <nav id="TableOfContents">
   <ul>
@@ -130,17 +177,41 @@ if (!doNotTrack) {
 <h2 id="why-scraping">Why Scraping?</h2>
 <p>There are millions of websites on the Internet which have information on different topics. For example, news, travel, food, finance, business, tech, entertainment, to name a few. All these websites don&rsquo;t have a proper way (APIs or feeds) of sharing data. So, we need scrape such websites to extract the information.</p>
 <p>Scrapers parse the HTML elements of the page using tags, ids, class names etc to get the required content from the page. Consider the following simple HTML page:</p>
-<script type="application/javascript" src="https://gist.github.com/saisyam/9d13a4e0c16de8326b491bd89a77c963.js"></script>
-
-<p>The above HTML snippet contains tags like, <code>title</code>, <code>div</code>, <code>h1</code>, and <code>p</code>. We can extract the <code>div</code> element with <code>id=main</code> and then extract text between <code>h1</code> and <code>p</code> tags under the <code>div</code> element. We can identify specific tags using <code>id</code> or <code>class</code> or any other attributes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">html</span>&gt;
+  &lt;<span style="color:#f92672">head</span>&gt;
+    &lt;<span style="color:#f92672">title</span>&gt;Sample HTML page&lt;/<span style="color:#f92672">title</span>&gt;
+  &lt;/<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main&#34;</span>&gt;
+    &lt;<span style="color:#f92672">h1</span>&gt;Scraping with Python&lt;/<span style="color:#f92672">h1</span>&gt;
+    &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;summary&#34;</span>&gt;This article explains how web scraping is done in Python and the packages required.&lt;/<span style="color:#f92672">p</span>&gt;
+    &lt;<span style="color:#f92672">p</span>&gt;By Saisyam&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;/<span style="color:#f92672">div</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><p>The above HTML snippet contains tags like, <code>title</code>, <code>div</code>, <code>h1</code>, and <code>p</code>. We can extract the <code>div</code> element with <code>id=main</code> and then extract text between <code>h1</code> and <code>p</code> tags under the <code>div</code> element. We can identify specific tags using <code>id</code> or <code>class</code> or any other attributes.</p>
 <h2 id="scraping-with-python">Scraping with Python</h2>
 <p>It&rsquo;s easy to write scrapers in Python. Python has a rich set of tools or packages to perform scraping effectively. The below code snippet parses the above HTML and extracts the information required:</p>
-<script type="application/javascript" src="https://gist.github.com/saisyam/7d19d9c6247194e9130e578e08be6336.js"></script>
-
-<p>The above code uses <code>Beautifulsoup</code> package. The response of the above function is:</p>
-<script type="application/javascript" src="https://gist.github.com/saisyam/e62bc0ff7ce7a817034140ed667017c9.js"></script>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scrape</span>():
+    soup <span style="color:#f92672">=</span> BeautifulSoup(html, <span style="color:#e6db74">&#39;html5lib&#39;</span>)
+    title <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;title&#39;</span>)<span style="color:#f92672">.</span>get_text()
+    div <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;div&#39;</span>, {<span style="color:#e6db74">&#39;id&#39;</span>:<span style="color:#e6db74">&#39;main&#39;</span>})
+    heading <span style="color:#f92672">=</span> div<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;h1&#39;</span>)<span style="color:#f92672">.</span>get_text()
+    summary <span style="color:#f92672">=</span> div<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;p&#39;</span>,{<span style="color:#e6db74">&#39;class&#39;</span>:<span style="color:#e6db74">&#39;summary&#39;</span>})<span style="color:#f92672">.</span>get_text()
+    ptags <span style="color:#f92672">=</span> div<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;p&#39;</span>)
+    author <span style="color:#f92672">=</span> ptags[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>get_text()
+    <span style="color:#66d9ef">return</span> {
+        <span style="color:#e6db74">&#39;title&#39;</span>: title,
+        <span style="color:#e6db74">&#39;heading&#39;</span>: heading,
+        <span style="color:#e6db74">&#39;summary&#39;</span>: summary,
+        <span style="color:#e6db74">&#39;author&#39;</span>: author
+    }
+</code></pre></div><p>The above code uses <code>Beautifulsoup</code> package. The response of the above function is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">{
+	<span style="color:#e6db74">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;Sample HTML page&#34;</span>,
+	<span style="color:#e6db74">&#34;heading&#34;</span>: <span style="color:#e6db74">&#34;Scraping with Python&#34;</span>,
+	<span style="color:#e6db74">&#34;summary&#34;</span>: <span style="color:#e6db74">&#34;This article explains how web scraping is done in Python and the packages required.&#34;</span>,
+	<span style="color:#e6db74">&#34;author&#34;</span>: <span style="color:#e6db74">&#34;By Saisyam&#34;</span>
+}
+</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"
@@ -173,13 +244,20 @@ if (!doNotTrack) {
 <p>If you don&rsquo;t want to deal with all the mess and do just parsing the content, use <a href="https://www.scraperapi.com/">ScraperAPI</a>. It is a proxy API for web scraping. Scraper API handles proxies, browsers, and CAPTCHAs, so you can get the HTML from any web page with a simple API call!. Check out <a href="https://www.scrapingbee.com/">ScrapingBee</a> as well.</p>
 <h2 id="using-proxies-for-ip-rotation">Using proxies for IP rotation</h2>
 <p>You can tell <code>requests</code> API to use proxies to fetch html.</p>
-<script type="application/javascript" src="https://gist.github.com/saisyam/12410ff3c8c027cf0b58c903bff0d5a8.js"></script>
-
-<p>Your request will go through the proxy address provided. Use HTTP proxies to skip SSL verification step which happens in case of HTTPS proxies.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">proxies <span style="color:#f92672">=</span> {
+    <span style="color:#e6db74">&#34;http&#34;</span>:<span style="color:#e6db74">&#34;191.96.16.209:3129&#34;</span>
+}
+resp <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url, proxies<span style="color:#f92672">=</span>proxies)
+</code></pre></div><p>Your request will go through the proxy address provided. Use HTTP proxies to skip SSL verification step which happens in case of HTTPS proxies.</p>
 <p>In a similar way, we can use proxies with Splinter as well. We use Chrome browser here.</p>
-<script type="application/javascript" src="https://gist.github.com/saisyam/7b8b7f4954086ae581a59b31731ec38f.js"></script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">proxy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;191.96.16.209:3129&#34;</span>
 
-<p>If one IP gets blocked, you can get an another one and continue scraping.</p>
+chrome_options <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>ChromeOptions()
+chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--proxy-server=</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> proxy)
+browser <span style="color:#f92672">=</span> Browser(<span style="color:#e6db74">&#39;chrome&#39;</span>, options<span style="color:#f92672">=</span>chrome_options)
+browser<span style="color:#f92672">.</span>visit(url)
+html <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>html
+</code></pre></div><p>If one IP gets blocked, you can get an another one and continue scraping.</p>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
@@ -193,64 +271,30 @@ if (!doNotTrack) {
 <h2 id="conclusion">Conclusion</h2>
 <p>In this article we learnt what is scraping and why it is required. We have explored few packages in Python to do scraping and identified challenges in scraping along with few solutions to overcome those challenges. For more information on scraping visit my <a href="https://github.com/saisyam/scrapers">Scrapers</a> repository on Github. Happy scraping!</p>
 
-                </p>
-            </div>
-            <a class="tag" href="https://saisyam.com/tags/beautifulsoup/">#BeautifulSoup</a>
-            <a class="tag" href="https://saisyam.com/tags/proxies/">#Proxies</a>
-            <a class="tag" href="https://saisyam.com/tags/requests/">#Requests</a>
-            <a class="tag" href="https://saisyam.com/tags/splinter/">#Splinter</a>
-            <a class="tag" href="https://saisyam.com/tags/web-scraping/">#Web Scraping</a>
-            <a class="tag" href="https://saisyam.com/tags/webdriver/">#Webdriver</a>
+          </div>
+        </div>
+      </article>
+      <aside class="col-xs-12 col-md-4">
+
+        <div class="sidebar">
+
+          <div class="sidebar__section">  
+            <h5 class="sidebar__title">Sponsors</h5>
+            <script async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0206245742790279"
+              crossorigin="anonymous"></script>
             
-        </section>
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "saisyam-1" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </div>
-      <div class="footer">
-  <div class="pure-menu pure-menu-horizontal">
-      <ul>
-          <li class="pure-menu-item"><a href="https://saisyam.com/about" class="pure-menu-link">About</a></li>
-          <li class="pure-menu-item"><a href="https://in.linkedin.com/in/saisyam" class="pure-menu-link">LinkedIn</a></li>
-          <li class="pure-menu-item"><a href="https://github.com/saisyam" class="pure-menu-link">GitHub</a></li>
-      </ul>
-  </div>
-</div>
-
-
-  
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-50423294-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0206245742790279"
+              data-ad-slot="3209664571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
+</div>
 <script type="application/ld+json">
     
     {
@@ -291,7 +335,33 @@ if (!doNotTrack) {
     }
     </script>
 
+    </main>
+    <footer class="footer">
+  <div class="container wrapper">
+    <div class="footer__bottom">
+      <div class="grid">
+        <div class="col-lg center-lg">
+          <li>© Saisyam - 2021</li>
+        </div>
+      </div>
     </div>
+  </div>
+</footer>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
 </body>
 </html>
-

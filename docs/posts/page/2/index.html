@@ -3,21 +3,21 @@
 <html lang="en">
 
 <head>
-  <title> - Saisyam</title>
   <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Saisyam&#39;s personal blog for technical articles" />
-<meta name="author" content="Saisyam" /><link rel="alternate" type="application/rss+xml+xml" href="https://saisyam.com/posts/index.xml" title="Saisyam" /><meta property="og:title" content="Posts" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Saisyam&#39;s personal blog for technical articles" />
+  <meta name="author" content="Saisyam" />
+  <meta property="og:title" content="Posts" />
 <meta property="og:description" content="Saisyam&#39;s personal blog for technical articles" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://saisyam.com/posts/" />
-<meta property="og:updated_time" content="2021-03-05T00:00:00+00:00" />
 
-<meta name="twitter:card" content="summary"/>
+ 
+  <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content="Saisyam&#39;s personal blog for technical articles"/>
 
-
+  
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
@@ -29,167 +29,273 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-<meta name="generator" content="Hugo 0.79.0" />
-    
-
-  <link rel="stylesheet" href="https://saisyam.com/css/normalize.min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/fontawesome/css/all.min.css" />
-  
-  
-    
-    <link rel="stylesheet" href="https://saisyam.com/css/fonts.css" />
-  
-  
-  <link rel="stylesheet" type="text/css" href="https://saisyam.com/css/styles.css" /><style>
+  <link rel="stylesheet" href="https://saisyam.com/css/app.min.css" />
+  <style>
     #toc::before {
         content: "Table of Contents";
         font-weight: bold;
     }
     #toc nav {
       border-bottom: none;
-      padding-bottom: 0.5em;
+      padding-bottom: 0.2em;
       font-family: "Ruda", sans-serif;
     }
 
     #toc nav ul {
-      border: 1px solid #aaa;
-      padding: 1.5em;
+       
+      padding: 1em;
       list-style: decimal;
       display: inline-block;
     }
+    ul.pagination {
+      display: flex;
+      justify-content: center;
+      margin: 1em 0 0;
+      padding: 0.5em 0;
+      list-style: none;
+    }
+  
+    ul.pagination li {
+      padding: 0 1em;
+    }
+    .gist .blob-code-inner{ font-size:13px !important; }
+    .gist .blob-num{ font-size:13px !important; }
+
+    .highlight pre code{
+      color: #fff;
+      text-shadow: none;
+    }
   </style>
-<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-<link rel="manifest" href="favicon/site.webmanifest">
-<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
-<body>
-  <div id="container">
-    <header>
-      <h1>
-                <a href="https://saisyam.com/">Saisyam</a>
-            </h1>
 
-      <ul id="social-media">
-             <li>
-               <a href="https://www.facebook.com/saisyam.dampuri.5667" title="Facebook">
-               <i class="fab fa-facebook fa-lg"></i>
-               </a>
-             </li>
-             <li>
-               <a href="https://github.com/saisyam" title="GitHub">
-               <i class="fab fa-github fa-lg"></i>
-               </a>
-             </li>
-             <li>
-               <a href="https://twitter.com/saisyam1" title="Twitter">
-               <i class="fab fa-twitter fa-lg"></i>
-               </a>
-             </li>
-             <li>
-               <a href="https://linkedin.com/in/saisyam" title="LinkedIn">
-               <i class="fab fa-linkedin fa-lg"></i>
-               </a>
-             </li>
-             <li>
-               <a href="https://www.instagram.com/saisyamdampuri" title="Instagram">
-               <i class="fab fa-instagram fa-lg"></i>
-               </a>
-             </li>
-      </ul>
-      
-      <p><em>Personal Blog</em></p>
-      
-    </header>
+    <body class="home-template">
+ 
+    <header class="header">
+  <div class="header-top">
+    <a href="https://saisyam.com">
+      <h1 class="header-top__title">
+        <img class="lazyload header-top__logo initial loaded" src="https://saisyam.com/saisyam.png" data-src="saisyam.png"
+          alt="Saisyam's Personal Website" data-was-processed="true">
+      </h1>
+    </a>
+  </div>
 
-    
-<nav>
-    <ul>
+  <div class="header-main">
+    <div class="container wrapper">
+      <div class="grid">
+        <label for="menu--toggle" class="header-main__menu--toggle col-xs left">
+          <i class="icon icon-menu icon--large">
+            <svg class="icon__svg">
+              <use xlink:href="#icon-menu">
+                <symbol id="icon-menu" viewBox="0 0 24 24">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </symbol>
+              </use>
+            </svg>
+          </i>
+        </label>
+        <input type="checkbox" id="menu--toggle" title="Menu" class="is-hidden">
+
+        <nav class="header-main__menu nav col-sm top">
+          <ul>
+            <li>
+              <a href="https://saisyam.com">Home</a>
+            </li>
+            <li>
+              <a href="https://github.com/saisyam" target="_blank">Github</a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+    <main class="main">
         
+<div class="container wrapper">
+  <section class="main-content">
+    <div class="grid">
+      <div class="col-xs-12 col-md-8">
+        
+        
+        
+        
+        <div class="post-card reverse">
+          <div class="post-card__image">
+            <a class="lazyload loaded" href="https://saisyam.com/understanding-dockers-and-containers/" title="Understanding Dockers and Containers"
+              style="background-image: url('/dockers_containers.jpg');">
+            </a>
+          </div>
+          <div class="post-card__content">
+            <h2 class="post-card__title">
+              <a href="https://saisyam.com/understanding-dockers-and-containers/">Understanding Dockers and Containers</a>
+            </h2>
+            <p>Dockers and containers are the building blocks for Cloud native development. Docker enables developers to build, run and ship applications that can be virtually run on any Operating System (OS). A running instance of a docker is called Container.</p>
+          </div>
+        </div>
+        
+        
+        
+        <div class="post-card">
+          <div class="post-card__image">
+            <a class="lazyload loaded" href="https://saisyam.com/sentiment-analysis-using-python-vader/" title="Sentiment Analysis using Python Vader"
+              style="background-image: url('/sentiment_analysis.jpg');">
+            </a>
+          </div>
+          <div class="post-card__content">
+            <h2 class="post-card__title">
+              <a href="https://saisyam.com/sentiment-analysis-using-python-vader/">Sentiment Analysis using Python Vader</a>
+            </h2>
+            <p>Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews.</p>
+          </div>
+        </div>
+        
+        
+        
+        <div class="post-card reverse">
+          <div class="post-card__image">
+            <a class="lazyload loaded" href="https://saisyam.com/proven-way-to-fake-webcam-in-test-automation-with-python/" title="Proven way to Fake Webcam in Test Automation with Python"
+              style="background-image: url('/webcam_testing.jpg');">
+            </a>
+          </div>
+          <div class="post-card__content">
+            <h2 class="post-card__title">
+              <a href="https://saisyam.com/proven-way-to-fake-webcam-in-test-automation-with-python/">Proven way to Fake Webcam in Test Automation with Python</a>
+            </h2>
+            <p>We automate web application testing using Python Selenium or Splinter. How will you automate testing applications with webcam? You can fake a webcam device with Chrome Web driver. In this article we will see how to do that.</p>
+          </div>
+        </div>
+        
+        
+        
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="https://saisyam.com/posts/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="https://saisyam.com/posts/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="https://saisyam.com/posts/" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item active">
+        <a href="#" aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item disabled">
+        <a href="#" aria-disabled="true" aria-label="Next" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a href="#" aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
     </ul>
-</nav>
-
-
-    <main>
-
-
-
-
-<section id="list">
-
-    
-        <h2>Posts</h2>
-    
-
-    
-
-    
-
-    <h3>2020</h3>
-    <ul>
-        
-        <li>
-            <a href="https://saisyam.com/understanding-dockers-and-containers/">Understanding Dockers and Containers</a>
-            <time class="date-meta">Oct 13</time>
-        </li>
-        
-        <li>
-            <a href="https://saisyam.com/sentiment-analysis-using-python-vader/">Sentiment Analysis using Python Vader</a>
-            <time class="date-meta">Sep 26</time>
-        </li>
-        
-        <li>
-            <a href="https://saisyam.com/proven-way-to-fake-webcam-in-test-automation-with-python/">Proven way to Fake Webcam in Test Automation with Python</a>
-            <time class="date-meta">Jun 7</time>
-        </li>
-        
-    </ul>
-
-    
-
-</section>
-
-
-<ul class="pagination">
-  <li class="page-item">
-    <a href="https://saisyam.com/posts/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-  </li>
-  <li class="page-item">
-    <a href="https://saisyam.com/posts/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-  </li>
-  <li class="page-item">
-    <a class="page-link" href="https://saisyam.com/posts/">1</a>
-  </li>
-  <li class="page-item active">
-    <a class="page-link" href="https://saisyam.com/posts/page/2/">2</a>
-  </li>
-  <li class="page-item disabled">
-    <a  class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-  </li>
-  <li class="page-item">
-    <a href="https://saisyam.com/posts/page/2/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-  </li>
-</ul>
-
-
-
-
-
-</main>
-    <footer>
-        <h6>Copyright © 2020 - Saisyam |
-            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
-            <a href="https://saisyam.com/index.xml">Subscribe </a></h6>
-    </footer>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <div class="sidebar">
+          <div class="sidebar__section">
+            <h5 class="sidebar__title">Sponsors</h5>
+            <script async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0206245742790279"
+              crossorigin="anonymous"></script>
+            
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0206245742790279"
+              data-ad-slot="3209664571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+          <div class="sidebar__section tag-cloud">
+            <h5 class="sidebar__title">Tag Cloud</h5>
+            <div class="tag-cloud">
+              
+              <a class="tags" href="https://saisyam.com/tags/beautifulsoup">beautifulsoup</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/ci-cd">ci-cd</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/cloud-function">cloud-function</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/containers">containers</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/devops">devops</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/dockers">dockers</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/fake-webcam">fake-webcam</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/ffmpeg">ffmpeg</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/freeswitch-1.10.5">freeswitch-1.10.5</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/google-cloud">google-cloud</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/microservices">microservices</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/pcma">pcma</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/pcmu">pcmu</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/proxies">proxies</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/requests">requests</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/sentiment-analysis">sentiment-analysis</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/splinter">splinter</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/text-analytics">text-analytics</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/ubuntu-18.04">ubuntu-18.04</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/vader">vader</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/wav-compression">wav-compression</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/web-scraping">web-scraping</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/web-testing">web-testing</a>
+              
+              <a class="tags" href="https://saisyam.com/tags/webdriver">webdriver</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
-<script src="https://saisyam.com/js/scripts.js"></script>
+
+    </main>
+    <footer class="footer">
+  <div class="container wrapper">
+    <div class="footer__bottom">
+      <div class="grid">
+        <div class="col-lg center-lg">
+          <li>© Saisyam - 2021</li>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 
-  
+
+
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
@@ -202,8 +308,5 @@ if (!doNotTrack) {
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
-
 </body>
-
 </html>
-

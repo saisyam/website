@@ -11,8 +11,8 @@
 <meta property="og:description" content="Dockers and containers are the building blocks for Cloud native development. Docker enables developers to build, run and ship applications that can be virtually run on any Operating System (OS). A running instance of a docker is called Container." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://saisyam.com/understanding-dockers-and-containers/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-10-13T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2020-10-13T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2020-10-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-10-13T00:00:00+00:00" />
 
  
   <meta name="twitter:card" content="summary"/>
@@ -31,9 +31,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-  <link rel="stylesheet" href="https://saisyam.com/css/pure-min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/css/grids-responsive-min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/css/style.css" />
+  <link rel="stylesheet" href="https://saisyam.com/css/app.min.css" />
   <style>
     #toc::before {
         content: "Table of Contents";
@@ -62,8 +60,13 @@ if (!doNotTrack) {
     ul.pagination li {
       padding: 0 1em;
     }
-    .gist .blob-code-inner{ font-size:20px !important; }
-    .gist .blob-num{ font-size:20px !important; }
+    .gist .blob-code-inner{ font-size:13px !important; }
+    .gist .blob-num{ font-size:13px !important; }
+
+    .highlight pre code{
+      color: #fff;
+      text-shadow: none;
+    }
   </style>
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -74,34 +77,80 @@ if (!doNotTrack) {
   <meta name="theme-color" content="#ffffff">
 </head>
 
-<body>
-    <div id="layout" class="pure-g">
-        
 
-  <div class="content pure-u-1 pure-u-md-3-4">
-    <div class="header">
-      <a href="https://saisyam.com/"><h1 class="brand-title">Saisyam</h1></a>
-        <h2 class="brand-tagline">Personal Blog</h2>
+    <body class="post-template">
+ 
+    <header class="header">
+  <div class="header-top">
+    <a href="https://saisyam.com">
+      <h1 class="header-top__title">
+        <img class="lazyload header-top__logo initial loaded" src="https://saisyam.com/saisyam.png" data-src="saisyam.png"
+          alt="Saisyam's Personal Website" data-was-processed="true">
+      </h1>
+    </a>
+  </div>
+
+  <div class="header-main">
+    <div class="container wrapper">
+      <div class="grid">
+        <label for="menu--toggle" class="header-main__menu--toggle col-xs left">
+          <i class="icon icon-menu icon--large">
+            <svg class="icon__svg">
+              <use xlink:href="#icon-menu">
+                <symbol id="icon-menu" viewBox="0 0 24 24">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </symbol>
+              </use>
+            </svg>
+          </i>
+        </label>
+        <input type="checkbox" id="menu--toggle" title="Menu" class="is-hidden">
+
+        <nav class="header-main__menu nav col-sm top">
+          <ul>
+            <li>
+              <a href="https://saisyam.com">Home</a>
+            </li>
+            <li>
+              <a href="https://github.com/saisyam" target="_blank">Github</a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
     </div>
-    <div>
-      <div class="posts">
-        <h1 class="content-subhead"></h1>
-        <section class="post">
-            <header class="post-header">
-                
-
-                <h2 class="post-title">Understanding Dockers and Containers</h2>
-
-                <p class="post-meta">
-                  Under
-                  <a class="post-category post-category-0" href="https://saisyam.com/categories/cloud/">Cloud</a>
-                  
-                </p>
-            </header>
-
-            <div class="post-description">
-                <p>
-                  <p>Dockers and containers are the building blocks for Cloud native development. Docker enables developers to build, run and ship applications that can be virtually run on any Operating System (OS). A running instance of a docker is called Container. In this article we will discuss about hardware and OS Virtualization, how docker works, docker workflow and commands to create and run docker.</p>
+  </div>
+</header>
+    <main class="main">
+        
+<div class="post">
+  <div class="container wrapper">
+    <div class="post-header">
+      <h1 class="post-header__title">Understanding Dockers and Containers</h1>
+      <div class="post-header__info">
+        <div class="post-header__author">
+          <a href="#">Saisyam</a>
+        </div>
+        <time class="post-header__date" datetime=" 2020-10-13">2020-10-13</time>
+        <div class="post-header__read-time">4 min read</div>
+      </div>
+    </div>
+  </div>
+  <div id="content" class="container wrapper">
+    <div class="grid">
+      <article class="col-xs-12 col-md-8">
+        <div class="post-content">
+          <img class="post-img lazyload initial loaded is-in-view" src="https://saisyam.com/dockers_containers.jpg" />
+          <div class="post-content__inner">
+            <p>Dockers and containers are the building blocks for Cloud native development. Docker enables developers to build, run and ship applications that can be virtually run on any Operating System (OS). A running instance of a docker is called Container. In this article we will discuss about hardware and OS Virtualization, how docker works, docker workflow and commands to create and run docker.</p>
 <div id="toc">
     <nav id="TableOfContents">
   <ul>
@@ -222,60 +271,30 @@ if (!doNotTrack) {
 <h2 id="conclusion">Conclusion</h2>
 <p>In this article we learn what is docker and container? We have learnt how to download and run a docker and some basic commands on managing docker images and containers. We have looked into docker workflow. In the coming articles we will see how to create our own docker and publish to docker hub. Thanks for reading.</p>
 
-                </p>
-            </div>
-            <a class="tag" href="https://saisyam.com/tags/containers/">#Containers</a>
-            <a class="tag" href="https://saisyam.com/tags/dockers/">#Dockers</a>
+          </div>
+        </div>
+      </article>
+      <aside class="col-xs-12 col-md-4">
+
+        <div class="sidebar">
+
+          <div class="sidebar__section">  
+            <h5 class="sidebar__title">Sponsors</h5>
+            <script async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0206245742790279"
+              crossorigin="anonymous"></script>
             
-        </section>
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "saisyam-1" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </div>
-      <div class="footer">
-  <div class="pure-menu pure-menu-horizontal">
-      <ul>
-          <li class="pure-menu-item"><a href="https://saisyam.com/about" class="pure-menu-link">About</a></li>
-          <li class="pure-menu-item"><a href="https://in.linkedin.com/in/saisyam" class="pure-menu-link">LinkedIn</a></li>
-          <li class="pure-menu-item"><a href="https://github.com/saisyam" class="pure-menu-link">GitHub</a></li>
-      </ul>
-  </div>
-</div>
-
-
-  
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-50423294-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0206245742790279"
+              data-ad-slot="3209664571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
+</div>
 <script type="application/ld+json">
     
     {
@@ -316,7 +335,33 @@ if (!doNotTrack) {
     }
     </script>
 
+    </main>
+    <footer class="footer">
+  <div class="container wrapper">
+    <div class="footer__bottom">
+      <div class="grid">
+        <div class="col-lg center-lg">
+          <li>© Saisyam - 2021</li>
+        </div>
+      </div>
     </div>
+  </div>
+</footer>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
 </body>
 </html>
-

@@ -29,9 +29,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-  <link rel="stylesheet" href="https://saisyam.com/css/pure-min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/css/grids-responsive-min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/css/style.css" />
+  <link rel="stylesheet" href="https://saisyam.com/css/app.min.css" />
   <style>
     #toc::before {
         content: "Table of Contents";
@@ -60,8 +58,13 @@ if (!doNotTrack) {
     ul.pagination li {
       padding: 0 1em;
     }
-    .gist .blob-code-inner{ font-size:20px !important; }
-    .gist .blob-num{ font-size:20px !important; }
+    .gist .blob-code-inner{ font-size:13px !important; }
+    .gist .blob-num{ font-size:13px !important; }
+
+    .highlight pre code{
+      color: #fff;
+      text-shadow: none;
+    }
   </style>
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -72,8 +75,59 @@ if (!doNotTrack) {
   <meta name="theme-color" content="#ffffff">
 </head>
 
-<body>
-    <div id="layout" class="pure-g">
+
+    <body class="home-template">
+ 
+    <header class="header">
+  <div class="header-top">
+    <a href="https://saisyam.com">
+      <h1 class="header-top__title">
+        <img class="lazyload header-top__logo initial loaded" src="https://saisyam.com/saisyam.png" data-src="saisyam.png"
+          alt="Saisyam's Personal Website" data-was-processed="true">
+      </h1>
+    </a>
+  </div>
+
+  <div class="header-main">
+    <div class="container wrapper">
+      <div class="grid">
+        <label for="menu--toggle" class="header-main__menu--toggle col-xs left">
+          <i class="icon icon-menu icon--large">
+            <svg class="icon__svg">
+              <use xlink:href="#icon-menu">
+                <symbol id="icon-menu" viewBox="0 0 24 24">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </symbol>
+              </use>
+            </svg>
+          </i>
+        </label>
+        <input type="checkbox" id="menu--toggle" title="Menu" class="is-hidden">
+
+        <nav class="header-main__menu nav col-sm top">
+          <ul>
+            <li>
+              <a href="https://saisyam.com">Home</a>
+            </li>
+            <li>
+              <a href="https://github.com/saisyam" target="_blank">Github</a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+    <main class="main">
         
 
 <section id="404">
@@ -81,7 +135,33 @@ if (!doNotTrack) {
 </section>
 
 
+    </main>
+    <footer class="footer">
+  <div class="container wrapper">
+    <div class="footer__bottom">
+      <div class="grid">
+        <div class="col-lg center-lg">
+          <li>© Saisyam - 2021</li>
+        </div>
+      </div>
     </div>
+  </div>
+</footer>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
 </body>
 </html>
-

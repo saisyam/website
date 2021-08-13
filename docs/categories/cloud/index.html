@@ -29,9 +29,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-  <link rel="stylesheet" href="https://saisyam.com/css/pure-min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/css/grids-responsive-min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/css/style.css" />
+  <link rel="stylesheet" href="https://saisyam.com/css/app.min.css" />
   <style>
     #toc::before {
         content: "Table of Contents";
@@ -60,8 +58,13 @@ if (!doNotTrack) {
     ul.pagination li {
       padding: 0 1em;
     }
-    .gist .blob-code-inner{ font-size:20px !important; }
-    .gist .blob-num{ font-size:20px !important; }
+    .gist .blob-code-inner{ font-size:13px !important; }
+    .gist .blob-num{ font-size:13px !important; }
+
+    .highlight pre code{
+      color: #fff;
+      text-shadow: none;
+    }
   </style>
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -72,8 +75,59 @@ if (!doNotTrack) {
   <meta name="theme-color" content="#ffffff">
 </head>
 
-<body>
-    <div id="layout" class="pure-g">
+
+    <body class="home-template">
+ 
+    <header class="header">
+  <div class="header-top">
+    <a href="https://saisyam.com">
+      <h1 class="header-top__title">
+        <img class="lazyload header-top__logo initial loaded" src="https://saisyam.com/saisyam.png" data-src="saisyam.png"
+          alt="Saisyam's Personal Website" data-was-processed="true">
+      </h1>
+    </a>
+  </div>
+
+  <div class="header-main">
+    <div class="container wrapper">
+      <div class="grid">
+        <label for="menu--toggle" class="header-main__menu--toggle col-xs left">
+          <i class="icon icon-menu icon--large">
+            <svg class="icon__svg">
+              <use xlink:href="#icon-menu">
+                <symbol id="icon-menu" viewBox="0 0 24 24">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </symbol>
+              </use>
+            </svg>
+          </i>
+        </label>
+        <input type="checkbox" id="menu--toggle" title="Menu" class="is-hidden">
+
+        <nav class="header-main__menu nav col-sm top">
+          <ul>
+            <li>
+              <a href="https://saisyam.com">Home</a>
+            </li>
+            <li>
+              <a href="https://github.com/saisyam" target="_blank">Github</a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+    <main class="main">
         
 
   <div class="content pure-u-1 pure-u-md-3-4">
@@ -134,45 +188,45 @@ if (!doNotTrack) {
             <a class="read-more" href="https://saisyam.com/what-are-cloud-native-apps/">Read More</a>
         </section>
         
-       
-       
-        <section class="post">
-            <header class="post-header">
-                
-
-                <h2 class="post-title">Understanding Dockers and Containers</h2>
-
-                <p class="post-meta">
-                   Under
-                   <a class="post-category post-category-0" href="https://saisyam.com/categories/cloud/">Cloud</a>
-                    
-                </p>
-            </header>
-
-            <div class="post-description">
-                <p>
-                  Dockers and containers are the building blocks for Cloud native development. Docker enables developers to build, run and ship applications that can be virtually run on any Operating System (OS). A running instance of a docker is called Container.
-                </p>
-            </div>
-            <a class="read-more" href="https://saisyam.com/understanding-dockers-and-containers/">Read More</a>
-        </section>
-        
         
         
       </div>
       
-      <div class="footer">
-  <div class="pure-menu pure-menu-horizontal">
-      <ul>
-          <li class="pure-menu-item"><a href="https://saisyam.com/about" class="pure-menu-link">About</a></li>
-          <li class="pure-menu-item"><a href="https://in.linkedin.com/in/saisyam" class="pure-menu-link">LinkedIn</a></li>
-          <li class="pure-menu-item"><a href="https://github.com/saisyam" class="pure-menu-link">GitHub</a></li>
-      </ul>
+    <ul class="pagination pagination-default">
+      <li class="page-item disabled">
+        <a href="#" aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a href="#" aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item active">
+        <a href="#" aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="https://saisyam.com/categories/cloud/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="https://saisyam.com/categories/cloud/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="https://saisyam.com/categories/cloud/page/2/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+      <footer class="footer">
+  <div class="container wrapper">
+    <div class="footer__bottom">
+      <div class="grid">
+        <div class="col-lg center-lg">
+          <li>© Saisyam - 2021</li>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</footer>
 
 
-  
+
+
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
@@ -185,12 +239,37 @@ if (!doNotTrack) {
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
-
     </div>
   </div>
 
 
+    </main>
+    <footer class="footer">
+  <div class="container wrapper">
+    <div class="footer__bottom">
+      <div class="grid">
+        <div class="col-lg center-lg">
+          <li>© Saisyam - 2021</li>
+        </div>
+      </div>
     </div>
+  </div>
+</footer>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
 </body>
 </html>
-

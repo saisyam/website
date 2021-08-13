@@ -10,14 +10,12 @@
   <meta property="og:title" content="Reading and Writing WAV files with compression in Python using Pywav" />
 <meta property="og:description" content="Testing voice applications involve handling RTP streams. Most of the IVR applications use PCMA/PCMU codecs to stream voice over RTP. PyWav is a Python library which helps you to convert those RAW streams with PCMU/PCMA encodings into a WAV file." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://saisyam.com/reading-and-writing-wav-files-with-compression-in-python-using-pywav/" /><meta property="og:image" content="https://saisyam.com/pywav.jpg" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-12-20T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2020-12-20T00:00:00&#43;00:00" />
+<meta property="og:url" content="https://saisyam.com/reading-and-writing-wav-files-with-compression-in-python-using-pywav/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-12-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-20T00:00:00+00:00" />
 
  
-  <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://saisyam.com/pywav.jpg"/>
-
+  <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Reading and Writing WAV files with compression in Python using Pywav"/>
 <meta name="twitter:description" content="Testing voice applications involve handling RTP streams. Most of the IVR applications use PCMA/PCMU codecs to stream voice over RTP. PyWav is a Python library which helps you to convert those RAW streams with PCMU/PCMA encodings into a WAV file."/>
 
@@ -33,9 +31,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-  <link rel="stylesheet" href="https://saisyam.com/css/pure-min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/css/grids-responsive-min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/css/style.css" />
+  <link rel="stylesheet" href="https://saisyam.com/css/app.min.css" />
   <style>
     #toc::before {
         content: "Table of Contents";
@@ -64,8 +60,13 @@ if (!doNotTrack) {
     ul.pagination li {
       padding: 0 1em;
     }
-    .gist .blob-code-inner{ font-size:20px !important; }
-    .gist .blob-num{ font-size:20px !important; }
+    .gist .blob-code-inner{ font-size:13px !important; }
+    .gist .blob-num{ font-size:13px !important; }
+
+    .highlight pre code{
+      color: #fff;
+      text-shadow: none;
+    }
   </style>
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -76,34 +77,80 @@ if (!doNotTrack) {
   <meta name="theme-color" content="#ffffff">
 </head>
 
-<body>
-    <div id="layout" class="pure-g">
-        
 
-  <div class="content pure-u-1 pure-u-md-3-4">
-    <div class="header">
-      <a href="https://saisyam.com/"><h1 class="brand-title">Saisyam</h1></a>
-        <h2 class="brand-tagline">Personal Blog</h2>
+    <body class="post-template">
+ 
+    <header class="header">
+  <div class="header-top">
+    <a href="https://saisyam.com">
+      <h1 class="header-top__title">
+        <img class="lazyload header-top__logo initial loaded" src="https://saisyam.com/saisyam.png" data-src="saisyam.png"
+          alt="Saisyam's Personal Website" data-was-processed="true">
+      </h1>
+    </a>
+  </div>
+
+  <div class="header-main">
+    <div class="container wrapper">
+      <div class="grid">
+        <label for="menu--toggle" class="header-main__menu--toggle col-xs left">
+          <i class="icon icon-menu icon--large">
+            <svg class="icon__svg">
+              <use xlink:href="#icon-menu">
+                <symbol id="icon-menu" viewBox="0 0 24 24">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </symbol>
+              </use>
+            </svg>
+          </i>
+        </label>
+        <input type="checkbox" id="menu--toggle" title="Menu" class="is-hidden">
+
+        <nav class="header-main__menu nav col-sm top">
+          <ul>
+            <li>
+              <a href="https://saisyam.com">Home</a>
+            </li>
+            <li>
+              <a href="https://github.com/saisyam" target="_blank">Github</a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
     </div>
-    <div>
-      <div class="posts">
-        <h1 class="content-subhead"></h1>
-        <section class="post">
-            <header class="post-header">
-                
-
-                <h2 class="post-title">Reading and Writing WAV files with compression in Python using Pywav</h2>
-
-                <p class="post-meta">
-                  Under
-                  <a class="post-category post-category-0" href="https://saisyam.com/categories/python/">Python</a>
-                  
-                </p>
-            </header>
-
-            <div class="post-description">
-                <p>
-                  <p>Testing voice applications involve handling RTP streams. Most of the IVR applications use PCMA/PCMU codecs to stream voice over RTP. <a href="https://pypi.org/project/pywav/">PyWav</a> is a Python library which helps you to convert those RAW streams with PCMU/PCMA encodings into a WAV file. The library is similar to <a href="https://pypi.org/project/PyWave/">PyWave</a>, but the limitation with PyWave is, it will not support compression.</p>
+  </div>
+</header>
+    <main class="main">
+        
+<div class="post">
+  <div class="container wrapper">
+    <div class="post-header">
+      <h1 class="post-header__title">Reading and Writing WAV files with compression in Python using Pywav</h1>
+      <div class="post-header__info">
+        <div class="post-header__author">
+          <a href="#">Saisyam</a>
+        </div>
+        <time class="post-header__date" datetime=" 2020-12-20">2020-12-20</time>
+        <div class="post-header__read-time">2 min read</div>
+      </div>
+    </div>
+  </div>
+  <div id="content" class="container wrapper">
+    <div class="grid">
+      <article class="col-xs-12 col-md-8">
+        <div class="post-content">
+          <img class="post-img lazyload initial loaded is-in-view" src="https://saisyam.com/pywav.jpg" />
+          <div class="post-content__inner">
+            <p>Testing voice applications involve handling RTP streams. Most of the IVR applications use PCMA/PCMU codecs to stream voice over RTP. <a href="https://pypi.org/project/pywav/">PyWav</a> is a Python library which helps you to convert those RAW streams with PCMU/PCMA encodings into a WAV file. The library is similar to <a href="https://pypi.org/project/PyWave/">PyWave</a>, but the limitation with PyWave is, it will not support compression.</p>
 <div id="toc">
     <nav id="TableOfContents">
   <ul>
@@ -128,9 +175,13 @@ if (!doNotTrack) {
 <p>When building a SIP test tool, I have to convert RTP audio streams with PCMA/PCMU encodings to WAV files for validation. PyWav is the result of that activity. Using PyWav you can write RAW streams into a playable WAV file supporting PCM/PCMA/PCMU compressions. Similarly, you can even read a WAV and get the RAW data from that WAV file to send it over RTP stream.</p>
 <h2 id="reading-a-wav-file">Reading a WAV file</h2>
 <p>Below sample code shows how to read a WAV file:</p>
-<script type="application/javascript" src="https://gist.github.com/saisyam/1193c9281005ad18e1a0c7ff3f5a65b1.js"></script>
-
-<p>Following are the list of parameters that are extracted from the WAV file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">wave_read <span style="color:#f92672">=</span> pywav<span style="color:#f92672">.</span>WavRead(<span style="color:#e6db74">&#34;&lt;filename to read&gt;&#34;</span>)
+<span style="color:#75715e"># print parameters like number of channels, sample rate, bits per sample, audio format etc</span>
+<span style="color:#75715e"># Audio format 1 = PCM (without compression)</span>
+<span style="color:#75715e"># Audio format 6 = PCMA (with A-law compression)</span>
+<span style="color:#75715e"># Audio format 7 = PCMU (with mu-law compression)</span>
+print(wave_read<span style="color:#f92672">.</span>getparams())
+</code></pre></div><p>Following are the list of parameters that are extracted from the WAV file:</p>
 <ul>
 <li>Number of channels</li>
 <li>Sample rate</li>
@@ -155,67 +206,44 @@ if (!doNotTrack) {
 </script>
 <h2 id="writing-a-wav-file">Writing a WAV file</h2>
 <p>You can write the RAW data captured from the RTP stream into a WAV file using the following sample:</p>
-<script type="application/javascript" src="https://gist.github.com/saisyam/7d8a2ebd2c50b105c3410d72ae74a4b0.js"></script>
-
-<h2 id="conclusion">Conclusion</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># first parameter is the file name to write the wave data</span>
+<span style="color:#75715e"># second parameter is the number of channels, the value can be 1 (mono) or 2 (stereo)</span>
+<span style="color:#75715e"># third parameter is the sample rate, 8000 samples per second</span>
+<span style="color:#75715e"># fourth paramaer is the bits per sample, 8 bits per sample</span>
+<span style="color:#75715e"># fifth parameter is the audio format, 1 means PCM with no compression.</span>
+wave_write <span style="color:#f92672">=</span> pywav<span style="color:#f92672">.</span>WavWrite(<span style="color:#e6db74">&#34;&lt;filename to write&gt;&#34;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">8000</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">1</span>)
+<span style="color:#75715e"># raw_data is the byte array. Write can be done only once for now.</span>
+<span style="color:#75715e"># Incremental write will be implemented later</span>
+wave_write<span style="color:#f92672">.</span>write(<span style="color:#f92672">&lt;</span>raw data<span style="color:#f92672">&gt;</span>)
+<span style="color:#75715e"># close the file stream and save the file</span>
+wave_write<span style="color:#f92672">.</span>close()
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>You can install this as a <code>pip</code> package using <code>pip3 install pywav</code>. The source code of this project is available on <a href="https://github.com/saisyam/pywav">Github</a>.</p>
-<p><a href="https://www.freepik.com/photos/background">Background photo created by kjpargeter - www.freepik.com</a></p>
 
-                </p>
-            </div>
-            <a class="tag" href="https://saisyam.com/tags/pcma/">#PCMA</a>
-            <a class="tag" href="https://saisyam.com/tags/pcmu/">#PCMU</a>
-            <a class="tag" href="https://saisyam.com/tags/wav-compression/">#WAV compression</a>
+          </div>
+        </div>
+      </article>
+      <aside class="col-xs-12 col-md-4">
+
+        <div class="sidebar">
+
+          <div class="sidebar__section">  
+            <h5 class="sidebar__title">Sponsors</h5>
+            <script async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0206245742790279"
+              crossorigin="anonymous"></script>
             
-        </section>
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "saisyam-1" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </div>
-      <div class="footer">
-  <div class="pure-menu pure-menu-horizontal">
-      <ul>
-          <li class="pure-menu-item"><a href="https://saisyam.com/about" class="pure-menu-link">About</a></li>
-          <li class="pure-menu-item"><a href="https://in.linkedin.com/in/saisyam" class="pure-menu-link">LinkedIn</a></li>
-          <li class="pure-menu-item"><a href="https://github.com/saisyam" class="pure-menu-link">GitHub</a></li>
-      </ul>
-  </div>
-</div>
-
-
-  
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-50423294-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0206245742790279"
+              data-ad-slot="3209664571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
+</div>
 <script type="application/ld+json">
     
     {
@@ -256,7 +284,33 @@ if (!doNotTrack) {
     }
     </script>
 
+    </main>
+    <footer class="footer">
+  <div class="container wrapper">
+    <div class="footer__bottom">
+      <div class="grid">
+        <div class="col-lg center-lg">
+          <li>© Saisyam - 2021</li>
+        </div>
+      </div>
     </div>
+  </div>
+</footer>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
 </body>
 </html>
-

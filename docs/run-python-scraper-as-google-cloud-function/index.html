@@ -10,14 +10,12 @@
   <meta property="og:title" content="Run Python Scraper as Google Cloud Function" />
 <meta property="og:description" content="Web scrapers run on a regular basis to extract information. Today every application irrespective of size is deployed on Cloud providers like AWS, Google Cloud and Azure. In this article we will see how to deploy our Ebay product scraper as Google cloud function." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://saisyam.com/run-python-scraper-as-google-cloud-function/" /><meta property="og:image" content="https://saisyam.com/python_google_cloud_function.jpg" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-03-05T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-03-05T00:00:00&#43;00:00" />
+<meta property="og:url" content="https://saisyam.com/run-python-scraper-as-google-cloud-function/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-03-05T00:00:00+00:00" />
 
  
-  <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://saisyam.com/python_google_cloud_function.jpg"/>
-
+  <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Run Python Scraper as Google Cloud Function"/>
 <meta name="twitter:description" content="Web scrapers run on a regular basis to extract information. Today every application irrespective of size is deployed on Cloud providers like AWS, Google Cloud and Azure. In this article we will see how to deploy our Ebay product scraper as Google cloud function."/>
 
@@ -33,9 +31,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-  <link rel="stylesheet" href="https://saisyam.com/css/pure-min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/css/grids-responsive-min.css" />
-  <link rel="stylesheet" href="https://saisyam.com/css/style.css" />
+  <link rel="stylesheet" href="https://saisyam.com/css/app.min.css" />
   <style>
     #toc::before {
         content: "Table of Contents";
@@ -64,8 +60,13 @@ if (!doNotTrack) {
     ul.pagination li {
       padding: 0 1em;
     }
-    .gist .blob-code-inner{ font-size:20px !important; }
-    .gist .blob-num{ font-size:20px !important; }
+    .gist .blob-code-inner{ font-size:13px !important; }
+    .gist .blob-num{ font-size:13px !important; }
+
+    .highlight pre code{
+      color: #fff;
+      text-shadow: none;
+    }
   </style>
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -76,35 +77,80 @@ if (!doNotTrack) {
   <meta name="theme-color" content="#ffffff">
 </head>
 
-<body>
-    <div id="layout" class="pure-g">
-        
 
-  <div class="content pure-u-1 pure-u-md-3-4">
-    <div class="header">
-      <a href="https://saisyam.com/"><h1 class="brand-title">Saisyam</h1></a>
-        <h2 class="brand-tagline">Personal Blog</h2>
+    <body class="post-template">
+ 
+    <header class="header">
+  <div class="header-top">
+    <a href="https://saisyam.com">
+      <h1 class="header-top__title">
+        <img class="lazyload header-top__logo initial loaded" src="https://saisyam.com/saisyam.png" data-src="saisyam.png"
+          alt="Saisyam's Personal Website" data-was-processed="true">
+      </h1>
+    </a>
+  </div>
+
+  <div class="header-main">
+    <div class="container wrapper">
+      <div class="grid">
+        <label for="menu--toggle" class="header-main__menu--toggle col-xs left">
+          <i class="icon icon-menu icon--large">
+            <svg class="icon__svg">
+              <use xlink:href="#icon-menu">
+                <symbol id="icon-menu" viewBox="0 0 24 24">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </symbol>
+              </use>
+            </svg>
+          </i>
+        </label>
+        <input type="checkbox" id="menu--toggle" title="Menu" class="is-hidden">
+
+        <nav class="header-main__menu nav col-sm top">
+          <ul>
+            <li>
+              <a href="https://saisyam.com">Home</a>
+            </li>
+            <li>
+              <a href="https://github.com/saisyam" target="_blank">Github</a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
     </div>
-    <div>
-      <div class="posts">
-        <h1 class="content-subhead"></h1>
-        <section class="post">
-            <header class="post-header">
-                
-
-                <h2 class="post-title">Run Python Scraper as Google Cloud Function</h2>
-
-                <p class="post-meta">
-                  Under
-                  <a class="post-category post-category-0" href="https://saisyam.com/categories/cloud/">Cloud</a>
-                  <a class="post-category post-category-1" href="https://saisyam.com/categories/python/">Python</a>
-                  
-                </p>
-            </header>
-
-            <div class="post-description">
-                <p>
-                  <p>Web scrapers run on a regular basis to extract information. Today every application irrespective of size is deployed on Cloud providers like AWS, Google Cloud and Azure. In this article we will see how to deploy our Ebay product scraper as Google cloud function.</p>
+  </div>
+</header>
+    <main class="main">
+        
+<div class="post">
+  <div class="container wrapper">
+    <div class="post-header">
+      <h1 class="post-header__title">Run Python Scraper as Google Cloud Function</h1>
+      <div class="post-header__info">
+        <div class="post-header__author">
+          <a href="#">Saisyam</a>
+        </div>
+        <time class="post-header__date" datetime=" 2021-03-05">2021-03-05</time>
+        <div class="post-header__read-time">4 min read</div>
+      </div>
+    </div>
+  </div>
+  <div id="content" class="container wrapper">
+    <div class="grid">
+      <article class="col-xs-12 col-md-8">
+        <div class="post-content">
+          <img class="post-img lazyload initial loaded is-in-view" src="https://saisyam.com/python_google_cloud_function.jpg" />
+          <div class="post-content__inner">
+            <p>Web scrapers run on a regular basis to extract information. Today every application irrespective of size is deployed on Cloud providers like AWS, Google Cloud and Azure. In this article we will see how to deploy our Ebay product scraper as Google cloud function.</p>
 <div id="toc">
     <nav id="TableOfContents">
   <ul>
@@ -133,9 +179,42 @@ if (!doNotTrack) {
 </blockquote>
 <p>You pay for what you use. In this article we will deploy a simple ebay product scraper as a Google Cloud function.
 Our Ebay scraper is built using <code>BeautifulSoup</code> library. This scraper will extract the necessary information of a product given its URL. For example, given this URL <a href="https://www.ebay.com/itm/203449771112?hash=item2f5e8d2468:g:0zcAAOSwssFgnD-K&amp;var=503791306328">https://www.ebay.com/itm/203449771112?hash=item2f5e8d2468:g:0zcAAOSwssFgnD-K&amp;var=503791306328</a> to the scraper we will get the following result:</p>
-<script type="application/javascript" src="https://gist.github.com/saisyam/a3a963c81275ff964215c629baa1c17d.js"></script>
-
-<p>Refer to my <a href="https://github.com/saisyam/scraper-on-cloud/blob/main/ebay-scraper/ebay.py">ebay.py</a> file for the scraper.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">{</span>
+	<span style="color:#e6db74">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;Travis Scott Dunks Low&#34;</span>,
+	<span style="color:#e6db74">&#34;ebay_id&#34;</span>: <span style="color:#e6db74">&#34;203449771112&#34;</span>,
+	<span style="color:#e6db74">&#34;images&#34;</span>: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;https://i.ebayimg.com/images/g/0zcAAOSwssFgnD-K/s-l1600.png&#34;</span>, <span style="color:#e6db74">&#34;https://i.ebayimg.com/images/g/kZ4AAOSwUKBgnD-K/s-l1600.png&#34;</span><span style="color:#f92672">]</span>,
+	<span style="color:#e6db74">&#34;metadata&#34;</span>: <span style="color:#f92672">{</span>
+		<span style="color:#e6db74">&#34;price&#34;</span>: <span style="color:#e6db74">&#34;US </span>$220<span style="color:#e6db74">.00&#34;</span>,
+		<span style="color:#e6db74">&#34;shipping&#34;</span>: <span style="color:#e6db74">&#34;FREE&#34;</span>,
+		<span style="color:#e6db74">&#34;Condition&#34;</span>: <span style="color:#e6db74">&#34;A brand-new, unused, and unworn item (including handmade items) in the original packaging (such as&#34;</span>,
+		<span style="color:#e6db74">&#34;UK Shoe Size&#34;</span>: <span style="color:#e6db74">&#34;UK 11&#34;</span>,
+		<span style="color:#e6db74">&#34;Customized&#34;</span>: <span style="color:#e6db74">&#34;No&#34;</span>,
+		<span style="color:#e6db74">&#34;Features&#34;</span>: <span style="color:#e6db74">&#34;Limited Edition, Comfort, Cushioned&#34;</span>,
+		<span style="color:#e6db74">&#34;Model&#34;</span>: <span style="color:#e6db74">&#34;Travis Scott Dunks&#34;</span>,
+		<span style="color:#e6db74">&#34;Department&#34;</span>: <span style="color:#e6db74">&#34;Men&#34;</span>,
+		<span style="color:#e6db74">&#34;Product Line&#34;</span>: <span style="color:#e6db74">&#34;Nike Dunk Low, Nike SB, Nike Dunk&#34;</span>,
+		<span style="color:#e6db74">&#34;Pattern&#34;</span>: <span style="color:#e6db74">&#34;Solid&#34;</span>,
+		<span style="color:#e6db74">&#34;AU Shoe Size&#34;</span>: <span style="color:#e6db74">&#34;AU 11.5&#34;</span>,
+		<span style="color:#e6db74">&#34;EU Shoe Size&#34;</span>: <span style="color:#e6db74">&#34;EUR 42.5&#34;</span>,
+		<span style="color:#e6db74">&#34;Performance/Activity&#34;</span>: <span style="color:#e6db74">&#34;Skateboarding&#34;</span>,
+		<span style="color:#e6db74">&#34;US Shoe Size&#34;</span>: <span style="color:#e6db74">&#34;10&#34;</span>,
+		<span style="color:#e6db74">&#34;Shoe Width&#34;</span>: <span style="color:#e6db74">&#34;Standard&#34;</span>,
+		<span style="color:#e6db74">&#34;Insole Material&#34;</span>: <span style="color:#e6db74">&#34;Fabric&#34;</span>,
+		<span style="color:#e6db74">&#34;Brand&#34;</span>: <span style="color:#e6db74">&#34;Nike&#34;</span>,
+		<span style="color:#e6db74">&#34;Shoe Shaft Style&#34;</span>: <span style="color:#e6db74">&#34;Low Top&#34;</span>,
+		<span style="color:#e6db74">&#34;Style&#34;</span>: <span style="color:#e6db74">&#34;Sneaker&#34;</span>,
+		<span style="color:#e6db74">&#34;Vintage&#34;</span>: <span style="color:#e6db74">&#34;No&#34;</span>,
+		<span style="color:#e6db74">&#34;Color&#34;</span>: <span style="color:#e6db74">&#34;Beige&#34;</span>,
+		<span style="color:#e6db74">&#34;Upper Material&#34;</span>: <span style="color:#e6db74">&#34;Leather&#34;</span>,
+		<span style="color:#e6db74">&#34;Theme&#34;</span>: <span style="color:#e6db74">&#34;Retro&#34;</span>,
+		<span style="color:#e6db74">&#34;Country/Region of Manufacture&#34;</span>: <span style="color:#e6db74">&#34;Singapore&#34;</span>,
+		<span style="color:#e6db74">&#34;Character Family&#34;</span>: <span style="color:#e6db74">&#34;Friends&#34;</span>,
+		<span style="color:#e6db74">&#34;Year Manufactured&#34;</span>: <span style="color:#e6db74">&#34;2020&#34;</span>,
+		<span style="color:#e6db74">&#34;Type&#34;</span>: <span style="color:#e6db74">&#34;Athletic&#34;</span>
+	<span style="color:#f92672">}</span>,
+	<span style="color:#e6db74">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://www.ebay.com/itm/203449771112?hash=item2f5e8d2468:g:0zcAAOSwssFgnD-K&amp;var=503791306328&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Refer to my <a href="https://github.com/saisyam/scraper-on-cloud/blob/main/ebay-scraper/ebay.py">ebay.py</a> file for the scraper.</p>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
@@ -148,18 +227,29 @@ Our Ebay scraper is built using <code>BeautifulSoup</code> library. This scraper
 </script>
 <h2 id="deploy-scraper-as-google-cloud-function">Deploy scraper as Google Cloud Function</h2>
 <p>To deploy our scraper we need to create a file called <code>main.py</code> in the same folder where we have our scraper. Add the following code to <code>main.py</code>:</p>
-<script type="application/javascript" src="https://gist.github.com/saisyam/a8815d133966bb8840639f5987778c5c.js"></script>
-
-<p><code>scrape_ebay</code> is the Cloud function that we call using a HTTP request. We pass URL, in our case Ebay product URL as a query parameter. We will see the response as json. To deploy the cloud function you need <code>gcloud</code> application on your system. You have to create a project on Google cloud and initialize <code>gcloud</code> to use that project to deploy this cloud function. Use the below command to deploy:</p>
-<script type="application/javascript" src="https://gist.github.com/saisyam/e045609ad1ce7460455edeb222bc2a6c.js"></script>
-
-<p>If the above command is successful, you will get the URL to run your cloud function. Something like this:</p>
-<script type="application/javascript" src="https://gist.github.com/saisyam/91f89c51a8213487b899235d528edcca.js"></script>
-
-<p>You can add the Ebay URL as query parameter:</p>
-<script type="application/javascript" src="https://gist.github.com/saisyam/e9d13b4dbc441df53fb61b7e9ac061c2.js"></script>
-
-<p>If you see any errors fix them. To run cloud functions two basic things are important:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scrape_ebay</span>(request):
+    <span style="color:#e6db74">&#34;&#34;&#34;HTTP Cloud Function.
+</span><span style="color:#e6db74">    Args:
+</span><span style="color:#e6db74">        request (flask.Request): The request object.
+</span><span style="color:#e6db74">        &lt;https://flask.palletsprojects.com/en/1.1.x/api/#incoming-request-data&gt;
+</span><span style="color:#e6db74">    Returns:
+</span><span style="color:#e6db74">        The response text, or any set of values that can be turned into a
+</span><span style="color:#e6db74">        Response object using `make_response`
+</span><span style="color:#e6db74">        &lt;https://flask.palletsprojects.com/en/1.1.x/api/#flask.make_response&gt;.
+</span><span style="color:#e6db74">    Note:
+</span><span style="color:#e6db74">        For more information on how Flask integrates with Cloud
+</span><span style="color:#e6db74">        Functions, see the `Writing HTTP functions` page.
+</span><span style="color:#e6db74">        &lt;https://cloud.google.com/functions/docs/writing/http#http_frameworks&gt;
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    url <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;url&#39;</span>)
+    <span style="color:#66d9ef">return</span> scrape_ebay_product(url)
+</code></pre></div><p><code>scrape_ebay</code> is the Cloud function that we call using a HTTP request. We pass URL, in our case Ebay product URL as a query parameter. We will see the response as json. To deploy the cloud function you need <code>gcloud</code> application on your system. You have to create a project on Google cloud and initialize <code>gcloud</code> to use that project to deploy this cloud function. Use the below command to deploy:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ gcloud functions deploy scrape_ebay --runtime python38 --trigger-http --allow-unauthenticated
+</code></pre></div><p>If the above command is successful, you will get the URL to run your cloud function. Something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">https://&lt;region-project&gt;.cloudfunctions.net/scrape_ebay
+</code></pre></div><p>You can add the Ebay URL as query parameter:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">https://&lt;region-project&gt;.cloudfunctions.net/scrape_ebay?url<span style="color:#f92672">=</span>https://www.ebay.com/itm/203449771112?hash<span style="color:#f92672">=</span>item2f5e8d2468:g:0zcAAOSwssFgnD-K&amp;var<span style="color:#f92672">=</span><span style="color:#ae81ff">503791306328</span>
+</code></pre></div><p>If you see any errors fix them. To run cloud functions two basic things are important:</p>
 <ol>
 <li>Enable billing on your project</li>
 <li>Enable Cloud Build API</li>
@@ -177,62 +267,30 @@ Our Ebay scraper is built using <code>BeautifulSoup</code> library. This scraper
 <h2 id="conclusion">Conclusion</h2>
 <p>You will have <a href="https://cloud.google.com/sdk/gcloud/reference/functions/deploy">more options</a> during the deployment. For example, you can set the memory required for your function to run. The complete source code of the project is available <a href="https://github.com/saisyam/scraper-on-cloud/">here</a>. The major advantage of Google cloud functions when compared to AWS Lambda is, Google cloud functions respect <code>requirements.txt</code> file to install dependencies, where as in AWS Lambda you need to bundle all your dependencies. Thanks for reading.</p>
 
-                </p>
-            </div>
-            <a class="tag" href="https://saisyam.com/tags/beautifulsoup/">#BeautifulSoup</a>
-            <a class="tag" href="https://saisyam.com/tags/cloud-function/">#Cloud function</a>
-            <a class="tag" href="https://saisyam.com/tags/google-cloud/">#Google Cloud</a>
-            <a class="tag" href="https://saisyam.com/tags/web-scraping/">#Web Scraping</a>
+          </div>
+        </div>
+      </article>
+      <aside class="col-xs-12 col-md-4">
+
+        <div class="sidebar">
+
+          <div class="sidebar__section">  
+            <h5 class="sidebar__title">Sponsors</h5>
+            <script async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0206245742790279"
+              crossorigin="anonymous"></script>
             
-        </section>
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "saisyam-1" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </div>
-      <div class="footer">
-  <div class="pure-menu pure-menu-horizontal">
-      <ul>
-          <li class="pure-menu-item"><a href="https://saisyam.com/about" class="pure-menu-link">About</a></li>
-          <li class="pure-menu-item"><a href="https://in.linkedin.com/in/saisyam" class="pure-menu-link">LinkedIn</a></li>
-          <li class="pure-menu-item"><a href="https://github.com/saisyam" class="pure-menu-link">GitHub</a></li>
-      </ul>
-  </div>
-</div>
-
-
-  
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-50423294-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0206245742790279"
+              data-ad-slot="3209664571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
+</div>
 <script type="application/ld+json">
     
     {
@@ -273,7 +331,33 @@ if (!doNotTrack) {
     }
     </script>
 
+    </main>
+    <footer class="footer">
+  <div class="container wrapper">
+    <div class="footer__bottom">
+      <div class="grid">
+        <div class="col-lg center-lg">
+          <li>© Saisyam - 2021</li>
+        </div>
+      </div>
     </div>
+  </div>
+</footer>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
 </body>
 </html>
-

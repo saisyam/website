@@ -74,6 +74,9 @@
     <loc>https://saisyam.com/tags/wav-compression/</loc>
     <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://saisyam.com/tags/ci-cd/</loc>
+    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://saisyam.com/tags/containers/</loc>
     <lastmod>2020-10-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -115,7 +118,5 @@
   </url><url>
     <loc>https://saisyam.com/tags/web-testing/</loc>
     <lastmod>2020-06-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/ci/cd/</loc>
   </url>
 </urlset>
