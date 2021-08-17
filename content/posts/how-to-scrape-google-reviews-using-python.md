@@ -8,14 +8,16 @@ tags:
   - BeautifulSoup
   - Web driver
 date: 2021-08-15
-image: /webcam_testing.jpg
+image: /google_reviews_scraper.jpg
 ---
-This post explains how to scrape reviews from Google using Python. We use two popular Python packages used extensively for scraping, [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) and [Splinter](https://splinter.readthedocs.io/en/latest/). Though the process or the code snippets can be used to scrape any business listed in Google, but I am more interested in scraping reviews for restaurants in US. So, Let's get started.
+This post explains how to scrape Google reviews using Python. We use two popular Python packages extensively used for scraping, [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) and [Splinter](https://splinter.readthedocs.io/en/latest/). Though the process or the code snippets can be used to scrape reviews for any business listed in Google, but I am more interested in scraping reviews for restaurants in US. So, Let's get started.
+
+{{< adsense >}}
 
 ## Identify businesses to scrape
 First thing we need to do is to identity the businesses we want to scrape. As I mentioned earlier, I am interested in restaurants in US. Let's stick to restaurants in New York state. Below is the URL and the image of the business, [**Breslin Berger**](https://www.google.com/maps/place/Breslin+Burger/@40.745568,-73.990283,17z/data=!4m5!3m4!1s0x89c259a61b874f57:0xc5fd887f907ea722!8m2!3d40.745568!4d-73.988089) we want to scrape.
 ![Breslin Burger](/breslin_burger.png "Breslin Burger")
-We would like to get the following information from the above page:
+We would like to get the following information from the above page (<span style="color:red">**RED**</span> markings):
 * Image of the restaurant
 * Restaurant name
 * Overall rating and number of reviews
@@ -58,7 +60,9 @@ def get_business_info(url):
     browser.quit()
     return business
 ```
-I have used `select_one` method from BeautifulSoup which finds only the first element that matches the selector. The beauty of this method is we can look for partial selectors as well. This method also uses `Pseudo-Classes`. I have used `:-soup-contains` in the above code to get the button element that has `reviews` in the text. Refer to this [link](https://facelessuser.github.io/soupsieve/selectors/pseudo-classes/) to know more about Pseudo-Classes.
+I have used `select_one` method from BeautifulSoup which finds only the first element that matches the selector. The beauty of this method is we can look for partial selectors as well. This method uses `Pseudo-Classes`. I have used `:-soup-contains` in the above code to get the button element that has `reviews` in the text. Refer to this [link](https://facelessuser.github.io/soupsieve/selectors/pseudo-classes/) to know more about Pseudo-Classes.
+
+{{< adsense >}}
 
 The output of the above method is a python dictionary:
 ```python
@@ -75,7 +79,7 @@ The output of the above method is a python dictionary:
 }
 ```
 ## Scraping the reviews page
-We have to sort the reviews by latest. We load the page in Splinter Browser component and do the click actions to sort the reviews. Once the page loads with sorted by latest reviews we will scroll the page until we get the desired number of reviews. Google uses dynamic loading of reviews, so we have to scroll down to load the next set of reviews. I just need the 300 latest reviews, ofcourse, count is a parameter to the scraping function.
+We have to sort the reviews by latest. We load the page in Splinter Browser component and do the click actions to sort the reviews. Once the page loads with sorted by latest reviews we will scroll the page until we get the desired number of reviews. Google uses dynamic loading of reviews, so we have to scroll down to load the next set of reviews. I just need 300 latest reviews, ofcourse, count is a parameter to the scraping function.
 
 The following code snippet will scroll the page until we get the desired number of reviews:
 ```python
@@ -103,6 +107,8 @@ def get_review_count(html):
     reviews = soup.find_all('div', {'data-review-id': True, 'aria-label': True})
     return len(reviews)
 ```
+{{< adsense >}}
+
 The following code will do the scraping of the loaded reviews:
 ```python
 def get_reviews(html):
@@ -134,5 +140,7 @@ def get_reviews(html):
             "review": text.replace("\n",'').encode('ascii', 'ignore').decode('UTF-8')
         }
 ```
+{{< adsense >}}
+
 ## Conclusion
 We have learnt how to use `BeautifulSoup` and `Splinter` Python packages to scrape Google reviews. The complete scraper code is available from my [Github repo](https://github.com/saisyam/reviews-scraper). In the future articles we will see how to analyze these reviews to extract some important insights about the business. Thanks for reading. 
