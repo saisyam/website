@@ -1,0 +1,405 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Saisyam&#39;s personal blog for technical articles" />
+  <meta name="author" content="Saisyam" />
+  <meta property="og:title" content="How to scrape Google reviews using Python" />
+<meta property="og:description" content="This post explains how to scrape Google reviews using Python. We use two popular Python packages extensively used for scraping, BeautifulSoup and Splinter. Though the process or the code snippets can be used to scrape reviews for any business listed in Google, but I am more interested in scraping reviews for restaurants in US." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://saisyam.com/how-to-scrape-google-reviews-using-python/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-15T00:00:00+00:00" />
+
+ 
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to scrape Google reviews using Python"/>
+<meta name="twitter:description" content="This post explains how to scrape Google reviews using Python. We use two popular Python packages extensively used for scraping, BeautifulSoup and Splinter. Though the process or the code snippets can be used to scrape reviews for any business listed in Google, but I am more interested in scraping reviews for restaurants in US."/>
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  <link rel="stylesheet" href="https://saisyam.com/css/app.min.css" />
+  <style>
+    #toc::before {
+        content: "Table of Contents";
+        font-weight: bold;
+    }
+    #toc nav {
+      border-bottom: none;
+      padding-bottom: 0.2em;
+      font-family: "Ruda", sans-serif;
+    }
+
+    ol li, ul li {
+      margin-bottom: 0em;
+    }
+
+    #toc nav ul {
+       
+      padding: 1em;
+      list-style: decimal;
+      display: inline-block;
+    }
+    ul.pagination {
+      display: flex;
+      justify-content: center;
+      margin: 1em 0 0;
+      padding: 0.5em 0;
+      list-style: none;
+    }
+  
+    ul.pagination li {
+      padding: 0 1em;
+    }
+    .gist .blob-code-inner{ font-size:13px !important; }
+    .gist .blob-num{ font-size:13px !important; }
+
+    .highlight pre code{
+      color: #fff;
+      text-shadow: none;
+    }
+  </style>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+
+    <body class="post-template">
+ 
+    <header class="header">
+  <div class="header-top">
+    <a href="https://saisyam.com">
+      <h1 class="header-top__title">
+        <img class="lazyload header-top__logo initial loaded" src="https://saisyam.com/saisyam.png" data-src="saisyam.png"
+          alt="Saisyam's Personal Website" data-was-processed="true">
+      </h1>
+    </a>
+  </div>
+
+  <div class="header-main">
+    <div class="container wrapper">
+      <div class="grid">
+        <label for="menu--toggle" class="header-main__menu--toggle col-xs left">
+          <i class="icon icon-menu icon--large">
+            <svg class="icon__svg">
+              <use xlink:href="#icon-menu">
+                <symbol id="icon-menu" viewBox="0 0 24 24">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </symbol>
+              </use>
+            </svg>
+          </i>
+        </label>
+        <input type="checkbox" id="menu--toggle" title="Menu" class="is-hidden">
+
+        <nav class="header-main__menu nav col-sm top">
+          <ul>
+            <li>
+              <a href="https://saisyam.com">Home</a>
+            </li>
+            <li>
+              <a href="https://github.com/saisyam" target="_blank">Github</a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+    <main class="main">
+        
+<div class="post">
+  <div class="container wrapper">
+    <div class="post-header">
+      <h1 class="post-header__title">How to scrape Google reviews using Python</h1>
+      <div class="post-header__info">
+        <div class="post-header__author">
+          <a href="#">Saisyam</a>
+        </div>
+        <time class="post-header__date" datetime=" 2021-08-15">2021-08-15</time>
+        <div class="post-header__read-time">4 min read</div>
+      </div>
+    </div>
+  </div>
+  <div id="content" class="container wrapper">
+    <div class="grid">
+      <article class="col-xs-12 col-md-8">
+        <div class="post-content">
+          <img class="post-img lazyload initial loaded is-in-view" src="https://saisyam.com/google_reviews_scraper.jpg" />
+          <div class="post-content__inner">
+            <p>This post explains how to scrape Google reviews using Python. We use two popular Python packages extensively used for scraping, <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">BeautifulSoup</a> and <a href="https://splinter.readthedocs.io/en/latest/">Splinter</a>. Though the process or the code snippets can be used to scrape reviews for any business listed in Google, but I am more interested in scraping reviews for restaurants in US. So, Let&rsquo;s get started.</p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="identify-businesses-to-scrape">Identify businesses to scrape</h2>
+<p>First thing we need to do is to identity the businesses we want to scrape. As I mentioned earlier, I am interested in restaurants in US. Let&rsquo;s stick to restaurants in New York state. Below is the URL and the image of the business, <a href="https://www.google.com/maps/place/Breslin+Burger/@40.745568,-73.990283,17z/data=!4m5!3m4!1s0x89c259a61b874f57:0xc5fd887f907ea722!8m2!3d40.745568!4d-73.988089"><strong>Breslin Berger</strong></a> we want to scrape.
+<img src="https://saisyam.com/breslin_burger.png" alt="Breslin Burger" title="Breslin Burger">
+We would like to get the following information from the above page (<span style="color:red"><strong>RED</strong></span> markings):</p>
+<ul>
+<li>Image of the restaurant</li>
+<li>Restaurant name</li>
+<li>Overall rating and number of reviews</li>
+<li>Type of the restaurant</li>
+<li>Location of the restaurant</li>
+</ul>
+<p>Clicking on <code>reviews</code> will take you to the reviews page.
+<img src="https://saisyam.com/breslin_burger_reviews.png" alt="Breslin Burger Reviews" title="Breslin Burger Reviews">
+We want the latest reviews, so we sort the reviews by <code>latest</code> and then scrape them.</p>
+<h2 id="scraping-business-information">Scraping business information</h2>
+<p>Google uses dynamic ids and class names in it&rsquo;s pages which make scraping a bit complex. We use different attributes other than ids and classes to get the elements. We use <code>Splinter</code> to load the page as it contains JavaScript. Get the <code>html</code> from Splinter <code>Browser</code> component and use <code>BeautifulSoup</code> to scrape the content. The following code snippet will scrape the business information:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_business_info</span>(url):
+    business <span style="color:#f92672">=</span> {}
+    business[<span style="color:#e6db74">&#39;base_url&#39;</span>] <span style="color:#f92672">=</span> url
+    browser <span style="color:#f92672">=</span> Browser(<span style="color:#e6db74">&#34;chrome&#34;</span>, headless<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+    browser<span style="color:#f92672">.</span>visit(url)
+    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">5</span>)
+    soup <span style="color:#f92672">=</span> BeautifulSoup(browser<span style="color:#f92672">.</span>html, <span style="color:#e6db74">&#34;html5lib&#34;</span>)
+    img_div <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;div[class*=&#34;section-hero-header-image-hero-container&#34;]&#39;</span>)
+    img <span style="color:#f92672">=</span> img_div<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;img&#34;</span>)<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;src&#34;</span>)
+    business[<span style="color:#e6db74">&#39;img&#39;</span>] <span style="color:#f92672">=</span> img
+    addr_button <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;button[data-item-id=&#34;address&#34;]&#39;</span>)
+    addr <span style="color:#f92672">=</span> addr_button[<span style="color:#e6db74">&#39;aria-label&#39;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;Address: &#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>strip()
+    business[<span style="color:#e6db74">&#39;address&#39;</span>] <span style="color:#f92672">=</span> addr
+    business_name <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;h1[class*=&#34;header-title-title&#34;]&#39;</span>)<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip()
+    business[<span style="color:#e6db74">&#39;name&#39;</span>] <span style="color:#f92672">=</span> business_name
+    rating <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;ol&#34;</span>, {<span style="color:#e6db74">&#34;class&#34;</span>:<span style="color:#e6db74">&#34;section-star-array&#34;</span>})[<span style="color:#e6db74">&#39;aria-label&#39;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;stars&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>strip()
+    business[<span style="color:#e6db74">&#39;rating&#39;</span>] <span style="color:#f92672">=</span> float(rating)
+    total_reviews <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;button:-soup-contains(&#34;reviews&#34;)&#39;</span>)<span style="color:#f92672">.</span>text
+    business[<span style="color:#e6db74">&#39;review_count&#39;</span>] <span style="color:#f92672">=</span> int(total_reviews<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;reviews&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;,&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>)) 
+    res_type <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;div[class=&#34;gm2-body-2&#34;]&#39;</span>)<span style="color:#f92672">.</span>text
+    business[<span style="color:#e6db74">&#39;type&#39;</span>] <span style="color:#f92672">=</span> res_type<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;·&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>)
+    business[<span style="color:#e6db74">&#39;source&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Google&#34;</span>
+    reviews_button <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>find_by_text(total_reviews)<span style="color:#f92672">.</span>click()
+    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)
+    business[<span style="color:#e6db74">&#39;reviews_url&#39;</span>] <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>url
+    browser<span style="color:#f92672">.</span>quit()
+    <span style="color:#66d9ef">return</span> business
+</code></pre></div><p>I have used <code>select_one</code> method from BeautifulSoup which finds only the first element that matches the selector. The beauty of this method is we can look for partial selectors as well. This method uses <code>Pseudo-Classes</code>. I have used <code>:-soup-contains</code> in the above code to get the button element that has <code>reviews</code> in the text. Refer to this <a href="https://facelessuser.github.io/soupsieve/selectors/pseudo-classes/">link</a> to know more about Pseudo-Classes.</p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<p>The output of the above method is a python dictionary:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">{
+    <span style="color:#e6db74">&#34;base_url&#34;</span>: <span style="color:#e6db74">&#34;https://www.google.com/maps/place/Breslin+Burger/@40.745568,-73.990283,17z/data=!3m1!4b1!4m5!3m4!1s0x89c259a61b874f57:0xc5fd887f907ea722!8m2!3d40.745568!4d-73.988089&#34;</span>,
+    <span style="color:#e6db74">&#34;img&#34;</span>: <span style="color:#e6db74">&#34;https://lh5.googleusercontent.com/p/AF1QipOQV1HUtfhIRxtict4owToQkQpQHbCJZ_KsW83e=w491-h240-k-no&#34;</span>,
+    <span style="color:#e6db74">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;16 W 29th St, New York, NY 10001, United States&#34;</span>,
+    <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Breslin Burger&#34;</span>,
+    <span style="color:#e6db74">&#34;rating&#34;</span>: <span style="color:#ae81ff">4.3</span>,
+    <span style="color:#e6db74">&#34;review_count&#34;</span>: <span style="color:#ae81ff">1125</span>,
+    <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;Hamburger restaurant&#34;</span>,
+    <span style="color:#e6db74">&#34;source&#34;</span>: <span style="color:#e6db74">&#34;Google&#34;</span>,
+    <span style="color:#e6db74">&#34;reviews_url&#34;</span>: <span style="color:#e6db74">&#34;https://www.google.com/maps/place/Breslin+Burger/@40.745568,-73.9902777,17z/data=!4m7!3m6!1s0x89c259a61b874f57:0xc5fd887f907ea722!8m2!3d40.745568!4d-73.988089!9m1!1b1&#34;</span>
+}
+</code></pre></div><h2 id="scraping-the-reviews-page">Scraping the reviews page</h2>
+<p>We have to sort the reviews by latest. We load the page in Splinter Browser component and do the click actions to sort the reviews. Once the page loads with sorted by latest reviews we will scroll the page until we get the desired number of reviews. Google uses dynamic loading of reviews, so we have to scroll down to load the next set of reviews. I just need 300 latest reviews, ofcourse, count is a parameter to the scraping function.</p>
+<p>The following code snippet will scroll the page until we get the desired number of reviews:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_html</span>(url, count):
+    browser <span style="color:#f92672">=</span> Browser(<span style="color:#e6db74">&#34;chrome&#34;</span>, headless<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+    browser<span style="color:#f92672">.</span>visit(url)
+    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+    <span style="color:#75715e"># sort and select newest for the list</span>
+    browser<span style="color:#f92672">.</span>find_by_text(<span style="color:#e6db74">&#34;Sort&#34;</span>)<span style="color:#f92672">.</span>first<span style="color:#f92672">.</span>click()
+    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+    new_menu_item <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>find_by_id(<span style="color:#e6db74">&#34;action-menu&#34;</span>)<span style="color:#f92672">.</span>find_by_tag(<span style="color:#e6db74">&#34;ul&#34;</span>)<span style="color:#f92672">.</span>find_by_tag(<span style="color:#e6db74">&#34;li&#34;</span>)[<span style="color:#ae81ff">1</span>]
+    new_menu_item<span style="color:#f92672">.</span>click()
+    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">7</span>)
+    rlen <span style="color:#f92672">=</span> get_review_count(browser<span style="color:#f92672">.</span>html)
+    <span style="color:#66d9ef">while</span> rlen <span style="color:#f92672">&lt;</span> count:
+        browser<span style="color:#f92672">.</span>execute_script(<span style="color:#e6db74">&#39;document.querySelector(&#34;div.section-layout.section-scrollbox&#34;).scrollTop = document.querySelector(&#34;div.section-layout.section-scrollbox&#34;).scrollHeight&#39;</span>)
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+        rlen <span style="color:#f92672">=</span> get_review_count(browser<span style="color:#f92672">.</span>html)
+    html <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>html
+    browser<span style="color:#f92672">.</span>quit()
+    <span style="color:#66d9ef">return</span> html
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_review_count</span>(html):
+    soup <span style="color:#f92672">=</span> BeautifulSoup(html, <span style="color:#e6db74">&#34;html5lib&#34;</span>)
+    reviews <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;div&#39;</span>, {<span style="color:#e6db74">&#39;data-review-id&#39;</span>: <span style="color:#66d9ef">True</span>, <span style="color:#e6db74">&#39;aria-label&#39;</span>: <span style="color:#66d9ef">True</span>})
+    <span style="color:#66d9ef">return</span> len(reviews)
+</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<p>The following code will do the scraping of the loaded reviews:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_reviews</span>(html):
+    soup <span style="color:#f92672">=</span> BeautifulSoup(html, <span style="color:#e6db74">&#34;html5lib&#34;</span>)
+    reviews <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;div&#39;</span>, {<span style="color:#e6db74">&#39;data-review-id&#39;</span>: <span style="color:#66d9ef">True</span>, <span style="color:#e6db74">&#39;aria-label&#39;</span>: <span style="color:#66d9ef">True</span>})
+
+    <span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> reviews:   
+        user <span style="color:#f92672">=</span> r[<span style="color:#e6db74">&#39;aria-label&#39;</span>]<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;ascii&#39;</span>, <span style="color:#e6db74">&#39;ignore&#39;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;UTF-8&#39;</span>)
+        review_id <span style="color:#f92672">=</span> r[<span style="color:#e6db74">&#39;data-review-id&#39;</span>]
+        content_div <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;div&#34;</span>, {<span style="color:#e6db74">&#39;data-review-id&#39;</span>: review_id})
+        stars <span style="color:#f92672">=</span> content_div<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;span&#34;</span>, {<span style="color:#e6db74">&#39;role&#39;</span>:<span style="color:#e6db74">&#39;img&#39;</span>})[<span style="color:#e6db74">&#39;aria-label&#39;</span>]<span style="color:#f92672">.</span>strip()
+        rating <span style="color:#f92672">=</span> int(stars<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">0</span>])
+        date <span style="color:#f92672">=</span> content_div<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;span[class*=&#34;-date&#34;]&#39;</span>)<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip()
+        text <span style="color:#f92672">=</span> content_div<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;span[class*=&#34;-text&#34;]&#39;</span>)<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip()
+        <span style="color:#66d9ef">if</span> len(text) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+            <span style="color:#66d9ef">continue</span>
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;(Translated by Google)&#34;</span> <span style="color:#f92672">in</span> text: 
+                text <span style="color:#f92672">=</span> text<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;(Translated by Google) &#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+                <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;(Original)&#34;</span> <span style="color:#f92672">in</span> text:
+                    idx <span style="color:#f92672">=</span> text<span style="color:#f92672">.</span>index(<span style="color:#e6db74">&#34;(Original)&#34;</span>)
+                    text <span style="color:#f92672">=</span> text[<span style="color:#ae81ff">0</span>:idx]
+
+        <span style="color:#66d9ef">yield</span> {
+            <span style="color:#e6db74">&#34;rating&#34;</span>: rating,
+            <span style="color:#e6db74">&#34;id&#34;</span>: review_id,
+            <span style="color:#e6db74">&#34;user&#34;</span>: user,
+            <span style="color:#e6db74">&#34;date&#34;</span>: dateparser<span style="color:#f92672">.</span>parse(date)<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">-%m-%Y&#34;</span>),
+            <span style="color:#e6db74">&#34;review&#34;</span>: text<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;ascii&#39;</span>, <span style="color:#e6db74">&#39;ignore&#39;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;UTF-8&#39;</span>)
+        }
+</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="conclusion">Conclusion</h2>
+<p>We have learnt how to use <code>BeautifulSoup</code> and <code>Splinter</code> Python packages to scrape Google reviews. The complete scraper code is available from my <a href="https://github.com/saisyam/reviews-scraper">Github repo</a>. In the future articles we will see how to analyze these reviews to extract some important insights about the business. Thanks for reading.</p>
+
+          </div>
+        </div>
+      </article>
+      <aside class="col-xs-12 col-md-4">
+
+        <div class="sidebar">
+
+          <div class="sidebar__section">  
+            <h5 class="sidebar__title">Sponsors</h5>
+            <script async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0206245742790279"
+              crossorigin="anonymous"></script>
+            
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0206245742790279"
+              data-ad-slot="3209664571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<script type="application/ld+json">
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "How to scrape Google reviews using Python",
+      "image": "https://saisyam.com/",
+      "datePublished": "2021-08-15T00:00:00Z",
+      "dateModified": "2021-08-15T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "mainEntityOfPage": { "@type": "WebPage" },
+       "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": {
+          "@type": "ImageObject",
+          "url":  null 
+        }
+      },
+      "description": "This post explains how to scrape Google reviews using Python. We use two popular Python packages extensively used for scraping, BeautifulSoup and Splinter. Though the process or the code snippets can be used to scrape reviews for any business listed in Google, but I am more interested in scraping reviews for restaurants in US.",
+      "keywords": ["Scraping", "Splinter", "BeautifulSoup", "Web driver"]
+    }
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Personal blog",
+      "url": "https://saisyam.com/",
+      "sameAs": [
+        "https://www.facebook.com/saisyam.dampuri.5667",
+        "https://www.instagram.com/saisyamdampuri",
+        "https://twitter.com/saisyam1",
+        "https://github.com/saisyam"
+      ]
+    }
+    </script>
+
+    </main>
+    <footer class="footer">
+  <div class="container wrapper">
+    <div class="footer__bottom">
+      <div class="grid">
+        <div class="col-lg center-lg">
+          <li>© Saisyam - 2021</li>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+</html>
