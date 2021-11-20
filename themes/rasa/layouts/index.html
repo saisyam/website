@@ -8,11 +8,11 @@
         {{ range $index, $page := $paginator.Pages }}
         {{ if not (modBool $index 2) }}
         <div class="post-card">
-          <div class="post-card__image">
+          <!--<div class="post-card__image">
             <a class="lazyload loaded" href="{{ $page.Permalink }}" title="{{ .Title }}"
               style="background-image: url('{{ .Params.image }}');">
             </a>
-          </div>
+          </div>-->
           <div class="post-card__content">
             <h2 class="post-card__title">
               <a href="{{ $page.Permalink }}">{{ .Title }}</a>
@@ -22,11 +22,11 @@
         </div>
         {{ else }}
         <div class="post-card reverse">
-          <div class="post-card__image">
+          <!--<div class="post-card__image">
             <a class="lazyload loaded" href="{{ $page.Permalink }}" title="{{ .Title }}"
               style="background-image: url('{{ .Params.image }}');">
             </a>
-          </div>
+          </div>-->
           <div class="post-card__content">
             <h2 class="post-card__title">
               <a href="{{ $page.Permalink }}">{{ .Title }}</a>

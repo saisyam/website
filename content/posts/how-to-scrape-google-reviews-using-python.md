@@ -12,6 +12,8 @@ image: /google_reviews_scraper.jpg
 ---
 This post explains how to scrape Google reviews using Python. We use two popular Python packages extensively used for scraping, [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) and [Splinter](https://splinter.readthedocs.io/en/latest/). Though the process or the code snippets can be used to scrape reviews for any business listed in Google, but I am more interested in scraping reviews for restaurants in US. So, Let's get started.
 
+{{< table_of_contents >}}
+
 {{< adsense >}}
 
 ## Identify businesses to scrape
