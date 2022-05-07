@@ -1,0 +1,339 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Saisyam&#39;s personal blog for technical articles" />
+  <meta name="author" content="Saisyam" />
+  <meta property="og:title" content="Mount EFS on EC2 instance in AWS in 5 steps" />
+<meta property="og:description" content="In this article we will see step-by-step process on mounting a EFS file system on to an EC2 instance. There are lot of use cases on why we need an EFS file system." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://saisyam.com/mount-efs-on-ec2-instance-in-aws-in-5-steps/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-07T00:00:00+00:00" />
+
+ 
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mount EFS on EC2 instance in AWS in 5 steps"/>
+<meta name="twitter:description" content="In this article we will see step-by-step process on mounting a EFS file system on to an EC2 instance. There are lot of use cases on why we need an EFS file system."/>
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  <link rel="stylesheet" href="https://saisyam.com/css/app.min.css" />
+  <style>
+    #toc::before {
+        content: "Table of Contents";
+        font-weight: bold;
+    }
+    #toc nav {
+      border-bottom: none;
+      padding-bottom: 0.2em;
+      font-family: "Ruda", sans-serif;
+    }
+
+    ol li, ul li {
+      margin-bottom: 0em;
+    }
+
+    #toc nav ul {
+       
+      padding: 1em;
+      list-style: decimal;
+      display: inline-block;
+    }
+    ul.pagination {
+      display: flex;
+      justify-content: center;
+      margin: 1em 0 0;
+      padding: 0.5em 0;
+      list-style: none;
+    }
+  
+    ul.pagination li {
+      padding: 0 1em;
+    }
+    .gist .blob-code-inner{ font-size:13px !important; }
+    .gist .blob-num{ font-size:13px !important; }
+
+    .highlight pre code{
+      color: #fff;
+      text-shadow: none;
+    }
+  </style>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+
+    <body class="post-template">
+ 
+    <header class="header">
+  <div class="header-top">
+    <a href="https://saisyam.com">
+      <h1 class="header-top__title">
+        <img class="lazyload header-top__logo initial loaded" src="https://saisyam.com/saisyam.png" data-src="saisyam.png"
+          alt="Saisyam's Personal Website" data-was-processed="true">
+      </h1>
+    </a>
+  </div>
+
+  <div class="header-main">
+    <div class="container wrapper">
+      <div class="grid">
+        <label for="menu--toggle" class="header-main__menu--toggle col-xs left">
+          <i class="icon icon-menu icon--large">
+            <svg class="icon__svg">
+              <use xlink:href="#icon-menu">
+                <symbol id="icon-menu" viewBox="0 0 24 24">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </symbol>
+              </use>
+            </svg>
+          </i>
+        </label>
+        <input type="checkbox" id="menu--toggle" title="Menu" class="is-hidden">
+
+        <nav class="header-main__menu nav col-sm top">
+          <ul>
+            <li>
+              <a href="https://saisyam.com">Home</a>
+            </li>
+            <li>
+              <a href="https://github.com/saisyam" target="_blank">Github</a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+    <main class="main">
+        
+<div class="post">
+  <div class="container wrapper">
+    <div class="post-header">
+      <h1 class="post-header__title">Mount EFS on EC2 instance in AWS in 5 steps</h1>
+      <div class="post-header__info">
+        <div class="post-header__author">
+          <a href="#">Saisyam</a>
+        </div>
+        <time class="post-header__date" datetime=" 2022-05-07">2022-05-07</time>
+        <div class="post-header__read-time">5 min read</div>
+      </div>
+    </div>
+  </div>
+  <div id="content" class="container wrapper">
+    <div class="grid">
+      <article class="col-xs-12 col-md-8">
+        <div class="post-content">
+          
+          <div class="post-content__inner">
+            <p>In this article we will see step-by-step process on mounting a <a href="https://aws.amazon.com/efs/">EFS</a> file system on to an EC2 instance. There are lot of use cases on why we need an EFS file system. We have a Python <a href="https://aws.amazon.com/lambda/">AWS Lambda</a> function which uses packages like numpy, scipy, pandas and scikit learn. When we pack these packages in to a zip file to deploy it exceed the size limit of 250k for lambda. So, we need to install these packages in an EFS file systems and make our Lambda function to get these packages from EFS. We need EC2 instance to mount EFS to install packages.</p>
+<div id="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#create-an-ec2-instance">Create an EC2 instance</a></li>
+    <li><a href="#create-an-efs-file-system">Create an EFS file system</a></li>
+    <li><a href="#update-security-group">Update Security group</a></li>
+    <li><a href="#create-an-access-point">Create an Access point</a></li>
+    <li><a href="#mount-efs-on-ec2">Mount EFS on EC2</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="create-an-ec2-instance">Create an EC2 instance</h2>
+<p>Let&rsquo;s launch an EC2 instance with the following configuration (free tier eligible). Once you login into your AWS console, search for EC2 under services and go to EC2 dashboard. Please refer to this <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-instance-wizard.html">link</a> if you are not familiar to launch an EC2 instance. I have used the following configuration:</p>
+<ul>
+<li>I gave it a name - TestEFS</li>
+<li>I am using Amazon Linux 2 AMI (HVM) 64 bit</li>
+<li>Selected instance type t2.micro</li>
+<li>I generated a new key pair. You can use an existing one if you have. AWS shows old keys in the drop down if you have any.</li>
+<li>Keep the default network settings (allow traffic from anywhere for ssh)</li>
+<li>Increase the disk size to 30 gb (free tier eligible)</li>
+</ul>
+<p>Your instance will be created within a default VPC and a new security group. If you are using Linux machine, change the permissions of your key to <code>700</code> and try to login into your instance with the following commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ chmod <span style="color:#ae81ff">700</span> testefs.pem
+$ ssh -i testefs.pem ec2-user@&lt;your instance public IP&gt;
+</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="create-an-efs-file-system">Create an EFS file system</h2>
+<p>Login to your AWS console and search for EFS service. On the landing page of EFS, you will see <code>Create file system</code> option. Click on it to get started. You will see the following modal dialog to quickly create one.</p>
+<p><img src="https://saisyam.com/efs-modal.jpg" alt="EFS create dialog"></p>
+<p>Give it a name and leave the rest as is. <strong>Make sure the default VPC is selected. We need to have both EC2 instance and EFS on the same VPC</strong>. For learning purposes we are using default VPC, but in the real world your DevOps may have a VPC setup for your project which you can select from the dropdown. It will take few minutes for EFS to get created. EFS is available is all the zones. You will see multiple IP addresses for the file system created for multiple availability zones, which are called as <code>Mount targets</code>.</p>
+<p><img src="https://saisyam.com/efs-mount-targets.jpg" alt="EFS mount targets"></p>
+<p>If you don&rsquo;t want multiple mount targets (in my case I don&rsquo;t need) you can remove them.</p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="update-security-group">Update Security group</h2>
+<p>As you can see in the above image, we are using default security group, but your DevOps may create a new security group for you. For keeping things simple, we will use and update the default security group. We want to mount this EFS only on our EC2 instance which we created above. So we need to add an <code>Inbound rule</code> to the security group used by EFS to allow <code>NFS (Network File System)</code> connections from our EC2 instance. To do that we need the security group ID of our EC2 instance, which you can get from the <code>Security</code> tab of your instance details as shown below:</p>
+<p><img src="https://saisyam.com/ec2-security-group.jpg" alt="EC2 security group"></p>
+<p>Copy the security group ID and create an inbound rule in the EFS security group by editing inbound rules as shown below:</p>
+<p><img src="https://saisyam.com/nfs-inbound-rule.jpg" alt="NFS inbound rule"></p>
+<h2 id="create-an-access-point">Create an Access point</h2>
+<p>Now we need to create an access point so that we can mount it on EC2. You can create multiple access points for different paths of your EFS file system. For now we create one access point for root (/). Select the file system from the list and go to <code>Access points</code> tab and click on <code>Create access point</code>. You will see a screen as shown below:
+<img src="https://saisyam.com/efs-create-access-point.jpg" alt="EFS create access point"></p>
+<p>Give it a name and put &lsquo;/&rsquo; in the Root directory path. Leave the rest of the fields as is and submit. You will see your access point in the list as shown below:</p>
+<p><img src="https://saisyam.com/efs-access-point-list.jpg" alt="EFS access point list"></p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="mount-efs-on-ec2">Mount EFS on EC2</h2>
+<p>In the above image, you will see a <code>Attach</code> button on top right corner. Clicking on that will show a modal dialog like:</p>
+<p><img src="https://saisyam.com/efs-attach-modal.jpg" alt="EFS attach modal"></p>
+<p>We will mount our EFS via IP (for me DNS didn&rsquo;t work). Make sure you select the same availability zone as your EC2 instance. Copy the command, login into your EC2 instance and create a folder called <code>efs</code> (change the command if you use a different folder name). Run the command shown in the above image. If you don&rsquo;t see any errors then your have successfully mounted the EFS. Now you can create files and folders in your EFS filesystem and can access them across different availability zones. Make sure you use <code>sudo</code> to create them.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this article we learnt how to mount EFS on to EC2 instance. In the coming articles we will learn how to connect EFS to AWS Lambda functions to avoid 250k size limitation.</p>
+
+          </div>
+        </div>
+      </article>
+      <aside class="col-xs-12 col-md-4">
+
+        <div class="sidebar">
+
+          <div class="sidebar__section">  
+            <h5 class="sidebar__title">Sponsors</h5>
+            <script async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0206245742790279"
+              crossorigin="anonymous"></script>
+            
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0206245742790279"
+              data-ad-slot="3209664571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<script type="application/ld+json">
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Mount EFS on EC2 instance in AWS in 5 steps",
+      "image": "https://saisyam.com/",
+      "datePublished": "2022-05-07T00:00:00Z",
+      "dateModified": "2022-05-07T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "mainEntityOfPage": { "@type": "WebPage" },
+       "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": {
+          "@type": "ImageObject",
+          "url":  null 
+        }
+      },
+      "description": "In this article we will see step-by-step process on mounting a EFS file system on to an EC2 instance. There are lot of use cases on why we need an EFS file system.",
+      "keywords": ["AWS", "EFS", "EC2"]
+    }
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Personal blog",
+      "url": "https://saisyam.com/",
+      "sameAs": [
+        "https://www.facebook.com/saisyam.dampuri.5667",
+        "https://www.instagram.com/saisyamdampuri",
+        "https://twitter.com/saisyam1",
+        "https://github.com/saisyam"
+      ]
+    }
+    </script>
+
+    </main>
+    <footer class="footer">
+  <div class="container wrapper">
+    <div class="footer__bottom">
+      <div class="grid">
+        <div class="col-lg center-lg">
+          <li>© Saisyam - 2021</li>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+</html>
