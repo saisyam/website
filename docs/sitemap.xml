@@ -2,22 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://saisyam.com/tags/beautifulsoup/</loc>
-    <lastmod>2021-08-15T00:00:00+00:00</lastmod>
+    <loc>https://saisyam.com/tags/aws/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/categories/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/categories/cloud/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/ec2/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/efs/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/mount-efs-on-ec2-instance-in-aws-in-5-steps/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/posts/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/beautifulsoup/</loc>
     <lastmod>2021-08-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/how-to-scrape-google-reviews-using-python/</loc>
     <lastmod>2021-08-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://saisyam.com/posts/</loc>
-    <lastmod>2021-08-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://saisyam.com/categories/python/</loc>
-    <lastmod>2021-08-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/</loc>
     <lastmod>2021-08-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/tags/scraping/</loc>
@@ -26,14 +44,8 @@
     <loc>https://saisyam.com/tags/splinter/</loc>
     <lastmod>2021-08-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://saisyam.com/tags/</loc>
-    <lastmod>2021-08-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://saisyam.com/tags/web-driver/</loc>
     <lastmod>2021-08-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/categories/cloud/</loc>
-    <lastmod>2021-03-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/tags/cloud-function/</loc>
     <lastmod>2021-03-05T00:00:00+00:00</lastmod>
