@@ -1,0 +1,396 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Saisyam&#39;s personal blog for technical articles" />
+  <meta name="author" content="Saisyam" />
+  <meta property="og:title" content="Deploy Python FastAPI Service on Kubernetes MiniKube" />
+<meta property="og:description" content="In this article we will build a Python FastAPI application with a single API which will return the sentiment (Postivie, Negative or Neutral) of the text given as input using Vader Sentiment Analysis." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://saisyam.com/deploy-python-fastapi-service-on-kubernetes-minikube/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-30T00:00:00+00:00" />
+
+ 
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Deploy Python FastAPI Service on Kubernetes MiniKube"/>
+<meta name="twitter:description" content="In this article we will build a Python FastAPI application with a single API which will return the sentiment (Postivie, Negative or Neutral) of the text given as input using Vader Sentiment Analysis."/>
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  <link rel="stylesheet" href="https://saisyam.com/css/app.min.css" />
+  <style>
+    #toc::before {
+        content: "Table of Contents";
+        font-weight: bold;
+    }
+    #toc nav {
+      border-bottom: none;
+      padding-bottom: 0.2em;
+      font-family: "Ruda", sans-serif;
+    }
+
+    ol li, ul li {
+      margin-bottom: 0em;
+    }
+
+    #toc nav ul {
+       
+      padding: 1em;
+      list-style: decimal;
+      display: inline-block;
+    }
+    ul.pagination {
+      display: flex;
+      justify-content: center;
+      margin: 1em 0 0;
+      padding: 0.5em 0;
+      list-style: none;
+    }
+  
+    ul.pagination li {
+      padding: 0 1em;
+    }
+    .gist .blob-code-inner{ font-size:13px !important; }
+    .gist .blob-num{ font-size:13px !important; }
+
+    .highlight pre code{
+      color: #fff;
+      text-shadow: none;
+    }
+  </style>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+
+    <body class="post-template">
+ 
+    <header class="header">
+  <div class="header-top">
+    <a href="https://saisyam.com">
+      <h1 class="header-top__title">
+        <img class="lazyload header-top__logo initial loaded" src="https://saisyam.com/saisyam.png" data-src="saisyam.png"
+          alt="Saisyam's Personal Website" data-was-processed="true">
+      </h1>
+    </a>
+  </div>
+
+  <div class="header-main">
+    <div class="container wrapper">
+      <div class="grid">
+        <label for="menu--toggle" class="header-main__menu--toggle col-xs left">
+          <i class="icon icon-menu icon--large">
+            <svg class="icon__svg">
+              <use xlink:href="#icon-menu">
+                <symbol id="icon-menu" viewBox="0 0 24 24">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </symbol>
+              </use>
+            </svg>
+          </i>
+        </label>
+        <input type="checkbox" id="menu--toggle" title="Menu" class="is-hidden">
+
+        <nav class="header-main__menu nav col-sm top">
+          <ul>
+            <li>
+              <a href="https://saisyam.com">Home</a>
+            </li>
+            <li>
+              <a href="https://github.com/saisyam" target="_blank">Github</a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+    <main class="main">
+        
+<div class="post">
+  <div class="container wrapper">
+    <div class="post-header">
+      <h1 class="post-header__title">Deploy Python FastAPI Service on Kubernetes MiniKube</h1>
+      <div class="post-header__info">
+        <div class="post-header__author">
+          <a href="#">Saisyam</a>
+        </div>
+        <time class="post-header__date" datetime=" 2022-05-30">2022-05-30</time>
+        <div class="post-header__read-time">4 min read</div>
+      </div>
+    </div>
+  </div>
+  <div id="content" class="container wrapper">
+    <div class="grid">
+      <article class="col-xs-12 col-md-8">
+        <div class="post-content">
+          
+          <div class="post-content__inner">
+            <p>In this article we will build a Python FastAPI application with a single API which will return the sentiment (Postivie, Negative or Neutral) of the text given as input using <a href="https://www.geeksforgeeks.org/python-sentiment-analysis-using-vader/">Vader Sentiment Analysis</a>. We will deploy the service in Kubernetes locally using <code>minikube</code>. If you are new to FastAPI please refer <a href="https://fastapi.tiangolo.com/">here</a>. If you want to install <code>minikube</code> refer <a href="https://minikube.sigs.k8s.io/docs/start/">here</a>.</p>
+<p><strong>Note:</strong> Installing <code>minikube</code> is out-of-scope of this article.</p>
+<div id="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#build-sentiment-service-api">Build Sentiment service API</a></li>
+    <li><a href="#build-the-docker-in-minikube">Build the Docker in minikube</a></li>
+    <li><a href="#run-our-application">Run our application</a></li>
+    <li><a href="#test-our-application">Test our application</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="build-sentiment-service-api">Build Sentiment service API</h2>
+<p>This application contains a single API which will return the sentiment of the text provided as input. The other API we have is to check the health of the application. You can download the complete source code of this application from my Github <a href="https://github.com/saisyam/vader-sentiment-service">repo</a>. Run the following commands to execute the application locally:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git clone https://github.com/saisyam/vader-sentiment-service.git
+$ cd  vader-sentiment-service
+$ python3 -m venv .venv --prompt ss
+$ source .venv/bin/activate
+$ pip install pip --upgrade
+$ pip install -r requirements.txt
+$ uvicorn service.main:app --reload
+</code></pre></div><p>Go to <code>http://127.0.0.1:8000/docs</code> to see the Swagger API and try the <code>sentiment</code> API.</p>
+<p><img src="../vader-sentiment-post-swagger.jpg" alt="Vader sentiment service"></p>
+<h2 id="build-the-docker-in-minikube">Build the Docker in minikube</h2>
+<p>There are multiple ways to push the docker image into <code>minikube</code>. Refer this <a href="https://minikube.sigs.k8s.io/docs/handbook/pushing/">link</a> for more information. I have used the first one <a href="https://minikube.sigs.k8s.io/docs/handbook/pushing/#1-pushing-directly-to-the-in-cluster-docker-daemon-docker-env">Pushing directly to the in-cluster Docker daemon (docker-env)</a>. It worked for me. I built my docker images as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cd vader-sentiment-service
+$ docker build -t vader-sentiment .
+</code></pre></div><p>The docker image build directly in to <code>minikube</code>.</p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="run-our-application">Run our application</h2>
+<p>Now it&rsquo;s time to create <code>deployment</code> and <code>service</code> to run our docker in <code>minikube</code>. We will keep it simple for this article. Will explore more options on scaling the application in future articles. The <code>api.yaml</code> file in the Github repo contain <code>service</code> and <code>deployment</code> template.</p>
+<p>Service template</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># vader-sentiment LoadBalancer Service</span>
+<span style="color:#75715e"># Enables the pods in a deployment to be accessible from outside the cluster</span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">vader-sentiment-svc</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">selector</span>:
+    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">vader-sentiment</span>
+  <span style="color:#f92672">ports</span>:
+    - <span style="color:#f92672">protocol</span>: <span style="color:#e6db74">&#34;TCP&#34;</span>
+      <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8080</span>
+      <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>
+  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">LoadBalancer</span>
+</code></pre></div><p>Deployment template - we will have only one replica for now.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># vader-sentiment Deployment</span>
+<span style="color:#75715e"># Defines the deployment of the app running in a pod on any worker node</span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">vader-sentiment</span>
+  <span style="color:#f92672">labels</span>:
+    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">vader-sentiment</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
+  <span style="color:#f92672">selector</span>:
+    <span style="color:#f92672">matchLabels</span>:
+      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">vader-sentiment</span>
+  <span style="color:#f92672">template</span>:
+    <span style="color:#f92672">metadata</span>:
+      <span style="color:#f92672">labels</span>:
+        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">vader-sentiment</span>
+    <span style="color:#f92672">spec</span>:
+      <span style="color:#f92672">containers</span>:
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">vader-sentiment</span>
+          <span style="color:#f92672">image</span>: <span style="color:#ae81ff">vader-sentiment:latest</span>
+          <span style="color:#f92672">ports</span>:
+            - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
+          <span style="color:#f92672">imagePullPolicy</span>: <span style="color:#ae81ff">IfNotPresent</span>
+</code></pre></div><p>Use the below command to deploy service:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl apply -f api.yaml 
+service/vader-sentiment-svc created
+deployment.apps/vader-sentiment created
+$ kubectl get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+vader-sentiment-8f5bfc566-wk9p9   1/1     Running   <span style="color:#ae81ff">0</span>          2s
+</code></pre></div><p>Make sure you have the status running as shown above. Now we want the public IP so that we can test our API. Run the following command to get it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl get svc vader-sentiment-svc
+NAME                  TYPE           CLUSTER-IP      EXTERNAL-IP   PORT<span style="color:#f92672">(</span>S<span style="color:#f92672">)</span>          AGE
+vader-sentiment-svc   LoadBalancer   10.110.16.243   &lt;pending&gt;     8080:30498/TCP   25s
+</code></pre></div><p>The <code>EXTERNAL-IP</code> is showing as <code>&lt;pending&gt;</code>. Open another terminal and run the command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ minikube tunnel
+Status:	
+	machine: minikube
+	pid: <span style="color:#ae81ff">1612721</span>
+	route: 10.96.0.0/12 -&gt; 192.168.49.2
+	minikube: Running
+	services: <span style="color:#f92672">[</span>vader-sentiment-svc<span style="color:#f92672">]</span>
+    errors: 
+		minikube: no errors
+		router: no errors
+		loadbalancer emulator: no errors
+</code></pre></div><p>Now again run the <code>get svc</code> command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl get svc vader-sentiment-svc
+NAME                  TYPE           CLUSTER-IP      EXTERNAL-IP     PORT<span style="color:#f92672">(</span>S<span style="color:#f92672">)</span>          AGE
+vader-sentiment-svc   LoadBalancer   10.110.16.243   10.110.16.243   8080:30498/TCP   22m
+</code></pre></div><p>Now you see the <code>EXTERNAL-IP</code>. Ofcourse, the CLUSTER-IP and EXTERNAL-IP are same as we are running Kubernetes locally. Our application is deployed in <code>minikube</code> successfully.</p>
+<h2 id="test-our-application">Test our application</h2>
+<p>I use cURL command to test my APIs. You can use postman as well. To test the sentiment API use the following cURL command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -X <span style="color:#e6db74">&#39;POST&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  <span style="color:#e6db74">&#39;http://10.110.16.243:8080/api/v1/sentiment&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#39;accept: application/json&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#39;{
+</span><span style="color:#e6db74">  &#34;sentence&#34;: &#34;The ice cream tastes delicious&#34;
+</span><span style="color:#e6db74">}&#39;</span>
+</code></pre></div><p>You will get the following response:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">{</span>
+  <span style="color:#e6db74">&#34;sentence&#34;</span>: <span style="color:#e6db74">&#34;The ice cream tastes delicious&#34;</span>,
+  <span style="color:#e6db74">&#34;sentiment&#34;</span>: <span style="color:#e6db74">&#34;Positive&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="conclusion">Conclusion</h2>
+<p>We have learnt how to deploy a simple service built with Python FastAPI into a Kubernetes (minikube) cluster using Docker. In future articles we will see how to deploy the same service on to public clouds like AWS, GCP and Azure. Thank you for reading.</p>
+
+          </div>
+        </div>
+      </article>
+      <aside class="col-xs-12 col-md-4">
+
+        <div class="sidebar">
+
+          <div class="sidebar__section">  
+            <h5 class="sidebar__title">Sponsors</h5>
+            <script async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0206245742790279"
+              crossorigin="anonymous"></script>
+            
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0206245742790279"
+              data-ad-slot="3209664571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<script type="application/ld+json">
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Deploy Python FastAPI Service on Kubernetes MiniKube",
+      "image": "https://saisyam.com/",
+      "datePublished": "2022-05-30T00:00:00Z",
+      "dateModified": "2022-05-30T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "mainEntityOfPage": { "@type": "WebPage" },
+       "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": {
+          "@type": "ImageObject",
+          "url":  null 
+        }
+      },
+      "description": "In this article we will build a Python FastAPI application with a single API which will return the sentiment (Postivie, Negative or Neutral) of the text given as input using Vader Sentiment Analysis.",
+      "keywords": ["FastAPI", "Vader sentiment analysis", "Docker", "Kubernetes", "minikube"]
+    }
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Personal blog",
+      "url": "https://saisyam.com/",
+      "sameAs": [
+        "https://www.facebook.com/saisyam.dampuri.5667",
+        "https://www.instagram.com/saisyamdampuri",
+        "https://twitter.com/saisyam1",
+        "https://github.com/saisyam"
+      ]
+    }
+    </script>
+
+    </main>
+    <footer class="footer">
+  <div class="container wrapper">
+    <div class="footer__bottom">
+      <div class="grid">
+        <div class="col-lg center-lg">
+          <li>© Saisyam - 2021</li>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+</html>
