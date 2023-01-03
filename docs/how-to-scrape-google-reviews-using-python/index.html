@@ -124,7 +124,7 @@ if (!doNotTrack) {
               <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
             </li>
             <li>
-              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+              <a href="https://medium.com/@saisyam" target="_blank">Medium</a>
             </li>
           </ul>
 
@@ -191,34 +191,34 @@ We would like to get the following information from the above page (<span style=
 We want the latest reviews, so we sort the reviews by <code>latest</code> and then scrape them.</p>
 <h2 id="scraping-business-information">Scraping business information</h2>
 <p>Google uses dynamic ids and class names in it&rsquo;s pages which make scraping a bit complex. We use different attributes other than ids and classes to get the elements. We use <code>Splinter</code> to load the page as it contains JavaScript. Get the <code>html</code> from Splinter <code>Browser</code> component and use <code>BeautifulSoup</code> to scrape the content. The following code snippet will scrape the business information:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_business_info</span>(url):
-    business <span style="color:#f92672">=</span> {}
-    business[<span style="color:#e6db74">&#39;base_url&#39;</span>] <span style="color:#f92672">=</span> url
-    browser <span style="color:#f92672">=</span> Browser(<span style="color:#e6db74">&#34;chrome&#34;</span>, headless<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
-    browser<span style="color:#f92672">.</span>visit(url)
-    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">5</span>)
-    soup <span style="color:#f92672">=</span> BeautifulSoup(browser<span style="color:#f92672">.</span>html, <span style="color:#e6db74">&#34;html5lib&#34;</span>)
-    img_div <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;div[class*=&#34;section-hero-header-image-hero-container&#34;]&#39;</span>)
-    img <span style="color:#f92672">=</span> img_div<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;img&#34;</span>)<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;src&#34;</span>)
-    business[<span style="color:#e6db74">&#39;img&#39;</span>] <span style="color:#f92672">=</span> img
-    addr_button <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;button[data-item-id=&#34;address&#34;]&#39;</span>)
-    addr <span style="color:#f92672">=</span> addr_button[<span style="color:#e6db74">&#39;aria-label&#39;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;Address: &#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>strip()
-    business[<span style="color:#e6db74">&#39;address&#39;</span>] <span style="color:#f92672">=</span> addr
-    business_name <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;h1[class*=&#34;header-title-title&#34;]&#39;</span>)<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip()
-    business[<span style="color:#e6db74">&#39;name&#39;</span>] <span style="color:#f92672">=</span> business_name
-    rating <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;ol&#34;</span>, {<span style="color:#e6db74">&#34;class&#34;</span>:<span style="color:#e6db74">&#34;section-star-array&#34;</span>})[<span style="color:#e6db74">&#39;aria-label&#39;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;stars&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>strip()
-    business[<span style="color:#e6db74">&#39;rating&#39;</span>] <span style="color:#f92672">=</span> float(rating)
-    total_reviews <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;button:-soup-contains(&#34;reviews&#34;)&#39;</span>)<span style="color:#f92672">.</span>text
-    business[<span style="color:#e6db74">&#39;review_count&#39;</span>] <span style="color:#f92672">=</span> int(total_reviews<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;reviews&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;,&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>)) 
-    res_type <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;div[class=&#34;gm2-body-2&#34;]&#39;</span>)<span style="color:#f92672">.</span>text
-    business[<span style="color:#e6db74">&#39;type&#39;</span>] <span style="color:#f92672">=</span> res_type<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;·&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>)
-    business[<span style="color:#e6db74">&#39;source&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Google&#34;</span>
-    reviews_button <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>find_by_text(total_reviews)<span style="color:#f92672">.</span>click()
-    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)
-    business[<span style="color:#e6db74">&#39;reviews_url&#39;</span>] <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>url
-    browser<span style="color:#f92672">.</span>quit()
-    <span style="color:#66d9ef">return</span> business
-</code></pre></div><p>I have used <code>select_one</code> method from BeautifulSoup which finds only the first element that matches the selector. The beauty of this method is we can look for partial selectors as well. This method uses <code>Pseudo-Classes</code>. I have used <code>:-soup-contains</code> in the above code to get the button element that has <code>reviews</code> in the text. Refer to this <a href="https://facelessuser.github.io/soupsieve/selectors/pseudo-classes/">link</a> to know more about Pseudo-Classes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_business_info</span>(url):
+</span></span><span style="display:flex;"><span>    business <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    business[<span style="color:#e6db74">&#39;base_url&#39;</span>] <span style="color:#f92672">=</span> url
+</span></span><span style="display:flex;"><span>    browser <span style="color:#f92672">=</span> Browser(<span style="color:#e6db74">&#34;chrome&#34;</span>, headless<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>    browser<span style="color:#f92672">.</span>visit(url)
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>    soup <span style="color:#f92672">=</span> BeautifulSoup(browser<span style="color:#f92672">.</span>html, <span style="color:#e6db74">&#34;html5lib&#34;</span>)
+</span></span><span style="display:flex;"><span>    img_div <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;div[class*=&#34;section-hero-header-image-hero-container&#34;]&#39;</span>)
+</span></span><span style="display:flex;"><span>    img <span style="color:#f92672">=</span> img_div<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;img&#34;</span>)<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;src&#34;</span>)
+</span></span><span style="display:flex;"><span>    business[<span style="color:#e6db74">&#39;img&#39;</span>] <span style="color:#f92672">=</span> img
+</span></span><span style="display:flex;"><span>    addr_button <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;button[data-item-id=&#34;address&#34;]&#39;</span>)
+</span></span><span style="display:flex;"><span>    addr <span style="color:#f92672">=</span> addr_button[<span style="color:#e6db74">&#39;aria-label&#39;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;Address: &#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>    business[<span style="color:#e6db74">&#39;address&#39;</span>] <span style="color:#f92672">=</span> addr
+</span></span><span style="display:flex;"><span>    business_name <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;h1[class*=&#34;header-title-title&#34;]&#39;</span>)<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>    business[<span style="color:#e6db74">&#39;name&#39;</span>] <span style="color:#f92672">=</span> business_name
+</span></span><span style="display:flex;"><span>    rating <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;ol&#34;</span>, {<span style="color:#e6db74">&#34;class&#34;</span>:<span style="color:#e6db74">&#34;section-star-array&#34;</span>})[<span style="color:#e6db74">&#39;aria-label&#39;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;stars&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>    business[<span style="color:#e6db74">&#39;rating&#39;</span>] <span style="color:#f92672">=</span> float(rating)
+</span></span><span style="display:flex;"><span>    total_reviews <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;button:-soup-contains(&#34;reviews&#34;)&#39;</span>)<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>    business[<span style="color:#e6db74">&#39;review_count&#39;</span>] <span style="color:#f92672">=</span> int(total_reviews<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;reviews&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;,&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>)) 
+</span></span><span style="display:flex;"><span>    res_type <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;div[class=&#34;gm2-body-2&#34;]&#39;</span>)<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>    business[<span style="color:#e6db74">&#39;type&#39;</span>] <span style="color:#f92672">=</span> res_type<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;·&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>    business[<span style="color:#e6db74">&#39;source&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Google&#34;</span>
+</span></span><span style="display:flex;"><span>    reviews_button <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>find_by_text(total_reviews)<span style="color:#f92672">.</span>click()
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>    business[<span style="color:#e6db74">&#39;reviews_url&#39;</span>] <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>url
+</span></span><span style="display:flex;"><span>    browser<span style="color:#f92672">.</span>quit()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> business
+</span></span></code></pre></div><p>I have used <code>select_one</code> method from BeautifulSoup which finds only the first element that matches the selector. The beauty of this method is we can look for partial selectors as well. This method uses <code>Pseudo-Classes</code>. I have used <code>:-soup-contains</code> in the above code to get the button element that has <code>reviews</code> in the text. Refer to this <a href="https://facelessuser.github.io/soupsieve/selectors/pseudo-classes/">link</a> to know more about Pseudo-Classes.</p>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
@@ -230,44 +230,44 @@ We want the latest reviews, so we sort the reviews by <code>latest</code> and th
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 <p>The output of the above method is a python dictionary:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">{
-    <span style="color:#e6db74">&#34;base_url&#34;</span>: <span style="color:#e6db74">&#34;https://www.google.com/maps/place/Breslin+Burger/@40.745568,-73.990283,17z/data=!3m1!4b1!4m5!3m4!1s0x89c259a61b874f57:0xc5fd887f907ea722!8m2!3d40.745568!4d-73.988089&#34;</span>,
-    <span style="color:#e6db74">&#34;img&#34;</span>: <span style="color:#e6db74">&#34;https://lh5.googleusercontent.com/p/AF1QipOQV1HUtfhIRxtict4owToQkQpQHbCJZ_KsW83e=w491-h240-k-no&#34;</span>,
-    <span style="color:#e6db74">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;16 W 29th St, New York, NY 10001, United States&#34;</span>,
-    <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Breslin Burger&#34;</span>,
-    <span style="color:#e6db74">&#34;rating&#34;</span>: <span style="color:#ae81ff">4.3</span>,
-    <span style="color:#e6db74">&#34;review_count&#34;</span>: <span style="color:#ae81ff">1125</span>,
-    <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;Hamburger restaurant&#34;</span>,
-    <span style="color:#e6db74">&#34;source&#34;</span>: <span style="color:#e6db74">&#34;Google&#34;</span>,
-    <span style="color:#e6db74">&#34;reviews_url&#34;</span>: <span style="color:#e6db74">&#34;https://www.google.com/maps/place/Breslin+Burger/@40.745568,-73.9902777,17z/data=!4m7!3m6!1s0x89c259a61b874f57:0xc5fd887f907ea722!8m2!3d40.745568!4d-73.988089!9m1!1b1&#34;</span>
-}
-</code></pre></div><h2 id="scraping-the-reviews-page">Scraping the reviews page</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;base_url&#34;</span>: <span style="color:#e6db74">&#34;https://www.google.com/maps/place/Breslin+Burger/@40.745568,-73.990283,17z/data=!3m1!4b1!4m5!3m4!1s0x89c259a61b874f57:0xc5fd887f907ea722!8m2!3d40.745568!4d-73.988089&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;img&#34;</span>: <span style="color:#e6db74">&#34;https://lh5.googleusercontent.com/p/AF1QipOQV1HUtfhIRxtict4owToQkQpQHbCJZ_KsW83e=w491-h240-k-no&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;16 W 29th St, New York, NY 10001, United States&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Breslin Burger&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;rating&#34;</span>: <span style="color:#ae81ff">4.3</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;review_count&#34;</span>: <span style="color:#ae81ff">1125</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;Hamburger restaurant&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;source&#34;</span>: <span style="color:#e6db74">&#34;Google&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;reviews_url&#34;</span>: <span style="color:#e6db74">&#34;https://www.google.com/maps/place/Breslin+Burger/@40.745568,-73.9902777,17z/data=!4m7!3m6!1s0x89c259a61b874f57:0xc5fd887f907ea722!8m2!3d40.745568!4d-73.988089!9m1!1b1&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="scraping-the-reviews-page">Scraping the reviews page</h2>
 <p>We have to sort the reviews by latest. We load the page in Splinter Browser component and do the click actions to sort the reviews. Once the page loads with sorted by latest reviews we will scroll the page until we get the desired number of reviews. Google uses dynamic loading of reviews, so we have to scroll down to load the next set of reviews. I just need 300 latest reviews, ofcourse, count is a parameter to the scraping function.</p>
 <p>The following code snippet will scroll the page until we get the desired number of reviews:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_html</span>(url, count):
-    browser <span style="color:#f92672">=</span> Browser(<span style="color:#e6db74">&#34;chrome&#34;</span>, headless<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
-    browser<span style="color:#f92672">.</span>visit(url)
-    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
-    <span style="color:#75715e"># sort and select newest for the list</span>
-    browser<span style="color:#f92672">.</span>find_by_text(<span style="color:#e6db74">&#34;Sort&#34;</span>)<span style="color:#f92672">.</span>first<span style="color:#f92672">.</span>click()
-    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
-    new_menu_item <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>find_by_id(<span style="color:#e6db74">&#34;action-menu&#34;</span>)<span style="color:#f92672">.</span>find_by_tag(<span style="color:#e6db74">&#34;ul&#34;</span>)<span style="color:#f92672">.</span>find_by_tag(<span style="color:#e6db74">&#34;li&#34;</span>)[<span style="color:#ae81ff">1</span>]
-    new_menu_item<span style="color:#f92672">.</span>click()
-    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">7</span>)
-    rlen <span style="color:#f92672">=</span> get_review_count(browser<span style="color:#f92672">.</span>html)
-    <span style="color:#66d9ef">while</span> rlen <span style="color:#f92672">&lt;</span> count:
-        browser<span style="color:#f92672">.</span>execute_script(<span style="color:#e6db74">&#39;document.querySelector(&#34;div.section-layout.section-scrollbox&#34;).scrollTop = document.querySelector(&#34;div.section-layout.section-scrollbox&#34;).scrollHeight&#39;</span>)
-        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
-        rlen <span style="color:#f92672">=</span> get_review_count(browser<span style="color:#f92672">.</span>html)
-    html <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>html
-    browser<span style="color:#f92672">.</span>quit()
-    <span style="color:#66d9ef">return</span> html
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_review_count</span>(html):
-    soup <span style="color:#f92672">=</span> BeautifulSoup(html, <span style="color:#e6db74">&#34;html5lib&#34;</span>)
-    reviews <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;div&#39;</span>, {<span style="color:#e6db74">&#39;data-review-id&#39;</span>: <span style="color:#66d9ef">True</span>, <span style="color:#e6db74">&#39;aria-label&#39;</span>: <span style="color:#66d9ef">True</span>})
-    <span style="color:#66d9ef">return</span> len(reviews)
-</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_html</span>(url, count):
+</span></span><span style="display:flex;"><span>    browser <span style="color:#f92672">=</span> Browser(<span style="color:#e6db74">&#34;chrome&#34;</span>, headless<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>    browser<span style="color:#f92672">.</span>visit(url)
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># sort and select newest for the list</span>
+</span></span><span style="display:flex;"><span>    browser<span style="color:#f92672">.</span>find_by_text(<span style="color:#e6db74">&#34;Sort&#34;</span>)<span style="color:#f92672">.</span>first<span style="color:#f92672">.</span>click()
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    new_menu_item <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>find_by_id(<span style="color:#e6db74">&#34;action-menu&#34;</span>)<span style="color:#f92672">.</span>find_by_tag(<span style="color:#e6db74">&#34;ul&#34;</span>)<span style="color:#f92672">.</span>find_by_tag(<span style="color:#e6db74">&#34;li&#34;</span>)[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    new_menu_item<span style="color:#f92672">.</span>click()
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">7</span>)
+</span></span><span style="display:flex;"><span>    rlen <span style="color:#f92672">=</span> get_review_count(browser<span style="color:#f92672">.</span>html)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> rlen <span style="color:#f92672">&lt;</span> count:
+</span></span><span style="display:flex;"><span>        browser<span style="color:#f92672">.</span>execute_script(<span style="color:#e6db74">&#39;document.querySelector(&#34;div.section-layout.section-scrollbox&#34;).scrollTop = document.querySelector(&#34;div.section-layout.section-scrollbox&#34;).scrollHeight&#39;</span>)
+</span></span><span style="display:flex;"><span>        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>        rlen <span style="color:#f92672">=</span> get_review_count(browser<span style="color:#f92672">.</span>html)
+</span></span><span style="display:flex;"><span>    html <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>html
+</span></span><span style="display:flex;"><span>    browser<span style="color:#f92672">.</span>quit()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> html
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_review_count</span>(html):
+</span></span><span style="display:flex;"><span>    soup <span style="color:#f92672">=</span> BeautifulSoup(html, <span style="color:#e6db74">&#34;html5lib&#34;</span>)
+</span></span><span style="display:flex;"><span>    reviews <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;div&#39;</span>, {<span style="color:#e6db74">&#39;data-review-id&#39;</span>: <span style="color:#66d9ef">True</span>, <span style="color:#e6db74">&#39;aria-label&#39;</span>: <span style="color:#66d9ef">True</span>})
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> len(reviews)
+</span></span></code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"
@@ -278,35 +278,35 @@ We want the latest reviews, so we sort the reviews by <code>latest</code> and th
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 <p>The following code will do the scraping of the loaded reviews:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_reviews</span>(html):
-    soup <span style="color:#f92672">=</span> BeautifulSoup(html, <span style="color:#e6db74">&#34;html5lib&#34;</span>)
-    reviews <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;div&#39;</span>, {<span style="color:#e6db74">&#39;data-review-id&#39;</span>: <span style="color:#66d9ef">True</span>, <span style="color:#e6db74">&#39;aria-label&#39;</span>: <span style="color:#66d9ef">True</span>})
-
-    <span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> reviews:   
-        user <span style="color:#f92672">=</span> r[<span style="color:#e6db74">&#39;aria-label&#39;</span>]<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;ascii&#39;</span>, <span style="color:#e6db74">&#39;ignore&#39;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;UTF-8&#39;</span>)
-        review_id <span style="color:#f92672">=</span> r[<span style="color:#e6db74">&#39;data-review-id&#39;</span>]
-        content_div <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;div&#34;</span>, {<span style="color:#e6db74">&#39;data-review-id&#39;</span>: review_id})
-        stars <span style="color:#f92672">=</span> content_div<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;span&#34;</span>, {<span style="color:#e6db74">&#39;role&#39;</span>:<span style="color:#e6db74">&#39;img&#39;</span>})[<span style="color:#e6db74">&#39;aria-label&#39;</span>]<span style="color:#f92672">.</span>strip()
-        rating <span style="color:#f92672">=</span> int(stars<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">0</span>])
-        date <span style="color:#f92672">=</span> content_div<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;span[class*=&#34;-date&#34;]&#39;</span>)<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip()
-        text <span style="color:#f92672">=</span> content_div<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;span[class*=&#34;-text&#34;]&#39;</span>)<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip()
-        <span style="color:#66d9ef">if</span> len(text) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-            <span style="color:#66d9ef">continue</span>
-        <span style="color:#66d9ef">else</span>:
-            <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;(Translated by Google)&#34;</span> <span style="color:#f92672">in</span> text: 
-                text <span style="color:#f92672">=</span> text<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;(Translated by Google) &#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
-                <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;(Original)&#34;</span> <span style="color:#f92672">in</span> text:
-                    idx <span style="color:#f92672">=</span> text<span style="color:#f92672">.</span>index(<span style="color:#e6db74">&#34;(Original)&#34;</span>)
-                    text <span style="color:#f92672">=</span> text[<span style="color:#ae81ff">0</span>:idx]
-
-        <span style="color:#66d9ef">yield</span> {
-            <span style="color:#e6db74">&#34;rating&#34;</span>: rating,
-            <span style="color:#e6db74">&#34;id&#34;</span>: review_id,
-            <span style="color:#e6db74">&#34;user&#34;</span>: user,
-            <span style="color:#e6db74">&#34;date&#34;</span>: dateparser<span style="color:#f92672">.</span>parse(date)<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">-%m-%Y&#34;</span>),
-            <span style="color:#e6db74">&#34;review&#34;</span>: text<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;ascii&#39;</span>, <span style="color:#e6db74">&#39;ignore&#39;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;UTF-8&#39;</span>)
-        }
-</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_reviews</span>(html):
+</span></span><span style="display:flex;"><span>    soup <span style="color:#f92672">=</span> BeautifulSoup(html, <span style="color:#e6db74">&#34;html5lib&#34;</span>)
+</span></span><span style="display:flex;"><span>    reviews <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;div&#39;</span>, {<span style="color:#e6db74">&#39;data-review-id&#39;</span>: <span style="color:#66d9ef">True</span>, <span style="color:#e6db74">&#39;aria-label&#39;</span>: <span style="color:#66d9ef">True</span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> reviews:   
+</span></span><span style="display:flex;"><span>        user <span style="color:#f92672">=</span> r[<span style="color:#e6db74">&#39;aria-label&#39;</span>]<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;ascii&#39;</span>, <span style="color:#e6db74">&#39;ignore&#39;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;UTF-8&#39;</span>)
+</span></span><span style="display:flex;"><span>        review_id <span style="color:#f92672">=</span> r[<span style="color:#e6db74">&#39;data-review-id&#39;</span>]
+</span></span><span style="display:flex;"><span>        content_div <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;div&#34;</span>, {<span style="color:#e6db74">&#39;data-review-id&#39;</span>: review_id})
+</span></span><span style="display:flex;"><span>        stars <span style="color:#f92672">=</span> content_div<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;span&#34;</span>, {<span style="color:#e6db74">&#39;role&#39;</span>:<span style="color:#e6db74">&#39;img&#39;</span>})[<span style="color:#e6db74">&#39;aria-label&#39;</span>]<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>        rating <span style="color:#f92672">=</span> int(stars<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>        date <span style="color:#f92672">=</span> content_div<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;span[class*=&#34;-date&#34;]&#39;</span>)<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>        text <span style="color:#f92672">=</span> content_div<span style="color:#f92672">.</span>select_one(<span style="color:#e6db74">&#39;span[class*=&#34;-text&#34;]&#39;</span>)<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> len(text) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;(Translated by Google)&#34;</span> <span style="color:#f92672">in</span> text: 
+</span></span><span style="display:flex;"><span>                text <span style="color:#f92672">=</span> text<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;(Translated by Google) &#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;(Original)&#34;</span> <span style="color:#f92672">in</span> text:
+</span></span><span style="display:flex;"><span>                    idx <span style="color:#f92672">=</span> text<span style="color:#f92672">.</span>index(<span style="color:#e6db74">&#34;(Original)&#34;</span>)
+</span></span><span style="display:flex;"><span>                    text <span style="color:#f92672">=</span> text[<span style="color:#ae81ff">0</span>:idx]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;rating&#34;</span>: rating,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;id&#34;</span>: review_id,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;user&#34;</span>: user,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;date&#34;</span>: dateparser<span style="color:#f92672">.</span>parse(date)<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">-%m-%Y&#34;</span>),
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;review&#34;</span>: text<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;ascii&#39;</span>, <span style="color:#e6db74">&#39;ignore&#39;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;UTF-8&#39;</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"

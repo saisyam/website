@@ -124,7 +124,7 @@ if (!doNotTrack) {
               <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
             </li>
             <li>
-              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+              <a href="https://medium.com/@saisyam" target="_blank">Medium</a>
             </li>
           </ul>
 
@@ -179,13 +179,13 @@ if (!doNotTrack) {
 <p>When building a SIP test tool, I have to convert RTP audio streams with PCMA/PCMU encodings to WAV files for validation. PyWav is the result of that activity. Using PyWav you can write RAW streams into a playable WAV file supporting PCM/PCMA/PCMU compressions. Similarly, you can even read a WAV and get the RAW data from that WAV file to send it over RTP stream.</p>
 <h2 id="reading-a-wav-file">Reading a WAV file</h2>
 <p>Below sample code shows how to read a WAV file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">wave_read <span style="color:#f92672">=</span> pywav<span style="color:#f92672">.</span>WavRead(<span style="color:#e6db74">&#34;&lt;filename to read&gt;&#34;</span>)
-<span style="color:#75715e"># print parameters like number of channels, sample rate, bits per sample, audio format etc</span>
-<span style="color:#75715e"># Audio format 1 = PCM (without compression)</span>
-<span style="color:#75715e"># Audio format 6 = PCMA (with A-law compression)</span>
-<span style="color:#75715e"># Audio format 7 = PCMU (with mu-law compression)</span>
-print(wave_read<span style="color:#f92672">.</span>getparams())
-</code></pre></div><p>Following are the list of parameters that are extracted from the WAV file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>wave_read <span style="color:#f92672">=</span> pywav<span style="color:#f92672">.</span>WavRead(<span style="color:#e6db74">&#34;&lt;filename to read&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># print parameters like number of channels, sample rate, bits per sample, audio format etc</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Audio format 1 = PCM (without compression)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Audio format 6 = PCMA (with A-law compression)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Audio format 7 = PCMU (with mu-law compression)</span>
+</span></span><span style="display:flex;"><span>print(wave_read<span style="color:#f92672">.</span>getparams())
+</span></span></code></pre></div><p>Following are the list of parameters that are extracted from the WAV file:</p>
 <ul>
 <li>Number of channels</li>
 <li>Sample rate</li>
@@ -210,18 +210,18 @@ print(wave_read<span style="color:#f92672">.</span>getparams())
 </script>
 <h2 id="writing-a-wav-file">Writing a WAV file</h2>
 <p>You can write the RAW data captured from the RTP stream into a WAV file using the following sample:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># first parameter is the file name to write the wave data</span>
-<span style="color:#75715e"># second parameter is the number of channels, the value can be 1 (mono) or 2 (stereo)</span>
-<span style="color:#75715e"># third parameter is the sample rate, 8000 samples per second</span>
-<span style="color:#75715e"># fourth paramaer is the bits per sample, 8 bits per sample</span>
-<span style="color:#75715e"># fifth parameter is the audio format, 1 means PCM with no compression.</span>
-wave_write <span style="color:#f92672">=</span> pywav<span style="color:#f92672">.</span>WavWrite(<span style="color:#e6db74">&#34;&lt;filename to write&gt;&#34;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">8000</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">1</span>)
-<span style="color:#75715e"># raw_data is the byte array. Write can be done only once for now.</span>
-<span style="color:#75715e"># Incremental write will be implemented later</span>
-wave_write<span style="color:#f92672">.</span>write(<span style="color:#f92672">&lt;</span>raw data<span style="color:#f92672">&gt;</span>)
-<span style="color:#75715e"># close the file stream and save the file</span>
-wave_write<span style="color:#f92672">.</span>close()
-</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># first parameter is the file name to write the wave data</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># second parameter is the number of channels, the value can be 1 (mono) or 2 (stereo)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># third parameter is the sample rate, 8000 samples per second</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># fourth paramaer is the bits per sample, 8 bits per sample</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># fifth parameter is the audio format, 1 means PCM with no compression.</span>
+</span></span><span style="display:flex;"><span>wave_write <span style="color:#f92672">=</span> pywav<span style="color:#f92672">.</span>WavWrite(<span style="color:#e6db74">&#34;&lt;filename to write&gt;&#34;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">8000</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># raw_data is the byte array. Write can be done only once for now.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Incremental write will be implemented later</span>
+</span></span><span style="display:flex;"><span>wave_write<span style="color:#f92672">.</span>write(<span style="color:#f92672">&lt;</span>raw data<span style="color:#f92672">&gt;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># close the file stream and save the file</span>
+</span></span><span style="display:flex;"><span>wave_write<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>You can install this as a <code>pip</code> package using <code>pip3 install pywav</code>. The source code of this project is available on <a href="https://github.com/saisyam/pywav">Github</a>.</p>
 
           </div>

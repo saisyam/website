@@ -124,7 +124,7 @@ if (!doNotTrack) {
               <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
             </li>
             <li>
-              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+              <a href="https://medium.com/@saisyam" target="_blank">Medium</a>
             </li>
           </ul>
 
@@ -183,12 +183,12 @@ If you are new to Splinter, check out my article and I promise you love it. We u
 <p>Once you have the Y4M file you can follow the below mentioned steps to fake the webcam. <a href="https://testrtc.com/y4m-video-chrome/">Here</a> is an article on how to create Y4M files using <a href="https://www.ffmpeg.org/">ffmpeg</a>.</p>
 <h2 id="chrome-settings-to-fake-webcam">Chrome Settings to fake webcam</h2>
 <p>We will set <code>webdriver.ChromeOptions</code> to enable media stream using a fake device.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">chrome_options <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>ChromeOptions()
-chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;--use-fake-device-for-media-stream&#34;</span>)
-chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;--use-file-for-fake-video-capture=./salma_hayek.y4m&#34;</span>)
-chrome_options<span style="color:#f92672">.</span>add_experimental_option(<span style="color:#e6db74">&#34;prefs&#34;</span>, {
-    <span style="color:#e6db74">&#34;profile.default_content_setting_values.media_stream_camera&#34;</span>: <span style="color:#ae81ff">1</span>
-</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>chrome_options <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>ChromeOptions()
+</span></span><span style="display:flex;"><span>chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;--use-fake-device-for-media-stream&#34;</span>)
+</span></span><span style="display:flex;"><span>chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;--use-file-for-fake-video-capture=./salma_hayek.y4m&#34;</span>)
+</span></span><span style="display:flex;"><span>chrome_options<span style="color:#f92672">.</span>add_experimental_option(<span style="color:#e6db74">&#34;prefs&#34;</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;profile.default_content_setting_values.media_stream_camera&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"

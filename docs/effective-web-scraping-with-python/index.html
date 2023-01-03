@@ -124,7 +124,7 @@ if (!doNotTrack) {
               <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
             </li>
             <li>
-              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+              <a href="https://medium.com/@saisyam" target="_blank">Medium</a>
             </li>
           </ul>
 
@@ -181,41 +181,41 @@ if (!doNotTrack) {
 <h2 id="why-scraping">Why Scraping?</h2>
 <p>There are millions of websites on the Internet which have information on different topics. For example, news, travel, food, finance, business, tech, entertainment, to name a few. All these websites don&rsquo;t have a proper way (APIs or feeds) of sharing data. So, we need scrape such websites to extract the information.</p>
 <p>Scrapers parse the HTML elements of the page using tags, ids, class names etc to get the required content from the page. Consider the following simple HTML page:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">html</span>&gt;
-  &lt;<span style="color:#f92672">head</span>&gt;
-    &lt;<span style="color:#f92672">title</span>&gt;Sample HTML page&lt;/<span style="color:#f92672">title</span>&gt;
-  &lt;/<span style="color:#f92672">head</span>&gt;
-  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main&#34;</span>&gt;
-    &lt;<span style="color:#f92672">h1</span>&gt;Scraping with Python&lt;/<span style="color:#f92672">h1</span>&gt;
-    &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;summary&#34;</span>&gt;This article explains how web scraping is done in Python and the packages required.&lt;/<span style="color:#f92672">p</span>&gt;
-    &lt;<span style="color:#f92672">p</span>&gt;By Saisyam&lt;/<span style="color:#f92672">p</span>&gt;
-  &lt;/<span style="color:#f92672">div</span>&gt;
-&lt;/<span style="color:#f92672">html</span>&gt;
-</code></pre></div><p>The above HTML snippet contains tags like, <code>title</code>, <code>div</code>, <code>h1</code>, and <code>p</code>. We can extract the <code>div</code> element with <code>id=main</code> and then extract text between <code>h1</code> and <code>p</code> tags under the <code>div</code> element. We can identify specific tags using <code>id</code> or <code>class</code> or any other attributes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;Sample HTML page&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;Scraping with Python&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;summary&#34;</span>&gt;This article explains how web scraping is done in Python and the packages required.&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;By Saisyam&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>The above HTML snippet contains tags like, <code>title</code>, <code>div</code>, <code>h1</code>, and <code>p</code>. We can extract the <code>div</code> element with <code>id=main</code> and then extract text between <code>h1</code> and <code>p</code> tags under the <code>div</code> element. We can identify specific tags using <code>id</code> or <code>class</code> or any other attributes.</p>
 <h2 id="scraping-with-python">Scraping with Python</h2>
 <p>It&rsquo;s easy to write scrapers in Python. Python has a rich set of tools or packages to perform scraping effectively. The below code snippet parses the above HTML and extracts the information required:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scrape</span>():
-    soup <span style="color:#f92672">=</span> BeautifulSoup(html, <span style="color:#e6db74">&#39;html5lib&#39;</span>)
-    title <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;title&#39;</span>)<span style="color:#f92672">.</span>get_text()
-    div <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;div&#39;</span>, {<span style="color:#e6db74">&#39;id&#39;</span>:<span style="color:#e6db74">&#39;main&#39;</span>})
-    heading <span style="color:#f92672">=</span> div<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;h1&#39;</span>)<span style="color:#f92672">.</span>get_text()
-    summary <span style="color:#f92672">=</span> div<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;p&#39;</span>,{<span style="color:#e6db74">&#39;class&#39;</span>:<span style="color:#e6db74">&#39;summary&#39;</span>})<span style="color:#f92672">.</span>get_text()
-    ptags <span style="color:#f92672">=</span> div<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;p&#39;</span>)
-    author <span style="color:#f92672">=</span> ptags[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>get_text()
-    <span style="color:#66d9ef">return</span> {
-        <span style="color:#e6db74">&#39;title&#39;</span>: title,
-        <span style="color:#e6db74">&#39;heading&#39;</span>: heading,
-        <span style="color:#e6db74">&#39;summary&#39;</span>: summary,
-        <span style="color:#e6db74">&#39;author&#39;</span>: author
-    }
-</code></pre></div><p>The above code uses <code>Beautifulsoup</code> package. The response of the above function is:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">{
-	<span style="color:#e6db74">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;Sample HTML page&#34;</span>,
-	<span style="color:#e6db74">&#34;heading&#34;</span>: <span style="color:#e6db74">&#34;Scraping with Python&#34;</span>,
-	<span style="color:#e6db74">&#34;summary&#34;</span>: <span style="color:#e6db74">&#34;This article explains how web scraping is done in Python and the packages required.&#34;</span>,
-	<span style="color:#e6db74">&#34;author&#34;</span>: <span style="color:#e6db74">&#34;By Saisyam&#34;</span>
-}
-</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scrape</span>():
+</span></span><span style="display:flex;"><span>    soup <span style="color:#f92672">=</span> BeautifulSoup(html, <span style="color:#e6db74">&#39;html5lib&#39;</span>)
+</span></span><span style="display:flex;"><span>    title <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;title&#39;</span>)<span style="color:#f92672">.</span>get_text()
+</span></span><span style="display:flex;"><span>    div <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;div&#39;</span>, {<span style="color:#e6db74">&#39;id&#39;</span>:<span style="color:#e6db74">&#39;main&#39;</span>})
+</span></span><span style="display:flex;"><span>    heading <span style="color:#f92672">=</span> div<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;h1&#39;</span>)<span style="color:#f92672">.</span>get_text()
+</span></span><span style="display:flex;"><span>    summary <span style="color:#f92672">=</span> div<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;p&#39;</span>,{<span style="color:#e6db74">&#39;class&#39;</span>:<span style="color:#e6db74">&#39;summary&#39;</span>})<span style="color:#f92672">.</span>get_text()
+</span></span><span style="display:flex;"><span>    ptags <span style="color:#f92672">=</span> div<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;p&#39;</span>)
+</span></span><span style="display:flex;"><span>    author <span style="color:#f92672">=</span> ptags[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>get_text()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;title&#39;</span>: title,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;heading&#39;</span>: heading,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;summary&#39;</span>: summary,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;author&#39;</span>: author
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>The above code uses <code>Beautifulsoup</code> package. The response of the above function is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;Sample HTML page&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;heading&#34;</span>: <span style="color:#e6db74">&#34;Scraping with Python&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;summary&#34;</span>: <span style="color:#e6db74">&#34;This article explains how web scraping is done in Python and the packages required.&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;author&#34;</span>: <span style="color:#e6db74">&#34;By Saisyam&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"
@@ -248,20 +248,20 @@ if (!doNotTrack) {
 <p>If you don&rsquo;t want to deal with all the mess and do just parsing the content, use <a href="https://www.scraperapi.com/">ScraperAPI</a>. It is a proxy API for web scraping. Scraper API handles proxies, browsers, and CAPTCHAs, so you can get the HTML from any web page with a simple API call!. Check out <a href="https://www.scrapingbee.com/">ScrapingBee</a> as well.</p>
 <h2 id="using-proxies-for-ip-rotation">Using proxies for IP rotation</h2>
 <p>You can tell <code>requests</code> API to use proxies to fetch html.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">proxies <span style="color:#f92672">=</span> {
-    <span style="color:#e6db74">&#34;http&#34;</span>:<span style="color:#e6db74">&#34;191.96.16.209:3129&#34;</span>
-}
-resp <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url, proxies<span style="color:#f92672">=</span>proxies)
-</code></pre></div><p>Your request will go through the proxy address provided. Use HTTP proxies to skip SSL verification step which happens in case of HTTPS proxies.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>proxies <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;http&#34;</span>:<span style="color:#e6db74">&#34;191.96.16.209:3129&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>resp <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url, proxies<span style="color:#f92672">=</span>proxies)
+</span></span></code></pre></div><p>Your request will go through the proxy address provided. Use HTTP proxies to skip SSL verification step which happens in case of HTTPS proxies.</p>
 <p>In a similar way, we can use proxies with Splinter as well. We use Chrome browser here.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">proxy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;191.96.16.209:3129&#34;</span>
-
-chrome_options <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>ChromeOptions()
-chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--proxy-server=</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> proxy)
-browser <span style="color:#f92672">=</span> Browser(<span style="color:#e6db74">&#39;chrome&#39;</span>, options<span style="color:#f92672">=</span>chrome_options)
-browser<span style="color:#f92672">.</span>visit(url)
-html <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>html
-</code></pre></div><p>If one IP gets blocked, you can get an another one and continue scraping.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>proxy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;191.96.16.209:3129&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chrome_options <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>ChromeOptions()
+</span></span><span style="display:flex;"><span>chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--proxy-server=</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> proxy)
+</span></span><span style="display:flex;"><span>browser <span style="color:#f92672">=</span> Browser(<span style="color:#e6db74">&#39;chrome&#39;</span>, options<span style="color:#f92672">=</span>chrome_options)
+</span></span><span style="display:flex;"><span>browser<span style="color:#f92672">.</span>visit(url)
+</span></span><span style="display:flex;"><span>html <span style="color:#f92672">=</span> browser<span style="color:#f92672">.</span>html
+</span></span></code></pre></div><p>If one IP gets blocked, you can get an another one and continue scraping.</p>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
