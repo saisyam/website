@@ -124,7 +124,7 @@ if (!doNotTrack) {
               <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
             </li>
             <li>
-              <a href="https://instagram.com/saisyamdampuri" target="_blank">Instagram</a>
+              <a href="https://medium.com/@saisyam" target="_blank">Medium</a>
             </li>
           </ul>
 
@@ -183,42 +183,42 @@ if (!doNotTrack) {
 </blockquote>
 <p>You pay for what you use. In this article we will deploy a simple ebay product scraper as a Google Cloud function.
 Our Ebay scraper is built using <code>BeautifulSoup</code> library. This scraper will extract the necessary information of a product given its URL. For example, given this URL <a href="https://www.ebay.com/itm/203449771112?hash=item2f5e8d2468:g:0zcAAOSwssFgnD-K&amp;var=503791306328">https://www.ebay.com/itm/203449771112?hash=item2f5e8d2468:g:0zcAAOSwssFgnD-K&amp;var=503791306328</a> to the scraper we will get the following result:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">{</span>
-	<span style="color:#e6db74">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;Travis Scott Dunks Low&#34;</span>,
-	<span style="color:#e6db74">&#34;ebay_id&#34;</span>: <span style="color:#e6db74">&#34;203449771112&#34;</span>,
-	<span style="color:#e6db74">&#34;images&#34;</span>: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;https://i.ebayimg.com/images/g/0zcAAOSwssFgnD-K/s-l1600.png&#34;</span>, <span style="color:#e6db74">&#34;https://i.ebayimg.com/images/g/kZ4AAOSwUKBgnD-K/s-l1600.png&#34;</span><span style="color:#f92672">]</span>,
-	<span style="color:#e6db74">&#34;metadata&#34;</span>: <span style="color:#f92672">{</span>
-		<span style="color:#e6db74">&#34;price&#34;</span>: <span style="color:#e6db74">&#34;US </span>$220<span style="color:#e6db74">.00&#34;</span>,
-		<span style="color:#e6db74">&#34;shipping&#34;</span>: <span style="color:#e6db74">&#34;FREE&#34;</span>,
-		<span style="color:#e6db74">&#34;Condition&#34;</span>: <span style="color:#e6db74">&#34;A brand-new, unused, and unworn item (including handmade items) in the original packaging (such as&#34;</span>,
-		<span style="color:#e6db74">&#34;UK Shoe Size&#34;</span>: <span style="color:#e6db74">&#34;UK 11&#34;</span>,
-		<span style="color:#e6db74">&#34;Customized&#34;</span>: <span style="color:#e6db74">&#34;No&#34;</span>,
-		<span style="color:#e6db74">&#34;Features&#34;</span>: <span style="color:#e6db74">&#34;Limited Edition, Comfort, Cushioned&#34;</span>,
-		<span style="color:#e6db74">&#34;Model&#34;</span>: <span style="color:#e6db74">&#34;Travis Scott Dunks&#34;</span>,
-		<span style="color:#e6db74">&#34;Department&#34;</span>: <span style="color:#e6db74">&#34;Men&#34;</span>,
-		<span style="color:#e6db74">&#34;Product Line&#34;</span>: <span style="color:#e6db74">&#34;Nike Dunk Low, Nike SB, Nike Dunk&#34;</span>,
-		<span style="color:#e6db74">&#34;Pattern&#34;</span>: <span style="color:#e6db74">&#34;Solid&#34;</span>,
-		<span style="color:#e6db74">&#34;AU Shoe Size&#34;</span>: <span style="color:#e6db74">&#34;AU 11.5&#34;</span>,
-		<span style="color:#e6db74">&#34;EU Shoe Size&#34;</span>: <span style="color:#e6db74">&#34;EUR 42.5&#34;</span>,
-		<span style="color:#e6db74">&#34;Performance/Activity&#34;</span>: <span style="color:#e6db74">&#34;Skateboarding&#34;</span>,
-		<span style="color:#e6db74">&#34;US Shoe Size&#34;</span>: <span style="color:#e6db74">&#34;10&#34;</span>,
-		<span style="color:#e6db74">&#34;Shoe Width&#34;</span>: <span style="color:#e6db74">&#34;Standard&#34;</span>,
-		<span style="color:#e6db74">&#34;Insole Material&#34;</span>: <span style="color:#e6db74">&#34;Fabric&#34;</span>,
-		<span style="color:#e6db74">&#34;Brand&#34;</span>: <span style="color:#e6db74">&#34;Nike&#34;</span>,
-		<span style="color:#e6db74">&#34;Shoe Shaft Style&#34;</span>: <span style="color:#e6db74">&#34;Low Top&#34;</span>,
-		<span style="color:#e6db74">&#34;Style&#34;</span>: <span style="color:#e6db74">&#34;Sneaker&#34;</span>,
-		<span style="color:#e6db74">&#34;Vintage&#34;</span>: <span style="color:#e6db74">&#34;No&#34;</span>,
-		<span style="color:#e6db74">&#34;Color&#34;</span>: <span style="color:#e6db74">&#34;Beige&#34;</span>,
-		<span style="color:#e6db74">&#34;Upper Material&#34;</span>: <span style="color:#e6db74">&#34;Leather&#34;</span>,
-		<span style="color:#e6db74">&#34;Theme&#34;</span>: <span style="color:#e6db74">&#34;Retro&#34;</span>,
-		<span style="color:#e6db74">&#34;Country/Region of Manufacture&#34;</span>: <span style="color:#e6db74">&#34;Singapore&#34;</span>,
-		<span style="color:#e6db74">&#34;Character Family&#34;</span>: <span style="color:#e6db74">&#34;Friends&#34;</span>,
-		<span style="color:#e6db74">&#34;Year Manufactured&#34;</span>: <span style="color:#e6db74">&#34;2020&#34;</span>,
-		<span style="color:#e6db74">&#34;Type&#34;</span>: <span style="color:#e6db74">&#34;Athletic&#34;</span>
-	<span style="color:#f92672">}</span>,
-	<span style="color:#e6db74">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://www.ebay.com/itm/203449771112?hash=item2f5e8d2468:g:0zcAAOSwssFgnD-K&amp;var=503791306328&#34;</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>Refer to my <a href="https://github.com/saisyam/scraper-on-cloud/blob/main/ebay-scraper/ebay.py">ebay.py</a> file for the scraper.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;Travis Scott Dunks Low&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;ebay_id&#34;</span>: <span style="color:#e6db74">&#34;203449771112&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;images&#34;</span>: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;https://i.ebayimg.com/images/g/0zcAAOSwssFgnD-K/s-l1600.png&#34;</span>, <span style="color:#e6db74">&#34;https://i.ebayimg.com/images/g/kZ4AAOSwUKBgnD-K/s-l1600.png&#34;</span><span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;metadata&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;price&#34;</span>: <span style="color:#e6db74">&#34;US </span>$220<span style="color:#e6db74">.00&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;shipping&#34;</span>: <span style="color:#e6db74">&#34;FREE&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Condition&#34;</span>: <span style="color:#e6db74">&#34;A brand-new, unused, and unworn item (including handmade items) in the original packaging (such as&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;UK Shoe Size&#34;</span>: <span style="color:#e6db74">&#34;UK 11&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Customized&#34;</span>: <span style="color:#e6db74">&#34;No&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Features&#34;</span>: <span style="color:#e6db74">&#34;Limited Edition, Comfort, Cushioned&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Model&#34;</span>: <span style="color:#e6db74">&#34;Travis Scott Dunks&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Department&#34;</span>: <span style="color:#e6db74">&#34;Men&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Product Line&#34;</span>: <span style="color:#e6db74">&#34;Nike Dunk Low, Nike SB, Nike Dunk&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Pattern&#34;</span>: <span style="color:#e6db74">&#34;Solid&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;AU Shoe Size&#34;</span>: <span style="color:#e6db74">&#34;AU 11.5&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;EU Shoe Size&#34;</span>: <span style="color:#e6db74">&#34;EUR 42.5&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Performance/Activity&#34;</span>: <span style="color:#e6db74">&#34;Skateboarding&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;US Shoe Size&#34;</span>: <span style="color:#e6db74">&#34;10&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Shoe Width&#34;</span>: <span style="color:#e6db74">&#34;Standard&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Insole Material&#34;</span>: <span style="color:#e6db74">&#34;Fabric&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Brand&#34;</span>: <span style="color:#e6db74">&#34;Nike&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Shoe Shaft Style&#34;</span>: <span style="color:#e6db74">&#34;Low Top&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Style&#34;</span>: <span style="color:#e6db74">&#34;Sneaker&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Vintage&#34;</span>: <span style="color:#e6db74">&#34;No&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Color&#34;</span>: <span style="color:#e6db74">&#34;Beige&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Upper Material&#34;</span>: <span style="color:#e6db74">&#34;Leather&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Theme&#34;</span>: <span style="color:#e6db74">&#34;Retro&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Country/Region of Manufacture&#34;</span>: <span style="color:#e6db74">&#34;Singapore&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Character Family&#34;</span>: <span style="color:#e6db74">&#34;Friends&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Year Manufactured&#34;</span>: <span style="color:#e6db74">&#34;2020&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Type&#34;</span>: <span style="color:#e6db74">&#34;Athletic&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://www.ebay.com/itm/203449771112?hash=item2f5e8d2468:g:0zcAAOSwssFgnD-K&amp;var=503791306328&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>Refer to my <a href="https://github.com/saisyam/scraper-on-cloud/blob/main/ebay-scraper/ebay.py">ebay.py</a> file for the scraper.</p>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
@@ -231,29 +231,29 @@ Our Ebay scraper is built using <code>BeautifulSoup</code> library. This scraper
 </script>
 <h2 id="deploy-scraper-as-google-cloud-function">Deploy scraper as Google Cloud Function</h2>
 <p>To deploy our scraper we need to create a file called <code>main.py</code> in the same folder where we have our scraper. Add the following code to <code>main.py</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scrape_ebay</span>(request):
-    <span style="color:#e6db74">&#34;&#34;&#34;HTTP Cloud Function.
-</span><span style="color:#e6db74">    Args:
-</span><span style="color:#e6db74">        request (flask.Request): The request object.
-</span><span style="color:#e6db74">        &lt;https://flask.palletsprojects.com/en/1.1.x/api/#incoming-request-data&gt;
-</span><span style="color:#e6db74">    Returns:
-</span><span style="color:#e6db74">        The response text, or any set of values that can be turned into a
-</span><span style="color:#e6db74">        Response object using `make_response`
-</span><span style="color:#e6db74">        &lt;https://flask.palletsprojects.com/en/1.1.x/api/#flask.make_response&gt;.
-</span><span style="color:#e6db74">    Note:
-</span><span style="color:#e6db74">        For more information on how Flask integrates with Cloud
-</span><span style="color:#e6db74">        Functions, see the `Writing HTTP functions` page.
-</span><span style="color:#e6db74">        &lt;https://cloud.google.com/functions/docs/writing/http#http_frameworks&gt;
-</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-    url <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;url&#39;</span>)
-    <span style="color:#66d9ef">return</span> scrape_ebay_product(url)
-</code></pre></div><p><code>scrape_ebay</code> is the Cloud function that we call using a HTTP request. We pass URL, in our case Ebay product URL as a query parameter. We will see the response as json. To deploy the cloud function you need <code>gcloud</code> application on your system. You have to create a project on Google cloud and initialize <code>gcloud</code> to use that project to deploy this cloud function. Use the below command to deploy:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ gcloud functions deploy scrape_ebay --runtime python38 --trigger-http --allow-unauthenticated
-</code></pre></div><p>If the above command is successful, you will get the URL to run your cloud function. Something like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">https://&lt;region-project&gt;.cloudfunctions.net/scrape_ebay
-</code></pre></div><p>You can add the Ebay URL as query parameter:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">https://&lt;region-project&gt;.cloudfunctions.net/scrape_ebay?url<span style="color:#f92672">=</span>https://www.ebay.com/itm/203449771112?hash<span style="color:#f92672">=</span>item2f5e8d2468:g:0zcAAOSwssFgnD-K&amp;var<span style="color:#f92672">=</span><span style="color:#ae81ff">503791306328</span>
-</code></pre></div><p>If you see any errors fix them. To run cloud functions two basic things are important:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scrape_ebay</span>(request):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;HTTP Cloud Function.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        request (flask.Request): The request object.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;https://flask.palletsprojects.com/en/1.1.x/api/#incoming-request-data&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        The response text, or any set of values that can be turned into a
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Response object using `make_response`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;https://flask.palletsprojects.com/en/1.1.x/api/#flask.make_response&gt;.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Note:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        For more information on how Flask integrates with Cloud
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Functions, see the `Writing HTTP functions` page.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;https://cloud.google.com/functions/docs/writing/http#http_frameworks&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    url <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;url&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> scrape_ebay_product(url)
+</span></span></code></pre></div><p><code>scrape_ebay</code> is the Cloud function that we call using a HTTP request. We pass URL, in our case Ebay product URL as a query parameter. We will see the response as json. To deploy the cloud function you need <code>gcloud</code> application on your system. You have to create a project on Google cloud and initialize <code>gcloud</code> to use that project to deploy this cloud function. Use the below command to deploy:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ gcloud functions deploy scrape_ebay --runtime python38 --trigger-http --allow-unauthenticated
+</span></span></code></pre></div><p>If the above command is successful, you will get the URL to run your cloud function. Something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>https://&lt;region-project&gt;.cloudfunctions.net/scrape_ebay
+</span></span></code></pre></div><p>You can add the Ebay URL as query parameter:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>https://&lt;region-project&gt;.cloudfunctions.net/scrape_ebay?url<span style="color:#f92672">=</span>https://www.ebay.com/itm/203449771112?hash<span style="color:#f92672">=</span>item2f5e8d2468:g:0zcAAOSwssFgnD-K&amp;var<span style="color:#f92672">=</span><span style="color:#ae81ff">503791306328</span>
+</span></span></code></pre></div><p>If you see any errors fix them. To run cloud functions two basic things are important:</p>
 <ol>
 <li>Enable billing on your project</li>
 <li>Enable Cloud Build API</li>
