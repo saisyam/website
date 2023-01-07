@@ -8,7 +8,7 @@ tags:
 date: 2023-01-07
 image: /webscraping.jpg
 ---
-[WebAssembly(WASM)](https://webassembly.org/) has the potential to provide a more lightweight and secure execution environment than traditional containers, which could be beneficial for applications that require high performance and security. However, it is still relatively early in its development cycle and it is unclear how much traction it will gain in the future. But, based on the recent developments happening in this space gives us a feel that WASM will slowly take over containers.
+[WebAssembly(WASM)](https://webassembly.org/) has the potential to provide a more lightweight and secure execution environment than traditional containers, which could be beneficial for applications that require high performance and security. However, it is still relatively early in its development cycle, and it is unclear how much traction it will gain in the future. But, based on the recent developments happening in this space gives us a feel that WASM will slowly take over containers.
 
 In this article we will see what developments are happening in this area and which companies are interested in building Microservices using WASM.
 
@@ -17,7 +17,7 @@ WASM by itself need a complete post. I don't go into very technical details of W
 
 > WebAssembly (abbreviated Wasm) is a binary instruction format for a stack-based virtual machine. Wasm is designed as a portable compilation target for programming languages, enabling deployment on the web for client and server applications.
 
-WASM was originally developed to embed applications or libraries built with other programming languages like (C/C++, Python, Rust, Go etc) into web applications. For example, if we compile a simple Python program into WASM binary format, it can be executed inside a browser.
+WASM was originally developed to embed applications or libraries built with other programming languages like (C/C++, Python, Rust, Go etc,) into web applications. For example, if we compile a simple Python program into WASM binary format, it can be executed inside a browser.
 
 Recent developments made to run WASM outside of browser which opened a lot of opportunities in Microservices space. One way to run WebAssembly outside of a web browser is to use a standalone WebAssembly runtime, such as [Wasmer](https://wasmer.io/) or [Wasmtime](https://wasmtime.dev/). These runtimes can execute WebAssembly modules directly, without the need for a web browser.
 
@@ -35,12 +35,11 @@ WASI is still in development and is not yet widely supported. However, it has th
 
 Fermyon also have a [cloud application platform](https://developer.fermyon.com/cloud/index) for WASM microservices (which is in open beta at the time of this post). It enabled you to run Spin applications, at scale, in the cloud, without any infrastructure setup. 
 
-They have a good documentation on how to build and run WASM based Microservices with Rust and Go. These are the guys who introduced Kubernets to WASM with Krustlet.
+They have a good documentation on how to build and run WASM based Microservices with Rust and Go. These are the guys who introduced Kubernetes to WASM with Krustlet.
 
 [Krustlet](https://krustlet.dev/) Krustlet is a Kubelet written in Rust — which listens on the event stream for new pods that the scheduler assigns to it, based on specific Kubernetes tolerations.
 
 We can deploy WASM binaries on [Azure](https://www.infoworld.com/article/3681853/azure-kubernetes-doubles-down-on-webassembly.html).
 
 ## Conclusion
-In this article we learnt what is WASM is (ofcourse, at a very high level) and what are the recent developments happening in bringing it to the mainstream development. I am very excited to try to build a simple Microservice in Golang with Fermyon Spin and deploy it to Azure Kubernetes. Will definitely write more articles on WASM. Thanks for reading.
-
+In this article we learnt what is WASM is (of course, at a very high level) and what are the recent developments happening in bringing it to the mainstream development. I am very excited to try to build a simple Microservice in Golang with Fermyon Spin and deploy it to Azure Kubernetes. Will write more articles on WASM. Thanks for reading.
