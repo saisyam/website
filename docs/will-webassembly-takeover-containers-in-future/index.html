@@ -1,0 +1,275 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Saisyam&#39;s personal blog for technical articles" />
+  <meta name="author" content="Saisyam" />
+  <meta property="og:title" content="Will Webassembly Takeover Containers in future?" />
+<meta property="og:description" content="WebAssembly(WASM) has the potential to provide a more lightweight and secure execution environment than traditional containers, which could be beneficial for applications that require high performance and security. However, it is still relatively early in its development cycle, and it is unclear how much traction it will gain in the future." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://saisyam.com/will-webassembly-takeover-containers-in-future/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-07T00:00:00+00:00" />
+
+ 
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Will Webassembly Takeover Containers in future?"/>
+<meta name="twitter:description" content="WebAssembly(WASM) has the potential to provide a more lightweight and secure execution environment than traditional containers, which could be beneficial for applications that require high performance and security. However, it is still relatively early in its development cycle, and it is unclear how much traction it will gain in the future."/>
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  <link rel="stylesheet" href="https://saisyam.com/css/app.min.css" />
+  <style>
+    #toc::before {
+        content: "Table of Contents";
+        font-weight: bold;
+    }
+    #toc nav {
+      border-bottom: none;
+      padding-bottom: 0.2em;
+      font-family: "Ruda", sans-serif;
+    }
+
+    ol li, ul li {
+      margin-bottom: 0em;
+    }
+
+    #toc nav ul {
+       
+      padding: 1em;
+      list-style: decimal;
+      display: inline-block;
+    }
+    ul.pagination {
+      display: flex;
+      justify-content: center;
+      margin: 1em 0 0;
+      padding: 0.5em 0;
+      list-style: none;
+    }
+  
+    ul.pagination li {
+      padding: 0 1em;
+    }
+    .gist .blob-code-inner{ font-size:13px !important; }
+    .gist .blob-num{ font-size:13px !important; }
+
+    .highlight pre code{
+      color: #fff;
+      text-shadow: none;
+    }
+  </style>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+
+    <body class="post-template">
+ 
+    <header class="header">
+  <div class="header-top">
+    <a href="https://saisyam.com">
+      <h1 class="header-top__title">
+        <img class="lazyload header-top__logo initial loaded" src="https://saisyam.com/saisyam.png" data-src="saisyam.png"
+          alt="Saisyam's Personal Website" data-was-processed="true">
+      </h1>
+    </a>
+  </div>
+
+  <div class="header-main">
+    <div class="container wrapper">
+      <div class="grid">
+        <label for="menu--toggle" class="header-main__menu--toggle col-xs left">
+          <i class="icon icon-menu icon--large">
+            <svg class="icon__svg">
+              <use xlink:href="#icon-menu">
+                <symbol id="icon-menu" viewBox="0 0 24 24">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </symbol>
+              </use>
+            </svg>
+          </i>
+        </label>
+        <input type="checkbox" id="menu--toggle" title="Menu" class="is-hidden">
+
+        <nav class="header-main__menu nav col-sm top">
+          <ul>
+            <li>
+              <a href="https://saisyam.com">Home</a>
+            </li>
+            <li>
+              <a href="https://github.com/saisyam" target="_blank">Github</a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://medium.com/@saisyam" target="_blank">Medium</a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+    <main class="main">
+        
+<div class="post">
+  <div class="container wrapper">
+    <div class="post-header">
+      <h1 class="post-header__title">Will Webassembly Takeover Containers in future?</h1>
+      <div class="post-header__info">
+        <div class="post-header__author">
+          <a href="#">Saisyam</a>
+        </div>
+        <time class="post-header__date" datetime=" 2023-01-07">2023-01-07</time>
+        <div class="post-header__read-time">4 min read</div>
+      </div>
+    </div>
+  </div>
+  <div id="content" class="container wrapper">
+    <div class="grid">
+      <article class="col-xs-12 col-md-8">
+        <div class="post-content">
+          
+          <div class="post-content__inner">
+            <p><a href="https://webassembly.org/">WebAssembly(WASM)</a> has the potential to provide a more lightweight and secure execution environment than traditional containers, which could be beneficial for applications that require high performance and security. However, it is still relatively early in its development cycle, and it is unclear how much traction it will gain in the future. But, based on the recent developments happening in this space gives us a feel that WASM will slowly take over containers.</p>
+<p>In this article we will see what developments are happening in this area and which companies are interested in building Microservices using WASM.</p>
+<h2 id="what-is-webassemblywasm">What is WebAssembly(WASM)?</h2>
+<p>WASM by itself need a complete post. I don&rsquo;t go into very technical details of WASM but will discuss at a very high level.</p>
+<blockquote>
+<p>WebAssembly (abbreviated Wasm) is a binary instruction format for a stack-based virtual machine. Wasm is designed as a portable compilation target for programming languages, enabling deployment on the web for client and server applications.</p>
+</blockquote>
+<p>WASM was originally developed to embed applications or libraries built with other programming languages like (C/C++, Python, Rust, Go etc,) into web applications. For example, if we compile a simple Python program into WASM binary format, it can be executed inside a browser.</p>
+<p>Recent developments made to run WASM outside of browser which opened a lot of opportunities in Microservices space. One way to run WebAssembly outside of a web browser is to use a standalone WebAssembly runtime, such as <a href="https://wasmer.io/">Wasmer</a> or <a href="https://wasmtime.dev/">Wasmtime</a>. These runtimes can execute WebAssembly modules directly, without the need for a web browser.</p>
+<h2 id="what-is-webassembly-system-interface-wasi">What is WebAssembly System Interface (WASI)?</h2>
+<p>WASM has limitations in terms of I/O which is solved by WASI. WASI is a system interface for WebAssembly that allows WebAssembly programs to access system resources such as the file system, environment variables, and system calls. It is designed to be a platform-agnostic interface that can be used to run WebAssembly programs on a variety of different platforms, including servers, desktops, and embedded devices.</p>
+<p>WASI is implemented as a set of imports that can be added to a WebAssembly module, similar to how WebAssembly can import functions from JavaScript. This allows WebAssembly programs to call WASI functions in order to access system resources.</p>
+<p>WASI is still in development and is not yet widely supported. However, it has the potential to greatly expand the capabilities of WebAssembly and make it even more useful for a variety of different applications. <a href="https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/">WASI is being standardized</a>.</p>
+<h2 id="recent-developments">Recent Developments</h2>
+<p><a href="https://www.fermyon.com/about">Fermyon</a> is working extensively of using WASM for building Microservices. They developed tools to use WASM to build Microservices in Rust and Go. All their websites run WASM microservices in their backend. Fermyon developed <a href="https://developer.fermyon.com/spin/index">Spin</a>.</p>
+<blockquote>
+<p>Spin is a framework for building and running event-driven microservice applications with WebAssembly (Wasm) components. With Spin, we’re trying to make it easier to get started with using WebAssembly on the server so that we can all take advantage of the security, portability, and speed WebAssembly provides when it comes to running microservices.</p>
+</blockquote>
+<p>Fermyon also have a <a href="https://developer.fermyon.com/cloud/index">cloud application platform</a> for WASM microservices (which is in open beta at the time of this post). It enabled you to run Spin applications, at scale, in the cloud, without any infrastructure setup.</p>
+<p>They have a good documentation on how to build and run WASM based Microservices with Rust and Go. These are the guys who introduced Kubernetes to WASM with Krustlet.</p>
+<p><a href="https://krustlet.dev/">Krustlet</a> Krustlet is a Kubelet written in Rust — which listens on the event stream for new pods that the scheduler assigns to it, based on specific Kubernetes tolerations.</p>
+<p>We can deploy WASM binaries on <a href="https://www.infoworld.com/article/3681853/azure-kubernetes-doubles-down-on-webassembly.html">Azure</a>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this article we learnt what is WASM is (of course, at a very high level) and what are the recent developments happening in bringing it to the mainstream development. I am very excited to try to build a simple Microservice in Golang with Fermyon Spin and deploy it to Azure Kubernetes. Will write more articles on WASM. Thanks for reading.</p>
+
+          </div>
+        </div>
+      </article>
+      <aside class="col-xs-12 col-md-4">
+
+        <div class="sidebar">
+
+          <div class="sidebar__section">  
+            <h5 class="sidebar__title">Sponsors</h5>
+            <script async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0206245742790279"
+              crossorigin="anonymous"></script>
+            
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0206245742790279"
+              data-ad-slot="3209664571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<script type="application/ld+json">
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Will Webassembly Takeover Containers in future?",
+      "image": "https://saisyam.com/",
+      "datePublished": "2023-01-07T00:00:00Z",
+      "dateModified": "2023-01-07T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "mainEntityOfPage": { "@type": "WebPage" },
+       "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": {
+          "@type": "ImageObject",
+          "url":  null 
+        }
+      },
+      "description": "WebAssembly(WASM) has the potential to provide a more lightweight and secure execution environment than traditional containers, which could be beneficial for applications that require high performance and security. However, it is still relatively early in its development cycle, and it is unclear how much traction it will gain in the future.",
+      "keywords": ["WebAssembly", "Containers"]
+    }
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Personal blog",
+      "url": "https://saisyam.com/",
+      "sameAs": [
+        "https://www.facebook.com/saisyam.dampuri.5667",
+        "https://www.instagram.com/saisyamdampuri",
+        "https://twitter.com/saisyam1",
+        "https://github.com/saisyam"
+      ]
+    }
+    </script>
+
+    </main>
+    <footer class="footer">
+  <div class="container wrapper">
+    <div class="footer__bottom">
+      <div class="grid">
+        <div class="col-lg center-lg">
+          <li>© Saisyam - 2021</li>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+</html>
