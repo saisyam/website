@@ -11,6 +11,7 @@ tags:
   - Webdriver
 date: 2021-01-10
 image: /webscraping.jpg
+featured: 1
 ---
 
 Web scraping is a process of automatically extracting information from websites. Web scrapers are small programs written to crawl and extract specific information from a webpage. For example, getting latest news items from news websites like BBC, CNN etc.

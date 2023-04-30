@@ -1,0 +1,23 @@
+
+<header class="site-navbar" role="banner">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-4 site-logo">
+                <a href="/" class="text-black h2 mb-0">Saisyam</a>
+            </div>
+            <div class="col-8 text-right">
+                <nav class="site-navigation" role="navigation">
+                    <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
+                        <li><a href="/">Home</a></li>
+                        {{ range $key, $value := .Site.Taxonomies.categories }}
+                        <li>
+                            <a href="/categories/{{ $key | urlize  }}">{{ $key | humanize }}</a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </nav>
+                <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><span class="icon-menu h3"></span></a>
+            </div>
+        </div>
+    </div>
+</header>

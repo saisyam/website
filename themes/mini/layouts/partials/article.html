@@ -1,0 +1,78 @@
+<style>
+  pre {
+  overflow: auto;
+  margin-top: 0;
+  margin: 1em 0;
+  padding: 1em;
+  font-size: 16.8px;
+  font-size: 1.05rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('{{ .Params.image }}');">
+  <div class="container">
+    <div class="row same-height justify-content-center">
+      <div class="col-md-12 col-lg-10">
+      <div class="post-entry text-center">
+        <span class="post-category text-white bg-success mb-3">{{ index .Params.categories 0 }}</span>
+        <h1 class="mb-4"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+        <div class="post-meta align-items-center text-center">
+          <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="site-section py-lg">
+  <div class="container">
+    <div class="row blog-entries element-animate">
+      <div class="col-md-12 col-lg-8 main-content">
+        <div class="post-content-body">
+          {{ .Content }}
+        </div>
+        <div class="pt-5">
+          <p>
+            Categories: 
+            {{ range $index, $name := sort .Params.categories -}}
+            <a href="{{ (printf "/categories/%s/" $name) | urlize }}">{{$name | markdownify}} </a>
+            {{ end }}
+            Tags: 
+            {{range $index, $name := sort .Params.tags -}}
+            <a href="/tags/{{ $name }}">#{{ $name }}</a>
+            {{ end }}
+          </p>
+        </div>
+        <div class="pt-5">
+          {{ template "_internal/disqus.html" . }}
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4 sidebar">
+        <div class="sidebar-box">
+          <h3 class="heading">Categories</h3>
+          <ul class="categories">
+            {{ range $key, $value := .Site.Taxonomies.categories }}
+              <li>
+                <a href="/categories/{{ $key | urlize  }}">{{ $key | humanize }}<span>({{ .Count }})</span></a>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+        <div class="sidebar-box">
+          <h3 class="heading">Tags</h3>
+          <ul class="tags">
+            {{range $name, $taxonomy := .Site.Taxonomies.tags}}
+              <li><a href="/tags/{{ $name }}">{{ $name }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

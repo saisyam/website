@@ -1,0 +1,57 @@
+{{ define "main" }}
+<div class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <span>Category</span>
+        {{ $category := .Title }}
+        <h3>{{ $category }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="site-section bg-white">
+  <div class="container">
+    <div class="row">
+      {{ $paginator := .Paginate .Pages }}
+      {{ range $page:= where .Paginator.Pages ".Params.categories" "intersect" (slice $category) }}
+      {{ if in .Params.categories $category }}
+      {{ $slice := slice "primary" "secondary" "danger" "warning" "success" }}
+      {{ $shuffled := shuffle $slice }}
+      <div class="col-lg-4 mb-4">
+        <div class="entry2">
+          <a href="{{ .Permalink }}"><img src="{{ .Params.image }}" alt="Image" class="img-fluid rounded"></a>
+          <div class="excerpt">
+            <span class="post-category text-white bg-{{ index $shuffled 0 }} mb-3">{{ index .Params.categories 0 }}</span>
+            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+            <div class="post-meta align-items-center text-left clearfix">
+              <!--<figure class="author-figure mb-0 mr-3 float-left"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
+              <span class="d-inline-block mt-1">By <a href="#">{{ .Author }}</a></span>-->
+              <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+            </div>
+            <p>{{ .Summary }}</p>
+            <p><a href="{{ .Permalink }}">Read More</a></p>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+      {{ end }}
+    </div>
+    {{ if gt $paginator.TotalPages 1 }}
+    <div class="row text-center pt-5 border-top">
+      <div class="col-md-12">
+        <div class="custom-pagination">
+          {{ range $paginator.Pagers }}
+            {{ if eq . $paginator }}
+              <span>{{ .PageNumber }}</span>
+            {{ else }}
+              <a href="{{ .URL }}#recent">{{ .PageNumber }}</a>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

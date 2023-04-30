@@ -60,6 +60,7 @@ I always prefer to setup a virtual environment for my Python projects. I assume 
 ```shell
 $ pip install great_expectations
 ```
+
 Use Python 3.8 and above. Detailed installation steps can be found [here](https://docs.greatexpectations.io/docs/guides/setup/installation/local).
 
 ## Setting up the Data context
@@ -207,6 +208,7 @@ print(results)
 ```
 The above code will print the validation results as a Python dict. As we have enabled data docs in our config, you will see a `data_docs` folder under `STORE_FOLDER` where the HTML output is stored. Each run will create a new HTML file under `validations` folder inside `data_docs`. The sample HTML file will look like:
 ![Great Expectation validation results](/great_expectations_html_output.jpg "Great Expectation validation results")
+{.img-fluid}
 
 ## Conclusion
 We have learnt how to setup and run Great Expectations on a dataset. Great Expectations provides an excellent documentation on how to use different stores (AWS S3, Azure Blob and Google storage) to store expectations and results. The sample code is available in GitHub and you can extend it with different stores. Thanks for reading.

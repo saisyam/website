@@ -1,0 +1,100 @@
+{{ define "main" }}
+
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="row align-items-stretch retro-layout">
+      {{ $pages := where $.Site.RegularPages "Params.featured" "!=" nil }}
+      <div class="col-md-5 order-md-2">
+        {{ with index $pages 1}}
+        <a href="{{ .Permalink }}" class="hentry img-1 h-100 gradient" style="background-image: url('{{ .Params.image }}');">
+          <span class="post-category text-white bg-danger">{{ index .Params.categories 0 }}</span>
+          <div class="text">
+            <h2>{{ .Title }}</h2>
+            <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+          </div>
+        </a>
+        {{ end }}
+      </div>
+      <div class="col-md-7">
+        {{ with index $pages 3}}
+        <a href="{{ .Permalink }}" class="hentry img-2 v-height mb30 gradient" style="background-image: url('{{ .Params.image }}');">
+            <span class="post-category text-white bg-success">{{ index .Params.categories 0 }}</span>
+            <div class="text text-sm">
+              <h2>{{ .Title }}</h2>
+              <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+            </div>
+        </a>
+        {{ end }}
+        {{ with index $pages 2}}
+        <div class="two-col d-block d-md-flex">
+          <a href="{{ .Permalink }}" class="hentry v-height img-2 gradient" style="background-image: url('{{ .Params.image }}');">
+            <span class="post-category text-white bg-primary">{{ index .Params.categories 0 }}</span>
+            <div class="text text-sm">
+              <h2>{{ .Title }}</h2>
+              <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+            </div>
+          </a>
+          {{ end }}
+          {{ with index $pages 4}}
+          <a href="{{ .Permalink }}" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('{{ .Params.image }}');">
+            <span class="post-category text-white bg-warning">{{ index .Params.categories 0 }}</span>
+            <div class="text text-sm">
+              <h2>{{ .Title }}</h2>
+              <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+            </div>
+          </a>
+        {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="site-section">
+  <div class="container">
+    <div class="row mb-5">
+      <div id="recent" class="col-12">
+        <h2>Recent Posts</h2>
+      </div>
+    </div>
+    <div class="row">
+      {{ $pages := where site.RegularPages "Type" "posts" }}
+      {{ $paginator := .Paginate $pages }}
+      {{ range $index, $page := $paginator.Pages }}
+      {{ $slice := slice "primary" "secondary" "danger" "warning" "success" }}
+      {{ $shuffled := shuffle $slice }}
+      <div class="col-lg-4 mb-4">
+        <div class="entry2">
+          <a href="{{ .Permalink }}"><img src="{{ .Params.image }}" alt="Image" class="img-fluid rounded"></a>
+          <div class="excerpt">
+            <span class="post-category text-white bg-{{ index $shuffled 0 }} mb-3">{{ index .Params.categories 0 }}</span>
+            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+            <div class="post-meta align-items-center text-left clearfix">
+              <!--<figure class="author-figure mb-0 mr-3 float-left"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
+              <span class="d-inline-block mt-1">By <a href="#">{{ .Author }}</a></span>-->
+              <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+            </div>
+            <p>{{ .Summary }}</p>
+            <p><a href="{{ .Permalink }}">Read More</a></p>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ if gt $paginator.TotalPages 1 }}
+    <div class="row text-center pt-5 border-top">
+      <div class="col-md-12">
+        <div class="custom-pagination">
+          {{ range $paginator.Pagers }}
+            {{ if eq . $paginator }}
+              <span>{{ .PageNumber }}</span>
+            {{ else }}
+              <a href="{{ .URL }}#recent">{{ .PageNumber }}</a>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

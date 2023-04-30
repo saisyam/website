@@ -8,6 +8,7 @@ tags:
   - Vader
 date: 2020-09-26
 image: /sentiment_analysis.jpg
+featured: 1
 ---
 
 Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews. 

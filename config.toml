@@ -2,13 +2,13 @@ baseurl = "https://saisyam.com/"
 title = "Saisyam"
 copyright = "Copyright &copy; 2020 - Saisyam"
 canonifyurls = true
-theme = "rasa"
+theme = "mini"
 logo = "s-logo.jpg"
 publishdir = "docs"
 disableDarkModeCSS = false
 favicon = true
 
-paginate = 5
+paginate = 6
 
 summaryLength = 30
 enableEmoji = true
@@ -52,6 +52,10 @@ googleAnalytics = "UA-50423294-1"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+[markup.goldmark.parser.attribute]
+block = true
+title = true
 
 # uncomment to enable the Tags link on the main toolbar
 #  [[menu.main]]
