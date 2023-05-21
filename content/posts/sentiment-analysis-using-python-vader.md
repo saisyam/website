@@ -1,13 +1,13 @@
 ---
 title: "Sentiment Analysis using Python Vader"
 categories:
-  - Python
+  - Data Analytics
 tags:
-  - Sentiment analysis
-  - Text Analytics
-  - Vader
+  - Vader Sentiment analysis
+  - Python
 date: 2020-09-26
-image: /sentiment_analysis.jpg
+image: /sentiment_analysis_1.jpg
+featured: 1
 ---
 
 Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews. 

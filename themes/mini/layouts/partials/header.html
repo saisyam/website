@@ -1,0 +1,24 @@
+<!doctype html>
+
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{ .Site.Params.description | default "Saisyam - Personal Blog" }}" />
+  <meta name="author" content="{{ .Params.Author | default .Site.Author.name }}" />
+  {{ template "_internal/opengraph.html" . }} 
+  {{ template "_internal/twitter_cards.html" . }}
+  {{ template "_internal/google_analytics_async.html" . }}
+  <title>Saisyam - Personal Blog</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="{{ "/css/bootstrap.min.css"| relURL }}">
+  <link rel="stylesheet" href="{{ "/css/magnific-popup.css"| relURL }}">
+  <link rel="stylesheet" href="{{ "/css/jquery-ui.css"| relURL }}">
+  <link rel="stylesheet" href="{{ "/css/owl.carousel.min.css"| relURL }}">
+  <link rel="stylesheet" href="{{ "/css/owl.theme.default.min.css"| relURL }}">
+  <link rel="stylesheet" href="{{ "/css/bootstrap-datepicker.css"| relURL }}">
+  <link rel="stylesheet" href="{{ "/fonts/flaticon/font/flaticon.css"| relURL }}">
+  <link rel="stylesheet" href="{{ "/css/aos.css"| relURL }}">
+  <link rel="stylesheet" href="{{ "/css/style.css"| relURL }}">
+</head>

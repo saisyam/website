@@ -1,0 +1,49 @@
+{{ define "main" }}
+
+  <div class="content pure-u-1 pure-u-md-3-4">
+    <div class="header">
+      <a href="/"><h1 class="brand-title">Saisyam</h1></a>
+        <h2 class="brand-tagline">Personal Blog</h2>
+    </div>
+    <div>
+      <div class="posts">
+      {{ $pages := where site.RegularPages "Type" "posts" }}
+      {{ $paginator := .Paginate $pages }}
+      {{ range $index, $page := $paginator.Pages }}
+      
+      {{ if and (eq $index 0) (eq $paginator.PageNumber 1) }}
+        <h1 class="content-subhead">Pinned Post</h1>
+      {{ end }}
+      {{ if and (eq $index 1) (eq $paginator.PageNumber 1) }}
+        <h1 class="content-subhead">Latest Posts</h1>
+      {{ end }}
+        <section class="post">
+            <header class="post-header">
+                <!--<img width="48" height="48" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src="/img/common/tilo-avatar.png">-->
+
+                <h2 class="post-title">{{ .Title }}</h2>
+
+                <p class="post-meta">
+                   Under
+                   {{ range $index, $name := sort .Params.categories -}}
+                   <a class="post-category post-category-{{ $index }}" href="{{ (printf "/categories/%s/" $name) | urlize }}">{{$name | markdownify}}</a>
+                   {{ end }} 
+                </p>
+            </header>
+
+            <div class="post-description">
+                <p>
+                  {{ .Summary }}
+                </p>
+            </div>
+            <a class="read-more" href="{{ $page.Permalink }}">Read More</a>
+        </section>
+        {{ end }}
+        
+      </div>
+      {{ template "_internal/pagination.html" . }}
+      {{ partialCached "footer" . }}
+    </div>
+  </div>
+
+{{ end }}

@@ -1,0 +1,28 @@
+<div class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <p>
+          Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ "/js/jquery-3.3.1.min.js" | relURL }}"></script>
+<script src="{{ "/js/jquery-migrate-3.0.1.min.js" | relURL }}"></script>
+<script src="{{ "/js/jquery-ui.js" | relURL }}"></script>
+<script src="{{ "/js/popper.min.js" | relURL }}"></script>
+<script src="{{ "/js/bootstrap.min.js" | relURL }}"></script>
+<script src="{{ "/js/owl.carousel.min.js" | relURL }}"></script>
+<script src="{{ "/js/jquery.stellar.min.js" | relURL }}"></script>
+<script src="{{ "/js/jquery.countdown.min.js" | relURL }}"></script>
+<script src="{{ "/js/jquery.magnific-popup.min.js" | relURL }}"></script>
+<script src="{{ "/js/bootstrap-datepicker.min.js" | relURL }}"></script>
+<script src="{{ "/js/aos.js" | relURL }}"></script>
+<script src="{{ "/js/main.js" | relURL }}"></script>
+
+{{ if .Site.GoogleAnalytics }}
+  {{ template "_internal/google_analytics_async.html" . }}
+{{ end }}

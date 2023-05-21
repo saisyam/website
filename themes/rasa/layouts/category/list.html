@@ -9,10 +9,9 @@
       {{ $category := .Title }}
       <div class="posts">
         <h1 class="content-subhead">{{ $category }}</h1>
-      {{ $pages := where site.RegularPages "Type" "posts" }}
-      {{ $paginator := .Paginate $pages }}
+      {{ $paginator := .Paginate .Pages }}
       {{ range $page:= where .Paginator.Pages ".Params.categories" "intersect" (slice $category) }}
-       {{ if in .Params.categories $category }}
+      {{ if in .Params.categories $category }}
         <section class="post">
             <header class="post-header">
                 <!--<img width="48" height="48" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src="/img/common/tilo-avatar.png">-->

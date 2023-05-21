@@ -1,19 +1,23 @@
 ---
 title: "Unlock Quality Insights with Great Expectations Python Library"
 categories:
-  - Python
-tags:
   - Data Quality
+tags:
+  - Python
   - Great Expectations
-  - Opensource
 date: 2022-12-31
-image: /webscraping.jpg
+image: /quality_insights.jpg
+featured: 1
 ---
 Poor data quality can be a major issue for businesses, resulting in costly errors and incorrect decisions being made. To avoid these problems, it is important to take steps to ensure the quality of data being used. One way to do this is to implement a data quality solution such as [Great Expectations](https://greatexpectations.io/). 
 
 With this tool, users can quickly and easily identify data quality issues and ensure that their data is of the highest quality. Additionally, Great Expectations has a built-in testing framework that allows users to quickly write and execute tests on their data. This makes it easier to maintain data quality over time and ensure that data is always up to date and correct. By implementing a data quality solution like Great Expectations, businesses can ensure that their data is of the highest quality and that costly errors and incorrect decisions are avoided.
 
 In this article we will discuss how to setup Great Expectations and apply expectations or rules on a sample dataset. Data engineers can use Great Expectations in different ways. In this post we will discuss code based approach instead of command line approach.
+
+{{< table_of_contents >}}
+
+{{< adsense >}}
 
 ## What is Great Expectations?
 The definition from Great Expectations website:
@@ -39,6 +43,8 @@ expect_column_value_to_be_unique(
 ```
 Great Expectations provides such kind of expectations out-of-the-box. If you don't find the expectation you want, you can always write your own expectation. Writing [custom expectations](https://docs.greatexpectations.io/docs/guides/expectations/creating_custom_expectations/overview) needs a separate post and hence not in the scope of this article.
 
+{{< adsense >}}
+
 ## How Great Expectations work
 Let's discuss at a high level how this framework works. Once you install the Great expectations pip package you need to setup the following:
 * **Data context** - Data context defines all the configurations required for Great Expectations to work. The two important things you define in data context are data sources and stores.
@@ -60,6 +66,7 @@ I always prefer to setup a virtual environment for my Python projects. I assume 
 ```shell
 $ pip install great_expectations
 ```
+
 Use Python 3.8 and above. Detailed installation steps can be found [here](https://docs.greatexpectations.io/docs/guides/setup/installation/local).
 
 ## Setting up the Data context
@@ -125,6 +132,8 @@ Once we have the config ready, we can set the context with:
 ```python
 context = BaseDataContext(project_config = data_context_config)
 ```
+
+{{< adsense >}}
 
 ## Setting up data source
 We will setup a Pandas data source and add it to the context
@@ -207,6 +216,9 @@ print(results)
 ```
 The above code will print the validation results as a Python dict. As we have enabled data docs in our config, you will see a `data_docs` folder under `STORE_FOLDER` where the HTML output is stored. Each run will create a new HTML file under `validations` folder inside `data_docs`. The sample HTML file will look like:
 ![Great Expectation validation results](/great_expectations_html_output.jpg "Great Expectation validation results")
+{.img-fluid}
+
+{{< adsense >}}
 
 ## Conclusion
 We have learnt how to setup and run Great Expectations on a dataset. Great Expectations provides an excellent documentation on how to use different stores (AWS S3, Azure Blob and Google storage) to store expectations and results. The sample code is available in GitHub and you can extend it with different stores. Thanks for reading.

@@ -13,7 +13,6 @@
 <meta property="og:url" content="https://saisyam.com/sentiment-analysis-using-python-vader/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-09-26T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-09-26T00:00:00+00:00" />
-
  
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Sentiment Analysis using Python Vader"/>
@@ -31,130 +30,99 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-  <link rel="stylesheet" href="https://saisyam.com/css/app.min.css" />
-  <style>
-    #toc::before {
-        content: "Table of Contents";
-        font-weight: bold;
-    }
-    #toc nav {
-      border-bottom: none;
-      padding-bottom: 0.2em;
-      font-family: "Ruda", sans-serif;
-    }
-
-    ol li, ul li {
-      margin-bottom: 0em;
-    }
-
-    #toc nav ul {
-       
-      padding: 1em;
-      list-style: decimal;
-      display: inline-block;
-    }
-    ul.pagination {
-      display: flex;
-      justify-content: center;
-      margin: 1em 0 0;
-      padding: 0.5em 0;
-      list-style: none;
-    }
-  
-    ul.pagination li {
-      padding: 0 1em;
-    }
-    .gist .blob-code-inner{ font-size:13px !important; }
-    .gist .blob-num{ font-size:13px !important; }
-
-    .highlight pre code{
-      color: #fff;
-      text-shadow: none;
-    }
-  </style>
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-  <link rel="manifest" href="favicon/site.webmanifest">
-  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
+  <title>Saisyam - Personal Blog</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://saisyam.com/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/magnific-popup.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/jquery-ui.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="https://saisyam.com/fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/aos.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/style.css">
 </head>
 
-
-    <body class="post-template">
- 
-    <header class="header">
-  <div class="header-top">
-    <a href="https://saisyam.com">
-      <h1 class="header-top__title">
-        <img class="lazyload header-top__logo initial loaded" src="https://saisyam.com/saisyam.png" data-src="saisyam.png"
-          alt="Saisyam's Personal Website" data-was-processed="true">
-      </h1>
-    </a>
-  </div>
-
-  <div class="header-main">
-    <div class="container wrapper">
-      <div class="grid">
-        <label for="menu--toggle" class="header-main__menu--toggle col-xs left">
-          <i class="icon icon-menu icon--large">
-            <svg class="icon__svg">
-              <use xlink:href="#icon-menu">
-                <symbol id="icon-menu" viewBox="0 0 24 24">
-                  <line x1="3" y1="12" x2="21" y2="12"></line>
-                  <line x1="3" y1="6" x2="21" y2="6"></line>
-                  <line x1="3" y1="18" x2="21" y2="18"></line>
-                </symbol>
-              </use>
-            </svg>
-          </i>
-        </label>
-        <input type="checkbox" id="menu--toggle" title="Menu" class="is-hidden">
-
-        <nav class="header-main__menu nav col-sm top">
-          <ul>
-            <li>
-              <a href="https://saisyam.com">Home</a>
-            </li>
-            <li>
-              <a href="https://github.com/saisyam" target="_blank">Github</a>
-            </li>
-            <li>
-              <a href="https://linkedin.com/in/saisyam" target="_blank">LinkedIn</a>
-            </li>
-            <li>
-              <a href="https://medium.com/@saisyam" target="_blank">Medium</a>
-            </li>
-          </ul>
-
-        </nav>
-      </div>
-    </div>
-  </div>
-</header>
-    <main class="main">
-        
-<div class="post">
-  <div class="container wrapper">
-    <div class="post-header">
-      <h1 class="post-header__title">Sentiment Analysis using Python Vader</h1>
-      <div class="post-header__info">
-        <div class="post-header__author">
-          <a href="#">Saisyam</a>
+<body>
+    <div class="site-wrap">
+        <div class="site-mobile-menu">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
         </div>
-        <time class="post-header__date" datetime=" 2020-09-26">2020-09-26</time>
-        <div class="post-header__read-time">3 min read</div>
+        
+<header class="site-navbar" role="banner">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-4 site-logo">
+                <a href="https://saisyam.com/" class="text-black h2 mb-0">Saisyam</a>
+            </div>
+            <div class="col-8 text-right">
+                <nav class="site-navigation" role="navigation">
+                    <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
+                        <li><a href="https://saisyam.com/">Home</a></li>
+                        
+                        <li>
+                            <a href="https://saisyam.com/categories/data-analytics">Data analytics</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://saisyam.com/categories/data-quality">Data quality</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://saisyam.com/categories/kubernetes">Kubernetes</a>
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><span class="icon-menu h3"></span></a>
+            </div>
+        </div>
+    </div>
+</header>
+        
+    <style>
+  pre {
+  overflow: auto;
+  margin-top: 0;
+  margin: 1em 0;
+  padding: 1em;
+  font-size: 16.8px;
+  font-size: 1.05rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/sentiment_analysis_1.jpg');">
+  <div class="container">
+    <div class="row same-height justify-content-center">
+      <div class="col-md-12 col-lg-10">
+      <div class="post-entry text-center">
+        <span class="post-category text-white bg-success mb-3">Data Analytics</span>
+        <h1 class="mb-4"><a href="https://saisyam.com/sentiment-analysis-using-python-vader/">Sentiment Analysis using Python Vader</a></h1>
+        <div class="post-meta align-items-center text-center">
+          <span>Sep 26, 2020</span>
+        </div>
+      </div>
       </div>
     </div>
   </div>
-  <div id="content" class="container wrapper">
-    <div class="grid">
-      <article class="col-xs-12 col-md-8">
-        <div class="post-content">
-          
-          <div class="post-content__inner">
-            <p>Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews.</p>
+</div>
+<section class="site-section py-lg">
+  <div class="container">
+    <div class="row blog-entries element-animate">
+      <div class="col-md-12 col-lg-8 main-content">
+        <div class="post-content-body">
+          <p>Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews.</p>
 <div id="toc">
     <nav id="TableOfContents">
   <ul>
@@ -244,16 +212,45 @@ When we run the above code for the given text, the output is:</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>In this post we have learnt how to find whether the text is positive, negative or neutral using Python based VADER Sentiment Analysis. We also discussed the next level of sentiment analysis based on aspects. In the next article we will see how we can identify aspects for a given industry or domain and implement the sentiment analysis based on aspects.</p>
 
-          </div>
         </div>
-      </article>
-      <aside class="col-xs-12 col-md-4">
-
-        <div class="sidebar">
-
-          <div class="sidebar__section">  
-            <h5 class="sidebar__title">Sponsors</h5>
-            <script async
+        <div class="pt-5">
+          <p>
+            Categories: 
+            <a href="https://saisyam.com/categories/data-analytics/">Data Analytics </a>
+            
+            Tags: 
+            <a href="https://saisyam.com/tags/Python">#Python</a>
+            <a href="https://saisyam.com/tags/Vader%20Sentiment%20analysis">#Vader Sentiment analysis</a>
+            
+          </p>
+        </div>
+        <div class="pt-5">
+          <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "saisyam-1" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4 sidebar">
+        <div class="sidebar-box">
+          <h3 class="heading">Sponsors</h3>
+          <script async
               src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0206245742790279"
               crossorigin="anonymous"></script>
             
@@ -262,13 +259,50 @@ When we run the above code for the given text, the output is:</p>
             <script>
               (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
-          </div>
         </div>
-      </aside>
+        <div class="sidebar-box">
+          <h3 class="heading">Categories</h3>
+          <ul class="categories">
+            
+              <li>
+                <a href="https://saisyam.com/categories/data-analytics">Data analytics<span>(1)</span></a>
+              </li>
+            
+              <li>
+                <a href="https://saisyam.com/categories/data-quality">Data quality<span>(2)</span></a>
+              </li>
+            
+              <li>
+                <a href="https://saisyam.com/categories/kubernetes">Kubernetes<span>(1)</span></a>
+              </li>
+            
+          </ul>
+        </div>
+        <div class="sidebar-box">
+          <h3 class="heading">Tags</h3>
+          <ul class="tags">
+            
+              <li><a href="https://saisyam.com/tags/docker">docker</a></li>
+            
+              <li><a href="https://saisyam.com/tags/fastapi">fastapi</a></li>
+            
+              <li><a href="https://saisyam.com/tags/great-expectations">great-expectations</a></li>
+            
+              <li><a href="https://saisyam.com/tags/kubernetes">kubernetes</a></li>
+            
+              <li><a href="https://saisyam.com/tags/minikube">minikube</a></li>
+            
+              <li><a href="https://saisyam.com/tags/python">python</a></li>
+            
+              <li><a href="https://saisyam.com/tags/vader-sentiment-analysis">vader-sentiment-analysis</a></li>
+            
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<script type="application/ld+json">
+</section>
+    <script type="application/ld+json">
     
     {
       "@context": "https://schema.org",
@@ -291,7 +325,7 @@ When we run the above code for the given text, the output is:</p>
         }
       },
       "description": "Sentiment analysis is a process of determining whether the given emotion (text) is postivie, negative or neutral. Sentiment Analysis is useful in identifying customers emotions for a service or product. In this article we will perform sentiment analysis on restaurant reviews.",
-      "keywords": ["Sentiment analysis", "Text Analytics", "Vader"]
+      "keywords": ["Vader Sentiment analysis", "Python"]
     }
     
     {
@@ -308,22 +342,33 @@ When we run the above code for the given text, the output is:</p>
     }
     </script>
 
-    </main>
-    <footer class="footer">
-  <div class="container wrapper">
-    <div class="footer__bottom">
-      <div class="grid">
-        <div class="col-lg center-lg">
-          <li>© Saisyam - 2021</li>
-        </div>
+        <div class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <p>
+          Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved
+        </p>
       </div>
     </div>
   </div>
-</footer>
+</div>
+
+<script src="https://saisyam.com/js/jquery-3.3.1.min.js"></script>
+<script src="https://saisyam.com/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="https://saisyam.com/js/jquery-ui.js"></script>
+<script src="https://saisyam.com/js/popper.min.js"></script>
+<script src="https://saisyam.com/js/bootstrap.min.js"></script>
+<script src="https://saisyam.com/js/owl.carousel.min.js"></script>
+<script src="https://saisyam.com/js/jquery.stellar.min.js"></script>
+<script src="https://saisyam.com/js/jquery.countdown.min.js"></script>
+<script src="https://saisyam.com/js/jquery.magnific-popup.min.js"></script>
+<script src="https://saisyam.com/js/bootstrap-datepicker.min.js"></script>
+<script src="https://saisyam.com/js/aos.js"></script>
+<script src="https://saisyam.com/js/main.js"></script>
 
 
-
-
+  
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
@@ -336,5 +381,8 @@ if (!doNotTrack) {
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
+
+    </div>
 </body>
 </html>
+

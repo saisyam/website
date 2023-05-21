@@ -1,15 +1,15 @@
 ---
 title: "Deploy Python FastAPI Service on Kubernetes MiniKube"
 categories:
-  - Python
+  - Kubernetes
 tags:
   - FastAPI
-  - Vader sentiment analysis
   - Docker
   - Kubernetes
   - minikube
 date: 2022-05-30
-image: /webscraping.jpg
+image: /fastapi_kubernetes.jpg
+featured: 1
 ---
 
 In this article we will build a Python FastAPI application with a single API which will return the sentiment (Postivie, Negative or Neutral) of the text given as input using [Vader Sentiment Analysis](https://www.geeksforgeeks.org/python-sentiment-analysis-using-vader/). We will deploy the service in Kubernetes locally using `minikube`. If you are new to FastAPI please refer [here](https://fastapi.tiangolo.com/). If you want to install `minikube` refer [here](https://minikube.sigs.k8s.io/docs/start/). 
