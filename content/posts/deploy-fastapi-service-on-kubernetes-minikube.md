@@ -1,15 +1,14 @@
 ---
 title: "Deploy Python FastAPI Service on Kubernetes MiniKube"
 categories:
-  - Python
+  - Kubernetes
 tags:
   - FastAPI
-  - Vader sentiment analysis
   - Docker
   - Kubernetes
   - minikube
 date: 2022-05-30
-image: /webscraping.jpg
+image: /fastapi_kubernetes.jpg
 featured: 1
 ---
 

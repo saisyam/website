@@ -1,13 +1,13 @@
 ---
 title: "Unlock Quality Insights with Great Expectations Python Library"
 categories:
-  - Python
-tags:
   - Data Quality
+tags:
+  - Python
   - Great Expectations
-  - Opensource
 date: 2022-12-31
-image: /webscraping.jpg
+image: /quality_insights.jpg
+featured: 1
 ---
 Poor data quality can be a major issue for businesses, resulting in costly errors and incorrect decisions being made. To avoid these problems, it is important to take steps to ensure the quality of data being used. One way to do this is to implement a data quality solution such as [Great Expectations](https://greatexpectations.io/). 
 

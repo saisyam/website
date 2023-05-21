@@ -5,7 +5,7 @@
     <div class="row align-items-stretch retro-layout">
       {{ $pages := where $.Site.RegularPages "Params.featured" "!=" nil }}
       <div class="col-md-5 order-md-2">
-        {{ with index $pages 1}}
+        {{ with index $pages 0}}
         <a href="{{ .Permalink }}" class="hentry img-1 h-100 gradient" style="background-image: url('{{ .Params.image }}');">
           <span class="post-category text-white bg-danger">{{ index .Params.categories 0 }}</span>
           <div class="text">
@@ -16,7 +16,7 @@
         {{ end }}
       </div>
       <div class="col-md-7">
-        {{ with index $pages 3}}
+        {{ with index $pages 1}}
         <a href="{{ .Permalink }}" class="hentry img-2 v-height mb30 gradient" style="background-image: url('{{ .Params.image }}');">
             <span class="post-category text-white bg-success">{{ index .Params.categories 0 }}</span>
             <div class="text text-sm">
@@ -35,7 +35,7 @@
             </div>
           </a>
           {{ end }}
-          {{ with index $pages 4}}
+          {{ with index $pages 3}}
           <a href="{{ .Permalink }}" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('{{ .Params.image }}');">
             <span class="post-category text-white bg-warning">{{ index .Params.categories 0 }}</span>
             <div class="text text-sm">
