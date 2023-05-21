@@ -3,40 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://saisyam.com/categories/</loc>
-    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://saisyam.com/tags/containers/</loc>
-    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
+    <loc>https://saisyam.com/categories/data-quality/</loc>
+    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://saisyam.com/posts/</loc>
-    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/</loc>
-    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/</loc>
-    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/webassembly/</loc>
-    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/categories/webassembly/</loc>
-    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/will-webassembly-takeover-containers-in-future/</loc>
-    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/data-quality/</loc>
-    <lastmod>2022-12-31T00:00:00+00:00</lastmod>
+    <loc>https://saisyam.com/data-testing-with-great-expectations-an-introduction-to-in-memory-context/</loc>
+    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/tags/great-expectations/</loc>
-    <lastmod>2022-12-31T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://saisyam.com/tags/opensource/</loc>
-    <lastmod>2022-12-31T00:00:00+00:00</lastmod>
+    <loc>https://saisyam.com/posts/</loc>
+    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://saisyam.com/categories/python/</loc>
-    <lastmod>2022-12-31T00:00:00+00:00</lastmod>
+    <loc>https://saisyam.com/tags/python/</loc>
+    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/</loc>
+    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/</loc>
+    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/unlock-quality-insights-with-great-expectations-python-library/</loc>
     <lastmod>2022-12-31T00:00:00+00:00</lastmod>
@@ -53,130 +41,19 @@
     <loc>https://saisyam.com/tags/kubernetes/</loc>
     <lastmod>2022-05-30T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://saisyam.com/categories/kubernetes/</loc>
+    <lastmod>2022-05-30T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://saisyam.com/tags/minikube/</loc>
     <lastmod>2022-05-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://saisyam.com/tags/vader-sentiment-analysis/</loc>
-    <lastmod>2022-05-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/aws/</loc>
-    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/categories/cloud/</loc>
-    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/ec2/</loc>
-    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/efs/</loc>
-    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/mount-efs-on-ec2-instance-in-aws-in-5-steps/</loc>
-    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/beautifulsoup/</loc>
-    <lastmod>2021-08-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/how-to-scrape-google-reviews-using-python/</loc>
-    <lastmod>2021-08-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/scraping/</loc>
-    <lastmod>2021-08-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/splinter/</loc>
-    <lastmod>2021-08-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/web-driver/</loc>
-    <lastmod>2021-08-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/cloud-function/</loc>
-    <lastmod>2021-03-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/google-cloud/</loc>
-    <lastmod>2021-03-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/run-python-scraper-as-google-cloud-function/</loc>
-    <lastmod>2021-03-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/web-scraping/</loc>
-    <lastmod>2021-03-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/categories/freeswitch/</loc>
-    <lastmod>2021-01-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/freeswitch-1.10.5/</loc>
-    <lastmod>2021-01-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/install-freeswitch-1.10.5-on-ubuntu-18.04/</loc>
-    <lastmod>2021-01-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/ubuntu-18.04/</loc>
-    <lastmod>2021-01-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/effective-web-scraping-with-python/</loc>
-    <lastmod>2021-01-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/proxies/</loc>
-    <lastmod>2021-01-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/requests/</loc>
-    <lastmod>2021-01-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/webdriver/</loc>
-    <lastmod>2021-01-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/pcma/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/pcmu/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/reading-and-writing-wav-files-with-compression-in-python-using-pywav/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/wav-compression/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/ci-cd/</loc>
-    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/devops/</loc>
-    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/dockers/</loc>
-    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/microservices/</loc>
-    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/what-are-cloud-native-apps/</loc>
-    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/understanding-dockers-and-containers/</loc>
-    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/sentiment-analysis/</loc>
+    <loc>https://saisyam.com/categories/data-analytics/</loc>
     <lastmod>2020-09-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/sentiment-analysis-using-python-vader/</loc>
     <lastmod>2020-09-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://saisyam.com/tags/text-analytics/</loc>
+    <loc>https://saisyam.com/tags/vader-sentiment-analysis/</loc>
     <lastmod>2020-09-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/vader/</loc>
-    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/fake-webcam/</loc>
-    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/ffmpeg/</loc>
-    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/proven-way-to-fake-webcam-in-test-automation-with-python/</loc>
-    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/web-testing/</loc>
-    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
   </url>
 </urlset>

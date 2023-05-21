@@ -11,6 +11,10 @@ featured: 1
 ---
 In the world of data science and data engineering, ensuring the quality and integrity of your data is crucial. One tool that can help with this is Great Expectations, a Python library that allows you to test your data against a set of "expectations". In this blog post, we'll explore a particular feature of Great Expectations: the in-memory context.
 
+{{< table_of_contents >}}
+
+{{< adsense >}}
+
 ## What is Great Expectations?
 Great Expectations is a Python library that helps data teams eliminate pipeline debt. It does this by enabling automated testing of data quality and documentation of data. With Great Expectations, you can express what you "expect" from your data as simple, human-readable assertions. [Here](https://saisyam.com/unlock-quality-insights-with-great-expectations-python-library/) is my blog about Great Expectations in detail.
 
@@ -98,6 +102,7 @@ results = context.run_checkpoint(
 )
 print(results)
 ```
+{{< adsense >}}
 
 ## Conclusion
 Great Expectations is a powerful tool for ensuring data quality, and the in-memory context feature provides even more flexibility for data testing. Whether you're working in a robust data engineering environment or just doing some quick data quality checks, Great Expectations and its in-memory context can be a valuable addition to your data toolkit.

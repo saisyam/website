@@ -797,14 +797,3 @@ h1, h2, h3, h4, h5,
       outline: none; }
   .search-form-wrap form .form-control {
     border: none; }
-
-pre {
-  overflow: auto;
-  margin-top: 0;
-  margin: 1em 0;
-  padding: 1em;
-  font-size: 16.8px;
-  font-size: 1.05rem;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}

@@ -15,6 +15,10 @@ With this tool, users can quickly and easily identify data quality issues and en
 
 In this article we will discuss how to setup Great Expectations and apply expectations or rules on a sample dataset. Data engineers can use Great Expectations in different ways. In this post we will discuss code based approach instead of command line approach.
 
+{{< table_of_contents >}}
+
+{{< adsense >}}
+
 ## What is Great Expectations?
 The definition from Great Expectations website:
 
@@ -38,6 +42,8 @@ expect_column_value_to_be_unique(
 )
 ```
 Great Expectations provides such kind of expectations out-of-the-box. If you don't find the expectation you want, you can always write your own expectation. Writing [custom expectations](https://docs.greatexpectations.io/docs/guides/expectations/creating_custom_expectations/overview) needs a separate post and hence not in the scope of this article.
+
+{{< adsense >}}
 
 ## How Great Expectations work
 Let's discuss at a high level how this framework works. Once you install the Great expectations pip package you need to setup the following:
@@ -127,6 +133,8 @@ Once we have the config ready, we can set the context with:
 context = BaseDataContext(project_config = data_context_config)
 ```
 
+{{< adsense >}}
+
 ## Setting up data source
 We will setup a Pandas data source and add it to the context
 ```python
@@ -209,6 +217,8 @@ print(results)
 The above code will print the validation results as a Python dict. As we have enabled data docs in our config, you will see a `data_docs` folder under `STORE_FOLDER` where the HTML output is stored. Each run will create a new HTML file under `validations` folder inside `data_docs`. The sample HTML file will look like:
 ![Great Expectation validation results](/great_expectations_html_output.jpg "Great Expectation validation results")
 {.img-fluid}
+
+{{< adsense >}}
 
 ## Conclusion
 We have learnt how to setup and run Great Expectations on a dataset. Great Expectations provides an excellent documentation on how to use different stores (AWS S3, Azure Blob and Google storage) to store expectations and results. The sample code is available in GitHub and you can extend it with different stores. Thanks for reading.
