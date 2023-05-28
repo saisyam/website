@@ -1,0 +1,470 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Saisyam&#39;s personal blog for technical articles" />
+  <meta name="author" content="Saisyam" />
+  <meta property="og:title" content="Loading Yelp Dataset into Snowflake: A Comprehensive Guide" />
+<meta property="og:description" content="In this blog post, we will explore how to load the Yelp dataset, which comprises business, review, and user information, into Snowflake - a cloud-based data warehousing platform. The Yelp dataset is a popular dataset used by data enthusiasts and professionals worldwide to perform analysis and build models around review systems." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://saisyam.com/loading-yelp-dataset-into-snowflake-a-comprehensive-guide/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-05-28T00:00:00+00:00" />
+ 
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Loading Yelp Dataset into Snowflake: A Comprehensive Guide"/>
+<meta name="twitter:description" content="In this blog post, we will explore how to load the Yelp dataset, which comprises business, review, and user information, into Snowflake - a cloud-based data warehousing platform. The Yelp dataset is a popular dataset used by data enthusiasts and professionals worldwide to perform analysis and build models around review systems."/>
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  <title>Saisyam - Personal Blog</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://saisyam.com/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/magnific-popup.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/jquery-ui.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="https://saisyam.com/fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/aos.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/style.css">
+</head>
+
+<body>
+    <div class="site-wrap">
+        <div class="site-mobile-menu">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        
+<header class="site-navbar" role="banner">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-4 site-logo">
+                <a href="https://saisyam.com/" class="text-black h2 mb-0">Saisyam</a>
+            </div>
+            <div class="col-8 text-right">
+                <nav class="site-navigation" role="navigation">
+                    <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
+                        <li><a href="https://saisyam.com/">Home</a></li>
+                        
+                        <li>
+                            <a href="https://saisyam.com/categories/data-analytics">Data analytics</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://saisyam.com/categories/data-quality">Data quality</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://saisyam.com/categories/kubernetes">Kubernetes</a>
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><span class="icon-menu h3"></span></a>
+            </div>
+        </div>
+    </div>
+</header>
+        
+    <style>
+  pre {
+  overflow: auto;
+  margin-top: 0;
+  margin: 1em 0;
+  padding: 1em;
+  font-size: 16.8px;
+  font-size: 1.05rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/yelp_dataset.jpg');">
+  <div class="container">
+    <div class="row same-height justify-content-center">
+      <div class="col-md-12 col-lg-10">
+      <div class="post-entry text-center">
+        <span class="post-category text-white bg-success mb-3">Data Analytics</span>
+        <h1 class="mb-4"><a href="https://saisyam.com/loading-yelp-dataset-into-snowflake-a-comprehensive-guide/">Loading Yelp Dataset into Snowflake: A Comprehensive Guide</a></h1>
+        <div class="post-meta align-items-center text-center">
+          <span>May 28, 2023</span>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="site-section py-lg">
+  <div class="container">
+    <div class="row blog-entries element-animate">
+      <div class="col-md-12 col-lg-8 main-content">
+        <div class="post-content-body">
+          <p>In this blog post, we will explore how to load the Yelp dataset, which comprises business, review, and user information, into Snowflake - a cloud-based data warehousing platform. The Yelp dataset is a popular dataset used by data enthusiasts and professionals worldwide to perform analysis and build models around review systems.</p>
+<div id="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#preparing-yelp-dataset">Preparing Yelp Dataset</a></li>
+    <li><a href="#create-database-and-tables-in-snowflake-for-business-and-review">Create database and tables in Snowflake for business and review</a></li>
+    <li><a href="#upload-yelp-files-to-snowflake-stage">Upload Yelp files to Snowflake stage</a></li>
+    <li><a href="#load-these-json-files-from-stage-into-the-tables">Load these JSON files from stage into the tables</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>To follow this guide, you&rsquo;ll need:</p>
+<ul>
+<li><strong>Snowflake Account:</strong> You can create one on the <a href="https://snowflake.com">Snowflake website</a>. The basic tier should suffice for learning purposes.</li>
+<li><strong>Yelp Dataset:</strong> You can download the Yelp dataset <a href="https://www.yelp.com/dataset">here</a>.</li>
+<li><strong>SnowSQL:</strong> This is Snowflake&rsquo;s command line interface. Download it from <a href="https://docs.snowflake.com/en/user-guide/snowsql-install-config.html">here</a>.</li>
+</ul>
+<h2 id="preparing-yelp-dataset">Preparing Yelp Dataset</h2>
+<p>Yelp dataset contains data related to business, checkins, reviews, users and tips. But we are interested in the following files:</p>
+<ul>
+<li><strong>yelp_academic_dataset_business.json</strong> - List of around 150k business with location, working hours, categories etc.</li>
+<li><strong>yelp_academic_dataset_review.json</strong> - Around 6M reviews related to the businesses mentioned in the above file</li>
+</ul>
+<p>We follow below steps to load these JSON files into Snowflake.</p>
+<ol>
+<li>Create Database and tables in Snowflake for business, review and user</li>
+<li>Upload these json file to Snowflake stage</li>
+<li>Load these JSON files from stage into the tables</li>
+</ol>
+<p>Let&rsquo;s go step by step in getting Yelp data to Snowflake.</p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="create-database-and-tables-in-snowflake-for-business-and-review">Create database and tables in Snowflake for business and review</h2>
+<p>Once you analyze the JSON files you will understand what type of data they are capturing and create table structure based on that. Below are the Snowflake SQL commands to create tables for business, review and user.</p>
+<p>Create a database in Snowflake:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">DATABASE</span> yelp;
+</span></span><span style="display:flex;"><span>USE <span style="color:#66d9ef">DATABASE</span> yelp;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">SCHEMA</span> dataset;
+</span></span><span style="display:flex;"><span>USE <span style="color:#66d9ef">SCHEMA</span> dataset;
+</span></span></code></pre></div><p><strong>Note:</strong> I use <code>public</code> schema. Make sure you grant necessary permissions to read/write.</p>
+<p>SQL for business:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> business_info (
+</span></span><span style="display:flex;"><span>    business_id STRING,
+</span></span><span style="display:flex;"><span>    name STRING,
+</span></span><span style="display:flex;"><span>    address STRING,
+</span></span><span style="display:flex;"><span>    city STRING,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">state</span> STRING,
+</span></span><span style="display:flex;"><span>    postal_code STRING,
+</span></span><span style="display:flex;"><span>    latitude FLOAT,
+</span></span><span style="display:flex;"><span>    longitude FLOAT,
+</span></span><span style="display:flex;"><span>    stars FLOAT,
+</span></span><span style="display:flex;"><span>    review_count INTEGER,
+</span></span><span style="display:flex;"><span>    is_open BOOLEAN,
+</span></span><span style="display:flex;"><span>    attributes VARIANT,
+</span></span><span style="display:flex;"><span>    categories STRING,
+</span></span><span style="display:flex;"><span>    hours VARIANT
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>SQL for reviews:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> reviews (
+</span></span><span style="display:flex;"><span>    review_id STRING,
+</span></span><span style="display:flex;"><span>    user_id STRING,
+</span></span><span style="display:flex;"><span>    business_id STRING,
+</span></span><span style="display:flex;"><span>    stars FLOAT,
+</span></span><span style="display:flex;"><span>    useful INTEGER,
+</span></span><span style="display:flex;"><span>    funny INTEGER,
+</span></span><span style="display:flex;"><span>    cool INTEGER,
+</span></span><span style="display:flex;"><span>    text STRING,
+</span></span><span style="display:flex;"><span>    date TIMESTAMP_NTZ
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p><strong>Note:</strong> Reviews JSON is more than 1 GB which is difficult to open in an editor. If you are using Linux/Mac then you can use the <code>more</code> terminal command to check the sample data in those large files.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ more yelp_academic_dataset_review.json
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;review_id&#34;</span>:<span style="color:#e6db74">&#34;KU_O5udG6zpxOg-VcAEodg&#34;</span>,<span style="color:#e6db74">&#34;user_id&#34;</span>:<span style="color:#e6db74">&#34;mh_-eMZ6K5RLWhZyISBhwA&#34;</span>,<span style="color:#e6db74">&#34;business_id&#34;</span>:<span style="color:#e6db74">&#34;XQfwVwDr-v0ZS3_CbbE5Xw&#34;</span>,<span style="color:#e6db74">&#34;stars&#34;</span>:3.0,<span style="color:#e6db74">&#34;useful&#34;</span>:0,<span style="color:#e6db74">&#34;funny&#34;</span>:0,<span style="color:#e6db74">&#34;cool&#34;</span>:0,<span style="color:#e6db74">&#34;text&#34;</span>:<span style="color:#e6db74">&#34;If you decide to eat here, just be aware it is going to take about 2 hours from beginning to end. We have tried it multiple times, because I want to like it! I have been to it&#39;s other locations in NJ and never had a bad experience. \n\nThe food is good, but it takes a very long time to come out. The waitstaff is very young, but usually pleasant. We have just had too many experiences where we spent way too long waiting. We usually opt for another diner or restaurant on the weekends, in order to be done quicker.&#34;</span>,<span style="color:#e6db74">&#34;date&#34;</span>:<span style="color:#e6db74">&#34;2018-07-07 22:09:11&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="upload-yelp-files-to-snowflake-stage">Upload Yelp files to Snowflake stage</h2>
+<p>You can use Snowflake web UI as well to create stage.</p>
+<p>Let&rsquo;s login to <code>SnowSQL</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>snowsql -a &lt;account url&gt; -u &lt;usernmae&gt; -d &lt;database name&gt; -s &lt;schema name&gt; -r &lt;role&gt;
+</span></span></code></pre></div><p>It will prompt for the password. On successful login, you will be taken to the SnowSQL prompt, like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sdampuri#DEMO_WH@YELP_DATASET.PUBLIC&gt;
+</span></span></code></pre></div><p>We will use <code>SnowSQL</code> to upload JSON files to Snowflake stage. Let&rsquo;s create a stage first:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> STAGE yelp_stage
+</span></span><span style="display:flex;"><span>FILE_FORMAT <span style="color:#f92672">=</span> (<span style="color:#66d9ef">TYPE</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JSON&#39;</span>);
+</span></span></code></pre></div><p>Once we have the stage created we can upload the files. Make sure you have necessary permissions to upload to this stage.
+Now let&rsquo;s upload the files to the above stage using <code>PUT</code> command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>put file:///Users/saisyam/work/yelp_dataset/yelp_academic_dataset_business.json @YELP_STAGE AUTO_COMPRESS<span style="color:#f92672">=</span>FALSE;
+</span></span></code></pre></div><p>Yes, I want to keep my JSON uncompressed even the size is large. The upload will depend on your Internet speed.</p>
+<h2 id="load-these-json-files-from-stage-into-the-tables">Load these JSON files from stage into the tables</h2>
+<p>We can load the JSON files from stage to table using <code>COPY</code> command:</p>
+<p>To load businesses into table:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">COPY</span> <span style="color:#66d9ef">INTO</span> business_info
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:business_id::string,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:name::string,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:address::string,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:city::string,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:<span style="color:#66d9ef">state</span>::string,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:postal_code::string,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:latitude::float,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:longitude::float,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>: stars::float,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:review_count::integer,
+</span></span><span style="display:flex;"><span>        IFF(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:is_open::integer <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">TRUE</span>, <span style="color:#66d9ef">FALSE</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:attributes,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:categories::string,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:hours
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">@</span>yelp_stage<span style="color:#f92672">/</span>yelp_academic_dataset_business.json
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>To load reviews into table:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">COPY</span> <span style="color:#66d9ef">INTO</span> reviews
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:review_id::string,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:user_id::string,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:business_id::string,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>: stars::float,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:useful::integer,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:funny::integer,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>: cool::integer,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:text::string,
+</span></span><span style="display:flex;"><span>        TO_TIMESTAMP(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>: date::string, <span style="color:#e6db74">&#39;YYYY-MM-DD HH24:MI:SS&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">@</span>yelp_stage<span style="color:#f92672">/</span>yelp_academic_dataset_review.json
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>It took 3.37s to load 6,990,280 rows into the reviews table using <code>X-SMALL</code> warehouse. Now we have the data ready to perform analytics.</p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this blog post, we discussed the steps to load the Yelp dataset, which contains business, review, and user information, into Snowflake. Following this guide, you should be able to load this data into Snowflake for your own projects. The process involves data preprocessing, setting up staging area in Snowflake, and then loading the data into Snowflake using the COPY INTO command. Happy data loading!</p>
+
+        </div>
+        <div class="pt-5">
+          <p>
+            Categories: 
+            <a href="https://saisyam.com/categories/data-analytics/">Data Analytics </a>
+            
+            Tags: 
+            <a href="https://saisyam.com/tags/Snowflake">#Snowflake</a>
+            <a href="https://saisyam.com/tags/Yelp%20Dataset">#Yelp Dataset</a>
+            
+          </p>
+        </div>
+        <div class="pt-5">
+          <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "saisyam-1" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4 sidebar">
+        <div class="sidebar-box">
+          <h3 class="heading">Sponsors</h3>
+          <script async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0206245742790279"
+              crossorigin="anonymous"></script>
+            
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0206245742790279"
+              data-ad-slot="3209664571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div class="sidebar-box">
+          <h3 class="heading">Categories</h3>
+          <ul class="categories">
+            
+              <li>
+                <a href="https://saisyam.com/categories/data-analytics">Data analytics<span>(2)</span></a>
+              </li>
+            
+              <li>
+                <a href="https://saisyam.com/categories/data-quality">Data quality<span>(2)</span></a>
+              </li>
+            
+              <li>
+                <a href="https://saisyam.com/categories/kubernetes">Kubernetes<span>(1)</span></a>
+              </li>
+            
+          </ul>
+        </div>
+        <div class="sidebar-box">
+          <h3 class="heading">Tags</h3>
+          <ul class="tags">
+            
+              <li><a href="https://saisyam.com/tags/docker">docker</a></li>
+            
+              <li><a href="https://saisyam.com/tags/fastapi">fastapi</a></li>
+            
+              <li><a href="https://saisyam.com/tags/great-expectations">great-expectations</a></li>
+            
+              <li><a href="https://saisyam.com/tags/kubernetes">kubernetes</a></li>
+            
+              <li><a href="https://saisyam.com/tags/minikube">minikube</a></li>
+            
+              <li><a href="https://saisyam.com/tags/python">python</a></li>
+            
+              <li><a href="https://saisyam.com/tags/snowflake">snowflake</a></li>
+            
+              <li><a href="https://saisyam.com/tags/vader-sentiment-analysis">vader-sentiment-analysis</a></li>
+            
+              <li><a href="https://saisyam.com/tags/yelp-dataset">yelp-dataset</a></li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <script type="application/ld+json">
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Loading Yelp Dataset into Snowflake: A Comprehensive Guide",
+      "image": "https://saisyam.com/",
+      "datePublished": "2023-05-28T00:00:00Z",
+      "dateModified": "2023-05-28T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "mainEntityOfPage": { "@type": "WebPage" },
+       "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": {
+          "@type": "ImageObject",
+          "url":  null 
+        }
+      },
+      "description": "In this blog post, we will explore how to load the Yelp dataset, which comprises business, review, and user information, into Snowflake - a cloud-based data warehousing platform. The Yelp dataset is a popular dataset used by data enthusiasts and professionals worldwide to perform analysis and build models around review systems.",
+      "keywords": ["Snowflake", "Yelp Dataset"]
+    }
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Personal blog",
+      "url": "https://saisyam.com/",
+      "sameAs": [
+        "https://www.facebook.com/saisyam.dampuri.5667",
+        "https://www.instagram.com/saisyamdampuri",
+        "https://twitter.com/saisyam1",
+        "https://github.com/saisyam"
+      ]
+    }
+    </script>
+
+        <div class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <p>
+          Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://saisyam.com/js/jquery-3.3.1.min.js"></script>
+<script src="https://saisyam.com/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="https://saisyam.com/js/jquery-ui.js"></script>
+<script src="https://saisyam.com/js/popper.min.js"></script>
+<script src="https://saisyam.com/js/bootstrap.min.js"></script>
+<script src="https://saisyam.com/js/owl.carousel.min.js"></script>
+<script src="https://saisyam.com/js/jquery.stellar.min.js"></script>
+<script src="https://saisyam.com/js/jquery.countdown.min.js"></script>
+<script src="https://saisyam.com/js/jquery.magnific-popup.min.js"></script>
+<script src="https://saisyam.com/js/bootstrap-datepicker.min.js"></script>
+<script src="https://saisyam.com/js/aos.js"></script>
+<script src="https://saisyam.com/js/main.js"></script>
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+    </div>
+</body>
+</html>
+

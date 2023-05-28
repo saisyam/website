@@ -3,7 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://saisyam.com/categories/</loc>
-    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/categories/data-analytics/</loc>
+    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/loading-yelp-dataset-into-snowflake-a-comprehensive-guide/</loc>
+    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/posts/</loc>
+    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/</loc>
+    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/snowflake/</loc>
+    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/</loc>
+    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/yelp-dataset/</loc>
+    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/categories/data-quality/</loc>
     <lastmod>2023-05-20T00:00:00+00:00</lastmod>
@@ -14,16 +35,7 @@
     <loc>https://saisyam.com/tags/great-expectations/</loc>
     <lastmod>2023-05-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://saisyam.com/posts/</loc>
-    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://saisyam.com/tags/python/</loc>
-    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/</loc>
-    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/</loc>
     <lastmod>2023-05-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/unlock-quality-insights-with-great-expectations-python-library/</loc>
@@ -46,9 +58,6 @@
   </url><url>
     <loc>https://saisyam.com/tags/minikube/</loc>
     <lastmod>2022-05-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/categories/data-analytics/</loc>
-    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/sentiment-analysis-using-python-vader/</loc>
     <lastmod>2020-09-26T00:00:00+00:00</lastmod>
