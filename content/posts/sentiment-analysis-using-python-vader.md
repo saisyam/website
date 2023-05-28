@@ -6,7 +6,7 @@ tags:
   - Vader Sentiment analysis
   - Python
 date: 2020-09-26
-image: /sentiment_analysis_1.jpg
+image: /sentiment_analysis.jpg
 featured: 1
 ---
 
