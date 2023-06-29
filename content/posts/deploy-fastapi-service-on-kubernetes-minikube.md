@@ -1,7 +1,7 @@
 ---
 title: "Deploy Python FastAPI Service on Kubernetes MiniKube"
 categories:
-  - Kubernetes
+  - Cloud and Containers
 tags:
   - FastAPI
   - Docker

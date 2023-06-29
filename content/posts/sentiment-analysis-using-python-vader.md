@@ -1,7 +1,7 @@
 ---
 title: "Sentiment Analysis using Python Vader"
 categories:
-  - Data Analytics
+  - Data Analysis
 tags:
   - Vader Sentiment analysis
   - Python

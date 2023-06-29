@@ -1,7 +1,7 @@
 ---
 title: "Data Testing with Great Expectations: An Introduction to In-Memory Context"
 categories:
-  - Data Quality
+  - Data Analysis
 tags:
   - Python
   - Great Expectations

@@ -1,7 +1,7 @@
 ---
 title: "Unlock Quality Insights with Great Expectations Python Library"
 categories:
-  - Data Quality
+  - Data Analysis
 tags:
   - Python
   - Great Expectations
