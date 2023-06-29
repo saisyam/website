@@ -1,7 +1,7 @@
 ---
 title: "Loading Yelp Dataset into Snowflake: A Comprehensive Guide"
 categories:
-  - Data Analytics
+  - Data Analysis
 tags:
   - Snowflake
   - Yelp Dataset
