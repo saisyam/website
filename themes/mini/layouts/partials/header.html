@@ -5,12 +5,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="{{ .Site.Params.description | default "Saisyam - Personal Blog" }}" />
+  <meta name="description" content="{{ if .IsHome }}Home - {{ else }}{{ if .Page.Title }}{{ .Page.Title }} - {{ end }}{{ end }}{{ .Site.Title }}" />
   <meta name="author" content="{{ .Params.Author | default .Site.Author.name }}" />
   {{ template "_internal/opengraph.html" . }} 
   {{ template "_internal/twitter_cards.html" . }}
   {{ template "_internal/google_analytics_async.html" . }}
-  <title>Saisyam - Personal Blog</title>
+  <title>{{ if .IsHome }}Home - {{ else }}{{ if .Page.Title }}{{ .Page.Title }} - {{ end }}{{ end }}{{ .Site.Title }}</title>
   <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
   <link rel="stylesheet" href="{{ "/css/bootstrap.min.css"| relURL }}">
   <link rel="stylesheet" href="{{ "/css/magnific-popup.css"| relURL }}">
