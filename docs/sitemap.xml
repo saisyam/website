@@ -2,28 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://saisyam.com/categories/</loc>
+    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/categories/data-analysis/</loc>
+    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/generative-ai/</loc>
+    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/generative-ai-for-synthetic-data-generation-boosting-privacy-and-data-quality/</loc>
+    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/openai/</loc>
+    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/posts/</loc>
+    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/python/</loc>
+    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/</loc>
+    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/</loc>
+    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://saisyam.com/tags/bootstrap/</loc>
     <lastmod>2023-06-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://saisyam.com/categories/</loc>
-    <lastmod>2023-06-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/categories/data-analysis/</loc>
-    <lastmod>2023-06-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://saisyam.com/tags/plotly-dash/</loc>
-    <lastmod>2023-06-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/posts/</loc>
-    <lastmod>2023-06-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/python/</loc>
-    <lastmod>2023-06-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/</loc>
-    <lastmod>2023-06-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/</loc>
     <lastmod>2023-06-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/unlocking-data-visualization-power-a-comprehensive-guide-to-python-dash-with-bootstrap/</loc>
