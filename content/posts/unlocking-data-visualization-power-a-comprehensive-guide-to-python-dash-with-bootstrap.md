@@ -24,6 +24,8 @@ One of the exciting facets of Dash is its ability to create dynamic applications
 ## Exploring Dash Bootstrap Components
 Dash Bootstrap Components are a set of components that help style your Dash application in an aesthetic and user-friendly manner. They offer the versatility of the Bootstrap CSS framework to your Dash applications. With these, you can easily implement common Bootstrap elements such as grids, cards, dropdowns, and more. They make your Dash apps responsive and compatible across different screen sizes.
 
+{{< adsense >}}
+
 ## Building a Dash Application: A Basic Example
 In our first example, let's create a simple Dash application that displays a welcoming message. Make sure you've installed Dash and the Dash Bootstrap Components by using pip:
 
@@ -50,6 +52,8 @@ Run the above application using the below command:
 $ python3 app.py
 ```
 The above application will display the text "Hello, Dash!" on your localhost.
+
+{{< adsense >}}
 
 ## Building a Dash Application: Complex Graphs Example
 Let's delve deeper and create a Dash application that includes two interactive graphs using Plotly and styled with Dash Bootstrap Components. To demonstrate this, we'll use a classic dataset: the Iris dataset.
@@ -112,6 +116,8 @@ if __name__ == "__main__":
     app.run_server(debug=True)
 ```
 In this application, we have two graphs - a scatter plot and a box plot. The scatter plot visualizes the sepal length and width of different iris species. The box plot shows the distribution of petal length for the selected species. A dropdown list allows us to choose a specific species, and our graphs will reactively update according to our selection.
+
+{{< adsense >}}
 
 ## Conclusion
 Dash opens the gateway to creating interactive, data-centric web applications using just Python. When coupled with Dash Bootstrap Components, the result is aesthetically pleasing and responsive applications, perfectly suited for today's multi-screen world.
