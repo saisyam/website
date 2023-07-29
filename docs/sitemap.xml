@@ -3,10 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://saisyam.com/categories/</loc>
-    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/categories/data-analysis/</loc>
-    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/data-engineering/</loc>
+    <lastmod>2023-07-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/data-quality/</loc>
+    <lastmod>2023-07-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/data-visualization/</loc>
+    <lastmod>2023-07-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/etl/</loc>
+    <lastmod>2023-07-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/introduction-to-data-engineering-understanding-its-importance-and-role-in-the-data-lifecycle/</loc>
+    <lastmod>2023-07-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/posts/</loc>
+    <lastmod>2023-07-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/</loc>
+    <lastmod>2023-07-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/</loc>
+    <lastmod>2023-07-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/tags/generative-ai/</loc>
     <lastmod>2023-07-22T00:00:00+00:00</lastmod>
@@ -17,16 +41,7 @@
     <loc>https://saisyam.com/tags/openai/</loc>
     <lastmod>2023-07-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://saisyam.com/posts/</loc>
-    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://saisyam.com/tags/python/</loc>
-    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/</loc>
-    <lastmod>2023-07-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/</loc>
     <lastmod>2023-07-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/tags/bootstrap/</loc>
