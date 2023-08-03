@@ -66,6 +66,7 @@ I always prefer to setup a virtual environment for my Python projects. I assume 
 ```shell
 $ pip install great_expectations
 ```
+{{< adsense >}}
 
 Use Python 3.8 and above. Detailed installation steps can be found [here](https://docs.greatexpectations.io/docs/guides/setup/installation/local).
 
