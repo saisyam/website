@@ -7,7 +7,7 @@ tags:
   - Virtual environments
   - Data libraries
 date: 2023-08-03
-image: /ge_in_memory.jpg
+image: /python_setup.jpg
 featured: 1
 ---
 Setting up a Python data environment is the first crucial step for data enthusiasts, data scientists, and analysts embarking on their data-driven journey. Python has become the go-to language for data analysis due to its versatility, rich libraries, and ease of use. In this blog post, we will provide a comprehensive guide to help you set up a robust Python data environment, ensuring you have all the essential tools and libraries at your disposal.
