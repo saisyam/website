@@ -68,9 +68,6 @@ for epoch in range(num_epochs):
 ## Exploring VAEs (Variational Autoencoders)
 Variational Autoencoders, or VAEs, offer another avenue into the world of Generative AI. VAEs are a type of autoencoder, a neural network architecture designed for data compression and feature extraction. What sets VAEs apart is their incorporation of probabilistic latent variables. These variables allow for the generation of diverse outputs from a single encoded representation, adding a touch of randomness and creativity to the process.
 
-## Data Wrangling with Pandas
-[Pandas](https://pandas.pydata.org/) is a library for working with structured data. It provides powerful tools for reading, writing, and manipulating data in various formats, including CSV, Excel, and SQL databases. Pandas also includes many useful functions for cleaning and transforming data, making it an essential tool for any data analyst.
-
 ### Real-World Applications of VAEs
 VAEs shine in applications such as image generation and data compression. They have been employed to generate realistic images, perform data denoising, and even aid in anomaly detection by identifying deviations from expected patterns.
 
