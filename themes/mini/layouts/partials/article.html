@@ -40,11 +40,11 @@ img {
         <div class="pt-5">
           <p>
             Categories: 
-            {{ range $index, $name := sort .Params.categories -}}
+            {{ range $name := .Params.categories }}
             <a href="{{ (printf "/categories/%s/" $name) | urlize }}">{{$name | markdownify}} </a>
             {{ end }}
             Tags: 
-            {{range $index, $name := sort .Params.tags -}}
+            {{range $name := .Params.tags }}
             <a href="/tags/{{ $name }}">#{{ $name }}</a>
             {{ end }}
           </p>

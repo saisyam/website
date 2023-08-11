@@ -25,8 +25,8 @@
 
                 <p class="post-meta">
                    Under
-                   {{ range $index, $name := sort .Params.categories -}}
-                   <a class="post-category post-category-{{ $index }}" href="{{ (printf "/categories/%s/" $name) | urlize }}">{{$name | markdownify}}</a>
+                   {{ range $name := .Params.categories }}
+                   <a class="post-category post-category-1" href="{{ (printf "/categories/%s/" $name) | urlize }}">{{$name | markdownify}}</a>
                    {{ end }} 
                 </p>
             </header>

@@ -2,28 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://saisyam.com/tags/autoregressive-models/</loc>
+    <lastmod>2023-08-08T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://saisyam.com/categories/</loc>
-    <lastmod>2023-08-03T00:00:00+00:00</lastmod>
+    <lastmod>2023-08-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/data-visualization/</loc>
+    <lastmod>2023-08-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/demystifying-generative-ai-exploring-the-fundamentals-and-applications/</loc>
+    <lastmod>2023-08-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/generative-adversarial-networks/</loc>
+    <lastmod>2023-08-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/categories/generative-ai/</loc>
+    <lastmod>2023-08-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/posts/</loc>
+    <lastmod>2023-08-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/python/</loc>
+    <lastmod>2023-08-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/pytorch/</loc>
+    <lastmod>2023-08-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/</loc>
+    <lastmod>2023-08-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/</loc>
+    <lastmod>2023-08-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/tensorflow/</loc>
+    <lastmod>2023-08-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/variational-autoencoders/</loc>
+    <lastmod>2023-08-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/categories/data-analysis/</loc>
-    <lastmod>2023-08-03T00:00:00+00:00</lastmod>
+    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/data-cleansing/</loc>
+    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/introduction-to-data-analysis-with-python-a-beginners-guide/</loc>
+    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/matlab/</loc>
+    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/numpy/</loc>
+    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://saisyam.com/tags/pandas/</loc>
+    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/tags/data-libraries/</loc>
     <lastmod>2023-08-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://saisyam.com/posts/</loc>
-    <lastmod>2023-08-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/python/</loc>
-    <lastmod>2023-08-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/</loc>
-    <lastmod>2023-08-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://saisyam.com/setting-up-a-python-data-environment-a-comprehensive-guide-for-data-enthusiasts/</loc>
-    <lastmod>2023-08-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/</loc>
     <lastmod>2023-08-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/tags/virtual-environments/</loc>
@@ -33,9 +72,6 @@
     <lastmod>2023-07-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/tags/data-quality/</loc>
-    <lastmod>2023-07-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://saisyam.com/tags/data-visualization/</loc>
     <lastmod>2023-07-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://saisyam.com/tags/etl/</loc>
