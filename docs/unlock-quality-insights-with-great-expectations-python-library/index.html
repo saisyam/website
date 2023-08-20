@@ -169,7 +169,7 @@ img {
 <li>Integrates seamlessly with DAG execution tools like <a href="https://airflow.apache.org">Airflow</a>, <a href="https://www.getdbt.com">dbt</a>, <a href="https://prefect.io">Prefect</a>, <a href="https://github.com/dagster-io/dagster">Dagster</a>, <a href="https://github.com/quantumblacklabs/kedro">Kendro</a> etc.</li>
 </ol>
 <h2 id="getting-started">Getting started</h2>
-<p>The key feature of Great Expectaions is the <a href="https://docs.greatexpectations.io/docs/#expectations">Expectations</a>. Expectations are assertions about your data. In Great Expectations, expectations are nothing by Python methods. For example, in order to assert that you want the column &ldquo;id&rdquo; to be unique, you can say:</p>
+<p>The key feature of Great Expectaions is the <a href="https://docs.greatexpectations.io/docs/#expectations">Expectations</a>. Expectations are assertions about your data. In Great Expectations, expectations are nothing but Python methods. For example, in order to assert that you want the column &ldquo;id&rdquo; to be unique, you can say:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>expect_column_value_to_be_unique(
 </span></span><span style="display:flex;"><span>    column<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;id&#34;</span>
 </span></span><span style="display:flex;"><span>)

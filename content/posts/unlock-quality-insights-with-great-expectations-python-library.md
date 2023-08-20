@@ -34,7 +34,7 @@ Great Expectations is like unittests for your data. With Great Expectations you 
 6. Integrates seamlessly with DAG execution tools like [Airflow](https://airflow.apache.org), [dbt](https://www.getdbt.com), [Prefect](https://prefect.io), [Dagster](https://github.com/dagster-io/dagster), [Kendro](https://github.com/quantumblacklabs/kedro) etc.
 
 ## Getting started
-The key feature of Great Expectaions is the [Expectations](https://docs.greatexpectations.io/docs/#expectations). Expectations are assertions about your data. In Great Expectations, expectations are nothing by Python methods. For example, in order to assert that you want the column "id" to be unique, you can say:
+The key feature of Great Expectaions is the [Expectations](https://docs.greatexpectations.io/docs/#expectations). Expectations are assertions about your data. In Great Expectations, expectations are nothing but Python methods. For example, in order to assert that you want the column "id" to be unique, you can say:
 
 ```python
 expect_column_value_to_be_unique(
