@@ -13,6 +13,7 @@
 <meta property="og:url" content="https://saisyam.com/demystifying-generative-ai-exploring-the-fundamentals-and-applications/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-08-08T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-08-08T00:00:00+00:00" />
+
  
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Demystifying Generative AI: Exploring the Fundamentals and Applications"/>
@@ -173,33 +174,33 @@ img {
 <p>The applications of GANs span diverse domains, showcasing their versatility and potential impact. In the realm of image synthesis, GANs have been employed to create breathtakingly realistic visuals, enabling artists and designers to bring their visions to life. Style transfer, where the characteristics of one image are applied to another, has also seen tremendous advancements thanks to GANs. Additionally, industries such as gaming have leveraged GANs to fabricate lifelike characters and immersive environments that blur the line between the virtual and the real.</p>
 <h3 id="code-example-creating-a-gan">Code Example: Creating a GAN</h3>
 <p>Implement a simple GAN using Python and TensorFlow, training it on a dataset of handwritten digits to generate realistic-looking numbers.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Sample GAN code snippet</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># (Note: This is a simplified example; actual GANs are more complex.)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generator model</span>
-</span></span><span style="display:flex;"><span>generator <span style="color:#f92672">=</span> Sequential([<span style="color:#f92672">...</span>])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Discriminator model</span>
-</span></span><span style="display:flex;"><span>discriminator <span style="color:#f92672">=</span> Sequential([<span style="color:#f92672">...</span>])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Combined GAN model</span>
-</span></span><span style="display:flex;"><span>gan <span style="color:#f92672">=</span> Sequential([generator, discriminator])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Training loop</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(num_epochs):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> real_images <span style="color:#f92672">in</span> dataset:
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Train discriminator on real images</span>
-</span></span><span style="display:flex;"><span>        d_loss_real <span style="color:#f92672">=</span> discriminator<span style="color:#f92672">.</span>train_on_batch(real_images, real_labels)
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Generate fake images</span>
-</span></span><span style="display:flex;"><span>        fake_images <span style="color:#f92672">=</span> generator<span style="color:#f92672">.</span>predict(noise)
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Train discriminator on fake images</span>
-</span></span><span style="display:flex;"><span>        d_loss_fake <span style="color:#f92672">=</span> discriminator<span style="color:#f92672">.</span>train_on_batch(fake_images, fake_labels)
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Train generator to fool discriminator</span>
-</span></span><span style="display:flex;"><span>        g_loss <span style="color:#f92672">=</span> gan<span style="color:#f92672">.</span>train_on_batch(noise, real_labels)
-</span></span></code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Sample GAN code snippet</span>
+<span style="color:#75715e"># (Note: This is a simplified example; actual GANs are more complex.)</span>
+
+<span style="color:#75715e"># Generator model</span>
+generator <span style="color:#f92672">=</span> Sequential([<span style="color:#f92672">...</span>])
+
+<span style="color:#75715e"># Discriminator model</span>
+discriminator <span style="color:#f92672">=</span> Sequential([<span style="color:#f92672">...</span>])
+
+<span style="color:#75715e"># Combined GAN model</span>
+gan <span style="color:#f92672">=</span> Sequential([generator, discriminator])
+
+<span style="color:#75715e"># Training loop</span>
+<span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(num_epochs):
+    <span style="color:#66d9ef">for</span> real_images <span style="color:#f92672">in</span> dataset:
+        <span style="color:#75715e"># Train discriminator on real images</span>
+        d_loss_real <span style="color:#f92672">=</span> discriminator<span style="color:#f92672">.</span>train_on_batch(real_images, real_labels)
+        
+        <span style="color:#75715e"># Generate fake images</span>
+        fake_images <span style="color:#f92672">=</span> generator<span style="color:#f92672">.</span>predict(noise)
+        
+        <span style="color:#75715e"># Train discriminator on fake images</span>
+        d_loss_fake <span style="color:#f92672">=</span> discriminator<span style="color:#f92672">.</span>train_on_batch(fake_images, fake_labels)
+        
+        <span style="color:#75715e"># Train generator to fool discriminator</span>
+        g_loss <span style="color:#f92672">=</span> gan<span style="color:#f92672">.</span>train_on_batch(noise, real_labels)
+</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"
@@ -215,35 +216,35 @@ img {
 <p>VAEs shine in applications such as image generation and data compression. They have been employed to generate realistic images, perform data denoising, and even aid in anomaly detection by identifying deviations from expected patterns.</p>
 <h3 id="code-example-building-a-vae">Code Example: Building a VAE</h3>
 <p>Build a simple VAE using PyTorch, training it on a dataset of grayscale images to generate new images with similar features.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Sample VAE code snippet</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># (Note: This is a simplified example; actual VAEs are more complex.)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define VAE model</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">VAE</span>(nn<span style="color:#f92672">.</span>Module):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
-</span></span><span style="display:flex;"><span>        super(VAE, self)<span style="color:#f92672">.</span>__init__()
-</span></span><span style="display:flex;"><span>        [<span style="color:#f92672">...</span>]
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">encode</span>(self, x):
-</span></span><span style="display:flex;"><span>        [<span style="color:#f92672">...</span>]
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decode</span>(self, z):
-</span></span><span style="display:flex;"><span>        [<span style="color:#f92672">...</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Loss function (combination of reconstruction loss and KL divergence)</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">loss_function</span>(recon_x, x, mu, logvar):
-</span></span><span style="display:flex;"><span>    [<span style="color:#f92672">...</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Training loop</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(num_epochs):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> batch_idx, (data, _) <span style="color:#f92672">in</span> enumerate(dataloader):
-</span></span><span style="display:flex;"><span>        [<span style="color:#f92672">...</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate new images</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> torch<span style="color:#f92672">.</span>no_grad():
-</span></span><span style="display:flex;"><span>    sample <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">64</span>, latent_dim)<span style="color:#f92672">.</span>to(device)
-</span></span><span style="display:flex;"><span>    sample <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>decode(sample)<span style="color:#f92672">.</span>cpu()
-</span></span></code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Sample VAE code snippet</span>
+<span style="color:#75715e"># (Note: This is a simplified example; actual VAEs are more complex.)</span>
+
+<span style="color:#75715e"># Define VAE model</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">VAE</span>(nn<span style="color:#f92672">.</span>Module):
+    <span style="color:#66d9ef">def</span> __init__(self):
+        super(VAE, self)<span style="color:#f92672">.</span>__init__()
+        [<span style="color:#f92672">...</span>]
+        
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">encode</span>(self, x):
+        [<span style="color:#f92672">...</span>]
+        
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decode</span>(self, z):
+        [<span style="color:#f92672">...</span>]
+
+<span style="color:#75715e"># Loss function (combination of reconstruction loss and KL divergence)</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">loss_function</span>(recon_x, x, mu, logvar):
+    [<span style="color:#f92672">...</span>]
+
+<span style="color:#75715e"># Training loop</span>
+<span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(num_epochs):
+    <span style="color:#66d9ef">for</span> batch_idx, (data, _) <span style="color:#f92672">in</span> enumerate(dataloader):
+        [<span style="color:#f92672">...</span>]
+
+<span style="color:#75715e"># Generate new images</span>
+<span style="color:#66d9ef">with</span> torch<span style="color:#f92672">.</span>no_grad():
+    sample <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">64</span>, latent_dim)<span style="color:#f92672">.</span>to(device)
+    sample <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>decode(sample)<span style="color:#f92672">.</span>cpu()
+</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"
@@ -259,30 +260,30 @@ img {
 <p>Autoregressive models have found their niche in text generation, handwriting synthesis, and speech synthesis. They excel in scenarios where the order and context of generated content are crucial.</p>
 <h3 id="code-example-constructing-an-autoregressive-model">Code Example: Constructing an Autoregressive Model</h3>
 <p>Implement a basic autoregressive language model using TensorFlow, training it on a text dataset to generate new paragraphs of text.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Sample autoregressive model code snippet</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># (Note: This is a simplified example; actual models are more complex.)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define autoregressive model</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AutoregressiveModel</span>(tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>Model):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
-</span></span><span style="display:flex;"><span>        super(AutoregressiveModel, self)<span style="color:#f92672">.</span>__init__()
-</span></span><span style="display:flex;"><span>        [<span style="color:#f92672">...</span>]
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">call</span>(self, inputs, training<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
-</span></span><span style="display:flex;"><span>        [<span style="color:#f92672">...</span>]
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Loss function (cross-entropy)</span>
-</span></span><span style="display:flex;"><span>loss_fn <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>losses<span style="color:#f92672">.</span>SparseCategoricalCrossentropy(from_logits<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Training loop</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(num_epochs):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> batch <span style="color:#f92672">in</span> dataset:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> tf<span style="color:#f92672">.</span>GradientTape() <span style="color:#66d9ef">as</span> tape:
-</span></span><span style="display:flex;"><span>            predictions <span style="color:#f92672">=</span> model(inputs, training<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>            loss <span style="color:#f92672">=</span> loss_fn(labels, predictions)
-</span></span><span style="display:flex;"><span>        gradients <span style="color:#f92672">=</span> tape<span style="color:#f92672">.</span>gradient(loss, model<span style="color:#f92672">.</span>trainable_variables)
-</span></span><span style="display:flex;"><span>        optimizer<span style="color:#f92672">.</span>apply_gradients(zip(gradients, model<span style="color:#f92672">.</span>trainable_variables))
-</span></span></code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Sample autoregressive model code snippet</span>
+<span style="color:#75715e"># (Note: This is a simplified example; actual models are more complex.)</span>
+
+<span style="color:#75715e"># Define autoregressive model</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AutoregressiveModel</span>(tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>Model):
+    <span style="color:#66d9ef">def</span> __init__(self):
+        super(AutoregressiveModel, self)<span style="color:#f92672">.</span>__init__()
+        [<span style="color:#f92672">...</span>]
+        
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">call</span>(self, inputs, training<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
+        [<span style="color:#f92672">...</span>]
+        
+<span style="color:#75715e"># Loss function (cross-entropy)</span>
+loss_fn <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>losses<span style="color:#f92672">.</span>SparseCategoricalCrossentropy(from_logits<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+
+<span style="color:#75715e"># Training loop</span>
+<span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(num_epochs):
+    <span style="color:#66d9ef">for</span> batch <span style="color:#f92672">in</span> dataset:
+        <span style="color:#66d9ef">with</span> tf<span style="color:#f92672">.</span>GradientTape() <span style="color:#66d9ef">as</span> tape:
+            predictions <span style="color:#f92672">=</span> model(inputs, training<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+            loss <span style="color:#f92672">=</span> loss_fn(labels, predictions)
+        gradients <span style="color:#f92672">=</span> tape<span style="color:#f92672">.</span>gradient(loss, model<span style="color:#f92672">.</span>trainable_variables)
+        optimizer<span style="color:#f92672">.</span>apply_gradients(zip(gradients, model<span style="color:#f92672">.</span>trainable_variables))
+</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"
@@ -336,7 +337,7 @@ img {
         <div class="pt-5">
           <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     
@@ -374,7 +375,7 @@ img {
           <ul class="categories">
             
               <li>
-                <a href="https://saisyam.com/categories/cloud-and-containers">Cloud and containers<span>(1)</span></a>
+                <a href="https://saisyam.com/categories/cloud-and-containers">Cloud and containers<span>(2)</span></a>
               </li>
             
               <li>
@@ -398,6 +399,10 @@ img {
               <li><a href="https://saisyam.com/tags/autoregressive-models">autoregressive-models</a></li>
             
               <li><a href="https://saisyam.com/tags/bootstrap">bootstrap</a></li>
+            
+              <li><a href="https://saisyam.com/tags/cloud">cloud</a></li>
+            
+              <li><a href="https://saisyam.com/tags/containers">containers</a></li>
             
               <li><a href="https://saisyam.com/tags/data-cleansing">data-cleansing</a></li>
             

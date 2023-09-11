@@ -13,6 +13,7 @@
 <meta property="og:url" content="https://saisyam.com/unlock-quality-insights-with-great-expectations-python-library/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-12-31T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-12-31T00:00:00+00:00" />
+
  
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Unlock Quality Insights with Great Expectations Python Library"/>
@@ -170,10 +171,10 @@ img {
 </ol>
 <h2 id="getting-started">Getting started</h2>
 <p>The key feature of Great Expectaions is the <a href="https://docs.greatexpectations.io/docs/#expectations">Expectations</a>. Expectations are assertions about your data. In Great Expectations, expectations are nothing but Python methods. For example, in order to assert that you want the column &ldquo;id&rdquo; to be unique, you can say:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>expect_column_value_to_be_unique(
-</span></span><span style="display:flex;"><span>    column<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;id&#34;</span>
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><p>Great Expectations provides such kind of expectations out-of-the-box. If you don&rsquo;t find the expectation you want, you can always write your own expectation. Writing <a href="https://docs.greatexpectations.io/docs/guides/expectations/creating_custom_expectations/overview">custom expectations</a> needs a separate post and hence not in the scope of this article.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">expect_column_value_to_be_unique(
+    column<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;id&#34;</span>
+)
+</code></pre></div><p>Great Expectations provides such kind of expectations out-of-the-box. If you don&rsquo;t find the expectation you want, you can always write your own expectation. Writing <a href="https://docs.greatexpectations.io/docs/guides/expectations/creating_custom_expectations/overview">custom expectations</a> needs a separate post and hence not in the scope of this article.</p>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
@@ -208,8 +209,8 @@ I prefer to store validation results (a JSON object) into a database for further
 </ul>
 <h2 id="installing-great-expectations">Installing Great Expectations</h2>
 <p>I always prefer to setup a virtual environment for my Python projects. I assume you also do the same. Inside your virutal environment, you can install Great Expectations with pip:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pip install great_expectations
-</span></span></code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ pip install great_expectations
+</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"
@@ -222,62 +223,62 @@ I prefer to store validation results (a JSON object) into a database for further
 <p>Use Python 3.8 and above. Detailed installation steps can be found <a href="https://docs.greatexpectations.io/docs/guides/setup/installation/local">here</a>.</p>
 <h2 id="setting-up-the-data-context">Setting up the Data context</h2>
 <p>A typical data context config for filesystem looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>STORE_FOLDER <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/Users/saisyam/work/github/great-expectations-sample/ge_data&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#Setup data config</span>
-</span></span><span style="display:flex;"><span>data_context_config <span style="color:#f92672">=</span> DataContextConfig(
-</span></span><span style="display:flex;"><span>    config_version <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>,
-</span></span><span style="display:flex;"><span>    plugins_directory <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>,
-</span></span><span style="display:flex;"><span>    config_variables_file_path <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>,
-</span></span><span style="display:flex;"><span>    datasources <span style="color:#f92672">=</span> {},
-</span></span><span style="display:flex;"><span>    stores <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;expectations_store&#34;</span>: {
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;ExpectationsStore&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;store_backend&#34;</span>: {
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;TupleFilesystemStoreBackend&#34;</span>,
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;base_directory&#34;</span>: STORE_FOLDER<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/expectations&#34;</span>
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        },
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;validations_store&#34;</span>: {
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;ValidationsStore&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;store_backend&#34;</span>: {
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;TupleFilesystemStoreBackend&#34;</span>,
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;base_directory&#34;</span>: STORE_FOLDER<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/validations&#34;</span>
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        },
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;checkpoint_store&#34;</span>: {
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;CheckpointStore&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;store_backend&#34;</span>: {
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;TupleFilesystemStoreBackend&#34;</span>,
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;base_directory&#34;</span>: STORE_FOLDER<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/checkpoints&#34;</span>
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        },
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;evaluation_parameter_store&#34;</span>: {<span style="color:#e6db74">&#34;class_name&#34;</span>:<span style="color:#e6db74">&#34;EvaluationParameterStore&#34;</span>}
-</span></span><span style="display:flex;"><span>    },
-</span></span><span style="display:flex;"><span>    expectations_store_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;expectations_store&#34;</span>,
-</span></span><span style="display:flex;"><span>    validations_store_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;validations_store&#34;</span>,
-</span></span><span style="display:flex;"><span>    evaluation_parameter_store_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;evaluation_parameter_store&#34;</span>,
-</span></span><span style="display:flex;"><span>    checkpoint_store_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;checkpoint_store&#34;</span>,
-</span></span><span style="display:flex;"><span>    data_docs_sites<span style="color:#f92672">=</span>{
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;local_site&#34;</span>: {
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;SiteBuilder&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;store_backend&#34;</span>: {
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;TupleFilesystemStoreBackend&#34;</span>,
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;base_directory&#34;</span>: STORE_FOLDER<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/data_docs&#34;</span>,
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>            },
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;site_index_builder&#34;</span>: {
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;DefaultSiteIndexBuilder&#34;</span>,
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;show_cta_footer&#34;</span>: <span style="color:#66d9ef">True</span>,
-</span></span><span style="display:flex;"><span>            },
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    },
-</span></span><span style="display:flex;"><span>    anonymous_usage_statistics<span style="color:#f92672">=</span>{
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;enabled&#34;</span>: <span style="color:#66d9ef">True</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><p>Once we have the config ready, we can set the context with:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>context <span style="color:#f92672">=</span> BaseDataContext(project_config <span style="color:#f92672">=</span> data_context_config)
-</span></span></code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">STORE_FOLDER <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/Users/saisyam/work/github/great-expectations-sample/ge_data&#34;</span>
+<span style="color:#75715e">#Setup data config</span>
+data_context_config <span style="color:#f92672">=</span> DataContextConfig(
+    config_version <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>,
+    plugins_directory <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>,
+    config_variables_file_path <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>,
+    datasources <span style="color:#f92672">=</span> {},
+    stores <span style="color:#f92672">=</span> {
+        <span style="color:#e6db74">&#34;expectations_store&#34;</span>: {
+            <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;ExpectationsStore&#34;</span>,
+            <span style="color:#e6db74">&#34;store_backend&#34;</span>: {
+                <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;TupleFilesystemStoreBackend&#34;</span>,
+                <span style="color:#e6db74">&#34;base_directory&#34;</span>: STORE_FOLDER<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/expectations&#34;</span>
+            }
+        },
+        <span style="color:#e6db74">&#34;validations_store&#34;</span>: {
+            <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;ValidationsStore&#34;</span>,
+            <span style="color:#e6db74">&#34;store_backend&#34;</span>: {
+                <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;TupleFilesystemStoreBackend&#34;</span>,
+                <span style="color:#e6db74">&#34;base_directory&#34;</span>: STORE_FOLDER<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/validations&#34;</span>
+            }
+        },
+        <span style="color:#e6db74">&#34;checkpoint_store&#34;</span>: {
+            <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;CheckpointStore&#34;</span>,
+            <span style="color:#e6db74">&#34;store_backend&#34;</span>: {
+                <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;TupleFilesystemStoreBackend&#34;</span>,
+                <span style="color:#e6db74">&#34;base_directory&#34;</span>: STORE_FOLDER<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/checkpoints&#34;</span>
+            }
+        },
+        <span style="color:#e6db74">&#34;evaluation_parameter_store&#34;</span>: {<span style="color:#e6db74">&#34;class_name&#34;</span>:<span style="color:#e6db74">&#34;EvaluationParameterStore&#34;</span>}
+    },
+    expectations_store_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;expectations_store&#34;</span>,
+    validations_store_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;validations_store&#34;</span>,
+    evaluation_parameter_store_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;evaluation_parameter_store&#34;</span>,
+    checkpoint_store_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;checkpoint_store&#34;</span>,
+    data_docs_sites<span style="color:#f92672">=</span>{
+        <span style="color:#e6db74">&#34;local_site&#34;</span>: {
+            <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;SiteBuilder&#34;</span>,
+            <span style="color:#e6db74">&#34;store_backend&#34;</span>: {
+                <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;TupleFilesystemStoreBackend&#34;</span>,
+                <span style="color:#e6db74">&#34;base_directory&#34;</span>: STORE_FOLDER<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/data_docs&#34;</span>,
+                
+            },
+            <span style="color:#e6db74">&#34;site_index_builder&#34;</span>: {
+                <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;DefaultSiteIndexBuilder&#34;</span>,
+                <span style="color:#e6db74">&#34;show_cta_footer&#34;</span>: <span style="color:#66d9ef">True</span>,
+            },
+        }
+    },
+    anonymous_usage_statistics<span style="color:#f92672">=</span>{
+      <span style="color:#e6db74">&#34;enabled&#34;</span>: <span style="color:#66d9ef">True</span>
+    }
+)
+</code></pre></div><p>Once we have the config ready, we can set the context with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">context <span style="color:#f92672">=</span> BaseDataContext(project_config <span style="color:#f92672">=</span> data_context_config)
+</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"
@@ -289,75 +290,75 @@ I prefer to store validation results (a JSON object) into a database for further
 </script>
 <h2 id="setting-up-data-source">Setting up data source</h2>
 <p>We will setup a Pandas data source and add it to the context</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>datasource_config <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;sales_datasource&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;Datasource&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;module_name&#34;</span>: <span style="color:#e6db74">&#34;great_expectations.datasource&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;execution_engine&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;module_name&#34;</span>: <span style="color:#e6db74">&#34;great_expectations.execution_engine&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;PandasExecutionEngine&#34;</span>,
-</span></span><span style="display:flex;"><span>    },
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;data_connectors&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;default_runtime_data_connector_name&#34;</span>: {
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;RuntimeDataConnector&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;module_name&#34;</span>: <span style="color:#e6db74">&#34;great_expectations.datasource.data_connector&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;batch_identifiers&#34;</span>: [<span style="color:#e6db74">&#34;default_identifier_name&#34;</span>],
-</span></span><span style="display:flex;"><span>        },
-</span></span><span style="display:flex;"><span>    },
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>add_datasource(<span style="color:#f92672">**</span>datasource_config)
-</span></span></code></pre></div><h2 id="creating-expectation-suite-and-add-expectations-to-it">Creating Expectation suite and add Expectations to it</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">datasource_config <span style="color:#f92672">=</span> {
+    <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;sales_datasource&#34;</span>,
+    <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;Datasource&#34;</span>,
+    <span style="color:#e6db74">&#34;module_name&#34;</span>: <span style="color:#e6db74">&#34;great_expectations.datasource&#34;</span>,
+    <span style="color:#e6db74">&#34;execution_engine&#34;</span>: {
+        <span style="color:#e6db74">&#34;module_name&#34;</span>: <span style="color:#e6db74">&#34;great_expectations.execution_engine&#34;</span>,
+        <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;PandasExecutionEngine&#34;</span>,
+    },
+    <span style="color:#e6db74">&#34;data_connectors&#34;</span>: {
+        <span style="color:#e6db74">&#34;default_runtime_data_connector_name&#34;</span>: {
+            <span style="color:#e6db74">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;RuntimeDataConnector&#34;</span>,
+            <span style="color:#e6db74">&#34;module_name&#34;</span>: <span style="color:#e6db74">&#34;great_expectations.datasource.data_connector&#34;</span>,
+            <span style="color:#e6db74">&#34;batch_identifiers&#34;</span>: [<span style="color:#e6db74">&#34;default_identifier_name&#34;</span>],
+        },
+    },
+}
+context<span style="color:#f92672">.</span>add_datasource(<span style="color:#f92672">**</span>datasource_config)
+</code></pre></div><h2 id="creating-expectation-suite-and-add-expectations-to-it">Creating Expectation suite and add Expectations to it</h2>
 <p>Now it&rsquo;s time to create an Expectation suite and add expectations to the suite:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Create expectations suite and add expectations</span>
-</span></span><span style="display:flex;"><span>suite <span style="color:#f92672">=</span> context<span style="color:#f92672">.</span>create_expectation_suite(expectation_suite_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sales_suite&#34;</span>, overwrite_existing<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add expectations</span>
-</span></span><span style="display:flex;"><span>expectation_config_1 <span style="color:#f92672">=</span> ExpectationConfiguration(
-</span></span><span style="display:flex;"><span>    expectation_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;expect_column_values_to_be_in_set&#34;</span>,
-</span></span><span style="display:flex;"><span>    kwargs<span style="color:#f92672">=</span>{
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;column&#34;</span>: <span style="color:#e6db74">&#34;product_group&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;value_set&#34;</span>: [<span style="color:#e6db74">&#34;PG1&#34;</span>, <span style="color:#e6db74">&#34;PG2&#34;</span>, <span style="color:#e6db74">&#34;PG3&#34;</span>, <span style="color:#e6db74">&#34;PG4&#34;</span>, <span style="color:#e6db74">&#34;PG5&#34;</span>]
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>) 
-</span></span><span style="display:flex;"><span>suite<span style="color:#f92672">.</span>add_expectation(expectation_configuration<span style="color:#f92672">=</span>expectation_config_1)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>expectation_config_2 <span style="color:#f92672">=</span> ExpectationConfiguration(
-</span></span><span style="display:flex;"><span>    expectation_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;expect_column_values_to_be_unique&#34;</span>,
-</span></span><span style="display:flex;"><span>    kwargs<span style="color:#f92672">=</span>{
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;column&#34;</span>: <span style="color:#e6db74">&#34;id&#34;</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>) 
-</span></span><span style="display:flex;"><span>suite<span style="color:#f92672">.</span>add_expectation(expectation_configuration<span style="color:#f92672">=</span>expectation_config_2)
-</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>save_expectation_suite(suite, <span style="color:#e6db74">&#34;sales_suite&#34;</span>)
-</span></span></code></pre></div><p>Now we have everything ready to run the expectations on dataset.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Create expectations suite and add expectations</span>
+suite <span style="color:#f92672">=</span> context<span style="color:#f92672">.</span>create_expectation_suite(expectation_suite_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sales_suite&#34;</span>, overwrite_existing<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+
+<span style="color:#75715e"># Add expectations</span>
+expectation_config_1 <span style="color:#f92672">=</span> ExpectationConfiguration(
+    expectation_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;expect_column_values_to_be_in_set&#34;</span>,
+    kwargs<span style="color:#f92672">=</span>{
+        <span style="color:#e6db74">&#34;column&#34;</span>: <span style="color:#e6db74">&#34;product_group&#34;</span>,
+        <span style="color:#e6db74">&#34;value_set&#34;</span>: [<span style="color:#e6db74">&#34;PG1&#34;</span>, <span style="color:#e6db74">&#34;PG2&#34;</span>, <span style="color:#e6db74">&#34;PG3&#34;</span>, <span style="color:#e6db74">&#34;PG4&#34;</span>, <span style="color:#e6db74">&#34;PG5&#34;</span>]
+    }
+) 
+suite<span style="color:#f92672">.</span>add_expectation(expectation_configuration<span style="color:#f92672">=</span>expectation_config_1)
+
+expectation_config_2 <span style="color:#f92672">=</span> ExpectationConfiguration(
+    expectation_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;expect_column_values_to_be_unique&#34;</span>,
+    kwargs<span style="color:#f92672">=</span>{
+        <span style="color:#e6db74">&#34;column&#34;</span>: <span style="color:#e6db74">&#34;id&#34;</span>
+    }
+) 
+suite<span style="color:#f92672">.</span>add_expectation(expectation_configuration<span style="color:#f92672">=</span>expectation_config_2)
+context<span style="color:#f92672">.</span>save_expectation_suite(suite, <span style="color:#e6db74">&#34;sales_suite&#34;</span>)
+</code></pre></div><p>Now we have everything ready to run the expectations on dataset.</p>
 <h2 id="create-dataset-and-run-checkpoint">Create dataset and run checkpoint</h2>
 <p>We will use a <a href="https://github.com/saisyam/great-expectations-sample/blob/master/sales.csv">sample sales dataset</a>. Create a batch request and run the checkpoint. We will use all the default parameters from Great Expectations.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># load and validate data</span>
-</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;./sales.csv&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>batch_request <span style="color:#f92672">=</span> RuntimeBatchRequest(
-</span></span><span style="display:flex;"><span>    datasource_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sales_datasource&#34;</span>,
-</span></span><span style="display:flex;"><span>    data_connector_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;default_runtime_data_connector_name&#34;</span>,
-</span></span><span style="display:flex;"><span>    data_asset_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;product_sales&#34;</span>,
-</span></span><span style="display:flex;"><span>    runtime_parameters<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;batch_data&#34;</span>:df},
-</span></span><span style="display:flex;"><span>    batch_identifiers<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;default_identifier_name&#34;</span>:<span style="color:#e6db74">&#34;default_identifier&#34;</span>}
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>checkpoint_config <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;product_sales_checkpoint&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;config_version&#34;</span>: <span style="color:#ae81ff">1</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;class_name&#34;</span>:<span style="color:#e6db74">&#34;SimpleCheckpoint&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;expectation_suite_name&#34;</span>: <span style="color:#e6db74">&#34;sales_suite&#34;</span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>add_checkpoint(<span style="color:#f92672">**</span>checkpoint_config)
-</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> context<span style="color:#f92672">.</span>run_checkpoint(
-</span></span><span style="display:flex;"><span>    checkpoint_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;product_sales_checkpoint&#34;</span>,
-</span></span><span style="display:flex;"><span>    validations<span style="color:#f92672">=</span>[
-</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;batch_request&#34;</span>: batch_request}
-</span></span><span style="display:flex;"><span>    ]
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>print(results)
-</span></span></code></pre></div><p class="img-fluid">The above code will print the validation results as a Python dict. As we have enabled data docs in our config, you will see a <code>data_docs</code> folder under <code>STORE_FOLDER</code> where the HTML output is stored. Each run will create a new HTML file under <code>validations</code> folder inside <code>data_docs</code>. The sample HTML file will look like:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># load and validate data</span>
+df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;./sales.csv&#34;</span>)
+
+batch_request <span style="color:#f92672">=</span> RuntimeBatchRequest(
+    datasource_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sales_datasource&#34;</span>,
+    data_connector_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;default_runtime_data_connector_name&#34;</span>,
+    data_asset_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;product_sales&#34;</span>,
+    runtime_parameters<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;batch_data&#34;</span>:df},
+    batch_identifiers<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;default_identifier_name&#34;</span>:<span style="color:#e6db74">&#34;default_identifier&#34;</span>}
+)
+
+checkpoint_config <span style="color:#f92672">=</span> {
+    <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;product_sales_checkpoint&#34;</span>,
+    <span style="color:#e6db74">&#34;config_version&#34;</span>: <span style="color:#ae81ff">1</span>,
+    <span style="color:#e6db74">&#34;class_name&#34;</span>:<span style="color:#e6db74">&#34;SimpleCheckpoint&#34;</span>,
+    <span style="color:#e6db74">&#34;expectation_suite_name&#34;</span>: <span style="color:#e6db74">&#34;sales_suite&#34;</span>
+}
+context<span style="color:#f92672">.</span>add_checkpoint(<span style="color:#f92672">**</span>checkpoint_config)
+results <span style="color:#f92672">=</span> context<span style="color:#f92672">.</span>run_checkpoint(
+    checkpoint_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;product_sales_checkpoint&#34;</span>,
+    validations<span style="color:#f92672">=</span>[
+        {<span style="color:#e6db74">&#34;batch_request&#34;</span>: batch_request}
+    ]
+)
+print(results)
+</code></pre></div><p class="img-fluid">The above code will print the validation results as a Python dict. As we have enabled data docs in our config, you will see a <code>data_docs</code> folder under <code>STORE_FOLDER</code> where the HTML output is stored. Each run will create a new HTML file under <code>validations</code> folder inside <code>data_docs</code>. The sample HTML file will look like:
 <img src="https://saisyam.com/great_expectations_html_output.jpg" alt="Great Expectation validation results" title="Great Expectation validation results"></p>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -390,7 +391,7 @@ I prefer to store validation results (a JSON object) into a database for further
         <div class="pt-5">
           <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     
@@ -428,7 +429,7 @@ I prefer to store validation results (a JSON object) into a database for further
           <ul class="categories">
             
               <li>
-                <a href="https://saisyam.com/categories/cloud-and-containers">Cloud and containers<span>(1)</span></a>
+                <a href="https://saisyam.com/categories/cloud-and-containers">Cloud and containers<span>(2)</span></a>
               </li>
             
               <li>
@@ -452,6 +453,10 @@ I prefer to store validation results (a JSON object) into a database for further
               <li><a href="https://saisyam.com/tags/autoregressive-models">autoregressive-models</a></li>
             
               <li><a href="https://saisyam.com/tags/bootstrap">bootstrap</a></li>
+            
+              <li><a href="https://saisyam.com/tags/cloud">cloud</a></li>
+            
+              <li><a href="https://saisyam.com/tags/containers">containers</a></li>
             
               <li><a href="https://saisyam.com/tags/data-cleansing">data-cleansing</a></li>
             
