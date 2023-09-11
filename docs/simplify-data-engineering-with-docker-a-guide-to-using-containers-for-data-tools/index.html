@@ -1,0 +1,494 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Simplify Data Engineering with Docker: A Guide to Using Containers for Data Tools - Saisyam" />
+  <meta name="author" content="Saisyam" />
+  <meta property="og:title" content="Simplify Data Engineering with Docker: A Guide to Using Containers for Data Tools" />
+<meta property="og:description" content="In the world of data engineering, managing different data tools and dependencies for various projects can be a daunting task. Installation, configuration, and version mismatches can lead to a headache. But fear not!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://saisyam.com/simplify-data-engineering-with-docker-a-guide-to-using-containers-for-data-tools/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-09-10T00:00:00+00:00" />
+
+ 
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Simplify Data Engineering with Docker: A Guide to Using Containers for Data Tools"/>
+<meta name="twitter:description" content="In the world of data engineering, managing different data tools and dependencies for various projects can be a daunting task. Installation, configuration, and version mismatches can lead to a headache. But fear not!"/>
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  <title>Simplify Data Engineering with Docker: A Guide to Using Containers for Data Tools - Saisyam</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://saisyam.com/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/magnific-popup.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/jquery-ui.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="https://saisyam.com/fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/aos.css">
+  <link rel="stylesheet" href="https://saisyam.com/css/style.css">
+</head>
+
+<body>
+    <div class="site-wrap">
+        <div class="site-mobile-menu">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        
+<header class="site-navbar" role="banner">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-4 site-logo">
+                <a href="https://saisyam.com/" class="text-black h2 mb-0">Saisyam</a>
+            </div>
+            <div class="col-8 text-right">
+                <nav class="site-navigation" role="navigation">
+                    <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
+                        <li><a href="https://saisyam.com/">Home</a></li>
+                        
+                        <li>
+                            <a href="https://saisyam.com/categories/cloud-and-containers">Cloud and containers</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://saisyam.com/categories/data-analysis">Data analysis</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://saisyam.com/categories/generative-ai">Generative ai</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://saisyam.com/categories/programming">Programming</a>
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><span class="icon-menu h3"></span></a>
+            </div>
+        </div>
+    </div>
+</header>
+        
+    <style>
+  pre {
+  overflow: auto;
+  margin-top: 0;
+  margin: 1em 0;
+  padding: 1em;
+  font-size: 16.8px;
+  font-size: 1.05rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/docker.jpg');">
+  <div class="container">
+    <div class="row same-height justify-content-center">
+      <div class="col-md-12 col-lg-10">
+      <div class="post-entry text-center">
+        <span class="post-category text-white bg-success mb-3">Cloud and containers</span>
+        <h1 class="mb-4"><a href="https://saisyam.com/simplify-data-engineering-with-docker-a-guide-to-using-containers-for-data-tools/">Simplify Data Engineering with Docker: A Guide to Using Containers for Data Tools</a></h1>
+        <div class="post-meta align-items-center text-center">
+          <span>Sep 10, 2023</span>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="site-section py-lg">
+  <div class="container">
+    <div class="row blog-entries element-animate">
+      <div class="col-md-12 col-lg-8 main-content">
+        <div class="post-content-body">
+          <p>In the world of data engineering, managing different data tools and dependencies for various projects can be a daunting task. Installation, configuration, and version mismatches can lead to a headache. But fear not! Docker containers come to the rescue, offering an elegant solution that saves you from the hassle of traditional installations.</p>
+<div id="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-docker">What is Docker?</a></li>
+    <li><a href="#why-docker">Why Docker?</a></li>
+    <li><a href="#installing-docker-on-windows-linux-and-mac">Installing Docker on Windows, Linux, and Mac</a></li>
+    <li><a href="#using-docker-images-for-data-tools">Using Docker Images for Data Tools</a>
+      <ul>
+        <li><a href="#step-1-pull-docker-images">Step 1: Pull Docker Images</a></li>
+        <li><a href="#step-2-running-downloaded-images">Step 2: Running downloaded images</a></li>
+        <li><a href="#step-3-connecting-to-these-containers-from-python">Step 3: Connecting to these containers from Python</a></li>
+        <li><a href="#step-4-managing-data-in-docker-containers">Step 4: Managing Data in Docker Containers</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="what-is-docker">What is Docker?</h2>
+<p><a href="https://www.docker.com/">Docker</a> is an open-source platform that automates application deployment and management by containerizing them. Containers are lightweight, standalone, and executable packages that include everything needed to run a piece of software, including the code, runtime, libraries, and system tools.</p>
+<p>With Docker, data engineers can isolate data tools and other software, ensuring consistency across development, testing, and production environments. Here&rsquo;s a brief overview of Docker&rsquo;s key components:</p>
+<ul>
+<li><strong>Docker Engine:</strong> The core component that allows you to create and run containers.</li>
+<li><strong>Dockerfile:</strong> A script that defines how a container should be built.</li>
+<li><strong>Docker Compose:</strong> A tool for defining and running multi-container Docker applications</li>
+</ul>
+<h2 id="why-docker">Why Docker?</h2>
+<p><strong>Development Ease</strong></p>
+<p>Docker simplifies the development process by encapsulating applications and their dependencies into containers. Developers can create a consistent environment locally, ensuring that the same set of tools and libraries are used across different development stages. This consistency minimizes the &ldquo;it works on my machine&rdquo; problem and streamlines collaboration.</p>
+<p><strong>Portability</strong></p>
+<p>One of Docker&rsquo;s key advantages is portability. Containers can run consistently across various environments, including local development machines, testing servers, and production clusters. This portability allows you to build and test applications locally and then deploy them seamlessly to cloud platforms like AWS Elastic Container Service (ECS) or Kubernetes.</p>
+<p><strong>Scalability</strong></p>
+<p>When working with large datasets or demanding data processing tasks, Docker containers can be effortlessly scaled up or down to meet your performance requirements. Cloud orchestration services like Kubernetes and AWS ECS excel at managing containerized applications, automatically adjusting the number of containers as needed.</p>
+<p><strong>Cloud Deployment</strong></p>
+<p>Docker containers are the de facto standard for deploying applications in cloud environments. Cloud providers offer container orchestration platforms like AWS Elastic Kubernetes Service (EKS) and Azure Kubernetes Service (AKS) that make it straightforward to manage and scale containers on the cloud.</p>
+<p>By adopting Docker early in your data engineering journey, you set yourself up for success when it comes to deploying your data applications in cloud environments.</p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="installing-docker-on-windows-linux-and-mac">Installing Docker on Windows, Linux, and Mac</h2>
+<p>Before you can start using Docker for your data engineering projects, you&rsquo;ll need to install Docker on your operating system. Docker provides installation guides for Windows, Linux, and Mac, so you can choose the instructions that match your setup.</p>
+<p><strong>Windows Installation</strong></p>
+<p>For detailed installation instructions on Windows, please visit the official Docker installation guide for Windows: <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop for Windows</a>.</p>
+<p><strong>Linux Installation</strong></p>
+<p>For detailed installation instructions on Linux, please visit the official Docker installation guide for Linux: <a href="https://docs.docker.com/install/linux-install/">Docker for Linux</a>.</p>
+<p><strong>Mac Installation</strong></p>
+<p>For detailed installation instructions on macOS, please visit the official Docker installation guide for Mac: <a href="https://www.docker.com/products/docker-desktop">Docker Desktop for Mac</a>.</p>
+<p>Once you&rsquo;ve installed Docker according to your operating system, you can proceed with the steps mentioned in the previous sections to work with Docker containers effectively.</p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="using-docker-images-for-data-tools">Using Docker Images for Data Tools</h2>
+<p>Using Docker images for data engineering tools is a game-changer for data engineers. Instead of manual installations, you can simply pull pre-configured tool images from Docker Hub, a repository of Docker images. I use these images frequently to test data pipeline concepts using Kafka, Apache Flink and databases. Let&rsquo;s see how it&rsquo;s done:</p>
+<h3 id="step-1-pull-docker-images">Step 1: Pull Docker Images</h3>
+<p>Use the docker pull command to fetch the desired data tool images. For example, to get Bitnami Kafka:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker pull bitnami/kafka
+</code></pre></div><p>And for PostgreSQL:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker pull postgres
+</code></pre></div><p>These commands download the official images from Docker Hub.</p>
+<h3 id="step-2-running-downloaded-images">Step 2: Running downloaded images</h3>
+<p>Once you&rsquo;ve pulled the images, it&rsquo;s time to spin up containers for your data tools. Here&rsquo;s how to do it:
+Bitnami Kafka Container</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker run --name my-kafka -d bitnami/kafka
+</code></pre></div><p>PostgreSQL Container</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker run --name my-postgres -e POSTGRES_PASSWORD<span style="color:#f92672">=</span>mysecretpassword -d -p 5432:5432 postgres
+</code></pre></div><p>You now have Bitnami Kafka and PostgreSQL running in Docker containers!</p>
+<h3 id="step-3-connecting-to-these-containers-from-python">Step 3: Connecting to these containers from Python</h3>
+<p>Python makes it easy to connect to data tools within Docker containers. Here are code snippets for Kafka and PostgreSQL:
+Kafka Connection</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Import the Kafka Python library</span>
+<span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaProducer, KafkaConsumer
+
+<span style="color:#75715e"># Create a Kafka producer</span>
+producer <span style="color:#f92672">=</span> KafkaProducer(bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;my-kafka:9092&#39;</span>)
+
+<span style="color:#75715e"># Create a Kafka consumer</span>
+consumer <span style="color:#f92672">=</span> KafkaConsumer(<span style="color:#e6db74">&#39;my-topic&#39;</span>, bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;my-kafka:9092&#39;</span>)
+
+<span style="color:#75715e"># You can send and receive messages using &#39;producer&#39; and &#39;consumer&#39;.</span>
+</code></pre></div><p>PostgreSQL Connection</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> psycopg2
+
+conn <span style="color:#f92672">=</span> psycopg2<span style="color:#f92672">.</span>connect(
+    host<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;localhost&#34;</span>,
+    port<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5432&#34;</span>,
+    database<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;postgres&#34;</span>,
+    user<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;postgres&#34;</span>,
+    password<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mysecretpassword&#34;</span>
+)
+
+<span style="color:#75715e"># Now you can execute SQL queries using &#39;conn&#39;.</span>
+</code></pre></div><p>These code snippets establish connections to Kafka and PostgreSQL within Docker containers, allowing you to work with data seamlessly.</p>
+<h3 id="step-4-managing-data-in-docker-containers">Step 4: Managing Data in Docker Containers</h3>
+<p>To ensure data persistence in Docker containers, consider using Docker volumes. Volumes allow you to store data outside the container, making it easier to manage. You can back up and restore data easily by working with volumes.</p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0206245742790279"
+     data-ad-slot="3890452391"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h2 id="conclusion">Conclusion</h2>
+<p>Docker simplifies data engineering tasks by providing a consistent and reproducible environment for managing data tools like Kafka and PostgreSQL. With just a few commands, you can have your data tools up and running in containers. Python makes it a breeze to connect and work with the data. Embrace Docker, and say goodbye to installation and configuration woes in your data engineering journey!</p>
+
+        </div>
+        <div class="pt-5">
+          <p>
+            Categories: 
+            
+            <a href="https://saisyam.com/categories/cloud-and-containers/">Cloud and containers </a>
+            
+            Tags: 
+            
+            <a href="https://saisyam.com/tags/Docker">#Docker</a>
+            
+            <a href="https://saisyam.com/tags/Cloud">#Cloud</a>
+            
+            <a href="https://saisyam.com/tags/Containers">#Containers</a>
+            
+          </p>
+        </div>
+        <div class="pt-5">
+          <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "saisyam-1" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4 sidebar">
+        <div class="sidebar-box">
+          <h3 class="heading">Sponsors</h3>
+          <script async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0206245742790279"
+              crossorigin="anonymous"></script>
+            
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0206245742790279"
+              data-ad-slot="3209664571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div class="sidebar-box">
+          <h3 class="heading">Categories</h3>
+          <ul class="categories">
+            
+              <li>
+                <a href="https://saisyam.com/categories/cloud-and-containers">Cloud and containers<span>(2)</span></a>
+              </li>
+            
+              <li>
+                <a href="https://saisyam.com/categories/data-analysis">Data analysis<span>(9)</span></a>
+              </li>
+            
+              <li>
+                <a href="https://saisyam.com/categories/generative-ai">Generative ai<span>(1)</span></a>
+              </li>
+            
+              <li>
+                <a href="https://saisyam.com/categories/programming">Programming<span>(1)</span></a>
+              </li>
+            
+          </ul>
+        </div>
+        <div class="sidebar-box">
+          <h3 class="heading">Tags</h3>
+          <ul class="tags">
+            
+              <li><a href="https://saisyam.com/tags/autoregressive-models">autoregressive-models</a></li>
+            
+              <li><a href="https://saisyam.com/tags/bootstrap">bootstrap</a></li>
+            
+              <li><a href="https://saisyam.com/tags/cloud">cloud</a></li>
+            
+              <li><a href="https://saisyam.com/tags/containers">containers</a></li>
+            
+              <li><a href="https://saisyam.com/tags/data-cleansing">data-cleansing</a></li>
+            
+              <li><a href="https://saisyam.com/tags/data-engineering">data-engineering</a></li>
+            
+              <li><a href="https://saisyam.com/tags/data-libraries">data-libraries</a></li>
+            
+              <li><a href="https://saisyam.com/tags/data-quality">data-quality</a></li>
+            
+              <li><a href="https://saisyam.com/tags/data-visualization">data-visualization</a></li>
+            
+              <li><a href="https://saisyam.com/tags/docker">docker</a></li>
+            
+              <li><a href="https://saisyam.com/tags/etl">etl</a></li>
+            
+              <li><a href="https://saisyam.com/tags/fastapi">fastapi</a></li>
+            
+              <li><a href="https://saisyam.com/tags/generative-adversarial-networks">generative-adversarial-networks</a></li>
+            
+              <li><a href="https://saisyam.com/tags/generative-ai">generative-ai</a></li>
+            
+              <li><a href="https://saisyam.com/tags/great-expectations">great-expectations</a></li>
+            
+              <li><a href="https://saisyam.com/tags/kubernetes">kubernetes</a></li>
+            
+              <li><a href="https://saisyam.com/tags/matlab">matlab</a></li>
+            
+              <li><a href="https://saisyam.com/tags/minikube">minikube</a></li>
+            
+              <li><a href="https://saisyam.com/tags/numpy">numpy</a></li>
+            
+              <li><a href="https://saisyam.com/tags/openai">openai</a></li>
+            
+              <li><a href="https://saisyam.com/tags/pandas">pandas</a></li>
+            
+              <li><a href="https://saisyam.com/tags/plotly-dash">plotly-dash</a></li>
+            
+              <li><a href="https://saisyam.com/tags/pytest">pytest</a></li>
+            
+              <li><a href="https://saisyam.com/tags/python">python</a></li>
+            
+              <li><a href="https://saisyam.com/tags/pytorch">pytorch</a></li>
+            
+              <li><a href="https://saisyam.com/tags/snowflake">snowflake</a></li>
+            
+              <li><a href="https://saisyam.com/tags/sqlalchemy">sqlalchemy</a></li>
+            
+              <li><a href="https://saisyam.com/tags/tensorflow">tensorflow</a></li>
+            
+              <li><a href="https://saisyam.com/tags/vader-sentiment-analysis">vader-sentiment-analysis</a></li>
+            
+              <li><a href="https://saisyam.com/tags/variational-autoencoders">variational-autoencoders</a></li>
+            
+              <li><a href="https://saisyam.com/tags/virtual-environments">virtual-environments</a></li>
+            
+              <li><a href="https://saisyam.com/tags/yelp-dataset">yelp-dataset</a></li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <script type="application/ld+json">
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Simplify Data Engineering with Docker: A Guide to Using Containers for Data Tools",
+      "image": "https://saisyam.com/",
+      "datePublished": "2023-09-10T00:00:00Z",
+      "dateModified": "2023-09-10T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "mainEntityOfPage": { "@type": "WebPage" },
+       "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": {
+          "@type": "ImageObject",
+          "url":  null 
+        }
+      },
+      "description": "In the world of data engineering, managing different data tools and dependencies for various projects can be a daunting task. Installation, configuration, and version mismatches can lead to a headache. But fear not!",
+      "keywords": ["Docker", "Cloud", "Containers"]
+    }
+    
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Personal blog",
+      "url": "https://saisyam.com/",
+      "sameAs": [
+        "https://www.facebook.com/saisyam.dampuri.5667",
+        "https://www.instagram.com/saisyamdampuri",
+        "https://twitter.com/saisyam1",
+        "https://github.com/saisyam"
+      ]
+    }
+    </script>
+
+        <div class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <p>
+          Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://saisyam.com/js/jquery-3.3.1.min.js"></script>
+<script src="https://saisyam.com/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="https://saisyam.com/js/jquery-ui.js"></script>
+<script src="https://saisyam.com/js/popper.min.js"></script>
+<script src="https://saisyam.com/js/bootstrap.min.js"></script>
+<script src="https://saisyam.com/js/owl.carousel.min.js"></script>
+<script src="https://saisyam.com/js/jquery.stellar.min.js"></script>
+<script src="https://saisyam.com/js/jquery.countdown.min.js"></script>
+<script src="https://saisyam.com/js/jquery.magnific-popup.min.js"></script>
+<script src="https://saisyam.com/js/bootstrap-datepicker.min.js"></script>
+<script src="https://saisyam.com/js/aos.js"></script>
+<script src="https://saisyam.com/js/main.js"></script>
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50423294-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+    </div>
+</body>
+</html>
+

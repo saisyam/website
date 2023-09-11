@@ -13,6 +13,7 @@
 <meta property="og:url" content="https://saisyam.com/loading-yelp-dataset-into-snowflake-a-comprehensive-guide/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-05-28T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-05-28T00:00:00+00:00" />
+
  
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Loading Yelp Dataset into Snowflake: A Comprehensive Guide"/>
@@ -182,45 +183,45 @@ img {
 <h2 id="create-database-and-tables-in-snowflake-for-business-and-review">Create database and tables in Snowflake for business and review</h2>
 <p>Once you analyze the JSON files you will understand what type of data they are capturing and create table structure based on that. Below are the Snowflake SQL commands to create tables for business, review and user.</p>
 <p>Create a database in Snowflake:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">DATABASE</span> yelp;
-</span></span><span style="display:flex;"><span>USE <span style="color:#66d9ef">DATABASE</span> yelp;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">SCHEMA</span> dataset;
-</span></span><span style="display:flex;"><span>USE <span style="color:#66d9ef">SCHEMA</span> dataset;
-</span></span></code></pre></div><p><strong>Note:</strong> I use <code>public</code> schema. Make sure you grant necessary permissions to read/write.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">DATABASE</span> yelp;
+USE <span style="color:#66d9ef">DATABASE</span> yelp;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">SCHEMA</span> dataset;
+USE <span style="color:#66d9ef">SCHEMA</span> dataset;
+</code></pre></div><p><strong>Note:</strong> I use <code>public</code> schema. Make sure you grant necessary permissions to read/write.</p>
 <p>SQL for business:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> business_info (
-</span></span><span style="display:flex;"><span>    business_id STRING,
-</span></span><span style="display:flex;"><span>    name STRING,
-</span></span><span style="display:flex;"><span>    address STRING,
-</span></span><span style="display:flex;"><span>    city STRING,
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">state</span> STRING,
-</span></span><span style="display:flex;"><span>    postal_code STRING,
-</span></span><span style="display:flex;"><span>    latitude FLOAT,
-</span></span><span style="display:flex;"><span>    longitude FLOAT,
-</span></span><span style="display:flex;"><span>    stars FLOAT,
-</span></span><span style="display:flex;"><span>    review_count INTEGER,
-</span></span><span style="display:flex;"><span>    is_open BOOLEAN,
-</span></span><span style="display:flex;"><span>    attributes VARIANT,
-</span></span><span style="display:flex;"><span>    categories STRING,
-</span></span><span style="display:flex;"><span>    hours VARIANT
-</span></span><span style="display:flex;"><span>);
-</span></span></code></pre></div><p>SQL for reviews:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> reviews (
-</span></span><span style="display:flex;"><span>    review_id STRING,
-</span></span><span style="display:flex;"><span>    user_id STRING,
-</span></span><span style="display:flex;"><span>    business_id STRING,
-</span></span><span style="display:flex;"><span>    stars FLOAT,
-</span></span><span style="display:flex;"><span>    useful INTEGER,
-</span></span><span style="display:flex;"><span>    funny INTEGER,
-</span></span><span style="display:flex;"><span>    cool INTEGER,
-</span></span><span style="display:flex;"><span>    text STRING,
-</span></span><span style="display:flex;"><span>    date TIMESTAMP_NTZ
-</span></span><span style="display:flex;"><span>);
-</span></span></code></pre></div><p><strong>Note:</strong> Reviews JSON is more than 1 GB which is difficult to open in an editor. If you are using Linux/Mac then you can use the <code>more</code> terminal command to check the sample data in those large files.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ more yelp_academic_dataset_review.json
-</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;review_id&#34;</span>:<span style="color:#e6db74">&#34;KU_O5udG6zpxOg-VcAEodg&#34;</span>,<span style="color:#e6db74">&#34;user_id&#34;</span>:<span style="color:#e6db74">&#34;mh_-eMZ6K5RLWhZyISBhwA&#34;</span>,<span style="color:#e6db74">&#34;business_id&#34;</span>:<span style="color:#e6db74">&#34;XQfwVwDr-v0ZS3_CbbE5Xw&#34;</span>,<span style="color:#e6db74">&#34;stars&#34;</span>:3.0,<span style="color:#e6db74">&#34;useful&#34;</span>:0,<span style="color:#e6db74">&#34;funny&#34;</span>:0,<span style="color:#e6db74">&#34;cool&#34;</span>:0,<span style="color:#e6db74">&#34;text&#34;</span>:<span style="color:#e6db74">&#34;If you decide to eat here, just be aware it is going to take about 2 hours from beginning to end. We have tried it multiple times, because I want to like it! I have been to it&#39;s other locations in NJ and never had a bad experience. \n\nThe food is good, but it takes a very long time to come out. The waitstaff is very young, but usually pleasant. We have just had too many experiences where we spent way too long waiting. We usually opt for another diner or restaurant on the weekends, in order to be done quicker.&#34;</span>,<span style="color:#e6db74">&#34;date&#34;</span>:<span style="color:#e6db74">&#34;2018-07-07 22:09:11&#34;</span><span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>...
-</span></span></code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> business_info (
+    business_id STRING,
+    name STRING,
+    address STRING,
+    city STRING,
+    <span style="color:#66d9ef">state</span> STRING,
+    postal_code STRING,
+    latitude FLOAT,
+    longitude FLOAT,
+    stars FLOAT,
+    review_count INTEGER,
+    is_open BOOLEAN,
+    attributes VARIANT,
+    categories STRING,
+    hours VARIANT
+);
+</code></pre></div><p>SQL for reviews:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> reviews (
+    review_id STRING,
+    user_id STRING,
+    business_id STRING,
+    stars FLOAT,
+    useful INTEGER,
+    funny INTEGER,
+    cool INTEGER,
+    text STRING,
+    date TIMESTAMP_NTZ
+);
+</code></pre></div><p><strong>Note:</strong> Reviews JSON is more than 1 GB which is difficult to open in an editor. If you are using Linux/Mac then you can use the <code>more</code> terminal command to check the sample data in those large files.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ more yelp_academic_dataset_review.json
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;review_id&#34;</span>:<span style="color:#e6db74">&#34;KU_O5udG6zpxOg-VcAEodg&#34;</span>,<span style="color:#e6db74">&#34;user_id&#34;</span>:<span style="color:#e6db74">&#34;mh_-eMZ6K5RLWhZyISBhwA&#34;</span>,<span style="color:#e6db74">&#34;business_id&#34;</span>:<span style="color:#e6db74">&#34;XQfwVwDr-v0ZS3_CbbE5Xw&#34;</span>,<span style="color:#e6db74">&#34;stars&#34;</span>:3.0,<span style="color:#e6db74">&#34;useful&#34;</span>:0,<span style="color:#e6db74">&#34;funny&#34;</span>:0,<span style="color:#e6db74">&#34;cool&#34;</span>:0,<span style="color:#e6db74">&#34;text&#34;</span>:<span style="color:#e6db74">&#34;If you decide to eat here, just be aware it is going to take about 2 hours from beginning to end. We have tried it multiple times, because I want to like it! I have been to it&#39;s other locations in NJ and never had a bad experience. \n\nThe food is good, but it takes a very long time to come out. The waitstaff is very young, but usually pleasant. We have just had too many experiences where we spent way too long waiting. We usually opt for another diner or restaurant on the weekends, in order to be done quicker.&#34;</span>,<span style="color:#e6db74">&#34;date&#34;</span>:<span style="color:#e6db74">&#34;2018-07-07 22:09:11&#34;</span><span style="color:#f92672">}</span>
+...
+</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"
@@ -233,54 +234,54 @@ img {
 <h2 id="upload-yelp-files-to-snowflake-stage">Upload Yelp files to Snowflake stage</h2>
 <p>You can use Snowflake web UI as well to create stage.</p>
 <p>Let&rsquo;s login to <code>SnowSQL</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>snowsql -a &lt;account url&gt; -u &lt;usernmae&gt; -d &lt;database name&gt; -s &lt;schema name&gt; -r &lt;role&gt;
-</span></span></code></pre></div><p>It will prompt for the password. On successful login, you will be taken to the SnowSQL prompt, like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sdampuri#DEMO_WH@YELP_DATASET.PUBLIC&gt;
-</span></span></code></pre></div><p>We will use <code>SnowSQL</code> to upload JSON files to Snowflake stage. Let&rsquo;s create a stage first:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> STAGE yelp_stage
-</span></span><span style="display:flex;"><span>FILE_FORMAT <span style="color:#f92672">=</span> (<span style="color:#66d9ef">TYPE</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JSON&#39;</span>);
-</span></span></code></pre></div><p>Once we have the stage created we can upload the files. Make sure you have necessary permissions to upload to this stage.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">snowsql -a &lt;account url&gt; -u &lt;usernmae&gt; -d &lt;database name&gt; -s &lt;schema name&gt; -r &lt;role&gt;
+</code></pre></div><p>It will prompt for the password. On successful login, you will be taken to the SnowSQL prompt, like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sdampuri#DEMO_WH@YELP_DATASET.PUBLIC&gt;
+</code></pre></div><p>We will use <code>SnowSQL</code> to upload JSON files to Snowflake stage. Let&rsquo;s create a stage first:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">CREATE</span> STAGE yelp_stage
+FILE_FORMAT <span style="color:#f92672">=</span> (<span style="color:#66d9ef">TYPE</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JSON&#39;</span>);
+</code></pre></div><p>Once we have the stage created we can upload the files. Make sure you have necessary permissions to upload to this stage.
 Now let&rsquo;s upload the files to the above stage using <code>PUT</code> command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>put file:///Users/saisyam/work/yelp_dataset/yelp_academic_dataset_business.json @YELP_STAGE AUTO_COMPRESS<span style="color:#f92672">=</span>FALSE;
-</span></span></code></pre></div><p>Yes, I want to keep my JSON uncompressed even the size is large. The upload will depend on your Internet speed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">put file:///Users/saisyam/work/yelp_dataset/yelp_academic_dataset_business.json @YELP_STAGE AUTO_COMPRESS<span style="color:#f92672">=</span>FALSE;
+</code></pre></div><p>Yes, I want to keep my JSON uncompressed even the size is large. The upload will depend on your Internet speed.</p>
 <h2 id="load-these-json-files-from-stage-into-the-tables">Load these JSON files from stage into the tables</h2>
 <p>We can load the JSON files from stage to table using <code>COPY</code> command:</p>
 <p>To load businesses into table:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">COPY</span> <span style="color:#66d9ef">INTO</span> business_info
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SELECT</span> 
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:business_id::string,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:name::string,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:address::string,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:city::string,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:<span style="color:#66d9ef">state</span>::string,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:postal_code::string,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:latitude::float,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:longitude::float,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>: stars::float,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:review_count::integer,
-</span></span><span style="display:flex;"><span>        IFF(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:is_open::integer <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">TRUE</span>, <span style="color:#66d9ef">FALSE</span>),
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:attributes,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:categories::string,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:hours
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">@</span>yelp_stage<span style="color:#f92672">/</span>yelp_academic_dataset_business.json
-</span></span><span style="display:flex;"><span>);
-</span></span></code></pre></div><p>To load reviews into table:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">COPY</span> <span style="color:#66d9ef">INTO</span> reviews
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SELECT</span> 
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:review_id::string,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:user_id::string,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:business_id::string,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>: stars::float,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:useful::integer,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:funny::integer,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>: cool::integer,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:text::string,
-</span></span><span style="display:flex;"><span>        TO_TIMESTAMP(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>: date::string, <span style="color:#e6db74">&#39;YYYY-MM-DD HH24:MI:SS&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">@</span>yelp_stage<span style="color:#f92672">/</span>yelp_academic_dataset_review.json
-</span></span><span style="display:flex;"><span>);
-</span></span></code></pre></div><p>It took 3.37s to load 6,990,280 rows into the reviews table using <code>X-SMALL</code> warehouse. Now we have the data ready to perform analytics.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">COPY</span> <span style="color:#66d9ef">INTO</span> business_info
+<span style="color:#66d9ef">FROM</span> (
+    <span style="color:#66d9ef">SELECT</span> 
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:business_id::string,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:name::string,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:address::string,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:city::string,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:<span style="color:#66d9ef">state</span>::string,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:postal_code::string,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:latitude::float,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:longitude::float,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>: stars::float,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:review_count::integer,
+        IFF(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:is_open::integer <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">TRUE</span>, <span style="color:#66d9ef">FALSE</span>),
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:attributes,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:categories::string,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:hours
+    <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">@</span>yelp_stage<span style="color:#f92672">/</span>yelp_academic_dataset_business.json
+);
+</code></pre></div><p>To load reviews into table:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">COPY</span> <span style="color:#66d9ef">INTO</span> reviews
+<span style="color:#66d9ef">FROM</span> (
+    <span style="color:#66d9ef">SELECT</span> 
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:review_id::string,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:user_id::string,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:business_id::string,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>: stars::float,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:useful::integer,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:funny::integer,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>: cool::integer,
+        <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>:text::string,
+        TO_TIMESTAMP(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">1</span>: date::string, <span style="color:#e6db74">&#39;YYYY-MM-DD HH24:MI:SS&#39;</span>)
+    <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">@</span>yelp_stage<span style="color:#f92672">/</span>yelp_academic_dataset_review.json
+);
+</code></pre></div><p>It took 3.37s to load 6,990,280 rows into the reviews table using <code>X-SMALL</code> warehouse. Now we have the data ready to perform analytics.</p>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
@@ -312,7 +313,7 @@ Now let&rsquo;s upload the files to the above stage using <code>PUT</code> comma
         <div class="pt-5">
           <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     
@@ -350,7 +351,7 @@ Now let&rsquo;s upload the files to the above stage using <code>PUT</code> comma
           <ul class="categories">
             
               <li>
-                <a href="https://saisyam.com/categories/cloud-and-containers">Cloud and containers<span>(1)</span></a>
+                <a href="https://saisyam.com/categories/cloud-and-containers">Cloud and containers<span>(2)</span></a>
               </li>
             
               <li>
@@ -374,6 +375,10 @@ Now let&rsquo;s upload the files to the above stage using <code>PUT</code> comma
               <li><a href="https://saisyam.com/tags/autoregressive-models">autoregressive-models</a></li>
             
               <li><a href="https://saisyam.com/tags/bootstrap">bootstrap</a></li>
+            
+              <li><a href="https://saisyam.com/tags/cloud">cloud</a></li>
+            
+              <li><a href="https://saisyam.com/tags/containers">containers</a></li>
             
               <li><a href="https://saisyam.com/tags/data-cleansing">data-cleansing</a></li>
             
