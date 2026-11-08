@@ -1,7 +1,11 @@
-<header class="site-header">
-  <div class="wrap header-row">
-    <a class="brand" href="{{ "/" | relURL }}"><span class="brand-mark">S</span><span>saisyam<span class="dim">.dev</span></span></a>
-    <nav>
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-top">
+      <span class="dateline">Small models · Local AI · Data</span>
+      <span class="dateline">{{ with site.Params.github }}<a href="https://github.com/{{ . }}">GitHub</a>{{ end }}{{ with site.Params.linkedin }}<a href="https://www.linkedin.com/in/{{ . }}">LinkedIn</a>{{ end }}</span>
+    </div>
+    <a class="wordmark" href="{{ "/" | relURL }}">saisyam<span>.dev</span></a>
+    <nav class="mainnav">
       {{ $current := . }}
       {{ range site.Menus.main }}
         <a href="{{ .URL }}" {{ if or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}class="active"{{ end }}>{{ .Name }}</a>

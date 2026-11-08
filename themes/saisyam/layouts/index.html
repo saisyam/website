@@ -1,33 +1,33 @@
 {{ define "main" }}
-<section class="hero">
-  <p class="eyebrow">{{ site.Params.role }}</p>
-  <h1>I build small, local AI&nbsp;models and the tools around&nbsp;them.</h1>
-  <div class="hero-body">{{ .Content }}</div>
-</section>
+{{ $posts := where site.RegularPages "Section" "posts" }}
+{{ $featured := index (where $posts "Params.featured" true) 0 | default (index $posts 0) }}
 
-<section class="section">
-  <div class="section-head">
-    <h2>Projects</h2>
-    <a href="{{ "/projects/" | relURL }}">All projects →</a>
-  </div>
-  <div class="grid">
-    {{ range (where site.RegularPages "Section" "projects").ByWeight }}
-      {{ partial "project-card.html" . }}
-    {{ end }}
+{{ with $featured }}
+<section class="feature">
+  <a class="feature-media" href="{{ .RelPermalink }}">{{ partial "cover.html" . }}</a>
+  <div class="feature-text">
+    <p class="kicker">Featured{{ with .Params.kicker }} · {{ . }}{{ end }}</p>
+    <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+    {{ with .Description }}<p class="dek">{{ . }}</p>{{ end }}
+    <p class="byline">By {{ site.Params.author }} · {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read</p>
+    <a class="read-more" href="{{ .RelPermalink }}">Read the story →</a>
   </div>
 </section>
+{{ end }}
 
+{{ $rest := where $posts "Permalink" "!=" ($featured.Permalink | default "") }}
+{{ with first 3 $rest }}
 <section class="section">
-  <div class="section-head">
-    <h2>Writing</h2>
-    <a href="{{ "/posts/" | relURL }}">All posts →</a>
+  <div class="section-head"><h2>Latest</h2><a href="{{ "/posts/" | relURL }}">All writing →</a></div>
+  <div class="story-grid">{{ range . }}{{ partial "post-card.html" . }}{{ end }}</div>
+</section>
+{{ end }}
+
+<section class="section lab">
+  <div class="section-head"><h2>The Lab</h2><a href="{{ "/projects/" | relURL }}">All projects →</a></div>
+  <p class="section-dek">What's being built right now: small models and AI tools that run on your own machine.</p>
+  <div class="lab-grid">
+    {{ range (where site.RegularPages "Section" "projects").ByWeight }}{{ partial "project-card.html" . }}{{ end }}
   </div>
-  {{ with first 6 (where site.RegularPages "Section" "posts") }}
-  <ul class="post-list">
-    {{ range . }}{{ partial "post-row.html" . }}{{ end }}
-  </ul>
-  {{ else }}
-  <p class="empty">First posts are on the way: build notes from the projects above.</p>
-  {{ end }}
 </section>
 {{ end }}

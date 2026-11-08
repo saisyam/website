@@ -3,6 +3,7 @@ title: "Photo AI"
 description: "A nondestructive photo editor you talk to. Ask it to “light up the sky” and a small local model turns that into real adjustments."
 status: "v1 built"
 label: "Desktop app"
+art: 2
 weight: 1
 stack: ["LibRaw", "llama.cpp", "Qwen (Apache 2.0)", "Runs on a laptop"]
 ---

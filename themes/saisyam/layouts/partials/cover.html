@@ -1,0 +1,10 @@
+{{/* Cover image for a page. Uses front matter `image` when set; otherwise a generated abstract cover so the layout never looks empty. */}}
+{{ $p := . }}
+{{ with $p.Params.image }}
+  <img class="cover-img" src="{{ . | relURL }}" alt="{{ $p.Params.imageAlt | default $p.Title }}" loading="lazy">
+{{ else }}
+  {{ $n := $p.Params.art | default (mod (len $p.Title) 4) }}
+  <div class="cover-art art-{{ $n }}" role="img" aria-label="{{ $p.Title }}">
+    <span class="cover-art-label">{{ $p.Params.kicker | default $p.Params.label | default $p.Section | upper }}</span>
+  </div>
+{{ end }}

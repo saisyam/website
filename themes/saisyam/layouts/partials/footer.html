@@ -1,11 +1,18 @@
 <footer class="site-footer">
-  <div class="wrap footer-row">
-    <span>{{ site.Copyright }} {{ now.Year }}</span>
-    <span class="links">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="wordmark small" href="{{ "/" | relURL }}">saisyam<span>.dev</span></a>
+      <p class="footer-note">Writing and experiments by {{ site.Params.author }}.</p>
+    </div>
+    <div class="footer-links">
+      {{ range site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
+    </div>
+    <div class="footer-links">
       {{ with site.Params.github }}<a href="https://github.com/{{ . }}">GitHub</a>{{ end }}
       {{ with site.Params.linkedin }}<a href="https://www.linkedin.com/in/{{ . }}">LinkedIn</a>{{ end }}
       {{ with site.Params.medium }}<a href="https://medium.com/{{ . }}">Medium</a>{{ end }}
       <a href="{{ "index.xml" | absURL }}">RSS</a>
-    </span>
+    </div>
   </div>
+  <div class="wrap copyright">{{ site.Copyright }} {{ now.Year }}</div>
 </footer>

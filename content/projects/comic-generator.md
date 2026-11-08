@@ -3,6 +3,7 @@ title: "Comic Generator"
 description: "A cartoon-style character and panel generator for creators who want to tell stories as comics."
 status: "Planned"
 label: "Image model"
+art: 3
 weight: 3
 stack: ["Open image models", "Character consistency", "Comic layouts"]
 ---

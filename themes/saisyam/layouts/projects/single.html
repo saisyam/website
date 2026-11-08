@@ -1,11 +1,12 @@
 {{ define "main" }}
 <article class="article">
-  <header class="page-head">
-    <p class="eyebrow"><a href="{{ "/projects/" | relURL }}">Projects</a> · <span class="status status-{{ .Params.status | urlize }}">{{ .Params.status }}</span></p>
+  <header class="article-head">
+    <p class="kicker"><a href="{{ "/projects/" | relURL }}">The Lab</a> · <span class="status status-{{ .Params.status | urlize }}">{{ .Params.status }}</span></p>
     <h1>{{ .Title }}</h1>
-    <p class="lede">{{ .Description }}</p>
+    <p class="dek">{{ .Description }}</p>
     {{ with .Params.stack }}<ul class="stack">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
   </header>
+  <figure class="article-cover">{{ partial "cover.html" . }}</figure>
   <div class="prose">{{ .Content }}</div>
 </article>
 {{ end }}

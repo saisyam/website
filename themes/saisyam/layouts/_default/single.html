@@ -1,11 +1,12 @@
 {{ define "main" }}
 <article class="article">
-  <header class="page-head">
-    {{ if eq .Section "posts" }}<p class="eyebrow"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time> · {{ .ReadingTime }} min read</p>{{ end }}
+  <header class="article-head">
+    {{ with .Params.kicker }}<p class="kicker">{{ . }}</p>{{ end }}
     <h1>{{ .Title }}</h1>
-    {{ with .Params.categories }}<ul class="stack">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+    {{ with .Description }}<p class="dek">{{ . }}</p>{{ end }}
+    {{ if eq .Section "posts" }}<p class="byline">By {{ site.Params.author }} · {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read</p>{{ end }}
   </header>
-  {{ with .Params.image }}<img class="cover" src="{{ . | relURL }}" alt="">{{ end }}
+  {{ if eq .Section "posts" }}<figure class="article-cover">{{ partial "cover.html" . }}{{ with .Params.imageCaption }}<figcaption>{{ . }}</figcaption>{{ end }}</figure>{{ end }}
   <div class="prose">{{ .Content }}</div>
 </article>
 {{ end }}

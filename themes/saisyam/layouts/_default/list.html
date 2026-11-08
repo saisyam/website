@@ -4,15 +4,10 @@
   {{ with .Content }}<div class="lede">{{ . }}</div>{{ end }}
 </header>
 {{ if eq .Section "projects" }}
-  <div class="grid">
-    {{ range .Pages.ByWeight }}{{ partial "project-card.html" . }}{{ end }}
-  </div>
+  <div class="lab-grid">{{ range .Pages.ByWeight }}{{ partial "project-card.html" . }}{{ end }}</div>
 {{ else if not .Pages }}
-  <p class="empty">Nothing here yet. First posts are on the way.</p>
+  <p class="empty">Nothing here yet. First stories are on the way.</p>
 {{ else }}
-  {{ range (.Pages.GroupByDate "2006") }}
-    <h2 class="year">{{ .Key }}</h2>
-    <ul class="post-list">{{ range .Pages }}{{ partial "post-row.html" . }}{{ end }}</ul>
-  {{ end }}
+  <div class="story-grid">{{ range .Pages }}{{ partial "post-card.html" . }}{{ end }}</div>
 {{ end }}
 {{ end }}

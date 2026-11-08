@@ -3,6 +3,7 @@ title: "Architecture Diagram SLM"
 description: "A small language model that turns a plain-English description of a system into a clean architecture diagram."
 status: "Planned"
 label: "Small language model"
+art: 0
 weight: 2
 stack: ["Small language model", "Fine-tuning", "Diagram-as-code"]
 ---
