@@ -1,0 +1,11 @@
+{{ define "main" }}
+<article class="article">
+  <header class="page-head">
+    {{ if eq .Section "posts" }}<p class="eyebrow"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time> · {{ .ReadingTime }} min read</p>{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.categories }}<ul class="stack">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+  </header>
+  {{ with .Params.image }}<img class="cover" src="{{ . | relURL }}" alt="">{{ end }}
+  <div class="prose">{{ .Content }}</div>
+</article>
+{{ end }}

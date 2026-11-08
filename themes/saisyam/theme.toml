@@ -1,0 +1,4 @@
+name = "saisyam"
+license = "MIT"
+description = "Custom theme for saisyam.dev"
+min_version = "0.128.0"
