@@ -16,12 +16,11 @@ hugo new posts/my-post-title.md          # new blog post (starts as draft: true)
 
 New project: copy one of the files in `content/projects/` and edit the front matter (`status`, `label`, `weight`, `stack`).
 
-## Deploy (Cloudflare Pages)
+## Deploy (Cloudflare Workers)
 
-Connect this repo in Cloudflare → Workers & Pages → Create → Pages → Connect to Git.
+Connected in Cloudflare → Workers & Pages → Create → Import a repository. `wrangler.jsonc` serves the built `public/` folder as static assets.
 
-- Build command: `hugo --gc --minify`
-- Output directory: `public`
-- Environment variable: `HUGO_VERSION` = `0.140.2`
+- Build command: `curl -sL https://github.com/gohugoio/hugo/releases/download/v0.140.2/hugo_extended_0.140.2_linux-amd64.tar.gz | tar xz hugo && ./hugo --gc --minify`
+- Deploy command: `npx wrangler deploy`
 
-Then add `saisyam.dev` under the project's **Custom domains**.
+Then add `saisyam.dev` under the Worker's **Settings → Domains & Routes**.

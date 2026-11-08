@@ -1,6 +1,6 @@
 /public
 /resources
 .DS_Store
-.jekyll-cache/
-.jekyll-metadata
 .hugo_build.lock
+.wrangler/
+/hugo
