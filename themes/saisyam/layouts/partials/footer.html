@@ -1,0 +1,11 @@
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <span>{{ site.Copyright }} {{ now.Year }}</span>
+    <span class="links">
+      {{ with site.Params.github }}<a href="https://github.com/{{ . }}">GitHub</a>{{ end }}
+      {{ with site.Params.linkedin }}<a href="https://www.linkedin.com/in/{{ . }}">LinkedIn</a>{{ end }}
+      {{ with site.Params.medium }}<a href="https://medium.com/{{ . }}">Medium</a>{{ end }}
+      <a href="{{ "index.xml" | absURL }}">RSS</a>
+    </span>
+  </div>
+</footer>

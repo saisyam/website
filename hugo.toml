@@ -1,0 +1,48 @@
+baseURL = "https://saisyam.dev/"
+title = "Saisyam Dampuri"
+theme = "saisyam"
+languageCode = "en-us"
+enableRobotsTXT = true
+summaryLength = 30
+copyright = "© Saisyam Dampuri"
+
+[pagination]
+  pagerSize = 10
+
+[permalinks]
+  posts = "/posts/:slug/"
+  projects = "/projects/:slug/"
+
+[params]
+  description = "Saisyam Dampuri — data & AI architect. Notes and projects on small language models, local-first AI tools and data engineering."
+  role = "Data & AI Architect"
+  github = "saisyam"
+  linkedin = "saisyam"
+  medium = ""   # e.g. "@saisyam" once you start cross-posting
+
+[menus]
+  [[menus.main]]
+    name = "Projects"
+    pageRef = "/projects"
+    weight = 1
+  [[menus.main]]
+    name = "Writing"
+    pageRef = "/posts"
+    weight = 2
+  [[menus.main]]
+    name = "About"
+    pageRef = "/about"
+    weight = 3
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+    style = "github"
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[outputs]
+  home = ["HTML", "RSS"]

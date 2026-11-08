@@ -1,0 +1,33 @@
+{{ define "main" }}
+<section class="hero">
+  <p class="eyebrow">{{ site.Params.role }}</p>
+  <h1>I build small, local AI&nbsp;models and the tools around&nbsp;them.</h1>
+  <div class="hero-body">{{ .Content }}</div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>Projects</h2>
+    <a href="{{ "/projects/" | relURL }}">All projects →</a>
+  </div>
+  <div class="grid">
+    {{ range (where site.RegularPages "Section" "projects").ByWeight }}
+      {{ partial "project-card.html" . }}
+    {{ end }}
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>Writing</h2>
+    <a href="{{ "/posts/" | relURL }}">All posts →</a>
+  </div>
+  {{ with first 6 (where site.RegularPages "Section" "posts") }}
+  <ul class="post-list">
+    {{ range . }}{{ partial "post-row.html" . }}{{ end }}
+  </ul>
+  {{ else }}
+  <p class="empty">First posts are on the way: build notes from the projects above.</p>
+  {{ end }}
+</section>
+{{ end }}
