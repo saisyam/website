@@ -1,7 +1,10 @@
 ---
 title: "Architecture Diagram SLM"
 description: "A small language model that turns a plain-English description of a system into a clean architecture diagram."
-status: "Planned"
+stage: "idea"
+cta:
+  label: "Follow progress"
+  url: "/index.xml"
 label: "Small language model"
 art: 0
 weight: 2

@@ -1,16 +1,25 @@
 {{ define "main" }}
 {{ $posts := where site.RegularPages "Section" "posts" }}
-{{ $featured := index (where $posts "Params.featured" true) 0 | default (index $posts 0) }}
+{{ $projects := (where site.RegularPages "Section" "projects").ByWeight }}
+{{/* Featured spot: a Lab item with featured: true wins, then a post with featured: true, then the newest post. */}}
+{{ $featured := index (where $projects "Params.featured" true) 0 | default (index (where $posts "Params.featured" true) 0) | default (index $posts 0) }}
 
 {{ with $featured }}
+{{ $isLab := eq .Section "projects" }}
 <section class="feature">
   <a class="feature-media" href="{{ .RelPermalink }}">{{ partial "cover.html" . }}</a>
   <div class="feature-text">
-    <p class="kicker">Featured{{ with .Params.kicker }} · {{ . }}{{ end }}</p>
+    <p class="kicker">Featured · {{ if $isLab }}From the Lab{{ else }}{{ .Params.kicker | default "Writing" }}{{ end }}</p>
     <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
     {{ with .Description }}<p class="dek">{{ . }}</p>{{ end }}
-    <p class="byline">By {{ site.Params.author }} · {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read</p>
-    <a class="read-more" href="{{ .RelPermalink }}">Read the story →</a>
+    {{ if $isLab }}
+      {{ partial "stage.html" (dict "page" . "mode" "bar") }}
+      {{ with index (.Params.log | default slice) 0 }}<p class="byline">Latest: {{ time.Format "Jan 2" .date }}: {{ .text }}</p>{{ end }}
+      <a class="read-more" href="{{ .RelPermalink }}">See the project →</a>
+    {{ else }}
+      <p class="byline">By {{ site.Params.author }} · {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read</p>
+      <a class="read-more" href="{{ .RelPermalink }}">Read the story →</a>
+    {{ end }}
   </div>
 </section>
 {{ end }}
@@ -25,9 +34,7 @@
 
 <section class="section lab">
   <div class="section-head"><h2>The Lab</h2><a href="{{ "/projects/" | relURL }}">All projects →</a></div>
-  <p class="section-dek">What's being built right now: small models and AI tools that run on your own machine.</p>
-  <div class="lab-grid">
-    {{ range (where site.RegularPages "Section" "projects").ByWeight }}{{ partial "project-card.html" . }}{{ end }}
-  </div>
+  <p class="section-dek">Work in progress: small models and AI tools that run on your own machine.</p>
+  <div class="lab-grid">{{ range $projects }}{{ partial "project-card.html" . }}{{ end }}</div>
 </section>
 {{ end }}

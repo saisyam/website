@@ -6,6 +6,7 @@ art: 1
 date: 2026-11-08
 kicker: "Build Notes"
 featured: true
+project: photo-ai
 # image: /images/photo-ai-cover.jpg   # add a real before/after here
 categories: ["Photo AI", "Small Language Models"]
 ---

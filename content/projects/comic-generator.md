@@ -1,7 +1,10 @@
 ---
 title: "Comic Generator"
 description: "A cartoon-style character and panel generator for creators who want to tell stories as comics."
-status: "Planned"
+stage: "idea"
+cta:
+  label: "Follow progress"
+  url: "/index.xml"
 label: "Image model"
 art: 3
 weight: 3

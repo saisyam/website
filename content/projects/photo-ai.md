@@ -1,30 +1,48 @@
 ---
 title: "Photo AI"
 description: "A nondestructive photo editor you talk to. Ask it to “light up the sky” and a small local model turns that into real adjustments."
-status: "v1 built"
+stage: "v1"               # idea | prototype | v1 | beta | released
 label: "Desktop app"
 art: 2
 weight: 1
-stack: ["LibRaw", "llama.cpp", "Qwen (Apache 2.0)", "Runs on a laptop"]
+# featured: true          # put this Lab item in the home page featured spot
+cta:
+  label: "Follow progress"
+  url: "/index.xml"
+facts:
+  - { k: "Version", v: "v1" }
+  - { k: "Runs on", v: "Any modern laptop, no GPU needed" }
+  - { k: "Model", v: "Qwen (Apache 2.0) via llama.cpp" }
+  - { k: "Raw engine", v: "LibRaw + own pipeline" }
+  - { k: "License", v: "Free, closed source" }
+roadmap:
+  done:
+    - "Plain-language edits"
+    - "Nondestructive pipeline"
+    - "Auto-correct and sliders"
+    - "Blur-based culling"
+  now:
+    - "Object detection (faces, sky, cars)"
+    - "Portrait-specific corrections"
+  next:
+    - "Looks: autumn, winter, vivid, cinematic"
+    - "Early-access download with email opt-in"
+    - "Feedback page"
+# Lab log: newest first. EXAMPLE ENTRIES, edit the dates and text to match reality.
+log:
+  - { date: 2026-11-08, text: "Project page published on saisyam.dev." }
+  - { date: 2026-10-21, text: "v1 complete: plain-language edits, auto-correct, sliders and blur culling, all running locally." }
+stack: ["LibRaw", "llama.cpp", "Qwen", "Local-first"]
 ---
-## Why I built it
+## What it does
 
-Most people who take good photos don't enjoy editing them. Professional tools are powerful but expect you to know what “highlights” or “white balance” mean. I built Photo AI first for my son, who loves taking photos but not editing them.
+Most people who take good photos don't enjoy editing them. Professional tools are powerful but expect you to know what “highlights” or “white balance” mean. Photo AI lets you describe the result you want instead.
 
-## What v1 does
+- **Plain-language edits.** “Light up the sky” becomes concrete adjustments such as exposure and highlights.
+- **Nondestructive.** Your original is never touched. Every edit is a set of adjustments you can tweak or undo.
+- **Simple sliders** when you want direct control, plus **auto-correct** for a one-click start.
+- **Culling.** Blurry shots are flagged so you can clear a shoot fast.
 
-- **Plain-language edits.** Type “light up the sky” and the assistant turns it into concrete adjustments such as exposure and highlights.
-- **Nondestructive.** Your original file is never touched. Every edit is a set of adjustments you can tweak or undo.
-- **A few simple sliders** for manual correction when you want control.
-- **Auto-correct** for a quick one-click fix.
-- **Culling.** Blurry shots are flagged so you can clear them out fast.
+## How it works
 
-## How it's built
-
-The processing pipeline is my own code, with LibRaw handling raw files. The assistant is a small, Apache-licensed Qwen model loaded through llama.cpp, so everything runs locally on a laptop with no GPU and no cloud. The model is a separate download, and you can swap in another model if you prefer.
-
-## What's next
-
-The next version will understand what's *in* the photo, such as faces, sky and cars, so you can say “soften the face” and get corrections tuned to the kind of photography (portrait first, then others), plus looks like autumn, winter, vivid and cinematic.
-
-*Download and early access are coming soon.*
+The processing pipeline is my own code, with LibRaw handling raw files. A small, Apache-licensed Qwen model runs locally through llama.cpp and acts as a planner: it reads your request and decides which adjustments to make and by how much. It never paints pixels itself. The model is a separate download, and you can swap in another one.

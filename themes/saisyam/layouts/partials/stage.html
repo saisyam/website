@@ -1,0 +1,15 @@
+{{/* Stage helpers. Call with (dict "page" . "mode" "badge"|"bar") */}}
+{{ $stages := slice "idea" "prototype" "v1" "beta" "released" }}
+{{ $labels := dict "idea" "Idea" "prototype" "Prototype" "v1" "v1" "beta" "Beta" "released" "Released" }}
+{{ $cur := .page.Params.stage | default "idea" }}
+{{ if eq .mode "badge" }}
+  <span class="status stage-{{ $cur }}">{{ index $labels $cur }}</span>
+{{ else }}
+  {{ $reached := true }}
+  <ol class="stage-bar" aria-label="Project stage">
+    {{ range $stages }}
+      <li class="{{ if eq . $cur }}current{{ else if $reached }}done{{ end }}">{{ index $labels . }}</li>
+      {{ if eq . $cur }}{{ $reached = false }}{{ end }}
+    {{ end }}
+  </ol>
+{{ end }}

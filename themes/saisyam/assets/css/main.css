@@ -151,3 +151,56 @@ pre code { background: none; padding: 0; font-size: inherit; }
   .article-head .stack { justify-content: flex-start; }
   .about-photo { float: none; margin: 0 0 16px; }
 }
+
+/* ---- lab pages ---- */
+.from-lab { font: 500 14px var(--sans); color: var(--muted); margin: -4px 0 14px; }
+.from-lab a { color: var(--accent); }
+.lab-updated { margin-top: 12px !important; font: 500 12px var(--sans) !important; color: var(--muted); letter-spacing: .02em; }
+.stage-v1, .stage-released { background: #e5f4ea; color: #17633a; }
+.stage-beta, .stage-prototype { background: var(--accent-soft); color: var(--accent); }
+@media (prefers-color-scheme: dark) { .stage-v1, .stage-released { background: #12291b; color: #7bd88f; } }
+.stage-bar { list-style: none; display: flex; padding: 0; margin: 4px 0 22px; counter-reset: s; max-width: 520px; }
+.stage-bar li { flex: 1; position: relative; padding-top: 18px; font: 600 11px var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.stage-bar li::before { content: ""; position: absolute; top: 4px; left: 0; right: 4px; height: 4px; border-radius: 2px; background: var(--line); }
+.stage-bar li.done::before { background: var(--ink); }
+.stage-bar li.current::before { background: var(--accent); }
+.stage-bar li.current { color: var(--accent); }
+.stage-bar li.done { color: var(--ink-2); }
+.cta { display: inline-block; background: var(--ink); color: var(--bg); font: 600 14px var(--sans); padding: 12px 20px; border-radius: 4px; }
+.cta:hover { background: var(--accent); color: #fff; }
+
+.lab-head { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; padding: 48px 0 44px; border-bottom: 1px solid var(--line); }
+.lab-head h1 { font-size: clamp(38px, 5vw, 60px); margin: 0 0 16px; }
+.lab-head-media { aspect-ratio: 4 / 3; overflow: hidden; border-radius: 4px; }
+.lab-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 56px; padding-top: 40px; }
+.lab-main .prose > p:first-child::first-letter { all: unset; }
+.lab-block { margin-top: 48px; }
+.lab-block h2 { font-size: 28px; margin: 0 0 20px; padding-top: 12px; border-top: 3px solid var(--rule); }
+.roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.roadmap-col { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; }
+.roadmap-col h3 { font: 700 12px var(--sans); text-transform: uppercase; letter-spacing: .12em; margin: 0 0 10px; color: var(--muted); }
+.col-done h3 { color: #17633a; } .col-now h3 { color: var(--accent); }
+.roadmap-col ul { margin: 0; padding-left: 18px; font-size: 15px; color: var(--ink-2); }
+.roadmap-col li { margin-bottom: 6px; }
+.col-done li { text-decoration: line-through; text-decoration-color: var(--line); }
+.timeline { list-style: none; margin: 0; padding: 0 0 0 22px; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding: 0 0 22px; }
+.timeline li::before { content: ""; position: absolute; left: -29px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.timeline li:first-child::before { background: var(--accent); }
+.timeline time { font: 600 12px var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.timeline p { margin: 4px 0 0; color: var(--ink-2); }
+.story-grid.two { grid-template-columns: repeat(2, 1fr); }
+.lab-side { position: relative; }
+.facts { position: sticky; top: 24px; border-top: 3px solid var(--rule); padding-top: 12px; }
+.facts h2 { font-size: 22px; margin: 0 0 14px; }
+.facts dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 16px; font-size: 14.5px; }
+.facts dt { color: var(--muted); font-weight: 500; }
+.facts dd { margin: 0; color: var(--ink); }
+.feature .stage-bar { margin-top: 8px; }
+@media (max-width: 900px) {
+  .lab-head, .lab-layout { grid-template-columns: 1fr; gap: 28px; }
+  .lab-head-media { order: -1; }
+  .facts { position: static; }
+  .lab-side { order: -1; }
+}
+@media (max-width: 600px) { .roadmap, .story-grid.two { grid-template-columns: 1fr; } .stage-bar li { font-size: 9.5px; } }

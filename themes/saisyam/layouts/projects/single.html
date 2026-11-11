@@ -1,12 +1,68 @@
 {{ define "main" }}
-<article class="article">
-  <header class="article-head">
-    <p class="kicker"><a href="{{ "/projects/" | relURL }}">The Lab</a> · <span class="status status-{{ .Params.status | urlize }}">{{ .Params.status }}</span></p>
-    <h1>{{ .Title }}</h1>
-    <p class="dek">{{ .Description }}</p>
-    {{ with .Params.stack }}<ul class="stack">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+{{ $slug := .File.ContentBaseName }}
+<article class="lab-page">
+  <header class="lab-head">
+    <div class="lab-head-text">
+      <p class="kicker"><a href="{{ "/projects/" | relURL }}">The Lab</a>{{ with .Params.label }} · {{ . }}{{ end }}</p>
+      <h1>{{ .Title }}</h1>
+      <p class="dek">{{ .Description }}</p>
+      {{ partial "stage.html" (dict "page" . "mode" "bar") }}
+      {{ with .Params.cta }}<a class="cta" href="{{ .url | relURL }}">{{ .label }} →</a>{{ end }}
+    </div>
+    <div class="lab-head-media">{{ partial "cover.html" . }}</div>
   </header>
-  <figure class="article-cover">{{ partial "cover.html" . }}</figure>
-  <div class="prose">{{ .Content }}</div>
+
+  <div class="lab-layout">
+    <div class="lab-main">
+      <div class="prose">{{ .Content }}</div>
+
+      {{ with .Params.roadmap }}
+      <section class="lab-block">
+        <h2>Roadmap</h2>
+        <div class="roadmap">
+          {{ range $col := slice "done" "now" "next" }}
+            {{ with index $.Params.roadmap $col }}
+            <div class="roadmap-col col-{{ $col }}">
+              <h3>{{ index (dict "done" "Done" "now" "Now" "next" "Next") $col }}</h3>
+              <ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+            </div>
+            {{ end }}
+          {{ end }}
+        </div>
+      </section>
+      {{ end }}
+
+      {{ with .Params.log }}
+      <section class="lab-block">
+        <h2>Lab log</h2>
+        <ol class="timeline">
+          {{ range . }}
+          <li><time datetime="{{ time.Format "2006-01-02" .date }}">{{ time.Format "Jan 2, 2006" .date }}</time><p>{{ .text | markdownify }}</p></li>
+          {{ end }}
+        </ol>
+      </section>
+      {{ end }}
+
+      {{ $related := where (where site.RegularPages "Section" "posts") "Params.project" $slug }}
+      {{ with $related }}
+      <section class="lab-block">
+        <h2>Related writing</h2>
+        <div class="story-grid two">{{ range . }}{{ partial "post-card.html" . }}{{ end }}</div>
+      </section>
+      {{ end }}
+    </div>
+
+    <aside class="lab-side">
+      <div class="facts">
+        <h2>At a glance</h2>
+        <dl>
+          <dt>Stage</dt><dd>{{ partial "stage.html" (dict "page" . "mode" "badge") }}</dd>
+          {{ range .Params.facts }}<dt>{{ .k }}</dt><dd>{{ .v }}</dd>{{ end }}
+          {{ with index (.Params.log | default slice) 0 }}<dt>Last update</dt><dd>{{ time.Format "Jan 2, 2006" .date }}</dd>{{ end }}
+        </dl>
+        {{ with .Params.stack }}<ul class="stack">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+      </div>
+    </aside>
+  </div>
 </article>
 {{ end }}

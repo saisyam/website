@@ -1,11 +1,13 @@
+{{ $latest := index (.Params.log | default slice) 0 }}
 <a class="lab-card" href="{{ .RelPermalink }}">
   <div class="lab-media">{{ partial "cover.html" . }}</div>
   <div class="lab-body">
     <div class="card-top">
-      <span class="status status-{{ .Params.status | urlize }}">{{ .Params.status }}</span>
+      {{ partial "stage.html" (dict "page" . "mode" "badge") }}
       {{ with .Params.label }}<span class="kind">{{ . }}</span>{{ end }}
     </div>
     <h3>{{ .Title }}</h3>
     <p>{{ .Description }}</p>
+    {{ with $latest }}<p class="lab-updated">Updated {{ time.Format "Jan 2" .date }}</p>{{ end }}
   </div>
 </a>
