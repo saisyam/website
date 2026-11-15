@@ -1,6 +1,6 @@
 # saisyam.dev
 
-Personal site of Saisyam Dampuri: AI projects and writing. Built with [Hugo](https://gohugo.io) and a custom theme in `themes/saisyam`.
+Personal site of Saisyam Dampuri: articles on data and AI. Built with [Hugo](https://gohugo.io) and a custom theme in `themes/saisyam`.
 
 ## Run locally
 
@@ -14,7 +14,7 @@ hugo server        # http://localhost:1313
 hugo new posts/my-post-title.md          # new blog post (starts as draft: true)
 ```
 
-New project: copy one of the files in `content/projects/` and edit the front matter (`status`, `label`, `weight`, `stack`).
+Set `featured: true` in a post's front matter to put it in the home page featured spot (otherwise the newest post is featured). Add a cover with `image: /images/<file>.jpg` (files go in `static/images/`).
 
 ## Deploy (Cloudflare Workers)
 

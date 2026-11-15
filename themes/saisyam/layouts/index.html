@@ -1,40 +1,33 @@
 {{ define "main" }}
 {{ $posts := where site.RegularPages "Section" "posts" }}
-{{ $projects := (where site.RegularPages "Section" "projects").ByWeight }}
-{{/* Featured spot: a Lab item with featured: true wins, then a post with featured: true, then the newest post. */}}
-{{ $featured := index (where $projects "Params.featured" true) 0 | default (index (where $posts "Params.featured" true) 0) | default (index $posts 0) }}
+{{/* Featured spot: a post with featured: true, otherwise the newest post. */}}
+{{ $featured := index (where $posts "Params.featured" true) 0 | default (index $posts 0) }}
 
 {{ with $featured }}
-{{ $isLab := eq .Section "projects" }}
 <section class="feature">
   <a class="feature-media" href="{{ .RelPermalink }}">{{ partial "cover.html" . }}</a>
   <div class="feature-text">
-    <p class="kicker">Featured · {{ if $isLab }}From the Lab{{ else }}{{ .Params.kicker | default "Writing" }}{{ end }}</p>
+    <p class="kicker">Featured · {{ .Params.kicker | default "Writing" }}</p>
     <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
     {{ with .Description }}<p class="dek">{{ . }}</p>{{ end }}
-    {{ if $isLab }}
-      {{ partial "stage.html" (dict "page" . "mode" "bar") }}
-      {{ with index (.Params.log | default slice) 0 }}<p class="byline">Latest: {{ time.Format "Jan 2" .date }}: {{ .text }}</p>{{ end }}
-      <a class="read-more" href="{{ .RelPermalink }}">See the project →</a>
-    {{ else }}
-      <p class="byline">By {{ site.Params.author }} · {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read</p>
-      <a class="read-more" href="{{ .RelPermalink }}">Read the story →</a>
-    {{ end }}
+    <p class="byline">By {{ site.Params.author }} · {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read</p>
+    <a class="read-more" href="{{ .RelPermalink }}">Read the story →</a>
   </div>
+</section>
+{{ else }}
+<section class="coming-soon">
+  <p class="kicker">Coming soon</p>
+  <h1>First articles are on the way.</h1>
+  <p class="dek">Writing on knowledge graphs, grounding LLMs and building AI on real data platforms.</p>
+  <a class="read-more" href="{{ "index.xml" | absURL }}">Follow via RSS →</a>
 </section>
 {{ end }}
 
 {{ $rest := where $posts "Permalink" "!=" ($featured.Permalink | default "") }}
-{{ with first 3 $rest }}
+{{ with first 6 $rest }}
 <section class="section">
   <div class="section-head"><h2>Latest</h2><a href="{{ "/posts/" | relURL }}">All writing →</a></div>
   <div class="story-grid">{{ range . }}{{ partial "post-card.html" . }}{{ end }}</div>
 </section>
 {{ end }}
-
-<section class="section lab">
-  <div class="section-head"><h2>The Lab</h2><a href="{{ "/projects/" | relURL }}">All projects →</a></div>
-  <p class="section-dek">Work in progress: small models and AI tools that run on your own machine.</p>
-  <div class="lab-grid">{{ range $projects }}{{ partial "project-card.html" . }}{{ end }}</div>
-</section>
 {{ end }}

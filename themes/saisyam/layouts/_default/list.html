@@ -3,9 +3,7 @@
   <h1>{{ .Title }}</h1>
   {{ with .Content }}<div class="lede">{{ . }}</div>{{ end }}
 </header>
-{{ if eq .Section "projects" }}
-  <div class="lab-grid">{{ range .Pages.ByWeight }}{{ partial "project-card.html" . }}{{ end }}</div>
-{{ else if not .Pages }}
+{{ if not .Pages }}
   <p class="empty">Nothing here yet. First stories are on the way.</p>
 {{ else }}
   <div class="story-grid">{{ range .Pages }}{{ partial "post-card.html" . }}{{ end }}</div>
