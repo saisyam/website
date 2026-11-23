@@ -1,7 +1,7 @@
 ---
 title: "From Days to Minutes: A Knowledge Graph for Data Platform Support"
 description: "On a managed data platform, root-cause analysis took days because engineers had to join tickets, pipelines, notebooks, tables and reports by hand. A knowledge graph parsed from the platform's own code, plus read-only question tools behind an MCP server, cut most of it to minutes, using a fraction of the tokens."
-date: 2026-11-29
+date: 2026-11-23T08:00:00-06:00
 slug: "days-to-minutes-knowledge-graph"
 kicker: "Field case study"
 featured: true
