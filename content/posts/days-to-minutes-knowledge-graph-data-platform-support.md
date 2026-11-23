@@ -1,6 +1,6 @@
 ---
 title: "From Days to Minutes: A Knowledge Graph for Data Platform Support"
-description: "On a managed data platform, root-cause analysis took days because engineers had to join tickets, pipelines, notebooks, tables and reports by hand. A knowledge graph parsed from the platform's own code, plus read-only question tools behind an MCP server, cut most of it to minutes, using a fraction of the tokens."
+description: "On a managed data platform, root-cause analysis took days because engineers had to join tickets, pipelines, notebooks, tables and reports by hand. A knowledge graph built from the platform's own code, plus read-only question tools behind an MCP server, cut most of it to minutes, using a fraction of the tokens."
 date: 2026-11-23T08:00:00-06:00
 slug: "days-to-minutes-knowledge-graph"
 kicker: "Field case study"
@@ -50,14 +50,14 @@ The model was never the bottleneck. What it lacked was a map.
 
 The design has four parts:
 
-1. A **knowledge graph** of the platform's structure, parsed from its code.
+1. A **knowledge graph** of the platform's structure, built from its code.
 2. **Read-only access** to live systems: run history, job runs, table metadata and tickets.
 3. A **question layer** that joins the two in code.
 4. An **MCP server** that exposes the questions as tools to any AI assistant.
 
 The principle behind all four: **deterministic first, language model last.** Everything that can be exact is code: parsing, joins, time zones, permissions. The model interprets the question and explains the answer. That is why answers are fast, cheap and repeatable, and why they can be tested.
 
-### 1. A graph parsed from the platform's own code
+### 1. A graph built from the platform's own code
 
 The graph is built from the git repositories that already hold the truth: orchestrator pipeline definitions (JSON), notebooks and scripts (Python, SQL, Scala), job definitions, and an export of the metadata table. It has a small set of node types: pipelines, jobs, code assets (notebooks and scripts), tables, schedules, datasets, connections and tickets.
 
