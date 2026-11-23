@@ -11,7 +11,7 @@ categories: ["Knowledge graphs", "MCP", "Data platforms"]
 
 A ticket comes in at 9 a.m.: *"The weekly sales report is missing yesterday's numbers."* The engineer who picks it up knows the report, roughly. They don't know which pipeline feeds it, which of a dozen notebooks that pipeline runs, which tables those notebooks write, or whether a view somewhere in between changed last week. Finding out takes the rest of the day, sometimes the rest of the week.
 
-That was normal on the managed data platform this article is about. We changed it by giving an AI assistant two things: a map of how the platform fits together, built from its own code, and a set of safe, read-only ways to check what is happening on it right now. Root-cause analysis (RCA) went from days to minutes for most tickets. "What failed today, and why?" now takes about seven seconds.
+That was normal on the managed data platform this article is about. We changed it by giving an AI assistant two things: a map of how the platform fits together, built from its own code, and a set of safe, read-only ways to check what is happening on it right now. Root-cause analysis (RCA) went from days to minutes for most tickets. "What failed today, and why?" now takes 10 to 15 seconds.
 
 This article covers the design, the numbers, and where it still falls short.
 
@@ -132,7 +132,7 @@ The engineer reviews a proposed root cause with evidence attached, instead of as
 
 **Ticket resolution time fell by about 50%**, measured across the months since the tools went live. Resolution covers the whole ticket, including the fix and the redeploy, so it drops less than the time to find the cause, but it is the number the team and the client feel. Engineers close tickets faster and spend their time fixing problems instead of tracing them.
 
-**RCA went from days to minutes** for most tickets. It still takes hours when the graph is missing a node or a lineage link, such as a table name built at run time or code that isn't in git, because then an engineer has to fill the gap by hand. The everyday question "what failed today and why?" is answered in about **7 seconds**. Caching finished days of run history brought that down from 42 seconds.
+**RCA went from days to minutes** for most tickets. It still takes hours when the graph is missing a node or a lineage link, such as a table name built at run time or code that isn't in git, because then an engineer has to fill the gap by hand. The everyday question "what failed today and why?" is answered in **10 to 15 seconds**, helped by caching the run history of days that are already finished.
 
 The graph also surfaced things the team didn't know:
 
