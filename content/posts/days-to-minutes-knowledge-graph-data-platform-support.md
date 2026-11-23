@@ -71,6 +71,8 @@ A few details made the difference between a pretty diagram and a graph you can t
 
 The whole estate (about 440 pipelines, 170 triggers, 1,800 notebooks and scripts, and 2,700 tables) parses in about **15 seconds**. The graph is stored as plain JSON and Parquet. No graph database was needed.
 
+**A note on names.** You'll hear this called a knowledge graph, a context graph or an "AI brain." They're different names for the same goal: giving a model the connections it can't work out from raw text. Whatever you call it, what matters is that it's built from the source of truth, kept current, and queried through narrow tools.
+
 ### 2. Rebuilt when the code changes
 
 The graph is rebuilt whenever new commits land on the tracked branch, and also when it gets older than a set number of hours, because jobs and BI reports can change outside git. Each rebuild writes a change report: pipelines, notebooks, jobs, schedules, tables and reports that were added, removed or modified, and the commits merged. That report becomes a tool of its own, which turns out to matter for RCA: "what changed upstream since it last worked?" is often the real question.
