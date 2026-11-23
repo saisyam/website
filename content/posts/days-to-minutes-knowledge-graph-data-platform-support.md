@@ -132,7 +132,7 @@ The engineer reviews a proposed root cause with evidence attached, instead of as
 
 **Ticket resolution time fell by about 50%**, measured across the months since the tools went live. Resolution covers the whole ticket, including the fix and the redeploy, so it drops less than the time to find the cause, but it is the number the team and the client feel. Engineers close tickets faster and spend their time fixing problems instead of tracing them.
 
-**RCA went from days to minutes** for most tickets. It still takes hours when the graph is missing a node or a lineage link, such as a table name built at run time or code that isn't in git, because then an engineer has to fill the gap by hand. The everyday question "what failed today and why?" is answered in **10 to 15 seconds**, helped by caching the run history of days that are already finished.
+**RCA went from days to minutes** for most tickets. It still takes hours when the graph is missing a node or a lineage link, such as a table name built at run time or code that isn't in git, because then an engineer has to fill the gap by hand. The everyday question "what failed today and why?" is answered in **10 to 15 seconds**.
 
 The graph also surfaced things the team didn't know:
 
