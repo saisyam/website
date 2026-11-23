@@ -145,14 +145,12 @@ None of these was found by asking a model to read code. They fell out of joining
 
 ## What we couldn't connect, and where it breaks
 
-**BI dataset lineage.** Without tenant-level admin access to the BI platform, we can't scan every semantic model's tables and measure definitions (DAX, in Power BI's case). So report-to-table lineage exists only where the workspace-level APIs expose it. For RCA that has mostly been acceptable: the question is usually "why is the data missing or late?", not "why is this formula wrong?".
+**Systems behind the VPN.** On-premises and site-level servers sit behind a VPN the tools can't reach. The graph sees the data those systems send to the platform, not what happens inside them.
 
-Other limits worth knowing before you build one:
+Other limits:
 
-- **Run-time decisions.** Some notebook paths and table names are chosen at run time from metadata. They're recorded as `dynamic` or unresolved, not guessed, but they are still gaps.
-- **Git isn't the deployed state.** A trigger can be enabled in git and stopped in production, and notebook widget defaults can disagree with the values callers actually pass. Treat the repository as one source of truth, not the only one.
-- **Code that isn't in git can't be parsed.** The graph flags references to it, which is useful in itself, but it can't trace through it.
-- **Error messages and tickets can contain sensitive data.** Anything sent to a hosted model leaves your environment. Redact, trim, and decide which fields can leave at all.
+- **Run-time decisions.** Some notebook paths and table names are chosen at run time. They're marked as such, not guessed, but they are still gaps.
+- **Git isn't the deployed state.** Production can differ from what the repository says.
 - **The graph shows what is connected, not why a value is wrong.** Data-level problems still need data checks.
 
 ## When this is worth building
