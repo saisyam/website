@@ -4,7 +4,7 @@ description: "On a managed data platform, root-cause analysis took days because 
 date: 2026-11-23T08:00:00-06:00
 slug: "days-to-minutes-knowledge-graph"
 kicker: "Field case study"
-featured: true
+featured: false
 image: /images/t01-cover.png
 categories: ["Knowledge graphs", "MCP", "Data platforms"]
 ---
